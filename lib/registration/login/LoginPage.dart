@@ -203,37 +203,21 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 SizedBox(height: 10),
-                // google icon
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 140.0),
+                // Google login icon
+                GestureDetector(
+                  onTap: () {
+                    // TODO: Implement Google sign-in logic
+                  },
                   child: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(
-                        color: greyColor,
-                        width: 2,            
-                      ),
-                      borderRadius: BorderRadius.circular(10),  
+                      border: Border.all(color: greyColor, width: 2),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => HomePage()) 
-                          // );
-                        },
-                        child: Image.asset(
-                          'assets/icons/google.png',
-                          height: 24,
-                          width: 24,
-                        ),
-                      )
-                    )
+                    child: Image.asset('assets/icons/google.png', height: 24, width: 24),
                   ),
-                ),
-            
+                ), 
               ],
             ),
           ),
