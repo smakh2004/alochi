@@ -8,12 +8,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: "YOUR_API_KEY",
-    authDomain: "your-app.firebaseapp.com",
-    projectId: "your-app",
-    storageBucket: "your-app.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcd1234",
-    measurementId: "G-XXXXXXX",
+    apiKey: "AIzaSyA9gKTdOnRiAbwJzbt1xOXin5GnTYk5kjQ",
+    authDomain: "alochiauth-fa3ee.firebaseapp.com",
+    projectId: "alochiauth-fa3ee",
+    storageBucket: "alochiauth-fa3ee.firebasestorage.app",
+    messagingSenderId: "481207852696",
+    appId: "1:481207852696:web:2f76003f12bf525e3ebaed",
+    measurementId: "G-Z7H40XM25V"
   );
 }
