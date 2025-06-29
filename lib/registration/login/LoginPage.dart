@@ -206,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Google login icon
                 GestureDetector(
                   onTap: () {
-                    // TODO: Implement Google sign-in logic
+                    // TODO: Implement Google sign-in logi
                   },
                   child: Container(
                     padding: const EdgeInsets.all(10),
