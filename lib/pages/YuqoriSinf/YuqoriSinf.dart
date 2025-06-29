@@ -1,0 +1,181 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, prefer_final_fields
+import 'package:alochi_math_app/components/color.dart';
+import 'package:alochi_math_app/MathStorm/MathStorm.dart';
+import 'package:alochi_math_app/pages/ProfilePage.dart';
+import 'package:alochi_math_app/pages/PremiumPage.dart';
+import 'package:alochi_math_app/pages/StorePage.dart';
+import 'package:alochi_math_app/pages/YuqoriSinf/HomePage1.dart';
+import 'package:flutter/material.dart';
+
+class YuqoriSinf extends StatefulWidget {
+  const YuqoriSinf({super.key});
+
+  @override
+  State<YuqoriSinf> createState() => _YuqoriSinfState();
+}
+
+class _YuqoriSinfState extends State<YuqoriSinf> {
+  int _selectedIndex = 0;
+
+  // Create fresh page list
+  List<Widget> _pages = [
+    HomePage1(),
+    MathStorm(),
+    ProfilePage(),
+    StorePage(),
+    PremiumPage(),
+  ];
+
+  void _NavigatedBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+
+      // Recreate selected page to trigger refresh
+      if (index == 0) _pages[0] = HomePage1();
+      if (index == 1) _pages[1] = MathStorm();
+      if (index == 2) _pages[2] = ProfilePage();
+      if (index == 3) _pages[3] = StorePage();
+      if (index == 4) _pages[4] = PremiumPage();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _pages,
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: greyColor,
+              width: 2.0,
+            ),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _selectedIndex,
+            backgroundColor: Colors.white,
+            onTap: _NavigatedBottomBar,
+            items: [
+              /// HOME
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 0
+                        ? Colors.blue[50]
+                        : Colors.transparent,
+                    border: _selectedIndex == 0
+                        ? Border.all(color: primaryColor, width: 2)
+                        : null,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Image.asset(
+                    'assets/icons/Home.png',
+                    width: 42,
+                    height: 42,
+                  ),
+                ),
+                label: '',
+              ),
+
+              /// Math STORM
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 1
+                        ? Colors.blue[50]
+                        : Colors.transparent,
+                    border: _selectedIndex == 1
+                        ? Border.all(color: primaryColor, width: 2)
+                        : null,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Image.asset(
+                    'assets/icons/ArifmeticStorm.png',
+                    width: 42,
+                    height: 42,
+                  ),
+                ),
+                label: '',
+              ),
+
+              /// PROFILE
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 2
+                        ? Colors.blue[50]
+                        : Colors.transparent,
+                    border: _selectedIndex == 2
+                        ? Border.all(color: primaryColor, width: 2)
+                        : null,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Image.asset(
+                    'assets/icons/Profile.png',
+                    width: 42,
+                    height: 42,
+                  ),
+                ),
+                label: '',
+              ),
+
+              /// STORE
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 3
+                        ? Colors.blue[50]
+                        : Colors.transparent,
+                    border: _selectedIndex == 3
+                        ? Border.all(color: primaryColor, width: 2)
+                        : null,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Image.asset(
+                    'assets/icons/Store.png',
+                    width: 42,
+                    height: 42,
+                  ),
+                ),
+                label: '',
+              ),
+
+              
+              /// PREMIUM
+              BottomNavigationBarItem(
+                icon: Container(
+                  padding: EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: _selectedIndex == 4
+                        ? Colors.blue[50]
+                        : Colors.transparent,
+                    border: _selectedIndex == 4
+                        ? Border.all(color: primaryColor, width: 2)
+                        : null,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Image.asset(
+                    'assets/icons/PremiumIcon.png',
+                    width: 42,
+                    height: 42,
+                  ),
+                ),
+                label: '',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

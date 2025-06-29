@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "481207852696",
+    "project_id": "alochiauth-fa3ee",
+    "storage_bucket": "alochiauth-fa3ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481207852696:android:7525459150d7a77d3ebaed",
+        "android_client_info": {
+          "package_name": "com.example.math_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtuKOu51bQU91wLL-4qH5QBuTwkuX3y0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
