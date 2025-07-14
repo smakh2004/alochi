@@ -1,25 +1,28 @@
-// ignore_for_file: file_names, non_constant_identifier_names
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GameState {
+
+  // Selected level of user: BOSHLANGICH, YUQORISINF, STUDENT
+  static String selectedLevel = '';
+  static String firstName = ''; 
+  static String lastName = '';
+
   static int matematikShtorm = 0;
   static int mathStormAttemptsLeft = 3;
-
   static int lastScore = 0;
   static int lastTime = 0;
 
+  // progress for Boshlangich
   static double currentXP = 0;
   static double maxXP = 100;
-
   static double TcurrentXP = 0;
   static double TmaxXP = 100;
+  static int score = 0;
+  static int scoreDop = 0;
 
   static int hearts = 5;
   static int lightnings = 0;
   static int gems = 0;
-
-  static int score = 0;
-  static int scoreDop = 0;
 
   static double arifmetika = 0;
   static double arifmetikaMax = 100;
@@ -36,95 +39,131 @@ class GameState {
   static DateTime? lastLightningDate;
   static DateTime? lastLightningDate1;
 
-  // // UNCOMMENT FOR SHARED PREFERENCES AND SAVING VALUES AFTER REENTERING TO THE APP
-  // /// Load all values from SharedPreferences
-  // static Future<void> loadState() async {
-  //   final prefs = await SharedPreferences.getInstance();
+  /// RESET values to defaults (except selectedLevel)
+  static void reset() {
 
-  //   matematikShtorm = prefs.getInt('matematikShtorm') ?? 0;
-  //   mathStormAttemptsLeft = prefs.getInt('mathStormAttemptsLeft') ?? 3;
+    matematikShtorm = 0;
+    mathStormAttemptsLeft = 3;
 
-  //   lastScore = prefs.getInt('lastScore') ?? 0;
-  //   lastTime = prefs.getInt('lastTime') ?? 0;
+    lastScore = 0;
+    lastTime = 0;
 
-  //   currentXP = prefs.getDouble('currentXP') ?? 0;
-  //   maxXP = prefs.getDouble('maxXP') ?? 100;
+    currentXP = 0;
+    maxXP = 100;
 
-  //   TcurrentXP = prefs.getDouble('TcurrentXP') ?? 0;
-  //   TmaxXP = prefs.getDouble('TmaxXP') ?? 100;
+    TcurrentXP = 0;
+    TmaxXP = 100;
 
-  //   hearts = prefs.getInt('hearts') ?? 5;
-  //   lightnings = prefs.getInt('lightnings') ?? 0;
-  //   gems = prefs.getInt('gems') ?? 0;
+    hearts = 5;
+    lightnings = 0;
+    gems = 0;
 
-  //   score = prefs.getInt('score') ?? 0;
-  //   scoreDop = prefs.getInt('scoreDop') ?? 0;
+    score = 0;
+    scoreDop = 0;
 
-  //   arifmetika = prefs.getDouble('arifmetika') ?? 0;
-  //   arifmetikaMax = prefs.getDouble('arifmetikaMax') ?? 100;
-  //   arifmetikaDop = prefs.getDouble('arifmetikaDop') ?? 0;
+    arifmetika = 0;
+    arifmetikaMax = 100;
+    arifmetikaDop = 0;
 
-  //   kopaytirish = prefs.getDouble('kopaytirish') ?? 0;
-  //   kopaytirishMax = prefs.getDouble('kopaytirishMax') ?? 100;
-  //   kopaytirishDop = prefs.getDouble('kopaytirishDop') ?? 0;
+    kopaytirish = 0;
+    kopaytirishMax = 100;
+    kopaytirishDop = 0;
 
-  //   logika = prefs.getDouble('logika') ?? 0;
-  //   logikaMax = prefs.getDouble('logikaMax') ?? 100;
-  //   logikaDop = prefs.getDouble('logikaDop') ?? 0;
+    logika = 0;
+    logikaMax = 100;
+    logikaDop = 0;
 
-  //   lastLightningDate = _loadDate(prefs, 'lastLightningDate');
-  //   lastLightningDate1 = _loadDate(prefs, 'lastLightningDate1');
-  // }
+    lastLightningDate = null;
+    lastLightningDate1 = null;
+  }
 
-  // /// Save all values to SharedPreferences
-  // static Future<void> saveState() async {
-  //   final prefs = await SharedPreferences.getInstance();
+  /// Save game state to Firestore
+  static Future<void> saveState(String userId) async {
+    if (userId.isEmpty) return;
+    await FirebaseFirestore.instance.collection('users').doc(userId).set({
+      'selectedLevel': selectedLevel,
+      'firstName': firstName, // Save first name
+      'lastName': lastName, // Save last name
+      'matematikShtorm': matematikShtorm,
+      'mathStormAttemptsLeft': mathStormAttemptsLeft,
+      'lastScore': lastScore,
+      'lastTime': lastTime,
+      'currentXP': currentXP,
+      'maxXP': maxXP,
+      'TcurrentXP': TcurrentXP,
+      'TmaxXP': TmaxXP,
+      'hearts': hearts,
+      'lightnings': lightnings,
+      'gems': gems,
+      'score': score,
+      'scoreDop': scoreDop,
+      'arifmetika': arifmetika,
+      'arifmetikaMax': arifmetikaMax,
+      'arifmetikaDop': arifmetikaDop,
+      'kopaytirish': kopaytirish,
+      'kopaytirishMax': kopaytirishMax,
+      'kopaytirishDop': kopaytirishDop,
+      'logika': logika,
+      'logikaMax': logikaMax,
+      'logikaDop': logikaDop,
+      'lastLightningDate': lastLightningDate?.toIso8601String(),
+      'lastLightningDate1': lastLightningDate1?.toIso8601String(),
+    }, SetOptions(merge: true));
+  }
 
-  //   await prefs.setInt('matematikShtorm', matematikShtorm);
-  //   await prefs.setInt('mathStormAttemptsLeft', mathStormAttemptsLeft);
+  /// Load game state from Firestore
+  static Future<void> loadState(String userId) async {
+    if (userId.isEmpty) return;
+    final doc =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+    if (!doc.exists) return;
 
-  //   await prefs.setInt('lastScore', lastScore);
-  //   await prefs.setInt('lastTime', lastTime);
+    final data = doc.data()!;
 
-  //   await prefs.setDouble('currentXP', currentXP);
-  //   await prefs.setDouble('maxXP', maxXP);
+    selectedLevel = data['selectedLevel'] ?? '';
+    firstName = data['firstName'] ?? ''; 
+    lastName = data['lastName'] ?? ''; 
 
-  //   await prefs.setDouble('TcurrentXP', TcurrentXP);
-  //   await prefs.setDouble('TmaxXP', TmaxXP);
+    matematikShtorm = data['matematikShtorm'] ?? 0;
+    mathStormAttemptsLeft = data['mathStormAttemptsLeft'] ?? 3;
 
-  //   await prefs.setInt('hearts', hearts);
-  //   await prefs.setInt('lightnings', lightnings);
-  //   await prefs.setInt('gems', gems);
+    lastScore = data['lastScore'] ?? 0;
+    lastTime = data['lastTime'] ?? 0;
 
-  //   await prefs.setInt('score', score);
-  //   await prefs.setInt('scoreDop', scoreDop);
+    currentXP = (data['currentXP'] ?? 0).toDouble();
+    maxXP = (data['maxXP'] ?? 100).toDouble();
+    TcurrentXP = (data['TcurrentXP'] ?? 0).toDouble();
+    TmaxXP = (data['TmaxXP'] ?? 100).toDouble();
 
-  //   await prefs.setDouble('arifmetika', arifmetika);
-  //   await prefs.setDouble('arifmetikaMax', arifmetikaMax);
-  //   await prefs.setDouble('arifmetikaDop', arifmetikaDop);
+    hearts = data['hearts'] ?? 5;
+    lightnings = data['lightnings'] ?? 0;
+    gems = data['gems'] ?? 0;
 
-  //   await prefs.setDouble('kopaytirish', kopaytirish);
-  //   await prefs.setDouble('kopaytirishMax', kopaytirishMax);
-  //   await prefs.setDouble('kopaytirishDop', kopaytirishDop);
+    score = data['score'] ?? 0;
+    scoreDop = data['scoreDop'] ?? 0;
 
-  //   await prefs.setDouble('logika', logika);
-  //   await prefs.setDouble('logikaMax', logikaMax);
-  //   await prefs.setDouble('logikaDop', logikaDop);
+    arifmetika = (data['arifmetika'] ?? 0).toDouble();
+    arifmetikaMax = (data['arifmetikaMax'] ?? 100).toDouble();
+    arifmetikaDop = (data['arifmetikaDop'] ?? 0).toDouble();
 
-  //   await _saveDate(prefs, 'lastLightningDate', lastLightningDate);
-  //   await _saveDate(prefs, 'lastLightningDate1', lastLightningDate1);
-  // }
+    kopaytirish = (data['kopaytirish'] ?? 0).toDouble();
+    kopaytirishMax = (data['kopaytirishMax'] ?? 100).toDouble();
+    kopaytirishDop = (data['kopaytirishDop'] ?? 0).toDouble();
 
-  // /// Helper to save DateTime
-  // static Future<void> _saveDate(SharedPreferences prefs, String key, DateTime? date) async {
-  //   if (date != null) {
-  //     await prefs.setString(key, date.toIso8601String());
-  //   }
-  // }
+    logika = (data['logika'] ?? 0).toDouble();
+    logikaMax = (data['logikaMax'] ?? 100).toDouble();
+    logikaDop = (data['logikaDop'] ?? 0).toDouble();
 
-  // /// Helper to load DateTime
-  // static DateTime? _loadDate(SharedPreferences prefs, String key) {
-  //   final dateString = prefs.getString(key);
-  //   return dateString != null ? DateTime.tryParse(dateString) : null;
-  // }
+    lastLightningDate = _parseDate(data['lastLightningDate']);
+    lastLightningDate1 = _parseDate(data['lastLightningDate1']);
+  }
+
+  static DateTime? _parseDate(dynamic value) {
+    if (value == null) return null;
+    try {
+      return DateTime.parse(value);
+    } catch (_) {
+      return null;
+    }
+  }
 }

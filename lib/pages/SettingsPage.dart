@@ -1,4 +1,5 @@
-import 'package:alochi_math_app/appear_once/StartPage.dart';
+import 'package:alochi_math_app/auth/check_page.dart';
+import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,14 +25,18 @@ class _SettingsPageState extends State<SettingsPage> {
           onPressed: () async {
             try {
               await FirebaseAuth.instance.signOut();
+
+              // 🧠 Clear all in-memory game state after logout
+              GameState.reset();
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Signed out successfully')),
               );
 
-              // Navigate to LoginPage (or Welcome screen)
+              // Navigate to Welcome/Login page
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => StartPage()),
+                MaterialPageRoute(builder: (context) => CheckPage()),
               );
             } catch (e) {
               ScaffoldMessenger.of(context).showSnackBar(

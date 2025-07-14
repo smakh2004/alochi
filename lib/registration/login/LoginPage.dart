@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -19,29 +22,41 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future signIn() async {
+  Future<void> signIn() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(), 
+      final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
-      // Optional: Navigate to HomePage after successful sign-in
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+      final userId = userCredential.user?.uid;
 
+      if (userId != null) {
+        // GameState.reset();
+        // await GameState.saveState(userId);
+        await GameState.loadState(userId);
+      }
+      // NO navigation or snackbar here — just return
     } on FirebaseAuthException catch (e) {
-      String errorMessage;
+      String message;
 
       if (e.code == 'user-not-found') {
-        errorMessage = S.of(context).emailNotFound; 
+        message = S.of(context).userNotFound;
       } else if (e.code == 'wrong-password') {
-        errorMessage = S.of(context).wrongPassword;
+        message = S.of(context).wrongPassword1;
+      } else if (e.code == 'invalid-email') {
+        message = S.of(context).invalidEmailFormat;
       } else {
-        errorMessage = S.of(context).somethingWentWrong;
+        message = S.of(context).unknownError;
       }
 
+      // You can still show snackbars here because you have context, or pass errors back to UI
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(errorMessage)),
+        SnackBar(content: Text(message)),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('${S.of(context).xatolik} ${e.toString()}')),
       );
     }
   }

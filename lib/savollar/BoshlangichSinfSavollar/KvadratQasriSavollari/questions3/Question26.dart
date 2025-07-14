@@ -7,12 +7,12 @@ import 'package:alochi_math_app/components/color.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:dotted_border/dotted_border.dart';
 
-class Question10 extends StatefulWidget {
+class Question26 extends StatefulWidget {
   final Function(double) onXPUpdate;
   final VoidCallback onNext;
   final VoidCallback onIncorrect;
 
-  const Question10({
+  const Question26({
     super.key,
     required this.onXPUpdate,
     required this.onNext,
@@ -20,13 +20,14 @@ class Question10 extends StatefulWidget {
   });
 
   @override
-  State<Question10> createState() => _Question10State();
+  State<Question26> createState() => _Question26State();
 }
 
-class _Question10State extends State<Question10> {
+class _Question26State extends State<Question26> {
   Map<String, String?> droppedLabels = {
     "A": null,
     "B": null,
+    "C": null,
   };
 
   Set<String> usedLabels = {};
@@ -35,10 +36,10 @@ class _Question10State extends State<Question10> {
   bool isCorrect = false;
 
   final List<Map<String, dynamic>> draggableButtons = [
-    {'color': Colors.white, 'label': '9'},
-    {'color': Colors.white, 'label': '4'},
-    {'color': Colors.white, 'label': '6'},
     {'color': Colors.white, 'label': '1'},
+    {'color': Colors.white, 'label': '7'},
+    {'color': Colors.white, 'label': '8'},
+    {'color': Colors.white, 'label': '6'},
   ];
 
   bool get isAnswerSelected =>
@@ -72,7 +73,7 @@ class _Question10State extends State<Question10> {
         final label = droppedLabels[targetId];
 
         if (label != null) {
-          bool isCorrect = (droppedLabels["A"] == '6' && droppedLabels["B"] == '4');
+          bool isCorrect = (droppedLabels["A"] == '7' && droppedLabels["B"] == '8' && droppedLabels["C"] == '6');
           Color buttonColor = Colors.white;
           Color borderColor = greyColor;
 
@@ -167,44 +168,73 @@ class _Question10State extends State<Question10> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40),
-                          
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/question_images/Q10.png',
-                            width: size.width * 0.7,
-                            fit: BoxFit.contain,
-                          ),
-                        ],
-                      ),
                       const SizedBox(height: 50),
-                          
-                      const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          buildDragTarget("A"),
-                          const SizedBox(width: 10),
                           const Text(
-                            "-",
+                            "2 + ",
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
-                          const SizedBox(width: 10),
-                          buildDragTarget("B"),
-                          const SizedBox(width: 10),
-                          const Text(
-                            "= 2",
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
+                          Image.asset(
+                            'assets/question3_images/Q26.png',
+                            width: size.width * 0.2,
+                          ),
+                          const SizedBox(width: 20),
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "5 =",
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  buildDragTarget("A"),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "6 =",
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  buildDragTarget("B"),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "4 =",
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  buildDragTarget("C"),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -371,13 +401,13 @@ class _Question10State extends State<Question10> {
                       onPressed: () {
                         if (!isChecked) {
                           // ✅ Check both answers
-                          if ((droppedLabels["A"] == '6' && droppedLabels["B"] == '4')) {
+                          if ((droppedLabels["A"] == '7' && droppedLabels["B"] == '8' && droppedLabels["C"] == '6')) {
                             submitButtonColor = primaryCorrect;
                             isCorrect = true;
                             widget.onXPUpdate(10);
                             setState(() {
                                 GameState.arifmetikaDop += 0.5;
-                                GameState.scoreDop += 2;
+                                GameState.scoreDop += 3;
                               });
                           } else {
                             submitButtonColor = primaryIncorrect;

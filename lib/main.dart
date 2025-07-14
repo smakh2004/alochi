@@ -6,12 +6,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); 
+  WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform, 
-  );
-  // await GameState.loadState();
+  // ✅ Prevent duplicate initialization
+  try {
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    } else {
+      Firebase.app(); // just use existing app
+    }
+  } catch (e) {
+    // ✅ Optional: Log error only once
+    debugPrint('Firebase already initialized: $e');
+  }
+
   runApp(MyApp());
 }
 

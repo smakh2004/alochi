@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
@@ -18,12 +19,35 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
   bool _showFirstAnimation = true;
 
   double previousProgress = 0.0;
+  late Future<void> _loadStateFuture;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
     _loadAnimations();
+    _loadStateFuture = _loadGameState(); // 🔄 wait for Firestore values
+  }
+
+  Future<void> _loadGameState() async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      await GameState.loadState(userId);
+    }
+  }
+
+  Future<void> _loadAnimations() async {
+    final first = await AssetLottie('assets/animations/MrSquareCastle1.json').load();
+    final looping = await AssetLottie('assets/animations/MrSquareCastle2.json').load();
+
+    setState(() {
+      _firstComposition = first;
+      _loopingComposition = looping;
+
+      _controller
+        ..duration = _firstComposition!.duration
+        ..forward();
+    });
 
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed && _showFirstAnimation) {
@@ -37,20 +61,6 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
     });
   }
 
-  Future<void> _loadAnimations() async {
-    final first = await AssetLottie('assets/animations/SquareCastle.json').load();
-    final looping = await AssetLottie('assets/animations/SquareCastle1.json').load();
-
-    setState(() {
-      _firstComposition = first;
-      _loopingComposition = looping;
-
-      _controller
-        ..duration = _firstComposition!.duration
-        ..forward();
-    });
-  }
-
   @override
   void dispose() {
     _controller.dispose();
@@ -59,12 +69,25 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _loadStateFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        return _buildMainContent(context);
+      },
+    );
+  }
+
+  Widget _buildMainContent(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
     double currentProgress = GameState.currentXP / GameState.maxXP;
 
-    // Only update previousProgress after the frame has been built
+    // Update previousProgress and trigger onComplete
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         if (previousProgress != currentProgress) {
@@ -73,7 +96,6 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
           });
         }
 
-        // Trigger onComplete if filled
         if (currentProgress >= 1.0) {
           widget.onComplete?.call();
         }
@@ -82,7 +104,6 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
 
     return Column(
       children: [
-        // Castle Animation
         SizedBox(
           height: screenHeight * 0.4,
           child: Center(
@@ -97,7 +118,6 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
         ),
         const SizedBox(height: 8),
 
-        // XP Bar with Perfectly Aligned Segment Lines
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: TweenAnimationBuilder<double>(
@@ -114,15 +134,12 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
                   height: 20,
                   child: Stack(
                     children: [
-                      // Background Track
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: greyColor,
                         ),
                       ),
-
-                      // Foreground Progress with left-rounded only
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Align(
@@ -135,12 +152,10 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
                           ),
                         ),
                       ),
-
-                      // Segment lines
                       ...List.generate(segments - 1, (i) {
                         double left = (barWidth / segments) * (i + 1);
                         return Positioned(
-                          left: left - 0.75, // center the line
+                          left: left - 0.75,
                           top: 2,
                           bottom: 2,
                           child: Container(
@@ -155,8 +170,9 @@ class _KvadratQasriState extends State<KvadratQasri> with SingleTickerProviderSt
               );
             },
           ),
-        )
+        ),
       ],
     );
   }
 }
+

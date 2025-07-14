@@ -2,6 +2,7 @@
 
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
+import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/pages/Student/Student.dart';
 import 'package:alochi_math_app/pages/YuqoriSinf/YuqoriSinf.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,6 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   final PageController _controller = PageController();
   int _currentPage = 0;
-  String? selectedLevel;
 
   @override
   void dispose() {
@@ -36,18 +36,18 @@ class _WelcomePageState extends State<WelcomePage> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeIn,
       );
-    } else if (selectedLevel != null) {
-      if (selectedLevel == S.of(context).boshlangich) {
+    } else if (GameState.selectedLevel != '') {
+      if (GameState.selectedLevel == S.of(context).boshlangich) {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const BoshlangichSinf()),
         );
-      } else if (selectedLevel == S.of(context).yuqoriSinf) {
+      } else if (GameState.selectedLevel == S.of(context).yuqoriSinf) {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const YuqoriSinf()),
         );
-      } else if (selectedLevel == S.of(context).student) {
+      } else if (GameState.selectedLevel == S.of(context).student) {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => const Student()),
@@ -58,7 +58,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
   void _onLevelSelected(String level) {
     setState(() {
-      selectedLevel = level;
+      GameState.selectedLevel = level;
     });
   }
 
@@ -86,11 +86,11 @@ class _WelcomePageState extends State<WelcomePage> {
             child: AnimatedButton(
               height: 50,
               width: 310,
-              color: (_currentPage == 3 && selectedLevel == null)
+              color: (_currentPage == 3 && GameState.selectedLevel == '')
                   ? grey
                   : primaryColor,
               onPressed: () {
-                if (_currentPage != 3 || selectedLevel != null) {
+                if (_currentPage != 3 || GameState.selectedLevel != '') {
                   _handleButtonPress();
                 }
               },

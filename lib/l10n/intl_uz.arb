@@ -81,7 +81,7 @@
   "narxi": "Narxi",
   "sotibOlish": "Sotib Olish",
 
-  "berilganMisolniYeching": "Berilgan misolni yeching",
+  "berilganMisolniYeching": "Berilgan misolni yeching.",
   "togriJavob": "To'g'ri javob!",
   "notogriJavob": "Noto'g'ri javob!",
   "tekshirish": "TEKSHIRISH",
@@ -106,7 +106,7 @@
   "qaysiShakillar": "Qaysi shakillar birlashtirilganda, kvadrat xosil bo'ladi?",
   "azizChizilgan": "Aziz chizilgan chiziq bo'ylab qog'oz bo'lagini buklaydi. U nima ko'rdi?",
   "berilganMisolni": "Berilgan misolni yeching. Ko'k katakchalar o'rniga bir xil qiymatga ega tangalar to'g'ri keladi.",
-  "torgaQoshib": "4-ga qo'shib boring va oxirgi sonni toping",
+  "torgaQoshib": "4-ga qo'shib boring va oxirgi sonni toping.",
 
   "notification1": "Alochi dasturiga xush kelibsiz, yangi choqilarni zavt etishga tayyor turing!",
   "notification2": "Kvadrat qasrini birga o'rganamiz! Bizni qiziqarli sarguzasht kutmoqda.",
@@ -114,7 +114,7 @@
 
   "xabarlar": "XABARLAR",
   "cheksizJonlar": "Cheksiz jonlar",
-  "matematikShtorm": "Matematik shtorm cheksiz urinishlar",
+  "matematikShtorm": "Matematik shtorm",
   "onePremium": "1 oy Premium",
   "threePremium": "3 oy Premium",
   "twelvePremium": "1 yil Premium",
@@ -198,5 +198,41 @@
 
   "emailAlreadyUsed": "Bu email allaqachon ro'yxatdan o'tgan",
   "emailInvalid": "Email manzili noto‘g‘ri kiritilgan",
-  "weakPassword": "Parol juda oddiy"
+  "weakPassword": "Parol juda oddiy",
+
+  "yanvar": "Yanvar",
+  "fevral": "Fevral",
+  "mart": "Mart",
+  "aprel": "Aprel",
+  "may": "May",
+  "iyun": "Iyun",
+  "iyul": "Iyul",
+  "avgust": "Avgust",
+  "sentabr": "Sentabr",
+  "oktabr": "Oktabr",
+  "noyabr": "Noyabr",
+  "dekabr": "Dekabr",
+
+  "foydalanuvchi": "Foydalanuvchi",
+  "mehmon": "Mehmon",
+  "parolNotogriMsg": "Parollar bir xil emas",
+  "darajaTanlanmadiMsg": "Iltimos, darajani tanlang",
+  "ismFamiliyaYoqMsg": "Iltimos, ism va familiyangizni kiriting",
+  "royxatdanOtildiMsg": "Roʻyxatdan oʻtildi!",
+  "firstName": "Ism",
+  "lastName": "Familiya",
+  "darajaniTanlang": "Darajani tanlang",
+
+  "emailAlreadyExists": "Bu email allaqachon roʻyxatdan oʻtgan",
+  "emailInvalid1": "Email noto‘g‘ri kiritilgan",
+  "weakPassword1": "Parol juda oddiy",
+  "errorOccurred": "Xatolik yuz berdi: ",
+  "xatolik": "Xatolik:",
+
+  "userNotFound": "Foydalanuvchi topilmadi",
+  "wrongPassword1": "Noto‘g‘ri parol",
+  "invalidEmailFormat": "Email noto‘g‘ri formatda",
+  "unknownError": "Nomaʼlum xatolik yuz berdi",
+
+  "mathShtorm": "Matematik shtorm cheksiz urinishlar"
 }

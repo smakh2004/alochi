@@ -47,6 +47,7 @@ dependencies:
   # Firebase
   firebase_core: ^3.14.0
   firebase_auth: ^5.6.0
+  cloud_firestore: ^5.0.1
 
 dev_dependencies:
   flutter_test:
@@ -183,6 +184,18 @@ flutter:
     - assets/question2_images/1strawberry.png
     - assets/question2_images/Burger.png
 
+    - assets/question3_images/Q21.png
+    - assets/question3_images/Q22.png
+    - assets/question3_images/Q24.png
+    - assets/question3_images/apple24.png
+    - assets/question3_images/burger24.png
+    - assets/question3_images/grape24.png
+    - assets/question3_images/strawberry24.png
+    - assets/question3_images/Q25.png
+    - assets/question3_images/Q26.png
+    - assets/question3_images/Q27.png
+    - assets/question3_images/Q28.png
+
     - assets/medals/MrSquareMedal.png
     - assets/medals/MrTriangleLightining.png
     - assets/medals/MrCircleTimer.png
@@ -215,6 +228,9 @@ flutter:
     - assets/animations/MrSquareFire1.json
     - assets/animations/MrSquareFire2.json
     - assets/animations/MrSquareStrong.json
+    - assets/animations/MathStormAnimation.json
+    - assets/animations/MrSquareCastle1.json
+    - assets/animations/MrSquareCastle2.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/to/resolution-aware-images

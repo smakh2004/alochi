@@ -5,6 +5,7 @@ import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/result_pages/Streak.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:animated_button/animated_button.dart';
@@ -28,6 +29,7 @@ class SuccessPage extends StatefulWidget {
 class _SuccessPageState extends State<SuccessPage> {
   late int currentXP;
   late int localScoreDop;
+  late int currentXPyuqoriSinf;
 
   @override
   void initState() {
@@ -279,16 +281,23 @@ class _SuccessPageState extends State<SuccessPage> {
               color: primaryColor,
               onPressed: () async {
                 if (alreadyClaimed) {
-                  // XP cap check
                   setState(() {
+                    GameState.currentXP += currentXP;
+
                     if (GameState.currentXP > GameState.maxXP) {
                       GameState.currentXP = GameState.maxXP;
                     }
                   });
 
-                  // await GameState.saveState();
+                  final user = FirebaseAuth.instance.currentUser;
+                  final userId = user?.uid;
 
-                  // Go back with XP gained signal
+                  if (userId != null) {
+                    await GameState.saveState(userId);
+                  } else {
+                    print("User is not logged in!");
+                  }
+
                   Navigator.pop(context, 'xpGained');
                 } else {
                   // Go to Streak page to claim lightning
@@ -299,15 +308,24 @@ class _SuccessPageState extends State<SuccessPage> {
                     if (resultFromStreak == 'xpGained') {
                       // Update game state with reward and return
                       setState(() {
+                        GameState.currentXP += currentXP;
+                        GameState.lightnings += 1;
+                        GameState.lastLightningDate = today;
+
                         if (GameState.currentXP > GameState.maxXP) {
                           GameState.currentXP = GameState.maxXP;
                         }
-
-                        GameState.lightnings += 1;
-                        GameState.lastLightningDate = today;
                       });
 
-                      // await GameState.saveState();
+                      // Get current user ID
+                      final user = FirebaseAuth.instance.currentUser;
+                      final userId = user?.uid;
+
+                      if (userId != null) {
+                        await GameState.saveState(userId);
+                      } else {
+                        print("User not logged in, can't save state.");
+                      }
 
                       Navigator.pop(context, 'xpGained');
                     }

@@ -7,12 +7,12 @@ import 'package:alochi_math_app/components/color.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:dotted_border/dotted_border.dart';
 
-class Question10 extends StatefulWidget {
+class Question21 extends StatefulWidget {
   final Function(double) onXPUpdate;
   final VoidCallback onNext;
   final VoidCallback onIncorrect;
 
-  const Question10({
+  const Question21({
     super.key,
     required this.onXPUpdate,
     required this.onNext,
@@ -20,10 +20,10 @@ class Question10 extends StatefulWidget {
   });
 
   @override
-  State<Question10> createState() => _Question10State();
+  State<Question21> createState() => _Question21State();
 }
 
-class _Question10State extends State<Question10> {
+class _Question21State extends State<Question21> {
   Map<String, String?> droppedLabels = {
     "A": null,
     "B": null,
@@ -35,10 +35,10 @@ class _Question10State extends State<Question10> {
   bool isCorrect = false;
 
   final List<Map<String, dynamic>> draggableButtons = [
-    {'color': Colors.white, 'label': '9'},
-    {'color': Colors.white, 'label': '4'},
-    {'color': Colors.white, 'label': '6'},
     {'color': Colors.white, 'label': '1'},
+    {'color': Colors.white, 'label': '2'},
+    {'color': Colors.white, 'label': '3'},
+    {'color': Colors.white, 'label': '4'},
   ];
 
   bool get isAnswerSelected =>
@@ -72,24 +72,12 @@ class _Question10State extends State<Question10> {
         final label = droppedLabels[targetId];
 
         if (label != null) {
-          bool isCorrect = (droppedLabels["A"] == '6' && droppedLabels["B"] == '4');
-          Color buttonColor = Colors.white;
-          Color borderColor = greyColor;
-
-          if (isChecked) {
-            if (isCorrect) {
-              buttonColor = lightGreen;
-              borderColor = buttonGreen;
-            } else {
-              buttonColor = lightRed;
-              borderColor = buttonRed;
-            }
-          }
-
           return AnimatedButton(
             width: 60,
             height: 60,
-            color: buttonColor,
+            color: isChecked
+                ? ((label == '1' || label == '3') ? lightGreen : lightRed)
+                : Colors.white,
             onPressed: () {
               if (!isChecked) {
                 setState(() {
@@ -101,8 +89,9 @@ class _Question10State extends State<Question10> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: isChecked ? borderColor : greyColor,
-                  width: 2,
+                  color: isChecked
+                    ? ((label == '1' || label == '3') ? buttonGreen : buttonRed)
+                    : greyColor, width: 2
                 ),
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -133,13 +122,13 @@ class _Question10State extends State<Question10> {
                 color: lightGrey,
                 borderRadius: BorderRadius.circular(12),
               ),
-              // Removed the Text(targetId) here!
             ),
           );
         }
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -173,9 +162,18 @@ class _Question10State extends State<Question10> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            'assets/question_images/Q10.png',
-                            width: size.width * 0.7,
+                            'assets/question3_images/Q21.png',
+                            width: size.width * 0.65,
                             fit: BoxFit.contain,
+                          ),
+                          SizedBox(width: 10),
+                          const Text(
+                            "= 8",
+                            style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                         ],
                       ),
@@ -185,21 +183,39 @@ class _Question10State extends State<Question10> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const SizedBox(width: 1),
                           buildDragTarget("A"),
-                          const SizedBox(width: 10),
                           const Text(
-                            "-",
+                            " +1",
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
-                          const SizedBox(width: 10),
-                          buildDragTarget("B"),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 1),
                           const Text(
-                            "= 2",
+                            "+",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(width: 1),
+                          const Text(
+                            "3+",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          buildDragTarget("B"),
+                          const SizedBox(width: 5),
+                          const Text(
+                            "=8",
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
@@ -304,104 +320,108 @@ class _Question10State extends State<Question10> {
               ),
             ),
             isChecked
-            ? Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: isCorrect ? lightGreen : const Color(0xFFFFE4E1),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        isCorrect ? Icons.check_circle : Icons.cancel,
-                        color: isCorrect ? buttonCorrect : red,
-                        size: 30,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        isCorrect ? S.of(context).togriJavob : S.of(context).notogriJavob,
-                        style: TextStyle(
+              ? Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: isCorrect ? lightGreen : const Color(0xFFFFE4E1),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          isCorrect ? Icons.check_circle : Icons.cancel,
                           color: isCorrect ? buttonCorrect : red,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+                          size: 30,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          isCorrect ? S.of(context).togriJavob : S.of(context).notogriJavob,
+                          style: TextStyle(
+                            color: isCorrect ? buttonCorrect : red,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: Center(
+                        child: AnimatedButton(
+                          onPressed: widget.onNext,
+                          color: isCorrect ? buttonCorrect : red,
+                          height: 50,
+                          width: 310,
+                          child: Text(
+                            S.of(context).davomEtish,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
+                            ),
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
+                    ),
+                  ],
+                ),
+              )
+              : AbsorbPointer(
+                absorbing: !isAnswerSelected,
+                child: Opacity(
+                  opacity: !isAnswerSelected ? 0.5 : 1,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                     child: Center(
                       child: AnimatedButton(
-                        onPressed: widget.onNext,
-                        color: isCorrect ? buttonCorrect : red,
+                        color: submitButtonColor,
                         height: 50,
                         width: 310,
+                        onPressed: () {
+                          if (!isChecked) {
+                            // Check both answers
+                            if ((droppedLabels["A"] == '1' && droppedLabels["B"] == '3') ||
+                                (droppedLabels["A"] == '3' && droppedLabels["B"] == '1')) {
+                              submitButtonColor = primaryCorrect;
+                              isCorrect = true;
+                              widget.onXPUpdate(10);
+                              setState(() {
+                                GameState.arifmetikaDop = 0;
+                                GameState.logikaDop = 0;
+                                GameState.scoreDop = 0;
+                                GameState.arifmetikaDop += 0.5;
+                                GameState.scoreDop += 1;
+                              });
+                            } else {
+                              submitButtonColor = primaryIncorrect;
+                              isCorrect = false;
+                              widget.onXPUpdate(5);
+                              widget.onIncorrect();
+                            }
+                            setState(() {
+                              isChecked = true;
+                            });
+                          }
+                        },
                         child: Text(
-                          S.of(context).davomEtish,
+                          S.of(context).tekshirish,
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
                           ),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-            )
-            : AbsorbPointer(
-              absorbing: !isAnswerSelected,
-              child: Opacity(
-                opacity: !isAnswerSelected ? 0.5 : 1,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  child: Center(
-                    child: AnimatedButton(
-                      color: submitButtonColor,
-                      height: 50,
-                      width: 310,
-                      onPressed: () {
-                        if (!isChecked) {
-                          // ✅ Check both answers
-                          if ((droppedLabels["A"] == '6' && droppedLabels["B"] == '4')) {
-                            submitButtonColor = primaryCorrect;
-                            isCorrect = true;
-                            widget.onXPUpdate(10);
-                            setState(() {
-                                GameState.arifmetikaDop += 0.5;
-                                GameState.scoreDop += 2;
-                              });
-                          } else {
-                            submitButtonColor = primaryIncorrect;
-                            isCorrect = false;
-                            widget.onXPUpdate(5);
-                            widget.onIncorrect();
-                          }
-                          setState(() {
-                            isChecked = true;
-                          });
-                        }
-                      },
-                      child: Text(
-                        S.of(context).tekshirish,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
-              ),
-            )
+              )
           ],
         ),
       ),

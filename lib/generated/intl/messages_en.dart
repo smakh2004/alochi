@@ -56,8 +56,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Algebraic fractions and rational expressions",
     ),
     "aniqlik": MessageLookupByLibrary.simpleMessage("ACCURACY"),
+    "aprel": MessageLookupByLibrary.simpleMessage("April"),
     "arifmetikStorm": MessageLookupByLibrary.simpleMessage("Arithmetic storm"),
     "arifmetika": MessageLookupByLibrary.simpleMessage("Arifmetic"),
+    "avgust": MessageLookupByLibrary.simpleMessage("August"),
     "azizChizilgan": MessageLookupByLibrary.simpleMessage(
       "Aziz folds the piece of paper along the drawn line. What does he see?",
     ),
@@ -65,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Solve the given problem. The blue boxes must be filled with coins of equal value.",
     ),
     "berilganMisolniYeching": MessageLookupByLibrary.simpleMessage(
-      "Solve the given problem",
+      "Solve the given problem.",
     ),
     "beshinchiSinf": MessageLookupByLibrary.simpleMessage("5th grade"),
     "birhadlarVaKophadlar": MessageLookupByLibrary.simpleMessage(
@@ -81,9 +83,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "cheksizJonlar": MessageLookupByLibrary.simpleMessage("Unlimited hearts"),
     "chiqish": MessageLookupByLibrary.simpleMessage("EXIT"),
     "danSong": MessageLookupByLibrary.simpleMessage("are recovering"),
+    "darajaTanlanmadiMsg": MessageLookupByLibrary.simpleMessage(
+      "Please select a level",
+    ),
     "darajalarVaIldizlar": MessageLookupByLibrary.simpleMessage(
       "Powers and roots",
     ),
+    "darajaniTanlang": MessageLookupByLibrary.simpleMessage("Select a level"),
     "darsDavomEtish": MessageLookupByLibrary.simpleMessage(
       "CONTINUE THE LESSON",
     ),
@@ -94,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "davomiyYutuq": MessageLookupByLibrary.simpleMessage(
       "Keep your winning streak!",
     ),
+    "dekabr": MessageLookupByLibrary.simpleMessage("December"),
     "doiraQasriUchinchiBosqich": MessageLookupByLibrary.simpleMessage(
       "CIRCLE CASTLE | STAGE THREE",
     ),
@@ -105,16 +112,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "Probability and statistics",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailAlreadyExists": MessageLookupByLibrary.simpleMessage(
+      "This email is already registered",
+    ),
     "emailAlreadyUsed": MessageLookupByLibrary.simpleMessage(
       "This email is already registered",
     ),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
       "The email address is invalid",
     ),
+    "emailInvalid1": MessageLookupByLibrary.simpleMessage(
+      "The email entered is invalid",
+    ),
     "emailNotFound": MessageLookupByLibrary.simpleMessage(
       "No account found with this email",
     ),
+    "errorOccurred": MessageLookupByLibrary.simpleMessage(
+      "An error occurred: ",
+    ),
     "fazoviyShakllar": MessageLookupByLibrary.simpleMessage("Spatial shapes"),
+    "fevral": MessageLookupByLibrary.simpleMessage("February"),
+    "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+    "foydalanuvchi": MessageLookupByLibrary.simpleMessage("User"),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x function"),
     "galabaliSeriyaBoshlandi": MessageLookupByLibrary.simpleMessage(
       "Winning streak: activated!",
@@ -145,7 +164,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "The purpose of the app is to make learning mathematics easy and understandable. At each stage, you’ll be supported by engaging examples and visual helpers.",
     ),
     "intro3desc": MessageLookupByLibrary.simpleMessage("PURPOSE"),
+    "invalidEmailFormat": MessageLookupByLibrary.simpleMessage(
+      "Invalid email format",
+    ),
     "ishlatish": MessageLookupByLibrary.simpleMessage("Usage"),
+    "ismFamiliyaYoqMsg": MessageLookupByLibrary.simpleMessage(
+      "Please enter your first and last name",
+    ),
+    "iyul": MessageLookupByLibrary.simpleMessage("July"),
+    "iyun": MessageLookupByLibrary.simpleMessage("June"),
     "javobKiriting": MessageLookupByLibrary.simpleMessage(
       "Enter your answer and set a record.",
     ),
@@ -193,6 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kvadratVaqt": MessageLookupByLibrary.simpleMessage("Square Time"),
     "langauage": MessageLookupByLibrary.simpleMessage("English"),
+    "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
     "logika": MessageLookupByLibrary.simpleMessage("Logic"),
     "magazin": MessageLookupByLibrary.simpleMessage("Store"),
     "magazinNarsalarim": MessageLookupByLibrary.simpleMessage("My Items"),
@@ -200,15 +228,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Working with data",
     ),
     "malumotlarTahlili": MessageLookupByLibrary.simpleMessage("Data analysis"),
-    "matematikShtorm": MessageLookupByLibrary.simpleMessage(
-      "Math storm infinity attempts",
-    ),
+    "mart": MessageLookupByLibrary.simpleMessage("March"),
+    "matematikShtorm": MessageLookupByLibrary.simpleMessage("Math storm"),
     "matematika": MessageLookupByLibrary.simpleMessage("Math"),
     "matematikaDunyosi": MessageLookupByLibrary.simpleMessage(
       "Welcome to the world of math",
     ),
+    "mathShtorm": MessageLookupByLibrary.simpleMessage(
+      "Math storm infinity attempts",
+    ),
     "mathStorm": MessageLookupByLibrary.simpleMessage("MATH STORM"),
     "matnliMasalalar": MessageLookupByLibrary.simpleMessage("Sample problems"),
+    "may": MessageLookupByLibrary.simpleMessage("May"),
+    "mehmon": MessageLookupByLibrary.simpleMessage("Guest"),
     "meningProfilim": MessageLookupByLibrary.simpleMessage("MY PROFILE"),
     "messageOfMrSquare": MessageLookupByLibrary.simpleMessage(
       "Choose your math skill level!",
@@ -232,8 +264,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Let\'s go collect the lightning bolts!",
     ),
     "notogriJavob": MessageLookupByLibrary.simpleMessage("Incorrect answer!"),
+    "noyabr": MessageLookupByLibrary.simpleMessage("November"),
     "ochko": MessageLookupByLibrary.simpleMessage("POINTS"),
     "oddiyKasrlar": MessageLookupByLibrary.simpleMessage("Simple fractions"),
+    "oktabr": MessageLookupByLibrary.simpleMessage("October"),
     "olga": MessageLookupByLibrary.simpleMessage("LET\'S GO"),
     "oltinchiSinf": MessageLookupByLibrary.simpleMessage("6th grade"),
     "onePremium": MessageLookupByLibrary.simpleMessage("1 month Premium"),
@@ -243,6 +277,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Place the horse in the correct square!",
     ),
     "parol": MessageLookupByLibrary.simpleMessage("Password"),
+    "parolNotogriMsg": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
     "parolniTasdiqlash": MessageLookupByLibrary.simpleMessage(
       "Confirm password",
     ),
@@ -263,10 +300,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "registratsiyaQilish": MessageLookupByLibrary.simpleMessage("Sign up"),
     "registratsiyaQilishQ": MessageLookupByLibrary.simpleMessage("SIGN UP"),
     "rekord": MessageLookupByLibrary.simpleMessage("Record: "),
+    "royxatdanOtildiMsg": MessageLookupByLibrary.simpleMessage(
+      "Registration successful!",
+    ),
     "sakkizinchiSinf": MessageLookupByLibrary.simpleMessage("8th grade"),
     "sandiqJon": MessageLookupByLibrary.simpleMessage("Chest of Hearts"),
     "savatJon": MessageLookupByLibrary.simpleMessage("Basket Hearts"),
     "sekund": MessageLookupByLibrary.simpleMessage("second"),
+    "sentabr": MessageLookupByLibrary.simpleMessage("September"),
     "sizHaliKirmagansiz": MessageLookupByLibrary.simpleMessage(
       "You are not signed in yet",
     ),
@@ -312,7 +353,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "togriJavob": MessageLookupByLibrary.simpleMessage("Correct answer!"),
     "toqqizinchiSinf": MessageLookupByLibrary.simpleMessage("9th grade"),
     "torgaQoshib": MessageLookupByLibrary.simpleMessage(
-      "Keep adding 4 and find the last number",
+      "Keep adding 4 and find the last number.",
     ),
     "trigonometriyaAsoslari": MessageLookupByLibrary.simpleMessage(
       "Basics of trigonometry",
@@ -333,20 +374,32 @@ class MessageLookup extends MessageLookupByLibrary {
     "uchburchakSandiq": MessageLookupByLibrary.simpleMessage("Triangle Chest"),
     "uchburchakVaqt": MessageLookupByLibrary.simpleMessage("Triangle Time"),
     "umumiyOchko": MessageLookupByLibrary.simpleMessage("Overall points"),
+    "unknownError": MessageLookupByLibrary.simpleMessage(
+      "An unknown error occurred",
+    ),
     "urinishlarSoni": MessageLookupByLibrary.simpleMessage(
       "Number of attempts: ",
     ),
+    "userNotFound": MessageLookupByLibrary.simpleMessage("User not found"),
     "uygaQaytish": MessageLookupByLibrary.simpleMessage("RETURN HOME"),
     "vaqt": MessageLookupByLibrary.simpleMessage("TIME"),
     "weakPassword": MessageLookupByLibrary.simpleMessage(
       "The password is too weak",
     ),
+    "weakPassword1": MessageLookupByLibrary.simpleMessage(
+      "The password is too weak",
+    ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
+    "wrongPassword1": MessageLookupByLibrary.simpleMessage(
+      "Incorrect password",
+    ),
     "xabarlar": MessageLookupByLibrary.simpleMessage("NOTIFICATIONS"),
     "xaliRazrabotkada": MessageLookupByLibrary.simpleMessage("Soon..."),
+    "xatolik": MessageLookupByLibrary.simpleMessage("Error:"),
     "yakuniyTakrorlash": MessageLookupByLibrary.simpleMessage("Final review"),
     "yangiRekord": MessageLookupByLibrary.simpleMessage("New record!"),
     "yangiUrinishlar": MessageLookupByLibrary.simpleMessage("New attempts: "),
+    "yanvar": MessageLookupByLibrary.simpleMessage("January"),
     "yaxshiUrinish": MessageLookupByLibrary.simpleMessage("Nice try!"),
     "yetinchiSinf": MessageLookupByLibrary.simpleMessage("7th grade"),
     "yopiqMedal": MessageLookupByLibrary.simpleMessage("Locked medal"),

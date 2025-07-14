@@ -80,7 +80,7 @@
   "narxi": "Cost",
   "sotibOlish": "Buy",
 
-  "berilganMisolniYeching": "Solve the given problem",
+  "berilganMisolniYeching": "Solve the given problem.",
   "togriJavob": "Correct answer!",
   "notogriJavob": "Incorrect answer!",
   "tekshirish": "CHECK",
@@ -105,7 +105,7 @@
   "qaysiShakillar": "Which shapes combine to form a square?",
   "azizChizilgan": "Aziz folds the piece of paper along the drawn line. What does he see?",
   "berilganMisolni": "Solve the given problem. The blue boxes must be filled with coins of equal value.",
-  "torgaQoshib": "Keep adding 4 and find the last number",
+  "torgaQoshib": "Keep adding 4 and find the last number.",
 
   "notification1": "Welcome to the Alochi app, get ready to enjoy new challenges!",
   "notification2": "Let's explore the Square Castle together! An exciting adventure awaits us.",
@@ -113,7 +113,7 @@
 
   "xabarlar": "NOTIFICATIONS",
   "cheksizJonlar": "Unlimited hearts",
-  "matematikShtorm": "Math storm infinity attempts",
+  "matematikShtorm": "Math storm",
   "onePremium": "1 month Premium",
   "threePremium": "3 months Premium",
   "twelvePremium": "1 year Premium",
@@ -197,5 +197,41 @@
 
   "emailAlreadyUsed": "This email is already registered",
   "emailInvalid": "The email address is invalid",
-  "weakPassword": "The password is too weak"  
+  "weakPassword": "The password is too weak",
+
+  "yanvar": "January",
+  "fevral": "February",
+  "mart": "March",
+  "aprel": "April",
+  "may": "May",
+  "iyun": "June",
+  "iyul": "July",
+  "avgust": "August",
+  "sentabr": "September",
+  "oktabr": "October",
+  "noyabr": "November",
+  "dekabr": "December",
+
+  "foydalanuvchi": "User",
+  "mehmon": "Guest",
+  "parolNotogriMsg": "Passwords do not match",
+  "darajaTanlanmadiMsg": "Please select a level",
+  "ismFamiliyaYoqMsg": "Please enter your first and last name",
+  "royxatdanOtildiMsg": "Registration successful!",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "darajaniTanlang": "Select a level",
+
+  "emailAlreadyExists": "This email is already registered",
+  "emailInvalid1": "The email entered is invalid",
+  "weakPassword1": "The password is too weak",
+  "errorOccurred": "An error occurred: ",
+  "xatolik": "Error:",
+  
+  "userNotFound": "User not found",
+  "wrongPassword1": "Incorrect password",
+  "invalidEmailFormat": "Invalid email format",
+  "unknownError": "An unknown error occurred",
+
+  "mathShtorm": "Math storm infinity attempts"
 }

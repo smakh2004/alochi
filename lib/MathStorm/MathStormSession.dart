@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:alochi_math_app/MathStorm/MathStormResult.dart';
 import 'package:alochi_math_app/MathStorm/math_problem.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../MathStorm/problem_generator.dart';
@@ -75,7 +76,15 @@ class _MathStormSessionState extends State<MathStormSession> {
       GameState.matematikShtorm = score;
     }
 
-    // await GameState.saveState();
+    // Get userId
+    final user = FirebaseAuth.instance.currentUser;
+    final userId = user?.uid;
+
+    if (userId != null) {
+      await GameState.saveState(userId);
+    } else {
+      print("User is not logged in; game state not saved.");
+    }
 
     Navigator.pushReplacement(
       context,

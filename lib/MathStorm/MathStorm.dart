@@ -4,8 +4,10 @@ import 'package:alochi_math_app/MathStorm/MathStormSession.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_button/animated_button.dart';
+import 'package:lottie/lottie.dart';
 
 class MathStorm extends StatefulWidget {
   const MathStorm({super.key});
@@ -20,9 +22,19 @@ class _MathStormState extends State<MathStorm> {
   DateTime? resetTime;
   Timer? countdownTimer;
 
+  late Future<void> _loadGameStateFuture;
+
   @override
   void initState() {
     super.initState();
+    _loadGameStateFuture = _initializeState(); // wait for firestore load
+  }
+
+  Future<void> _initializeState() async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      await GameState.loadState(userId); // 🔄 Load actual user values
+    }
     checkIfResetNeeded();
     startCountdownTimer();
   }
@@ -38,14 +50,12 @@ class _MathStormState extends State<MathStorm> {
       resetTime = last.add(const Duration(hours: 24));
     }
 
-    setState(() {
-      attempts = GameState.mathStormAttemptsLeft;
-      progress = attempts / 3;
-    });
+    attempts = GameState.mathStormAttemptsLeft;
+    progress = attempts / 3;
   }
 
   void startCountdownTimer() {
-    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) async {
       if (mounted && attempts == 0 && resetTime != null) {
         final now = DateTime.now();
         final diff = resetTime!.difference(now);
@@ -57,8 +67,13 @@ class _MathStormState extends State<MathStorm> {
             progress = 1.0;
             resetTime = null;
           });
+
+          final userId = FirebaseAuth.instance.currentUser?.uid;
+          if (userId != null) {
+            await GameState.saveState(userId);
+          }
         } else {
-          setState(() {}); // Just update timer display
+          setState(() {}); // update countdown
         }
       }
     });
@@ -76,6 +91,11 @@ class _MathStormState extends State<MathStorm> {
           resetTime = GameState.lastLightningDate1!.add(const Duration(hours: 24));
         }
       });
+
+      final userId = FirebaseAuth.instance.currentUser?.uid;
+      if (userId != null) {
+        await GameState.saveState(userId);
+      }
     }
   }
 
@@ -94,8 +114,22 @@ class _MathStormState extends State<MathStorm> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _loadGameStateFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        return _buildMainContent(context);
+      },
+    );
+  }
+
+  Widget _buildMainContent(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -103,46 +137,44 @@ class _MathStormState extends State<MathStorm> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Column(
-              children: [
-                Stack(
-                  children: [
-                    Image.asset(
-                      'assets/images/MathStorm.png',
-                      width: double.infinity,
-                      height: screenHeight * 0.32,
-                      fit: BoxFit.cover,
-                    ),
-                    Positioned(
-                      bottom: 2,
-                      left: 0,
-                      right: 0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            S.of(context).rekord,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            GameState.matematikShtorm.toString(),
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              children: [ 
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+                        Stack(
+                          children: [
+                            Lottie.asset(
+                              'assets/animations/MathStormAnimation.json',
+                              fit: BoxFit.contain,
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    S.of(context).rekord,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    GameState.matematikShtorm.toString(),
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: red,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                         Stack(
                           alignment: Alignment.center,
                           children: [
@@ -189,11 +221,13 @@ class _MathStormState extends State<MathStorm> {
                               children: [
                                 Image.asset('assets/icons/StormTime.png', height: 32, width: 32),
                                 const SizedBox(width: 5),
-                                Text('3 ${S.of(context).minut}', style: TextStyle(fontSize: 18, color: darkOrange, fontWeight: FontWeight.bold)),
+                                Text('3 ${S.of(context).minut}',
+                                    style: TextStyle(fontSize: 18, color: darkOrange, fontWeight: FontWeight.bold)),
                                 const SizedBox(width: 24),
                                 Image.asset('assets/icons/Heart.png', height: 32, width: 32),
                                 const SizedBox(width: 5),
-                                Text('3 ${S.of(context).dona}', style: TextStyle(fontSize: 18, color: red, fontWeight: FontWeight.bold)),
+                                Text('3 ${S.of(context).dona}',
+                                    style: TextStyle(fontSize: 18, color: red, fontWeight: FontWeight.bold)),
                               ],
                             ),
                           ),
@@ -210,12 +244,12 @@ class _MathStormState extends State<MathStorm> {
                     color: attempts > 0 ? red : greyColor,
                     onPressed: () async {
                       if (attempts > 0) {
-                        useAttempt();
+                        await useAttempt();
                         await Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const MathStormSession()),
                         );
-                        setState(() {});
+                        setState(() {}); // Refresh UI after returning
                       }
                     },
                     child: Text(

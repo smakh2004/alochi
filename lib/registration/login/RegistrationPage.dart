@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -14,42 +17,80 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  Future<void> signUp() async {
-    if (passwordConfirmed()) {
-      try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
-        // You can navigate or show a success message here if needed
-      } on FirebaseAuthException catch (e) {
-        String errorMessage;
+  String? _selectedLevel;
 
-        if (e.code == 'email-already-in-use') {
-          errorMessage = S.of(context).emailAlreadyUsed;
-        } else if (e.code == 'invalid-email') {
-          errorMessage = S.of(context).emailInvalid;
-        } else if (e.code == 'weak-password') {
-          errorMessage = S.of(context).weakPassword;
-        } else {
-          errorMessage = S.of(context).somethingWentWrong;
-        }
+  Future<void> signUp() async {
+    if (!passwordConfirmed()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(S.of(context).parolNotogriMsg)),
+      );
+      return;
+    }
+
+    if (_selectedLevel == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(S.of(context).darajaTanlanmadiMsg)),
+      );
+      return;
+    }
+
+    final firstName = _firstNameController.text.trim();
+    final lastName = _lastNameController.text.trim();
+
+    if (firstName.isEmpty || lastName.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(S.of(context).ismFamiliyaYoqMsg)),
+      );
+      return;
+    }
+
+    try {
+      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      final userId = userCredential.user?.uid;
+
+      if (userId != null) {
+        GameState.selectedLevel = _selectedLevel!;
+        GameState.firstName = firstName;
+        GameState.lastName = lastName;
+        GameState.reset();
+        await GameState.saveState(userId);
+        await GameState.loadState(userId);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(errorMessage)
-          ),
+          SnackBar(content: Text(S.of(context).royxatdanOtildiMsg)),
         );
       }
-    } else {
+    } on FirebaseAuthException catch (e) {
+      String message;
+
+      if (e.code == 'email-already-in-use') {
+        message = S.of(context).emailAlreadyExists;
+      } else if (e.code == 'invalid-email') {
+        message = S.of(context).emailInvalid1;
+      } else if (e.code == 'weak-password') {
+        message = S.of(context).weakPassword1;
+      } else {
+        message = '${S.of(context).errorOccurred} ${e.code}';
+      }
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Parollar bir xil emas"),
-        ),
+        SnackBar(content: Text(message)),
+      );
+    } catch (e) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('${S.of(context).xatolik} ${e.toString()}')),
       );
     }
   }
@@ -61,6 +102,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   @override
   void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -85,12 +128,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 10),
                 Text(
                   S.of(context).registratsiya,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   S.of(context).matematikaDunyosi,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
+                const SizedBox(height: 10),
+
+                // First Name
+                _buildTextField(_firstNameController, Icons.person, S.of(context).firstName),
+                const SizedBox(height: 10),
+
+                // Last Name
+                _buildTextField(_lastNameController, Icons.person_outline, S.of(context).lastName),
                 const SizedBox(height: 10),
 
                 // Email Field
@@ -105,6 +156,44 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 _buildTextField(_confirmPasswordController, Icons.lock, S.of(context).parolniTasdiqlash, obscure: true),
                 const SizedBox(height: 10),
 
+                // Level Selection Dropdown
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: greyColor, width: 2),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: SizedBox(
+                        width: 290,
+                        child: DropdownButtonFormField<String>(
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            icon: Icon(Icons.school),
+                          ),
+                          value: _selectedLevel,
+                          hint: Text(S.of(context).darajaniTanlang),
+                          items: [
+                            DropdownMenuItem(value: S.of(context).boshlangich, child: Text(S.of(context).boshlangich)),
+                            DropdownMenuItem(value: S.of(context).yuqoriSinf, child: Text(S.of(context).yuqoriSinf)),
+                            DropdownMenuItem(value: S.of(context).student, child: Text(S.of(context).student)),
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedLevel = value;
+                              GameState.selectedLevel = value!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+
                 // Register Button
                 AnimatedButton(
                   height: 50,
@@ -115,7 +204,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   },
                   child: Text(
                     S.of(context).registratsiyaQilishQ,
-                    style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -125,7 +214,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(S.of(context).akkauntizBormi,
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                        style: const TextStyle(fontWeight: FontWeight.bold)),
                     GestureDetector(
                       onTap: widget.showLoginPage,
                       child: Text(

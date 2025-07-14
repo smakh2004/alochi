@@ -57,7 +57,7 @@ class _PremiumPageState extends State<PremiumPage> {
                           const SizedBox(width: 10),
                           Flexible(
                             child: Text(
-                              S.of(context).matematikShtorm,
+                              S.of(context).mathShtorm,
                               style: TextStyle(
                                 fontSize: 20,
                                 color: primaryColor,

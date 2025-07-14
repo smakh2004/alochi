@@ -1,8 +1,11 @@
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LevelChoosing extends StatefulWidget {
   final Function(String) onLevelSelected;
@@ -14,16 +17,14 @@ class LevelChoosing extends StatefulWidget {
 }
 
 class _LevelChoosingState extends State<LevelChoosing> {
-  String? selectedLevel;
-
 
   @override
   Widget build(BuildContext context) {
-      final List<String> levels = [
-        S.of(context).boshlangich,
-        S.of(context).yuqoriSinf,
-        S.of(context).student,
-      ];
+    final List<String> levels = [
+      S.of(context).boshlangich,
+      S.of(context).yuqoriSinf,
+      S.of(context).student,
+    ];
     final size = MediaQuery.of(context).size;
     final double buttonWidth = size.width * 0.8;
 
@@ -34,11 +35,10 @@ class _LevelChoosingState extends State<LevelChoosing> {
           children: [
             SizedBox(height: size.height * 0.04),
 
-            // Header with Lottie (left) and speech bubble (right)
+            // Header with Lottie and speech bubble
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Lottie animation on the left, touching the edge
                 SizedBox(
                   width: 150,
                   height: 150,
@@ -47,8 +47,6 @@ class _LevelChoosingState extends State<LevelChoosing> {
                     fit: BoxFit.cover,
                   ),
                 ),
-
-                // Speech bubble aligned to the right
                 Expanded(
                   child: Container(
                     margin: const EdgeInsets.only(top: 40, right: 16),
@@ -64,7 +62,7 @@ class _LevelChoosingState extends State<LevelChoosing> {
                     ),
                     child: Text(
                       S.of(context).messageOfMrSquare,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
@@ -83,7 +81,7 @@ class _LevelChoosingState extends State<LevelChoosing> {
                 itemCount: levels.length,
                 itemBuilder: (context, index) {
                   final level = levels[index];
-                  final isSelected = selectedLevel == level;
+                  final isSelected = GameState.selectedLevel == level;
 
                   return Center(
                     child: Padding(
@@ -93,12 +91,22 @@ class _LevelChoosingState extends State<LevelChoosing> {
                         width: buttonWidth,
                         borderRadius: 12,
                         color: isSelected ? lightBlue : Colors.white,
-                        onPressed: () {
-                          setState(() {
-                            selectedLevel = level;
-                          });
-                          widget.onLevelSelected(level);
-                        },
+                        onPressed: () async {
+                        setState(() {
+                          GameState.selectedLevel = level;
+                        });
+
+                        final prefs = await SharedPreferences.getInstance();
+                        await prefs.setString('selectedLevel', level);
+
+                        // ✅ Save to Firestore as well
+                        final user = FirebaseAuth.instance.currentUser;
+                        if (user != null) {
+                          await GameState.saveState(user.uid);
+                        }
+
+                        widget.onLevelSelected(level);
+                      },
                         child: Container(
                           width: double.infinity,
                           height: double.infinity,
@@ -127,7 +135,6 @@ class _LevelChoosingState extends State<LevelChoosing> {
                 },
               ),
             ),
-
             SizedBox(height: size.height * 0.04),
           ],
         ),

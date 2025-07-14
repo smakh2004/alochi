@@ -3,7 +3,12 @@ import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/auth/check_page.dart';
 import 'package:alochi_math_app/main.dart';
+import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
+import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:alochi_math_app/pages/Student/Student.dart';
+import 'package:alochi_math_app/pages/YuqoriSinf/YuqoriSinf.dart';
 import 'package:alochi_math_app/welcome_pages/welcome_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:lottie/lottie.dart';
@@ -18,6 +23,23 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
+
+  Future<Widget> _getNextPage(User user) async {
+    await GameState.loadState(user.uid); // ✅ Load selectedLevel from Firestore
+
+    // ✅ Route based on selectedLevel
+    if (GameState.selectedLevel == 'Boshlang\'ich sinf' ||
+        GameState.selectedLevel == 'Elementary school') {
+      return BoshlangichSinf();
+    } else if (GameState.selectedLevel == 'Yuqori sinf' ||
+        GameState.selectedLevel == 'High school') {
+      return YuqoriSinf();
+    } else if (GameState.selectedLevel == 'Student') {
+      return Student();
+    } else {
+      return BoshlangichSinf(); // Fallback
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +74,7 @@ class _StartPageState extends State<StartPage> {
                       width: 250,
                       color: primaryColor,
                       onPressed: () {
+                        GameState.reset();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -72,12 +95,24 @@ class _StartPageState extends State<StartPage> {
                       height: 50,
                       width: 250,
                       color: Colors.white,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CheckPage()),
-                        );
+                      onPressed: () async {
+                        final user = FirebaseAuth.instance.currentUser;
+
+                        if (user == null) {
+                          // 🚪 User is NOT logged in → go to CheckPage
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const CheckPage()),
+                          );
+                        } else {
+                          // 🔄 User is logged in → load selectedLevel and navigate accordingly
+                          Widget nextPage = await _getNextPage(user);
+                          if (!mounted) return;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => nextPage),
+                          );
+                        }
                       },
                       child: Container(
                         decoration: BoxDecoration(

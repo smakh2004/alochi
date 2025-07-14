@@ -1,4 +1,3 @@
-import 'package:alochi_math_app/appear_once/StartPage.dart';
 import 'package:alochi_math_app/auth/check_page.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
@@ -20,26 +19,17 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
   User? user;
+  bool isUzbek = true;
 
-  // progress of the level
   double progress = 0.0;
   int percentage = 0;
-
-  // arifmetika progress
   double progress2 = 0.0;
   int percentage2 = 0;
-
-  // logika progress
   double progress3 = 0.0;
   int percentage3 = 0;
-
-  // ko'paytirish progress
   double progress4 = 0.0;
   int percentage4 = 0;
-
-  // score
   int score = 0;
 
   @override
@@ -47,6 +37,13 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
     _updateProgress();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final locale = Localizations.localeOf(context);
+    isUzbek = locale.languageCode == 'uz';
   }
 
   void _updateProgress() {
@@ -74,29 +71,26 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   String _monthName(int month) {
-    const months = [
-      '', // index 0 not used
-      'yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun',
-      'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'
+    final months = [
+      '',
+      S.of(context).yanvar,
+      S.of(context).fevral,
+      S.of(context).mart,
+      S.of(context).aprel,
+      S.of(context).may,
+      S.of(context).iyun,
+      S.of(context).iyul,
+      S.of(context).avgust,
+      S.of(context).sentabr,
+      S.of(context).oktabr,
+      S.of(context).noyabr,
+      S.of(context).dekabr,
     ];
     return months[month];
   }
 
-
   @override
   Widget build(BuildContext context) {
-    double progress = GameState.currentXP / GameState.maxXP;
-    int percentage = (progress * 100).toInt();
-
-    double progress2 = GameState.arifmetika / GameState.arifmetikaMax;
-    int percentage2 = (progress2 * 100).toInt();
-
-    double progress3 = GameState.logika / GameState.logikaMax;
-    int percentage3 = (progress3 * 100).toInt();
-
-    double progress4 = GameState.kopaytirish / GameState.kopaytirishMax;
-    int percentage4 = (progress4 * 100).toInt();
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -124,10 +118,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Text(
                             S.of(context).birinchiBosqich,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
@@ -139,20 +133,26 @@ class _ProfilePageState extends State<ProfilePage> {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isUzbek = !isUzbek;
-                                    MyApp.setLocale(context, Locale(isUzbek ? 'uz' : 'en'));
-                                  });
-                                },
-                                child: Container(
+                          const SizedBox(height: 10),
+
+                          /// Language Switch
+                          GestureDetector(
+                            onTap: () {
+                              final newLocale = isUzbek
+                                  ? const Locale('en')
+                                  : const Locale('uz');
+                              MyApp.setLocale(context, newLocale);
+                              setState(() {
+                                isUzbek = !isUzbek;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                Container(
                                   width: 100,
                                   height: 50,
-                                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(30),
@@ -160,9 +160,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: [
-                                      // Row showing both "UZ" and "EN"
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: const [
                                           Padding(
                                             padding: EdgeInsets.only(left: 12),
@@ -175,7 +175,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(right: 12),
+                                            padding:
+                                                EdgeInsets.only(right: 12),
                                             child: Text(
                                               'EN',
                                               style: TextStyle(
@@ -186,18 +187,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                           ),
                                         ],
                                       ),
-                                      // Animated switcher circle
                                       AnimatedAlign(
                                         alignment: isUzbek
                                             ? Alignment.centerLeft
                                             : Alignment.centerRight,
-                                        duration: const Duration(milliseconds: 300),
+                                        duration:
+                                            const Duration(milliseconds: 300),
                                         curve: Curves.easeInOut,
                                         child: Container(
                                           width: 36,
                                           height: 36,
                                           decoration: BoxDecoration(
-                                            color: isUzbek ? primaryColor : red,
+                                            color: isUzbek
+                                                ? primaryColor
+                                                : red,
                                             shape: BoxShape.circle,
                                           ),
                                           child: Center(
@@ -214,10 +217,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ],
                                   ),
                                 ),
-                              ),
-                              SizedBox(height: 5),
-                              Text(S.of(context).langauage, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),)
-                            ],
+                                const SizedBox(height: 5),
+                                Text(
+                                  S.of(context).langauage,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -230,52 +239,57 @@ class _ProfilePageState extends State<ProfilePage> {
 
               /// User Info
               Text(
-                'TEST DEMO',
-                style: TextStyle(
+                user != null
+                    ? '${GameState.firstName} ${GameState.lastName}'.trim().isEmpty
+                        ? S.of(context).foydalanuvchi
+                        : '${GameState.firstName} ${GameState.lastName}'
+                    : S.of(context).mehmon,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
               user != null
-                ? Text(
-                    '${user!.email} | ${S.of(context).registratsiya}: ${_formatDate(user!.metadata.creationTime)}',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: darkGrey,
-                    ),
-                  )
-                : Column(
-                    children: [
-                      Text(
-                        S.of(context).sizHaliKirmagansiz,
-                        style: TextStyle(fontSize: 14, color: red, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 12),
-                      AnimatedButton(
-                        width: 200,
-                        height: 50,
-                        color: primaryColor,
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const CheckPage()),
-                          );
-                        },
-                        child: Center(
-                          child: Text(
-                            S.of(context).akkauntgaKirish,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16
+                  ? Text(
+                      '${user!.email} | ${S.of(context).registratsiya}: ${_formatDate(user!.metadata.creationTime)}',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 14, color: darkGrey),
+                    )
+                  : Column(
+                      children: [
+                        Text(
+                          S.of(context).sizHaliKirmagansiz,
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: red,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 12),
+                        AnimatedButton(
+                          width: 200,
+                          height: 50,
+                          color: primaryColor,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const CheckPage()),
+                            );
+                          },
+                          child: Center(
+                            child: Text(
+                              S.of(context).akkauntgaKirish,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
 
               const SizedBox(height: 20),
 

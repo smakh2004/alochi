@@ -12,6 +12,7 @@ import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSav
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions7/main_page7.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions8/main_page8.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions9/main_page9.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
@@ -46,10 +47,14 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _updateStageTitle(); 
+    _updateStageTitle();
     if (!_isStageUpdated) {
       _updateStageTitle();
       _isStageUpdated = true;
+    }
+
+    if (GameState.hearts == 0) {
+      _checkHeartRegeneration();
     }
   }
 
@@ -95,7 +100,14 @@ class _HomePageState extends State<HomePage> {
           GameState.hearts = 5;
           secondsLeft = 0;
         });
+
         prefs.remove('heartDepletedTime');
+
+        // ✅ Save to Firestore
+        final userId = FirebaseAuth.instance.currentUser?.uid;
+        if (userId != null) {
+          await GameState.saveState(userId);
+        }
       } else {
         secondsLeft = ((delayMillis - elapsed) / 1000).ceil();
         _startCountdown();
@@ -105,7 +117,7 @@ class _HomePageState extends State<HomePage> {
 
   void _startCountdown() {
     countdownTimer?.cancel();
-    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) async {
       if (secondsLeft > 0) {
         setState(() {
           secondsLeft--;
@@ -115,9 +127,14 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           GameState.hearts = 5;
         });
+
+        // 🔥 FIX: Remove the timestamp after restoring hearts
+        final prefs = await SharedPreferences.getInstance();
+        prefs.remove('heartDepletedTime');
       }
     });
   }
+
 
   String _formatTime(int totalSeconds) {
     final minutes = (totalSeconds ~/ 60).toString().padLeft(2, '0');
@@ -285,25 +302,42 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         if (GameState.currentXP < GameState.maxXP) {
                           GameState.currentXP += GameState.maxXP / 10;
-                          if (GameState.currentXP > GameState.maxXP) GameState.currentXP = GameState.maxXP;
+                          if (GameState.currentXP > GameState.maxXP) {
+                            GameState.currentXP = GameState.maxXP;
+                          }
                         } else {
                           GameState.TcurrentXP += GameState.TmaxXP / 10;
-                          if (GameState.TcurrentXP > GameState.TmaxXP) GameState.TcurrentXP = GameState.TmaxXP;
+                          if (GameState.TcurrentXP > GameState.TmaxXP) {
+                            GameState.TcurrentXP = GameState.TmaxXP;
+                          }
                         }
                         _updateStageTitle();
                       });
-                      // await GameState.saveState();
+
+                      // 🔐 Save XP progress to Firestore
+                      final userId = FirebaseAuth.instance.currentUser?.uid;
+                      if (userId != null) {
+                        await GameState.saveState(userId);
+                      }
+
                     } else if (result == 'lostHeart') {
                       if (GameState.hearts > 0) {
                         setState(() => GameState.hearts -= 1);
+
                         if (GameState.hearts == 0) {
                           final prefs = await SharedPreferences.getInstance();
                           final now = DateTime.now().millisecondsSinceEpoch;
                           await prefs.setInt('heartDepletedTime', now);
+
                           secondsLeft = 15 * 60;
                           _startCountdown();
                         }
-                        // await GameState.saveState();
+
+                        // 🔐 Save hearts update to Firestore
+                        final userId = FirebaseAuth.instance.currentUser?.uid;
+                        if (userId != null) {
+                          await GameState.saveState(userId);
+                        }
                       }
                     }
                   },

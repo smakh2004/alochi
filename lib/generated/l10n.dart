@@ -644,10 +644,10 @@ class S {
     return Intl.message('Buy', name: 'sotibOlish', desc: '', args: []);
   }
 
-  /// `Solve the given problem`
+  /// `Solve the given problem.`
   String get berilganMisolniYeching {
     return Intl.message(
-      'Solve the given problem',
+      'Solve the given problem.',
       name: 'berilganMisolniYeching',
       desc: '',
       args: [],
@@ -854,10 +854,10 @@ class S {
     );
   }
 
-  /// `Keep adding 4 and find the last number`
+  /// `Keep adding 4 and find the last number.`
   String get torgaQoshib {
     return Intl.message(
-      'Keep adding 4 and find the last number',
+      'Keep adding 4 and find the last number.',
       name: 'torgaQoshib',
       desc: '',
       args: [],
@@ -909,10 +909,10 @@ class S {
     );
   }
 
-  /// `Math storm infinity attempts`
+  /// `Math storm`
   String get matematikShtorm {
     return Intl.message(
-      'Math storm infinity attempts',
+      'Math storm',
       name: 'matematikShtorm',
       desc: '',
       args: [],
@@ -1564,6 +1564,231 @@ class S {
     return Intl.message(
       'The password is too weak',
       name: 'weakPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `January`
+  String get yanvar {
+    return Intl.message('January', name: 'yanvar', desc: '', args: []);
+  }
+
+  /// `February`
+  String get fevral {
+    return Intl.message('February', name: 'fevral', desc: '', args: []);
+  }
+
+  /// `March`
+  String get mart {
+    return Intl.message('March', name: 'mart', desc: '', args: []);
+  }
+
+  /// `April`
+  String get aprel {
+    return Intl.message('April', name: 'aprel', desc: '', args: []);
+  }
+
+  /// `May`
+  String get may {
+    return Intl.message('May', name: 'may', desc: '', args: []);
+  }
+
+  /// `June`
+  String get iyun {
+    return Intl.message('June', name: 'iyun', desc: '', args: []);
+  }
+
+  /// `July`
+  String get iyul {
+    return Intl.message('July', name: 'iyul', desc: '', args: []);
+  }
+
+  /// `August`
+  String get avgust {
+    return Intl.message('August', name: 'avgust', desc: '', args: []);
+  }
+
+  /// `September`
+  String get sentabr {
+    return Intl.message('September', name: 'sentabr', desc: '', args: []);
+  }
+
+  /// `October`
+  String get oktabr {
+    return Intl.message('October', name: 'oktabr', desc: '', args: []);
+  }
+
+  /// `November`
+  String get noyabr {
+    return Intl.message('November', name: 'noyabr', desc: '', args: []);
+  }
+
+  /// `December`
+  String get dekabr {
+    return Intl.message('December', name: 'dekabr', desc: '', args: []);
+  }
+
+  /// `User`
+  String get foydalanuvchi {
+    return Intl.message('User', name: 'foydalanuvchi', desc: '', args: []);
+  }
+
+  /// `Guest`
+  String get mehmon {
+    return Intl.message('Guest', name: 'mehmon', desc: '', args: []);
+  }
+
+  /// `Passwords do not match`
+  String get parolNotogriMsg {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'parolNotogriMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a level`
+  String get darajaTanlanmadiMsg {
+    return Intl.message(
+      'Please select a level',
+      name: 'darajaTanlanmadiMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your first and last name`
+  String get ismFamiliyaYoqMsg {
+    return Intl.message(
+      'Please enter your first and last name',
+      name: 'ismFamiliyaYoqMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration successful!`
+  String get royxatdanOtildiMsg {
+    return Intl.message(
+      'Registration successful!',
+      name: 'royxatdanOtildiMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get firstName {
+    return Intl.message('First Name', name: 'firstName', desc: '', args: []);
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
+  }
+
+  /// `Select a level`
+  String get darajaniTanlang {
+    return Intl.message(
+      'Select a level',
+      name: 'darajaniTanlang',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This email is already registered`
+  String get emailAlreadyExists {
+    return Intl.message(
+      'This email is already registered',
+      name: 'emailAlreadyExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email entered is invalid`
+  String get emailInvalid1 {
+    return Intl.message(
+      'The email entered is invalid',
+      name: 'emailInvalid1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password is too weak`
+  String get weakPassword1 {
+    return Intl.message(
+      'The password is too weak',
+      name: 'weakPassword1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred: `
+  String get errorOccurred {
+    return Intl.message(
+      'An error occurred: ',
+      name: 'errorOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error:`
+  String get xatolik {
+    return Intl.message('Error:', name: 'xatolik', desc: '', args: []);
+  }
+
+  /// `User not found`
+  String get userNotFound {
+    return Intl.message(
+      'User not found',
+      name: 'userNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect password`
+  String get wrongPassword1 {
+    return Intl.message(
+      'Incorrect password',
+      name: 'wrongPassword1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email format`
+  String get invalidEmailFormat {
+    return Intl.message(
+      'Invalid email format',
+      name: 'invalidEmailFormat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown error occurred`
+  String get unknownError {
+    return Intl.message(
+      'An unknown error occurred',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Math storm infinity attempts`
+  String get mathShtorm {
+    return Intl.message(
+      'Math storm infinity attempts',
+      name: 'mathShtorm',
       desc: '',
       args: [],
     );
