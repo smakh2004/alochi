@@ -1793,6 +1793,61 @@ class S {
       args: [],
     );
   }
+
+  /// `Which pencil is the longest?`
+  String get whichPencil {
+    return Intl.message(
+      'Which pencil is the longest?',
+      name: 'whichPencil',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find the perimeter of a rectangle.`
+  String get findThePerimeter {
+    return Intl.message(
+      'Find the perimeter of a rectangle.',
+      name: 'findThePerimeter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Which number is in the triangle and also in the square and also in the circle?`
+  String get whichNumberIn {
+    return Intl.message(
+      'Which number is in the triangle and also in the square and also in the circle?',
+      name: 'whichNumberIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hint`
+  String get hint {
+    return Intl.message('Hint', name: 'hint', desc: '', args: []);
+  }
+
+  /// `Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).`
+  String get hint1 {
+    return Intl.message(
+      'Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).',
+      name: 'hint1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign "=" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign "<" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign ">" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols "<" and ">" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.`
+  String get hint2 {
+    return Intl.message(
+      'When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign "=" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign "<" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign ">" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols "<" and ">" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.',
+      name: 'hint2',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

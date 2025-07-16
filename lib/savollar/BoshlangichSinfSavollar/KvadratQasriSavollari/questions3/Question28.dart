@@ -62,7 +62,7 @@ class _Question28State extends State<Question28> {
                         children: [
                           Flexible(
                             child: Text(
-                              'Which number is in the triangle and also in the square and also in the circle?',
+                              S.of(context).whichNumberIn,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 25.0,

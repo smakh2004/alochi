@@ -2,6 +2,7 @@
 
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Hint7.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:animated_button/animated_button.dart';
@@ -71,7 +72,7 @@ class _Question7State extends State<Question7> {
       String imagePath = item['image']!;
 
       if (isChecked) {
-        if (label == correctAnswer) {
+        if (isSelected && label == correctAnswer) {
           buttonColor = lightGreen;
           borderColor = buttonGreen;
           imagePath = item['correct'] ?? imagePath;
@@ -184,18 +185,21 @@ class _Question7State extends State<Question7> {
                           ],
                         ),
                         const SizedBox(height: 24),
+                        if (selectedLabel == correctAnswer)
+                        // Only Davom Etish button with full width
                         SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: Center(
                             child: AnimatedButton(
                               onPressed: widget.onNext,
-                              color: selectedLabel == correctAnswer ? buttonCorrect : red,
+                              color: buttonCorrect,
                               height: 50,
                               width: 310,
+                              borderRadius: 12,
                               child: Text(
                                 S.of(context).davomEtish,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 1,
@@ -203,6 +207,64 @@ class _Question7State extends State<Question7> {
                               ),
                             ),
                           ),
+                        )
+                      else
+                        // Incorrect answer
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AnimatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    transitionDuration: const Duration(milliseconds: 600),
+                                    pageBuilder: (_, __, ___) => const Hint7(),
+                                    transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                                      position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                                          .animate(CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
+                                      child: child,
+                                    ),
+                                  ),
+                                );
+                              },
+                              height: 50,
+                              width: 120, 
+                              color: orange,
+                              borderRadius: 12,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.lightbulb, size: 30, color: Colors.white),
+                                  Text(
+                                    S.of(context).hint,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 6),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 16), 
+                            AnimatedButton(
+                              onPressed: widget.onNext,
+                              color: red,
+                              height: 50,
+                              width: 160, 
+                              borderRadius: 12,
+                              child: Text(
+                                S.of(context).davomEtish,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

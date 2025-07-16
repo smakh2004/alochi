@@ -130,6 +130,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "fazoviyShakllar": MessageLookupByLibrary.simpleMessage("Fazoviy shakllar"),
     "fevral": MessageLookupByLibrary.simpleMessage("Fevral"),
+    "findThePerimeter": MessageLookupByLibrary.simpleMessage(
+      "To‘rtburchakning perimetrini toping.",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("Ism"),
     "foydalanuvchi": MessageLookupByLibrary.simpleMessage("Foydalanuvchi"),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x funksiyasi"),
@@ -152,6 +155,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "harXilMaxrajliKasrlar": MessageLookupByLibrary.simpleMessage(
       "Har xil maxrajli kasrlar",
+    ),
+    "hint": MessageLookupByLibrary.simpleMessage("Maslahat"),
+    "hint1": MessageLookupByLibrary.simpleMessage(
+      "Ayirish degani olib tashlash degani.\n\nNamuna:\nAgar sizda 3 ta narsa bo‘lsa va 2 tasini olib tashlasangiz, qolganini sanang:\n•  3 ta barmoq bilan boshlang.\n•  2 ta barmoqni tushiring.\n•  Nechta barmoq qoldi?\n\nO‘ylang: 3… 1 ni olib tashlang (endi 2)… yana 1 ni olib tashlang (endi 1).",
+    ),
+    "hint2": MessageLookupByLibrary.simpleMessage(
+      "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi.",
     ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "Bu ilova sizning matematikani chuqur o\'zlashtirishizga yordam beradi. Sizni yo\'l davomida geometrik figuralar qo\'lab quvatlab boradi.",
@@ -397,6 +407,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "vaqt": MessageLookupByLibrary.simpleMessage("VAQT"),
     "weakPassword": MessageLookupByLibrary.simpleMessage("Parol juda oddiy"),
     "weakPassword1": MessageLookupByLibrary.simpleMessage("Parol juda oddiy"),
+    "whichNumberIn": MessageLookupByLibrary.simpleMessage(
+      "Qaysi son uchburchakda ham, kvadratda ham va doirada ham bor?",
+    ),
+    "whichPencil": MessageLookupByLibrary.simpleMessage(
+      "Eng uzun qalam qaysi?",
+    ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage("Parol noto\'g\'ri"),
     "wrongPassword1": MessageLookupByLibrary.simpleMessage("Noto‘g‘ri parol"),
     "xabarlar": MessageLookupByLibrary.simpleMessage("XABARLAR"),

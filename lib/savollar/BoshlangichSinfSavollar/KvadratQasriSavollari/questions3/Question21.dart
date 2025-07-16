@@ -186,25 +186,7 @@ class _Question21State extends State<Question21> {
                           const SizedBox(width: 1),
                           buildDragTarget("A"),
                           const Text(
-                            " +1",
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(width: 1),
-                          const Text(
-                            "+",
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(width: 1),
-                          const Text(
-                            "3+",
+                            " + 4 + ",
                             style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,

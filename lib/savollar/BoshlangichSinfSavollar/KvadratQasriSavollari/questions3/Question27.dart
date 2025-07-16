@@ -62,7 +62,7 @@ class _Question27State extends State<Question27> {
                         children: [
                           Flexible(
                             child: Text(
-                              'Find the perimeter of a rectangle.',
+                              S.of(context).findThePerimeter,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 25.0,
@@ -72,10 +72,15 @@ class _Question27State extends State<Question27> {
                         ],
                       ),
                       const SizedBox(height: 50),
-                      Image.asset(
-                        'assets/question3_images/Q27.png',
-                        width: size.width * 0.8,
-                        fit: BoxFit.contain,
+                      Row(
+                        children: [
+                          SizedBox(width: 30),
+                          Image.asset(
+                            'assets/question3_images/Q27.png',
+                            width: size.width * 0.8,
+                            fit: BoxFit.contain,
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 50),
                       Row(

@@ -2,6 +2,7 @@
 
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Hint9.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:animated_button/animated_button.dart';
@@ -154,59 +155,122 @@ class _Question9State extends State<Question9> {
         
             const SizedBox(height: 30),
             const Spacer(),
-            isChecked
-            ? Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: isCorrect ? lightGreen : const Color(0xFFFFE4E1),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          isCorrect ? Icons.check_circle : Icons.cancel,
-                          color: isCorrect ? buttonCorrect : red,
-                          size: 30,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          isCorrect ? S.of(context).togriJavob : S.of(context).notogriJavob,
-                          style: TextStyle(
+              isChecked
+                ? Container(
+                  height: 150,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: isCorrect ? lightGreen : const Color(0xFFFFE4E1),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // top row with icon and "Correct/Incorrect"
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            isCorrect ? Icons.check_circle : Icons.cancel,
                             color: isCorrect ? buttonCorrect : red,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                            size: 30,
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: Center(
-                        child: AnimatedButton(
-                          onPressed: widget.onNext,
-                          color: isCorrect ? buttonCorrect : red,
-                          height: 50,
-                          width: 310,
-                          child: Text(
-                            S.of(context).davomEtish,
+                          const SizedBox(width: 8),
+                          Text(
+                            isCorrect ? S.of(context).togriJavob : S.of(context).notogriJavob,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: isCorrect ? buttonCorrect : red,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
-                              letterSpacing: 1,
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              )
+                      const SizedBox(height: 30),
+                      if (isCorrect)
+                        // Only Davom Etish button with full width
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: Center(
+                            child: AnimatedButton(
+                              onPressed: widget.onNext,
+                              color: buttonCorrect,
+                              height: 50,
+                              width: 310,
+                              borderRadius: 12,
+                              child: Text(
+                                S.of(context).davomEtish,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      else
+                        // Incorrect answer
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AnimatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    transitionDuration: const Duration(milliseconds: 600),
+                                    pageBuilder: (_, __, ___) => const Hint9(),
+                                    transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                                      position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                                          .animate(CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
+                                      child: child,
+                                    ),
+                                  ),
+                                );
+                              },
+                              height: 50,
+                              width: 120, 
+                              color: orange,
+                              borderRadius: 12,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.lightbulb, size: 30, color: Colors.white),
+                                  Text(
+                                    S.of(context).hint,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 6),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 16), 
+                            AnimatedButton(
+                              onPressed: widget.onNext,
+                              color: red,
+                              height: 50,
+                              width: 160, 
+                              borderRadius: 12,
+                              child: Text(
+                                S.of(context).davomEtish,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                )
             : AbsorbPointer(
                 absorbing: !isAnswerSelected,
                 child: Opacity(

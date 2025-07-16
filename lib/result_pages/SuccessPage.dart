@@ -29,7 +29,6 @@ class SuccessPage extends StatefulWidget {
 class _SuccessPageState extends State<SuccessPage> {
   late int currentXP;
   late int localScoreDop;
-  late int currentXPyuqoriSinf;
 
   @override
   void initState() {
@@ -282,8 +281,6 @@ class _SuccessPageState extends State<SuccessPage> {
               onPressed: () async {
                 if (alreadyClaimed) {
                   setState(() {
-                    GameState.currentXP += currentXP;
-
                     if (GameState.currentXP > GameState.maxXP) {
                       GameState.currentXP = GameState.maxXP;
                     }
@@ -306,27 +303,22 @@ class _SuccessPageState extends State<SuccessPage> {
                     MaterialPageRoute(builder: (context) => const Streak()),
                   ).then((resultFromStreak) async {
                     if (resultFromStreak == 'xpGained') {
-                      // Update game state with reward and return
+                      // Update game state
                       setState(() {
-                        GameState.currentXP += currentXP;
-                        GameState.lightnings += 1;
-                        GameState.lastLightningDate = today;
-
                         if (GameState.currentXP > GameState.maxXP) {
                           GameState.currentXP = GameState.maxXP;
                         }
+                        GameState.lightnings += 1;
+                        GameState.lastLightningDate = today;
                       });
 
-                      // Get current user ID
                       final user = FirebaseAuth.instance.currentUser;
                       final userId = user?.uid;
-
                       if (userId != null) {
                         await GameState.saveState(userId);
-                      } else {
-                        print("User not logged in, can't save state.");
                       }
 
+                      // ✅ Now pop SuccessPage itself with xpGained
                       Navigator.pop(context, 'xpGained');
                     }
                   });

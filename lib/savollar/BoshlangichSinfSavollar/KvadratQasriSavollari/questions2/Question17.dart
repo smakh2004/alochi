@@ -76,7 +76,7 @@ class _Question17State extends State<Question17> {
             width: 60,
             height: 60,
             color: isChecked
-                ? ((label == '7' || label == '2') ? lightGreen : lightRed)
+                ? ((droppedLabels['A'] == '7' && droppedLabels['B'] == '2') ? lightGreen : lightRed)
                 : Colors.white,
             onPressed: () {
               if (!isChecked) {
@@ -90,7 +90,7 @@ class _Question17State extends State<Question17> {
               decoration: BoxDecoration(
                 border: Border.all(
                   color: isChecked
-                    ? ((label == '7' || label == '2') ? buttonGreen : buttonRed)
+                    ? ((droppedLabels['A'] == '7' && droppedLabels['B'] == '2') ? buttonGreen : buttonRed)
                     : greyColor, width: 2
                 ),
                 borderRadius: BorderRadius.circular(12),

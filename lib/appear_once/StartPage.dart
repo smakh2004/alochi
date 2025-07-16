@@ -99,13 +99,13 @@ class _StartPageState extends State<StartPage> {
                         final user = FirebaseAuth.instance.currentUser;
 
                         if (user == null) {
-                          // 🚪 User is NOT logged in → go to CheckPage
+                          // User is NOT logged in → go to CheckPage
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => const CheckPage()),
                           );
                         } else {
-                          // 🔄 User is logged in → load selectedLevel and navigate accordingly
+                          // User is logged in → load selectedLevel and navigate accordingly
                           Widget nextPage = await _getNextPage(user);
                           if (!mounted) return;
                           Navigator.push(

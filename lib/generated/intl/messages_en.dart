@@ -132,6 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "fazoviyShakllar": MessageLookupByLibrary.simpleMessage("Spatial shapes"),
     "fevral": MessageLookupByLibrary.simpleMessage("February"),
+    "findThePerimeter": MessageLookupByLibrary.simpleMessage(
+      "Find the perimeter of a rectangle.",
+    ),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
     "foydalanuvchi": MessageLookupByLibrary.simpleMessage("User"),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x function"),
@@ -152,6 +155,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "hammasiniKorish": MessageLookupByLibrary.simpleMessage("SEE ALL"),
     "harXilMaxrajliKasrlar": MessageLookupByLibrary.simpleMessage(
       "Fractions with different denominators",
+    ),
+    "hint": MessageLookupByLibrary.simpleMessage("Hint"),
+    "hint1": MessageLookupByLibrary.simpleMessage(
+      "Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).",
+    ),
+    "hint2": MessageLookupByLibrary.simpleMessage(
+      "When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign \"=\" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign \"<\" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign \">\" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols \"<\" and \">\" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.",
     ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "This app helps you deeply understand mathematics. Geometric figures will support you along the way.",
@@ -388,6 +398,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "weakPassword1": MessageLookupByLibrary.simpleMessage(
       "The password is too weak",
+    ),
+    "whichNumberIn": MessageLookupByLibrary.simpleMessage(
+      "Which number is in the triangle and also in the square and also in the circle?",
+    ),
+    "whichPencil": MessageLookupByLibrary.simpleMessage(
+      "Which pencil is the longest?",
     ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
     "wrongPassword1": MessageLookupByLibrary.simpleMessage(

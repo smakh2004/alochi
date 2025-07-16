@@ -62,7 +62,7 @@ class _Question22State extends State<Question22> {
                         children: [
                           Flexible(
                             child: Text(
-                              'Which pencil is the longest?',
+                              S.of(context).whichPencil,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 25.0,

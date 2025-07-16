@@ -115,6 +115,8 @@ flutter:
     - assets/images/3progress.png
     - assets/images/4progress.png
     - assets/images/5progress.png
+    - assets/images/Hint1.png
+    - assets/images/Hint2.png
 
     - assets/question_images/Q1.png
     - assets/question_images/Q2(1).png
@@ -231,6 +233,7 @@ flutter:
     - assets/animations/MathStormAnimation.json
     - assets/animations/MrSquareCastle1.json
     - assets/animations/MrSquareCastle2.json
+    - assets/animations/Hint.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/to/resolution-aware-images
