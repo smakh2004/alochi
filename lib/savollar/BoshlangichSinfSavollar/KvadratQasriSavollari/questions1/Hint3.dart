@@ -49,9 +49,48 @@ class _Hint3State extends State<Hint3> {
           child: Container(height: 2, color: greyColor),
         ),
       ),
-      body: Column(
-
-      )
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0), 
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                S.of(context).hint3,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: darkGrey,
+                ),
+              ),
+              Center(
+                child: Image.asset(
+                  'assets/images/Hint3.png',
+                  width: 350,
+                  height: 150,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                S.of(context).solution,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: darkGrey,
+                ),
+              ),
+              Center(
+                child: Image.asset(
+                  'assets/images/Hint3(1).png',
+                  width: 200,
+                  height: 135,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

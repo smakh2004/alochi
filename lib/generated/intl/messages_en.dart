@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "azizChizilgan": MessageLookupByLibrary.simpleMessage(
       "Aziz folds the piece of paper along the drawn line. What does he see?",
     ),
+    "beast": MessageLookupByLibrary.simpleMessage("You are beast!"),
     "berilganMisolni": MessageLookupByLibrary.simpleMessage(
       "Solve the given problem. The blue boxes must be filled with coins of equal value.",
     ),
@@ -163,6 +164,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hint2": MessageLookupByLibrary.simpleMessage(
       "When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign \"=\" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign \"<\" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign \">\" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols \"<\" and \">\" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.",
     ),
+    "hint3": MessageLookupByLibrary.simpleMessage(
+      "Look carefully at each line.\nEach picture stands for a number.\nTry to find the value of each picture step by step!\n\nSample:",
+    ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "This app helps you deeply understand mathematics. Geometric figures will support you along the way.",
     ),
@@ -187,7 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter your answer and set a record.",
     ),
     "jon": MessageLookupByLibrary.simpleMessage("Heart"),
-    "joningiztugadi": MessageLookupByLibrary.simpleMessage("YOU LOSE!"),
+    "joningiztugadi": MessageLookupByLibrary.simpleMessage("You Lose!"),
     "jonlarZapasi": MessageLookupByLibrary.simpleMessage("Hearts Stock"),
     "kasrlarniKopaytirishBolish": MessageLookupByLibrary.simpleMessage(
       "Multiplication/Division of fractions",
@@ -210,10 +214,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kvadratQasri": MessageLookupByLibrary.simpleMessage("Profile Statistics"),
     "kvadratQasriBirinchiBosqich": MessageLookupByLibrary.simpleMessage(
-      "SQUARE CASTLE | FIRST LEVEL",
+      "LEVEL 1, SQUARE CASTLE",
     ),
     "kvadratQasriBirinchiBosqichDes": MessageLookupByLibrary.simpleMessage(
-      "ADVANTURE IN THE WORLD OF NUMBERS",
+      "World of numbers",
     ),
     "kvadratQasriKubogi": MessageLookupByLibrary.simpleMessage(
       "The Square Castle Cup",
@@ -251,14 +255,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "matnliMasalalar": MessageLookupByLibrary.simpleMessage("Sample problems"),
     "may": MessageLookupByLibrary.simpleMessage("May"),
     "mehmon": MessageLookupByLibrary.simpleMessage("Guest"),
-    "meningProfilim": MessageLookupByLibrary.simpleMessage("MY PROFILE"),
     "messageOfMrSquare": MessageLookupByLibrary.simpleMessage(
       "Choose your math skill level!",
     ),
     "minut": MessageLookupByLibrary.simpleMessage("minutes"),
     "miqdori": MessageLookupByLibrary.simpleMessage("Quantity"),
     "misolUchun": MessageLookupByLibrary.simpleMessage("For example: -4"),
-    "multiplikativ": MessageLookupByLibrary.simpleMessage("Multiplicative"),
+    "multiplikativ": MessageLookupByLibrary.simpleMessage("Multiply"),
     "narxi": MessageLookupByLibrary.simpleMessage("Cost"),
     "naturalSonlar": MessageLookupByLibrary.simpleMessage("Natural numbers"),
     "nisbatVaProporsiya": MessageLookupByLibrary.simpleMessage(
@@ -318,12 +321,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "savatJon": MessageLookupByLibrary.simpleMessage("Basket Hearts"),
     "sekund": MessageLookupByLibrary.simpleMessage("second"),
     "sentabr": MessageLookupByLibrary.simpleMessage("September"),
+    "settings": MessageLookupByLibrary.simpleMessage("SETTINGS"),
+    "settingsNew": MessageLookupByLibrary.simpleMessage("Settings"),
+    "signOut": MessageLookupByLibrary.simpleMessage("SIGN OUT"),
     "sizHaliKirmagansiz": MessageLookupByLibrary.simpleMessage(
       "You are not signed in yet",
     ),
     "sizniErtagaKutamiz": MessageLookupByLibrary.simpleMessage(
       "See you tomorrow!",
     ),
+    "solution": MessageLookupByLibrary.simpleMessage("Solution:"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Incorrect email or password",
     ),
@@ -331,6 +338,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Numerical sequences",
     ),
     "sotibOlish": MessageLookupByLibrary.simpleMessage("Buy"),
+    "squareCastle": MessageLookupByLibrary.simpleMessage("Square Castle"),
     "start": MessageLookupByLibrary.simpleMessage("START"),
     "statistika": MessageLookupByLibrary.simpleMessage("STATISTICS"),
     "student": MessageLookupByLibrary.simpleMessage("University"),

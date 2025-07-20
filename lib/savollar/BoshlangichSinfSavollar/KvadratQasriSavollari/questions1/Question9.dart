@@ -55,106 +55,133 @@ class _Question9State extends State<Question9> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(
                 S.of(context).otniTogri,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: questionColor
+                ),
               ),
             ),
             const SizedBox(height: 40),
         
-            Center(
-              child: Container(
-                width: boxSize * columns,
-                height: boxSize * rows,
-                decoration: BoxDecoration(
-                  border: Border.all(color: grey, width: 2),
-                ),
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: columns * rows,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: columns,
-                  ),
-                  itemBuilder: (context, index) {
-                    // Compute rotated grid coordinates (x, y)
-                    int x = index % columns; // column in rotated grid (0 or 1)
-                    int y = index ~/ columns; // row in rotated grid (0 to 2)
-              
-                    // Map rotated coords back to original coords:
-                    // original column = y (row in rotated)
-                    // original row = x (col in rotated)
-                    int origX = y; // original column
-                    int origY = x; // original row
-              
-                    bool isKnight = knightX == origX && knightY == origY;
-              
-                    // Decide tile color using original coords for checkerboard
-                    Color tileColor;
-                    if (isChecked && isKnight) {
-                      tileColor = isCorrect ? buttonGreen : buttonRed;
-                    } else if (visitedPositions.contains(Offset(origX.toDouble(), origY.toDouble()))) {
-                      tileColor = buttonBlue;
-                    } else {
-                      tileColor = (origX + origY) % 2 == 0 ? grey : Colors.white;
-                    }
-              
-                    // Allow drag only if knight at initial position and not checked
-                    bool canDragFromHere = !isChecked && (knightX == initialX && knightY == initialY);
-              
-                    return DragTarget<Offset>(
-                      onWillAccept: (data) => !isChecked,
-                      onAccept: (data) {
-                        if (!isChecked && (origX != knightX || origY != knightY)) {
-                          setState(() {
-                            knightX = origX;
-                            knightY = origY;
-                            visitedPositions.add(Offset(origX.toDouble(), origY.toDouble()));
-                          });
-                        }
-                      },
-                      builder: (context, candidateData, rejectedData) {
-                        return Container(
-                          width: boxSize,
-                          height: boxSize,
-                          margin: const EdgeInsets.all(2),
-                          color: tileColor,
-                          child: Center(
-                            child: isKnight
-                                ? GestureDetector(
-                                    onTap: () {
-                                      if (!isChecked &&
-                                          (knightX != initialX || knightY != initialY)) {
-                                        setState(() {
-                                          // Reset knight position and visited cells
-                                          knightX = initialX;
-                                          knightY = initialY;
-                                          visitedPositions.clear();
-                                        });
-                                      }
-                                    },
-                                    child: Draggable<Offset>(
-                                      data: Offset(origX.toDouble(), origY.toDouble()),
-                                      feedback: knightWidget(),
-                                      childWhenDragging: const SizedBox.shrink(),
-                                      child: knightWidget(),
-                                      maxSimultaneousDrags: canDragFromHere ? 1 : 0,
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                      child: IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Spacer(),
+                              Center(
+                                child: Container(
+                                  width: boxSize * columns,
+                                  height: boxSize * rows,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: grey, width: 2),
+                                  ),
+                                  child: GridView.builder(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: columns * rows,
+                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: columns,
                                     ),
-                                  )
-                                : const SizedBox.shrink(),
+                                    itemBuilder: (context, index) {
+                                      // Compute rotated grid coordinates (x, y)
+                                      int x = index % columns; // column in rotated grid (0 or 1)
+                                      int y = index ~/ columns; // row in rotated grid (0 to 2)
+                                
+                                      // Map rotated coords back to original coords:
+                                      // original column = y (row in rotated)
+                                      // original row = x (col in rotated)
+                                      int origX = y; // original column
+                                      int origY = x; // original row
+                                
+                                      bool isKnight = knightX == origX && knightY == origY;
+                                
+                                      // Decide tile color using original coords for checkerboard
+                                      Color tileColor;
+                                      if (isChecked && isKnight) {
+                                        tileColor = isCorrect ? buttonGreen : buttonRed;
+                                      } else if (visitedPositions.contains(Offset(origX.toDouble(), origY.toDouble()))) {
+                                        tileColor = buttonBlue;
+                                      } else {
+                                        tileColor = (origX + origY) % 2 == 0 ? grey : Colors.white;
+                                      }
+                                
+                                      // Allow drag only if knight at initial position and not checked
+                                      bool canDragFromHere = !isChecked && (knightX == initialX && knightY == initialY);
+                                
+                                      return DragTarget<Offset>(
+                                        onWillAccept: (data) => !isChecked,
+                                        onAccept: (data) {
+                                          if (!isChecked && (origX != knightX || origY != knightY)) {
+                                            setState(() {
+                                              knightX = origX;
+                                              knightY = origY;
+                                              visitedPositions.add(Offset(origX.toDouble(), origY.toDouble()));
+                                            });
+                                          }
+                                        },
+                                        builder: (context, candidateData, rejectedData) {
+                                          return Container(
+                                            width: boxSize,
+                                            height: boxSize,
+                                            margin: const EdgeInsets.all(2),
+                                            color: tileColor,
+                                            child: Center(
+                                              child: isKnight
+                                                  ? GestureDetector(
+                                                      onTap: () {
+                                                        if (!isChecked &&
+                                                            (knightX != initialX || knightY != initialY)) {
+                                                          setState(() {
+                                                            // Reset knight position and visited cells
+                                                            knightX = initialX;
+                                                            knightY = initialY;
+                                                            visitedPositions.clear();
+                                                          });
+                                                        }
+                                                      },
+                                                      child: Draggable<Offset>(
+                                                        data: Offset(origX.toDouble(), origY.toDouble()),
+                                                        feedback: knightWidget(),
+                                                        childWhenDragging: const SizedBox.shrink(),
+                                                        child: knightWidget(),
+                                                        maxSimultaneousDrags: canDragFromHere ? 1 : 0,
+                                                      ),
+                                                    )
+                                                  : const SizedBox.shrink(),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                            ],
                           ),
-                        );
-                      },
-                    );
-                  },
-                ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
               ),
             ),
         
-            const SizedBox(height: 30),
-            const Spacer(),
               isChecked
                 ? Container(
                   height: 150,
@@ -276,42 +303,48 @@ class _Question9State extends State<Question9> {
                 child: Opacity(
                   opacity: !isAnswerSelected ? 0.5 : 1,
                   child: Container(
+                    height: 150,
                     width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                     child: Center(
-                      child: AnimatedButton(
-                        color: submitButtonColor,
-                        height: 50,
-                        width: 310,
-                        onPressed: () {
-                          if (!isChecked) {
-                            bool correctNow = knightX == goalX && knightY == goalY;
-                            setState(() {
-                              isChecked = true;
-                              isCorrect = correctNow;
-                    
-                              if (correctNow) {
-                                submitButtonColor = primaryCorrect;
-                                widget.onXPUpdate(10);
+                      child: Column(
+                        children: [
+                          SizedBox(height: 57),
+                          AnimatedButton(
+                            color: submitButtonColor,
+                            height: 50,
+                            width: 310,
+                            onPressed: () {
+                              if (!isChecked) {
+                                bool correctNow = knightX == goalX && knightY == goalY;
                                 setState(() {
-                                  GameState.logikaDop += 0.5;
-                                  GameState.scoreDop += 3;
+                                  isChecked = true;
+                                  isCorrect = correctNow;
+                                              
+                                  if (correctNow) {
+                                    submitButtonColor = primaryCorrect;
+                                    widget.onXPUpdate(10);
+                                    setState(() {
+                                      GameState.logikaDop += 0.5;
+                                      GameState.scoreDop += 3;
+                                    });
+                                  } else {
+                                    submitButtonColor = primaryIncorrect;
+                                    widget.onXPUpdate(5);
+                                    widget.onIncorrect();
+                                  }
                                 });
-                              } else {
-                                submitButtonColor = primaryIncorrect;
-                                widget.onXPUpdate(5);
-                                widget.onIncorrect();
                               }
-                            });
-                          }
-                        },
-                        child: Text(
-                          S.of(context).tekshirish,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            },
+                            child: Text(
+                              S.of(context).tekshirish,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),

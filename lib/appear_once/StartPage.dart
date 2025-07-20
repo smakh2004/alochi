@@ -63,7 +63,6 @@ class _StartPageState extends State<StartPage> {
                       'A\'lochi',
                       style: const TextStyle(
                         fontSize: 22,
-                        fontWeight: FontWeight.bold,
                         color: Colors.grey,
                         fontFamily: primaryFont,
                       ),

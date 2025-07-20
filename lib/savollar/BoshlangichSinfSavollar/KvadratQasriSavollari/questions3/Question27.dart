@@ -77,7 +77,7 @@ class _Question27State extends State<Question27> {
                           SizedBox(width: 30),
                           Image.asset(
                             'assets/question3_images/Q27.png',
-                            width: size.width * 0.8,
+                            width: size.width * 0.75,
                             fit: BoxFit.contain,
                           ),
                         ],

@@ -229,14 +229,14 @@ class S {
     );
   }
 
-  /// `MY PROFILE`
-  String get meningProfilim {
-    return Intl.message(
-      'MY PROFILE',
-      name: 'meningProfilim',
-      desc: '',
-      args: [],
-    );
+  /// `SETTINGS`
+  String get settings {
+    return Intl.message('SETTINGS', name: 'settings', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settingsNew {
+    return Intl.message('Settings', name: 'settingsNew', desc: '', args: []);
   }
 
   /// `STATISTICS`
@@ -254,14 +254,9 @@ class S {
     return Intl.message('Arifmetic', name: 'arifmetika', desc: '', args: []);
   }
 
-  /// `Multiplicative`
+  /// `Multiply`
   String get multiplikativ {
-    return Intl.message(
-      'Multiplicative',
-      name: 'multiplikativ',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Multiply', name: 'multiplikativ', desc: '', args: []);
   }
 
   /// `Logic`
@@ -399,20 +394,20 @@ class S {
     );
   }
 
-  /// `SQUARE CASTLE | FIRST LEVEL`
+  /// `LEVEL 1, SQUARE CASTLE`
   String get kvadratQasriBirinchiBosqich {
     return Intl.message(
-      'SQUARE CASTLE | FIRST LEVEL',
+      'LEVEL 1, SQUARE CASTLE',
       name: 'kvadratQasriBirinchiBosqich',
       desc: '',
       args: [],
     );
   }
 
-  /// `ADVANTURE IN THE WORLD OF NUMBERS`
+  /// `World of numbers`
   String get kvadratQasriBirinchiBosqichDes {
     return Intl.message(
-      'ADVANTURE IN THE WORLD OF NUMBERS',
+      'World of numbers',
       name: 'kvadratQasriBirinchiBosqichDes',
       desc: '',
       args: [],
@@ -754,10 +749,10 @@ class S {
     );
   }
 
-  /// `YOU LOSE!`
+  /// `You Lose!`
   String get joningiztugadi {
     return Intl.message(
-      'YOU LOSE!',
+      'You Lose!',
       name: 'joningiztugadi',
       desc: '',
       args: [],
@@ -1744,6 +1739,11 @@ class S {
     return Intl.message('Error:', name: 'xatolik', desc: '', args: []);
   }
 
+  /// `SIGN OUT`
+  String get signOut {
+    return Intl.message('SIGN OUT', name: 'signOut', desc: '', args: []);
+  }
+
   /// `User not found`
   String get userNotFound {
     return Intl.message(
@@ -1829,6 +1829,26 @@ class S {
     return Intl.message('Hint', name: 'hint', desc: '', args: []);
   }
 
+  /// `Square Castle`
+  String get squareCastle {
+    return Intl.message(
+      'Square Castle',
+      name: 'squareCastle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are beast!`
+  String get beast {
+    return Intl.message('You are beast!', name: 'beast', desc: '', args: []);
+  }
+
+  /// `Solution:`
+  String get solution {
+    return Intl.message('Solution:', name: 'solution', desc: '', args: []);
+  }
+
   /// `Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).`
   String get hint1 {
     return Intl.message(
@@ -1844,6 +1864,16 @@ class S {
     return Intl.message(
       'When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign "=" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign "<" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign ">" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols "<" and ">" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.',
       name: 'hint2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Look carefully at each line.\nEach picture stands for a number.\nTry to find the value of each picture step by step!\n\nSample:`
+  String get hint3 {
+    return Intl.message(
+      'Look carefully at each line.\nEach picture stands for a number.\nTry to find the value of each picture step by step!\n\nSample:',
+      name: 'hint3',
       desc: '',
       args: [],
     );

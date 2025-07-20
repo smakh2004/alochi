@@ -265,52 +265,84 @@ class _MainPage1State extends State<MainPage1> {
       onWillPop: _onWillPop,
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            const SizedBox(height: 55),
-            if (showAppBar())
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 22),
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => _onWillPop(),
-                      child: Image.asset('assets/icons/Exit.png', width: 30, height: 30),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: TweenAnimationBuilder(
-                        tween: Tween(begin: 0.0, end: currentXP / maxXP),
-                        duration: const Duration(milliseconds: 500),
-                        builder: (context, value, child) => LinearProgressIndicator(
-                          value: value,
-                          borderRadius: BorderRadius.circular(20),
-                          minHeight: 20,
-                          backgroundColor: Colors.grey[300],
-                          color: primaryColor,
+        appBar: showAppBar()
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(60), // height of your custom AppBar
+                child: AppBar(
+                  backgroundColor: Colors.white,
+                  automaticallyImplyLeading: false,
+                  elevation: 0,
+                  title: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => _onWillPop(),
+                        child: Image.asset('assets/icons/Exit.png', width: 30, height: 30),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            return Stack(
+                              children: [
+                                // main blue bar
+                                TweenAnimationBuilder<double>(
+                                  tween: Tween<double>(begin: 0.0, end: currentXP / maxXP),
+                                  duration: const Duration(milliseconds: 500),
+                                  builder: (context, value, child) => LinearProgressIndicator(
+                                    value: value,
+                                    borderRadius: BorderRadius.circular(30),
+                                    minHeight: 17,
+                                    backgroundColor: greyColor,
+                                    color: primaryColor,
+                                  ),
+                                ),
+
+                                // highlight line
+                                TweenAnimationBuilder<double>(
+                                  tween: Tween<double>(begin: 0.0, end: currentXP / maxXP),
+                                  duration: const Duration(milliseconds: 500),
+                                  builder: (context, value, child) {
+                                    final fillWidth = constraints.maxWidth * value;
+                                    // shrink factor
+                                    final shrinkFactor = 0.5 + (0.9 - 0.5) * value;
+                                    final highlightWidth = fillWidth * shrinkFactor;
+
+                                    return Positioned(
+                                      left: (fillWidth - highlightWidth) / 2,
+                                      top: 3.5,
+                                      child: Container(
+                                        width: highlightWidth,
+                                        height: 4.5,
+                                        decoration: BoxDecoration(
+                                          color: lighterBlue,
+                                          borderRadius: BorderRadius.circular(2),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            );
+                          },
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    Image.asset('assets/icons/Heart.png', width: 30, height: 30),
-                    const SizedBox(width: 5),
-                    Text(
-                      '$hp',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24.0,
-                        fontFamily: primaryFont,
-                        color: red,
+                      const SizedBox(width: 10),
+                      Image.asset('assets/icons/Heart.png', width: 30, height: 30),
+                      const SizedBox(width: 5),
+                      Text(
+                        '$hp',
+                        style: const TextStyle(
+                          fontSize: 24.0,
+                          fontFamily: primaryFont,
+                          color: red,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            Expanded(child: getCurrentQuestion()),
-          ],
-        ),
+              )
+            : null,
+        body: getCurrentQuestion(),
       ),
     );
   }

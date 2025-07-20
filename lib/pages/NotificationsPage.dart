@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:alochi_math_app/components/color.dart';
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_button/animated_button.dart';
@@ -134,7 +135,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
               S.of(context).xabarlar,
               style: TextStyle(
                 color: darkGrey,
-                fontWeight: FontWeight.bold,
+                fontFamily: primaryFont,
                 fontSize: 18,
               ),
             ),

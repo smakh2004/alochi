@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, sort_child_properties_last
 
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Hint3.dart';
@@ -43,412 +44,308 @@ class _Question3State extends State<Question3> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    S.of(context).berilganMisolniYeching,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: questionColor
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  width: size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            S.of(context).berilganMisolniYeching,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 40),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/question_images/Strawberry.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Strawberry.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Strawberry.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '=',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '30',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/question_images/Strawberry.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Grape.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Grape.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '=',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '20',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/question_images/Grape.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Cheese.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Cheese.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '=',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '9',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                          
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/question_images/Grape.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Cheese.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '+',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Image.asset(
-                            'assets/question_images/Strawberry.png',
-                            width: size.width * 0.12,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 5),
-                          const Text(
-                            '=',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          DragTarget<Map<String, dynamic>>(
-                            onWillAccept: (data) => droppedLabel == null,
-                            onAccept: (data) {
-                              if (droppedLabel == null) {
-                                setState(() {
-                                  droppedColor = data['color'] as Color;
-                                  droppedLabel = data['label'] as String;
-                                  usedLabels.add(droppedLabel!);
-                                });
-                              }
-                            },
-                            builder: (context, candidateData, rejectedData) {
-                              return droppedColor == null
-                                  ? DottedBorder(
-                                      color: candidateData.isNotEmpty
-                                          ? primaryColor
-                                          : grey,
-                                      strokeWidth: 2,
-                                      dashPattern: [13, 3],
-                                      borderType: BorderType.RRect,
-                                      radius: const Radius.circular(12),
-                                      child: Container(
-                                        width: 56,
-                                        height: 56,
-                                        alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                        child: IntrinsicHeight(
+                          child: Column(
+                            children: [
+                              const Spacer(),
+                              // 🌟 All your image+equation rows
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/question_images/Strawberry.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Strawberry.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Strawberry.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('=', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  const Text('30', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+
+                              // 👉 second equation row
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/question_images/Strawberry.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Grape.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Grape.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('=', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  const Text('20', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+
+                              // 👉 third equation row
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/question_images/Grape.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Cheese.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Cheese.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('=', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  const Text('9', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+
+                              // 👉 last equation row with DragTarget
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/question_images/Grape.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Cheese.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('+', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+                                  Image.asset('assets/question_images/Strawberry.png', width: 45),
+                                  const SizedBox(width: 5),
+                                  const Text('=', style: TextStyle(fontFamily: fontQuestion, fontSize: 40, color: questionColor)),
+                                  const SizedBox(width: 5),
+
+                                  // 🔥 DragTarget remains the same as your code
+                                  DragTarget<Map<String, dynamic>>(
+                                    onWillAccept: (data) => droppedLabel == null,
+                                    onAccept: (data) {
+                                      if (droppedLabel == null) {
+                                        setState(() {
+                                          droppedColor = data['color'] as Color;
+                                          droppedLabel = data['label'] as String;
+                                          usedLabels.add(droppedLabel!);
+                                        });
+                                      }
+                                    },
+                                    builder: (context, candidateData, rejectedData) {
+                                      return droppedColor == null
+                                          ? SizedBox(
+                                              height: 54,
+                                              width: 54,
+                                              child: Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: 50,
+                                                    height: 50,
+                                                    decoration: BoxDecoration(
+                                                      color: lightGrey,
+                                                      borderRadius: BorderRadius.circular(12),
+                                                    ),
+                                                  ),
+                                                  DottedBorder(
+                                                    color: candidateData.isNotEmpty
+                                                        ? primaryColor
+                                                        : greyColor,
+                                                    strokeWidth: 3,
+                                                    dashPattern: const [10, 4],
+                                                    borderType: BorderType.RRect,
+                                                    radius: const Radius.circular(12),
+                                                    child: const SizedBox(width: 48, height: 48),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          : AnimatedButton(
+                                              width: 54,
+                                              height: 54,
+                                              color: isChecked
+                                                  ? (droppedLabel == '17'
+                                                      ? lightGreen
+                                                      : lightRed)
+                                                  : droppedColor!,
+                                              onPressed: () {
+                                                if (!isChecked) {
+                                                  setState(() {
+                                                    usedLabels.remove(droppedLabel);
+                                                    droppedColor = null;
+                                                    droppedLabel = null;
+                                                  });
+                                                }
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: isChecked
+                                                        ? (droppedLabel == '17'
+                                                            ? buttonGreen
+                                                            : buttonRed)
+                                                        : greyColor,
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius: BorderRadius.circular(12),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    droppedLabel!,
+                                                    style: const TextStyle(
+                                                      fontSize: 25,
+                                                      fontFamily: fontQuestion,
+                                                      color: questionColor,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                    },
+                                  ),
+                                ],
+                              ),
+
+                              const Spacer(),
+
+                              // 🌟 Wrap for draggable buttons
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30, bottom: 10),
+                                child: Wrap(
+                                  spacing: 10,
+                                  runSpacing: 10,
+                                  alignment: WrapAlignment.center,
+                                  children: draggableButtons.map((item) {
+                                    final label = item['label'] as String;
+                                    final isUsed = usedLabels.contains(label);
+                                
+                                    if (isUsed) {
+                                      return Container(
+                                        width: 54,
+                                        height: 54,
                                         decoration: BoxDecoration(
-                                          color: lightGrey,
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                      ),
-                                    )
-                                  : AnimatedButton(
-                                      width: 60,
-                                      height: 60,
-                                      color: isChecked
-                                      ? (droppedLabel == '17' ? lightGreen : lightRed)
-                                      : droppedColor!,
-                                      onPressed: () {
-                                        if (!isChecked) {
-                                          setState(() {
-                                            usedLabels.remove(droppedLabel);
-                                            droppedColor = null;
-                                            droppedLabel = null;
-                                          });
-                                        }
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: isChecked
-                                                ? (droppedLabel == '17' ? buttonGreen : buttonRed)
-                                                : greyColor,
-                                            width: 2,
-                                          ),
+                                          color: greyColor,
                                           borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(color: greyColor, width: 2),
                                         ),
-                                        child: Center(
-                                          child: Text(
-                                            droppedLabel!,
-                                            style: const TextStyle(
-                                              fontSize: 25,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
+                                      );
+                                    }
+                                
+                                    return Draggable<Map<String, dynamic>>(
+                                      data: item,
+                                      child: AnimatedButton(
+                                        width: 54,
+                                        height: 54,
+                                        color: Colors.white,
+                                        onPressed: () {
+                                          if (droppedLabel == null && !isChecked) {
+                                            setState(() {
+                                              droppedColor = Colors.white;
+                                              droppedLabel = label;
+                                              usedLabels.add(label);
+                                            });
+                                          }
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(color: greyColor, width: 2),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              label,
+                                              style: const TextStyle(
+                                                fontSize: 25,
+                                                fontFamily: fontQuestion,
+                                                color: questionColor,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    );
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 70),
-                      Wrap(
-                        spacing: 10,
-                        children: draggableButtons.map((item) {
-                          final label = item['label'] as String;
-                          final isUsed = usedLabels.contains(label);
-                          
-                          if (isUsed) {
-                            return Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: greyColor, width: 2),
-                              ),
-                            );
-                          }
-                          
-                          return Draggable<Map<String, dynamic>>(
-                            data: item,
-                            child: AnimatedButton(
-                              width: 60,
-                              height: 60,
-                              color: Colors.white,
-                              onPressed: () {
-                                if (droppedLabel == null && !isChecked) {
-                                  setState(() {
-                                    droppedColor = Colors.white;
-                                    droppedLabel = label;
-                                    usedLabels.add(label);
-                                  });
-                                }
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: greyColor,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    label,
-                                    style: const TextStyle(
-                                      fontSize: 25,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            feedback: Material(
-                              color: Colors.transparent,
-                              child: AnimatedButton(
-                                width: 60,
-                                height: 60,
-                                color: Colors.white,
-                                onPressed: () {},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: greyColor,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      label,
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
+                                      feedback: Material(
+                                        color: Colors.transparent,
+                                        child: AnimatedButton(
+                                          width: 54,
+                                          height: 54,
+                                          color: Colors.white,
+                                          onPressed: () {},
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              border: Border.all(color: greyColor, width: 2),
+                                              borderRadius: BorderRadius.circular(12),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                label,
+                                                style: const TextStyle(
+                                                  fontSize: 25,
+                                                  fontFamily: fontQuestion,
+                                                  color: questionColor,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
+                                      childWhenDragging: Container(
+                                        width: 54,
+                                        height: 54,
+                                        decoration: BoxDecoration(
+                                          color: greyColor,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(color: greyColor, width: 2),
+                                        ),
+                                      ),
+                                    );
+                                  }).toList(),
                                 ),
                               ),
-                            ),
-                            childWhenDragging: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: greyColor, width: 2),
-                              ),
-                            ),
-                          );
-                        }).toList(),
+                            ],
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -573,41 +470,47 @@ class _Question3State extends State<Question3> {
               child: Opacity(
                 opacity: !isAnswerSelected ? 0.5 : 1,
                 child: Container(
+                  height: 150,
                   width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: Center(
-                    child: AnimatedButton(
-                      color: submitButtonColor,
-                      height: 50,
-                      width: 310,
-                      onPressed: () {
-                        if (!isChecked) {
-                          if (droppedLabel == '17') {
-                            submitButtonColor = primaryCorrect;
-                            isCorrect = true;
-                            widget.onXPUpdate(10);
-                            setState(() {
-                                GameState.arifmetikaDop += 0.5;
-                                GameState.scoreDop += 5;
+                    child: Column(
+                      children: [
+                        SizedBox(height: 57),
+                        AnimatedButton(
+                          color: submitButtonColor,
+                          height: 50,
+                          width: 310,
+                          onPressed: () {
+                            if (!isChecked) {
+                              if (droppedLabel == '17') {
+                                submitButtonColor = primaryCorrect;
+                                isCorrect = true;
+                                widget.onXPUpdate(10);
+                                setState(() {
+                                    GameState.arifmetikaDop += 0.5;
+                                    GameState.scoreDop += 5;
+                                  });
+                              } else {
+                                submitButtonColor = primaryIncorrect;
+                                isCorrect = false;
+                                widget.onXPUpdate(5);
+                                widget.onIncorrect();
+                              }
+                              setState(() {
+                                isChecked = true;
                               });
-                          } else {
-                            submitButtonColor = primaryIncorrect;
-                            isCorrect = false;
-                            widget.onXPUpdate(5);
-                            widget.onIncorrect();
-                          }
-                          setState(() {
-                            isChecked = true;
-                          });
-                        }
-                      },
-                      child: Text(
-                        S.of(context).tekshirish,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                            }
+                          },
+                          child: Text(
+                            S.of(context).tekshirish,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),

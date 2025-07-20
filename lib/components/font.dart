@@ -1,1 +1,2 @@
-const primaryFont = 'BerlinSans';
+const primaryFont = 'LilitaOneRegular';
+const fontQuestion = 'AlochiFont';

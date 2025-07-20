@@ -128,7 +128,6 @@ class _ProfilePageState extends State<ProfilePage> {
                             S.of(context).kvadratQasri,
                             style: TextStyle(
                               fontFamily: primaryFont,
-                              fontWeight: FontWeight.bold,
                               fontSize: 22,
                               color: Colors.white,
                             ),
@@ -247,6 +246,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  color: questionColor,
                 ),
               ),
 
@@ -304,22 +304,43 @@ class _ProfilePageState extends State<ProfilePage> {
                         width: 200,
                         height: 50,
                         color: Colors.white,
+                        borderRadius: 12,
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage()));
+                          Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: const Duration(milliseconds: 600),
+                            pageBuilder: (context, animation, secondaryAnimation) => const SettingsPage(),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+                              return SlideTransition(
+                                position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                         },
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: greyColor, width: 2),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           alignment: Alignment.center,
-                          child: Text(
-                            S.of(context).meningProfilim,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: primaryColor,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.settings, color: primaryColor),
+                              SizedBox(width: 5),
+                              Text(
+                                S.of(context).settings,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -327,12 +348,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       AnimatedButton(
                         height: 50,
                         width: 50,
+                        borderRadius: 12,
                         color: Colors.white,
                         onPressed: () {},
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: greyColor, width: 2),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           alignment: Alignment.center,
                           child: const Icon(Icons.share, color: primaryColor),
@@ -350,6 +372,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
+                  color: questionColor
                 ),
               ),
 
@@ -362,7 +385,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: grey, width: 2),
+                    border: Border.all(color: greyColor, width: 2),
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -374,10 +397,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           Image.asset(
                             'assets/icons/ArifmeticStorm.png',
-                            width: 44,
-                            height: 44,
+                            width: 70,
+                            height: 70,
                           ),
-                          SizedBox(width: 8),
                           Column(
                             children: [
                               SizedBox(height: 12),
@@ -386,6 +408,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 style: const TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
+                                  color: questionColor
                                 ),
                               ),
                             ],
@@ -397,7 +420,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         S.of(context).matematikShtorm,
                         style: TextStyle(
                           fontSize: 15,
-                          color: darkGrey,
+                          color: darkGrey
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -413,7 +436,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: grey, width: 2),
+                  border: Border.all(color: greyColor, width: 2),
                 ),
                 child: Column(
                   children: [
@@ -455,7 +478,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).progress,
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(fontSize: 14, color: questionColor),
                             ),
                           ),
                         ),
@@ -494,7 +517,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).arifmetika,
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(fontSize: 14,color: questionColor),
                             ),
                           ),
                         ),
@@ -541,7 +564,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).multiplikativ,
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(fontSize: 14,color: questionColor),
                             ),
                           ),
                         ),
@@ -580,7 +603,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).logika,
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(fontSize: 14, color: questionColor),
                             ),
                           ),
                         ),
@@ -604,7 +627,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: grey, width: 2),
+                          border: Border.all(color: greyColor, width: 2),
                         ),
                         child: Row(
                           children: [
@@ -623,6 +646,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
+                                      color: questionColor
                                     ),
                                   ),
                                   Text(
@@ -648,11 +672,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: grey, width: 2),
+                          border: Border.all(color: greyColor, width: 2),
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.bolt, color: orange, size: 44),
+                            Image.asset(
+                              'assets/icons/Points.png',
+                              width: 44,
+                              height: 44,
+                            ),
                             const SizedBox(width: 8),
                             Expanded(
                               child: Column(
@@ -663,6 +691,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
+                                      color: questionColor
                                     ),
                                   ),
                                   Text(
@@ -696,6 +725,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
+                        color: questionColor
                       ),
                     ),
                     GestureDetector(

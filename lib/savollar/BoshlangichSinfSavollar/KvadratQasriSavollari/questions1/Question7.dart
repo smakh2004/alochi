@@ -122,70 +122,86 @@ class _Question7State extends State<Question7> {
       body: SafeArea(
         child: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    S.of(context).qaysiBirShakl,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: questionColor
+                    ),
+                  ),
+                ),
+              ),
+
               Expanded(
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: size.width,
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            S.of(context).qaysiBirShakl,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25.0,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SingleChildScrollView(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                          child: IntrinsicHeight(
+                            child: Column(
+                              children: [
+                                Spacer(),
+                                Center(
+                                  child: Wrap(
+                                    spacing: 10,
+                                    runSpacing: 10,
+                                    alignment: WrapAlignment.center,
+                                    children: answerOptions.map(buildAnswerButton).toList(),
+                                  ),
+                                ),
+                                Spacer(),
+                              ],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 30),
-                        Wrap(
-                          spacing: 10,
-                          runSpacing: 10,
-                          alignment: WrapAlignment.center,
-                          children: answerOptions.map(buildAnswerButton).toList(),
-                        ),
-                      ],
-                    ),
+                      );
+                    }
                   ),
                 ),
               ),
               isChecked
                 ? Container(
-                    decoration: BoxDecoration(
-                      color: selectedLabel == correctAnswer ? lightGreen : const Color(0xFFFFE4E1),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              selectedLabel == correctAnswer
-                                  ? Icons.check_circle
-                                  : Icons.cancel,
+                  height: 150,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: selectedLabel == correctAnswer ? lightGreen : const Color(0xFFFFE4E1),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // top row with icon and "Correct/Incorrect"
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            selectedLabel == correctAnswer ? Icons.check_circle : Icons.cancel,
+                            color: selectedLabel == correctAnswer ? buttonCorrect : red,
+                            size: 30,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            selectedLabel == correctAnswer ? S.of(context).togriJavob : S.of(context).notogriJavob,
+                            style: TextStyle(
                               color: selectedLabel == correctAnswer ? buttonCorrect : red,
-                              size: 30,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
                             ),
-                            const SizedBox(width: 8),
-                            Text(
-                              selectedLabel == correctAnswer
-                                  ? S.of(context).togriJavob
-                                  : S.of(context).notogriJavob,
-                              style: TextStyle(
-                                color: selectedLabel == correctAnswer ? buttonCorrect : red,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        if (selectedLabel == correctAnswer)
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                      if (selectedLabel == correctAnswer)
                         // Only Davom Etish button with full width
                         SizedBox(
                           width: double.infinity,
@@ -266,42 +282,48 @@ class _Question7State extends State<Question7> {
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  )
+                    ],
+                  ),
+                )
                 : AbsorbPointer(
                     absorbing: !isAnswerSelected,
                     child: Opacity(
                       opacity: !isAnswerSelected ? 0.5 : 1,
                       child: Container(
+                        height: 150,
                         width: MediaQuery.of(context).size.width,
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                         child: Center(
-                          child: AnimatedButton(
-                            color: submitButtonColor,
-                            height: 50,
-                            width: 310,
-                            onPressed: () {
-                              if (!isChecked) {
-                                final isCorrect = selectedLabel == correctAnswer;
-                          
-                                submitButtonColor = isCorrect ? primaryCorrect : primaryIncorrect;
-                                widget.onXPUpdate(isCorrect ? 10 : 5);
-                                if (!isCorrect) widget.onIncorrect();
-                          
-                                setState(() {
-                                  isChecked = true;
-                                  GameState.scoreDop += 1;
-                                });
-                              }
-                            },
-                            child: Text(
-                              S.of(context).tekshirish,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                          child: Column(
+                            children: [
+                              SizedBox(height: 57),
+                              AnimatedButton(
+                                color: submitButtonColor,
+                                height: 50,
+                                width: 310,
+                                onPressed: () {
+                                  if (!isChecked) {
+                                    final isCorrect = selectedLabel == correctAnswer;
+                              
+                                    submitButtonColor = isCorrect ? primaryCorrect : primaryIncorrect;
+                                    widget.onXPUpdate(isCorrect ? 10 : 5);
+                                    if (!isCorrect) widget.onIncorrect();
+                              
+                                    setState(() {
+                                      isChecked = true;
+                                      GameState.scoreDop += 1;
+                                    });
+                                  }
+                                },
+                                child: Text(
+                                  S.of(context).tekshirish,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                       ),

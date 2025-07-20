@@ -24,7 +24,8 @@
 
   "birinchiBosqich": "A'lochi",
   "kvadratQasri": "Profil Statistika",
-  "meningProfilim": "MENING PROFILIM",
+  "settings": "SOZLASH",
+  "settingsNew": "Sozlash",
   "statistika": "STATISTIKA",
   "progress": "Progress",
   "arifmetika": "Arifmetika",
@@ -46,8 +47,8 @@
   "TwoSixYutuqlar": "2026 Yildagi Yutuqlar",
   "TwoSevenYutuqlar": "2027 Yildagi Yutuqlar",
 
-  "kvadratQasriBirinchiBosqich": "KVADRAT QASRI | BIRINCHI BOSQICH",
-  "kvadratQasriBirinchiBosqichDes": "SONLAR OLAMIGA SAYOHAT",
+  "kvadratQasriBirinchiBosqich": "1 BOSQICH, KVADRAT QASRI",
+  "kvadratQasriBirinchiBosqichDes": "Sonlar olamiga sayohat",
   "uchburchakPiramidasiIkkinchiBosqich": "UCHBURCHAK PIRAMIDASI | IKKINCHI BOSQICH",
   "uchburchakPiramidasiIkkinchiBosqichDes": "MATEMATIK AMALLAR SIRLARI",
   "doiraQasriUchinchiBosqich": "DOIRA QASRI | UCHINCHI BOSQICH",
@@ -94,7 +95,7 @@
   "qaysiBirShakl": "Qaysi bir shakl teng yarimga bo'lingan?",
   "kokKatakchalar": "Berilgan misolni yeching. Ko'k katakchalar o'rniga bittagina son to'g'ri keladi.",
   "otniTogri": "Otni to'g'ri kattakga qo'ying!",
-  "joningiztugadi": "JONINGIZ TUGADI!",
+  "joningiztugadi": "Joningiz tugadi!",
   "tanafuzQilib": "Tanafus qilib keyin qayting!",
   "uygaQaytish": "UYGA QAYTISH",
   "ajoyibDars": "AJOYIB DARS!",
@@ -222,6 +223,7 @@
   "firstName": "Ism",
   "lastName": "Familiya",
   "darajaniTanlang": "Darajani tanlang",
+  "signOut": "CHIQISH",
 
   "emailAlreadyExists": "Bu email allaqachon roʻyxatdan oʻtgan",
   "emailInvalid1": "Email noto‘g‘ri kiritilgan",
@@ -239,7 +241,11 @@
   "findThePerimeter": "To‘rtburchakning perimetrini toping.",
   "whichNumberIn": "Qaysi son uchburchakda ham, kvadratda ham va doirada ham bor?",
   "hint": "Maslahat",
+  "squareCastle": "Kvadrat Qasri",
+  "beast": "Sen juda zo'rsan!",
+  "solution": "Javob:",
 
   "hint1": "Ayirish degani olib tashlash degani.\n\nNamuna:\nAgar sizda 3 ta narsa bo‘lsa va 2 tasini olib tashlasangiz, qolganini sanang:\n•  3 ta barmoq bilan boshlang.\n•  2 ta barmoqni tushiring.\n•  Nechta barmoq qoldi?\n\nO‘ylang: 3… 1 ni olib tashlang (endi 2)… yana 1 ni olib tashlang (endi 1).",
-  "hint2": "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi."
+  "hint2": "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi.",
+  "hint3": "Har bir qatorga diqqat bilan qarang.\nHar bir rasm biror sonni bildiradi.\nHar bir rasmning qiymatini bosqichma-bosqich topishga harakat qiling!\n\nNamuna:"
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, sort_child_properties_last
 
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Hint6.dart';
@@ -74,8 +75,8 @@ class _Question6State extends State<Question6> {
 
         if (label != null) {
           return AnimatedButton(
-            width: 60,
-            height: 60,
+            width: 54,
+            height: 54,
             color: isChecked
                 ? ((label == '2' || label == '4') ? lightGreen : lightRed)
                 : Colors.white,
@@ -101,29 +102,43 @@ class _Question6State extends State<Question6> {
                   label,
                   style: const TextStyle(
                     fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                    color: questionColor,
+                    fontFamily: fontQuestion
                   ),
                 ),
               ),
             ),
           );
         } else {
-          return DottedBorder(
-            color: candidateData.isNotEmpty ? primaryColor : grey,
-            strokeWidth: 2,
-            dashPattern: [13, 3],
-            borderType: BorderType.RRect,
-            radius: const Radius.circular(12),
-            child: Container(
-              width: 56,
-              height: 56,
+          return SizedBox(
+            height: 54,
+            width: 54,
+            child: Stack(
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: lightGrey,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              // Removed the Text(targetId) here!
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: lightGrey,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                DottedBorder(
+                  color: candidateData.isNotEmpty
+                      ? primaryColor
+                      : greyColor,
+                  strokeWidth: 3,
+                  dashPattern: const [10, 4],
+                  borderType: BorderType.RRect,
+                  radius: const Radius.circular(12),
+                  child: const SizedBox(
+                    width: 48,
+                    height: 48,
+                  ),
+                ),
+              ],
             ),
           );
         }
@@ -134,184 +149,228 @@ class _Question6State extends State<Question6> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    S.of(context).berilganMisolniYeching,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: questionColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  width: size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          S.of(context).berilganMisolniYeching,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                        child: IntrinsicHeight(
+                          child: Column(
+                            children: [
+                              Spacer(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/question_images/Q6.png',
+                                    width: 200,
+                                    fit: BoxFit.contain,
+                                  ),
+                                  SizedBox(width: 5),
+                                  const Text(
+                                    "=",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    "8",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 50),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "2",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    "+",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  buildDragTarget("A"),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    "+",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  buildDragTarget("B"),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    "=",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    "8",
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: fontQuestion,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              Spacer(),
+
+                              Padding(
+                                padding: const EdgeInsets.only(top: 30, bottom: 10),
+                                child: Wrap(
+                                  spacing: 10,
+                                  children: draggableButtons.map((item) {
+                                    final label = item['label'] as String;
+                                    final isUsed = usedLabels.contains(label);
+                                    
+                                    if (isUsed) {
+                                      return Container(
+                                        width: 54,
+                                        height: 54,
+                                        decoration: BoxDecoration(
+                                          color: greyColor,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(color: greyColor, width: 2),
+                                        ),
+                                      );
+                                    }
+                                    
+                                    return Draggable<Map<String, dynamic>>(
+                                      data: item,
+                                      child: AnimatedButton(
+                                        width: 54,
+                                        height: 54,
+                                        color: Colors.white,
+                                        onPressed: () {
+                                          if (!isChecked) {
+                                            autoDropToFirstAvailableTarget(label);
+                                          }
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: greyColor,
+                                              width: 2,
+                                            ),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              label,
+                                              style: const TextStyle(
+                                                fontSize: 25,
+                                                color: questionColor,
+                                                fontFamily: fontQuestion
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      feedback: Material(
+                                        color: Colors.transparent,
+                                        child: AnimatedButton(
+                                          width: 54,
+                                          height: 54,
+                                          color: Colors.white,
+                                          onPressed: () {},
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: greyColor,
+                                                width: 2,
+                                              ),
+                                              borderRadius: BorderRadius.circular(12),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                label,
+                                                style: const TextStyle(
+                                                  fontSize: 25,
+                                                  color: questionColor,
+                                                  fontFamily: fontQuestion
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      childWhenDragging: Container(
+                                        width: 54,
+                                        height: 54,
+                                        decoration: BoxDecoration(
+                                          color: greyColor,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(color: greyColor, width: 2),
+                                        ),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40),
-                          
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/question_images/Q6.png',
-                            width: size.width * 0.5,
-                            fit: BoxFit.contain,
-                          ),
-                          SizedBox(width: 10),
-                          const Text(
-                            "= 8",
-                            style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 50),
-                          
-                      const SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "2 +",
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          buildDragTarget("A"),
-                          const SizedBox(width: 10),
-                          const Text(
-                            "+",
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          buildDragTarget("B"),
-                          const SizedBox(width: 10),
-                          const Text(
-                            "= 8",
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 70),
-                      Wrap(
-                        spacing: 10,
-                        children: draggableButtons.map((item) {
-                          final label = item['label'] as String;
-                          final isUsed = usedLabels.contains(label);
-                          
-                          if (isUsed) {
-                            return Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: greyColor, width: 2),
-                              ),
-                            );
-                          }
-                          
-                          return Draggable<Map<String, dynamic>>(
-                            data: item,
-                            child: AnimatedButton(
-                              width: 60,
-                              height: 60,
-                              color: Colors.white,
-                              onPressed: () {
-                                if (!isChecked) {
-                                  autoDropToFirstAvailableTarget(label);
-                                }
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: greyColor,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    label,
-                                    style: const TextStyle(
-                                      fontSize: 25,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            feedback: Material(
-                              color: Colors.transparent,
-                              child: AnimatedButton(
-                                width: 60,
-                                height: 60,
-                                color: Colors.white,
-                                onPressed: () {},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: greyColor,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      label,
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            childWhenDragging: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: greyColor, width: 2),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
+                    );
+                  }
                 ),
               ),
-            ),
+            ),    
             isChecked
                 ? Container(
                   height: 150,
@@ -433,43 +492,49 @@ class _Question6State extends State<Question6> {
                 child: Opacity(
                   opacity: !isAnswerSelected ? 0.5 : 1,
                   child: Container(
+                    height: 150,
                     width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                     child: Center(
-                      child: AnimatedButton(
-                        color: submitButtonColor,
-                        height: 50,
-                        width: 310,
-                        onPressed: () {
-                          if (!isChecked) {
-                            // Check both answers
-                            if ((droppedLabels["A"] == '2' && droppedLabels["B"] == '4') ||
-                                (droppedLabels["A"] == '4' && droppedLabels["B"] == '2')) {
-                              submitButtonColor = primaryCorrect;
-                              isCorrect = true;
-                              widget.onXPUpdate(10);
-                              setState(() {
-                                GameState.arifmetikaDop += 0.5;
-                                GameState.scoreDop += 3;
-                              });
-                            } else {
-                              submitButtonColor = primaryIncorrect;
-                              isCorrect = false;
-                              widget.onXPUpdate(5);
-                              widget.onIncorrect();
-                            }
-                            setState(() {
-                              isChecked = true;
-                            });
-                          }
-                        },
-                        child: Text(
-                          S.of(context).tekshirish,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 57),
+                          AnimatedButton(
+                            color: submitButtonColor,
+                            height: 50,
+                            width: 310,
+                            onPressed: () {
+                              if (!isChecked) {
+                                // Check both answers
+                                if ((droppedLabels["A"] == '2' && droppedLabels["B"] == '4') ||
+                                    (droppedLabels["A"] == '4' && droppedLabels["B"] == '2')) {
+                                  submitButtonColor = primaryCorrect;
+                                  isCorrect = true;
+                                  widget.onXPUpdate(10);
+                                  setState(() {
+                                    GameState.arifmetikaDop += 0.5;
+                                    GameState.scoreDop += 3;
+                                  });
+                                } else {
+                                  submitButtonColor = primaryIncorrect;
+                                  isCorrect = false;
+                                  widget.onXPUpdate(5);
+                                  widget.onIncorrect();
+                                }
+                                setState(() {
+                                  isChecked = true;
+                                });
+                              }
+                            },
+                            child: Text(
+                              S.of(context).tekshirish,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),

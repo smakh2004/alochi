@@ -33,6 +33,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  url_launcher: ^6.3.2
+  connectivity_plus: ^6.1.4
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -90,8 +93,12 @@ flutter:
     - assets/icons/PremiumIcon.png
     - assets/icons/HeartInfinity.png
     - assets/icons/ArifmeticStorm.png
+    - assets/icons/ArifmeticStorm1.png
     - assets/icons/StormInfinity.png
     - assets/icons/StormTime.png
+    - assets/icons/Cup.png
+    - assets/icons/Points.png
+    - assets/icons/Time.png
 
     - assets/images/Welcome1.png
     - assets/images/Welcome2.png
@@ -117,6 +124,8 @@ flutter:
     - assets/images/5progress.png
     - assets/images/Hint1.png
     - assets/images/Hint2.png
+    - assets/images/Hint3.png
+    - assets/images/Hint3(1).png
 
     - assets/question_images/Q1.png
     - assets/question_images/Q2(1).png
@@ -234,6 +243,8 @@ flutter:
     - assets/animations/MrSquareCastle1.json
     - assets/animations/MrSquareCastle2.json
     - assets/animations/Hint.json
+    - assets/animations/MrSquareAlochiInfinity.json
+    - assets/animations/MrSquareNoInternet.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/to/resolution-aware-images
@@ -245,9 +256,13 @@ flutter:
     # list giving the asset and other descriptors for the font. For
     # example:
   fonts:
-    - family: BerlinSans
+    - family: LilitaOneRegular
       fonts:
-        - asset: assets/fonts/BerlinSans.ttf
+        - asset: assets/fonts/LilitaOne-Regular.ttf
+    - family: AlochiFont
+      fonts:
+        - asset: assets/fonts/AlochiFont.ttf
+          weight: 900
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

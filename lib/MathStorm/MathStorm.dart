@@ -140,99 +140,127 @@ class _MathStormState extends State<MathStorm> {
               children: [ 
                 Expanded(
                   child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Lottie.asset(
-                              'assets/animations/MathStormAnimation.json',
-                              fit: BoxFit.contain,
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    S.of(context).rekord,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    GameState.matematikShtorm.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: red,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            CustomPaint(
-                              size: const Size(170, 170),
-                              painter: DashedCirclePainter(progress),
-                            ),
-                            Image.asset(
-                              'assets/icons/ArifmeticStorm.png',
-                              height: 90,
-                              width: 90,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          '${S.of(context).urinishlarSoni} $attempts',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: orange,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        if (attempts == 0 && resetTime != null)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 2),
-                            child: Text(
-                              '${S.of(context).yangiUrinishlar} ${formatDuration(resetTime!.difference(DateTime.now()))} ${S.of(context).danSong}',
-                              style: const TextStyle(fontSize: 16, color: Colors.grey),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: 300,
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(color: grey, width: 2),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                    scrollDirection: Axis.vertical,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minWidth: constraints.maxWidth,
+                        maxWidth: constraints.maxWidth,
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 300, // total area height
+                            width: double.infinity,
+                            child: Stack(
                               children: [
-                                Image.asset('assets/icons/StormTime.png', height: 32, width: 32),
-                                const SizedBox(width: 5),
-                                Text('3 ${S.of(context).minut}',
-                                    style: TextStyle(fontSize: 18, color: darkOrange, fontWeight: FontWeight.bold)),
-                                const SizedBox(width: 24),
-                                Image.asset('assets/icons/Heart.png', height: 32, width: 32),
-                                const SizedBox(width: 5),
-                                Text('3 ${S.of(context).dona}',
-                                    style: TextStyle(fontSize: 18, color: red, fontWeight: FontWeight.bold)),
+                                // BACKGROUND: two colors
+                                Column(
+                                  children: [
+                                    Container(height: 230, color: redDark),
+                                  ],
+                                ),
+
+                                // FOREGROUND: animation
+                                Center(
+                                  child: SizedBox(
+                                    height: 250, // animation size
+                                    child: Lottie.asset(
+                                      'assets/animations/MathStormAnimation.json',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+
+                                // FOREGROUND: bottom text
+                                Positioned(
+                                  bottom: 8,
+                                  left: 0,
+                                  right: 0,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        S.of(context).rekord,
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: questionColor
+                                        ),
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        GameState.matematikShtorm.toString(),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: red,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              CustomPaint(
+                                size: const Size(150, 150),
+                                painter: DashedCirclePainter(progress),
+                              ),
+                              Image.asset(
+                                'assets/icons/ArifmeticStorm.png',
+                                height: 80,
+                                width: 80,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '${S.of(context).urinishlarSoni} $attempts',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: orange,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          if (attempts == 0 && resetTime != null)
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 2),
+                              child: Text(
+                                '${S.of(context).yangiUrinishlar} ${formatDuration(resetTime!.difference(DateTime.now()))} ${S.of(context).danSong}',
+                                style: const TextStyle(fontSize: 16, color: Colors.grey),
+                              ),
+                            ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              width: 300,
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(color: greyColor, width: 2),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/icons/StormTime.png', height: 32, width: 32),
+                                  const SizedBox(width: 5),
+                                  Text('3 ${S.of(context).minut}',
+                                      style: TextStyle(fontSize: 18, color: darkOrange, fontWeight: FontWeight.bold)),
+                                  const SizedBox(width: 24),
+                                  Image.asset('assets/icons/Heart.png', height: 32, width: 32),
+                                  const SizedBox(width: 5),
+                                  Text('3 ${S.of(context).dona}',
+                                      style: TextStyle(fontSize: 18, color: red, fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

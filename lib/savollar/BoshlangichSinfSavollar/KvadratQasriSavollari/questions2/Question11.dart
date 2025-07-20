@@ -171,101 +171,169 @@ class _Question11State extends State<Question11> {
               ),
               isChecked
               ? Container(
-                height: 140,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: isCorrect ? lightGreen : const Color(0xFFFFE4E1),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          isCorrect ? Icons.check_circle : Icons.cancel,
-                          color: isCorrect ? buttonCorrect : red,
-                          size: 30,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          isCorrect ? S.of(context).togriJavob : S.of(context).notogriJavob,
-                          style: TextStyle(
+                  height: 150,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: isCorrect ? lightGreen : const Color(0xFFFFE4E1),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // top row with icon and "Correct/Incorrect"
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            isCorrect ? Icons.check_circle : Icons.cancel,
                             color: isCorrect ? buttonCorrect : red,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                            size: 30,
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: Center(
-                        child: AnimatedButton(
-                          onPressed: widget.onNext,
-                          color: isCorrect ? buttonCorrect : red,
-                          height: 50,
-                          width: 310,
-                          child: Text(
-                            S.of(context).davomEtish,
+                          const SizedBox(width: 8),
+                          Text(
+                            isCorrect ? S.of(context).togriJavob : S.of(context).notogriJavob,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: isCorrect ? buttonCorrect : red,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
-                              letterSpacing: 1,
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              )
+                      const SizedBox(height: 30),
+                      if (isCorrect)
+                        // Only Davom Etish button with full width
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: Center(
+                            child: AnimatedButton(
+                              onPressed: widget.onNext,
+                              color: buttonCorrect,
+                              height: 50,
+                              width: 310,
+                              borderRadius: 12,
+                              child: Text(
+                                S.of(context).davomEtish,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      else
+                        // Incorrect answer
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AnimatedButton(
+                              onPressed: () {
+                                // Navigator.push(
+                                //   context,
+                                //   PageRouteBuilder(
+                                //     transitionDuration: const Duration(milliseconds: 600),
+                                //     pageBuilder: (_, __, ___) => const Hint11(),
+                                //     transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                                //       position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+                                //           .animate(CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
+                                //       child: child,
+                                //     ),
+                                //   ),
+                                // );
+                              },
+                              height: 50,
+                              width: 120, 
+                              color: orange,
+                              borderRadius: 12,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.lightbulb, size: 30, color: Colors.white),
+                                  Text(
+                                    S.of(context).hint,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(width: 6),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 16), 
+                            AnimatedButton(
+                              onPressed: widget.onNext,
+                              color: red,
+                              height: 50,
+                              width: 160, 
+                              borderRadius: 12,
+                              child: Text(
+                                S.of(context).davomEtish,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                )
               : AbsorbPointer(
                 absorbing: !isAnswerSelected,
                 child: Opacity(
                   opacity: !isAnswerSelected ? 0.5 : 1,
                   child: Container(
+                    height: 150,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                     child: Center(
-                      child: AnimatedButton(
-                        color: submitButtonColor,
-                        height: 50,
-                        width: 310,
-                        onPressed: () {
-                          if (!isChecked) {
-                            if (selectedLabels.length == 2 && selectedLabels.containsAll(correctAnswers)) {
-                              submitButtonColor = primaryCorrect;
-                              isCorrect = true;
-                              widget.onXPUpdate(10);
-                              setState(() {
-                                GameState.arifmetikaDop = 0;
-                                GameState.logikaDop = 0;
-                                GameState.scoreDop = 0;
-                                GameState.logikaDop += 0.5;
-                                GameState.scoreDop += 1;
-                              });
-                            } else {
-                              submitButtonColor = primaryIncorrect;
-                              isCorrect = false;
-                              widget.onXPUpdate(5);
-                              widget.onIncorrect();
-                            }
-                            setState(() {
-                              isChecked = true;
-                            });
-                          }
-                        },
-                        child: Text(
-                          S.of(context).tekshirish,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 57),
+                          AnimatedButton(
+                            color: submitButtonColor,
+                            height: 50,
+                            width: 310,
+                            onPressed: () {
+                              if (!isChecked) {
+                                if (selectedLabels.length == 2 && selectedLabels.containsAll(correctAnswers)) {
+                                  submitButtonColor = primaryCorrect;
+                                  isCorrect = true;
+                                  widget.onXPUpdate(10);
+                                  setState(() {
+                                    GameState.arifmetikaDop = 0;
+                                    GameState.logikaDop = 0;
+                                    GameState.scoreDop = 0;
+                                    GameState.logikaDop += 0.5;
+                                    GameState.scoreDop += 1;
+                                  });
+                                } else {
+                                  submitButtonColor = primaryIncorrect;
+                                  isCorrect = false;
+                                  widget.onXPUpdate(5);
+                                  widget.onIncorrect();
+                                }
+                                setState(() {
+                                  isChecked = true;
+                                });
+                              }
+                            },
+                            child: Text(
+                              S.of(context).tekshirish,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),

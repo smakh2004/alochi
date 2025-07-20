@@ -32,7 +32,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String currentStageTitle = '';
   String currentStageSubtitle = '';
+  String currentCastle = '';
   Color currentStageColor = primaryColor;
+  Color currentStageTitleColor = lightblue;
 
   Timer? countdownTimer;
   int secondsLeft = 60;
@@ -67,7 +69,9 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         currentStageTitle = S.of(context).kvadratQasriBirinchiBosqich;
         currentStageSubtitle = S.of(context).kvadratQasriBirinchiBosqichDes;
-        currentStageColor = primaryColor;
+        currentStageColor = blue;
+        currentStageTitleColor = lightBlue;
+        currentCastle = S.of(context).squareCastle;
       });
     } else if (progress2 < 1.0) {
       // Stage 2 — Uchburchak Piramidasi
@@ -75,6 +79,8 @@ class _HomePageState extends State<HomePage> {
         currentStageTitle = S.of(context).uchburchakPiramidasiIkkinchiBosqich;
         currentStageSubtitle = S.of(context).uchburchakPiramidasiIkkinchiBosqichDes;
         currentStageColor = red;
+        currentStageTitleColor = lightRed;
+        currentCastle = S.of(context).squareCastle;
       });
     } else {
       // Stage 3 (or further)
@@ -82,6 +88,8 @@ class _HomePageState extends State<HomePage> {
         currentStageTitle = S.of(context).doiraQasriUchinchiBosqich;
         currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
         currentStageColor = Colors.deepOrange;
+        currentStageTitleColor = orange;
+        currentCastle = S.of(context).squareCastle;
       });
     }
   }
@@ -207,14 +215,40 @@ class _HomePageState extends State<HomePage> {
                   transitionDuration: const Duration(milliseconds: 600),
                   pageBuilder: (_, __, ___) => const NotificationsPage(),
                   transitionsBuilder: (_, animation, __, child) => SlideTransition(
-                    position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(
-                      CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
+                    position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
+                        .animate(CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
                     child: child,
                   ),
                 ),
               ),
-              child: Image.asset('assets/icons/Ring.png', width: 32, height: 32),
-            )
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  // 🔔 The bell icon
+                  Image.asset(
+                    'assets/icons/Ring.png',
+                    width: 32,
+                    height: 32,
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 2,
+                    child: Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          width: 2,
+                          color: Colors.white
+                        )
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
         bottom: PreferredSize(
@@ -228,13 +262,16 @@ class _HomePageState extends State<HomePage> {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+
+                    // Top Banner with Levels
                     AnimatedButton(
-                      height: screenHeight * 0.12,
-                      width: screenWidth * 0.85,
+                      borderRadius: 20,
+                      height: screenHeight * 0.10,
+                      width: screenWidth * 0.90,
                       color: currentStageColor,
                       onPressed: () => Navigator.push(
                         context,
@@ -255,19 +292,49 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(currentStageTitle,
-                                style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
-                            const SizedBox(height: 4),
+                                style: TextStyle(fontSize: 14, color: currentStageTitleColor, fontWeight: FontWeight.bold)),
                             Text(currentStageSubtitle,
-                                style: const TextStyle(fontSize: 12, color: lightGrey, fontWeight: FontWeight.w500)),
+                                style: const TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ),
                     ),
+                    const SizedBox(height: 20),
 
-                    const SizedBox(height: 8),
+                    // Text above Castles
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          const Expanded(
+                            child: Divider(
+                              color: greyColor,
+                              thickness: 2,     
+                              endIndent: 10,      
+                            ),
+                          ),
+                          Text(
+                            currentCastle,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: grey,
+                            ),
+                          ),
+                          const Expanded(
+                            child: Divider(
+                              color: greyColor,
+                              thickness: 2,
+                              indent: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Castles
                     _getCurrentCastleWidget(),
-                    const SizedBox(height: 8),
-
+                    
                     if (GameState.hearts == 0)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -284,13 +351,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
+            // Start button
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
               child: AbsorbPointer(
                 absorbing: GameState.hearts == 0,
                 child: AnimatedButton(
                   height: 50,
-                  width: 200,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   color: GameState.hearts > 0 ? orange : greyColor,
                   onPressed: () async {
                     final result = await Navigator.push(
@@ -362,7 +431,6 @@ class _HomePageState extends State<HomePage> {
         Text(
           value,
           style: TextStyle(
-            fontWeight: FontWeight.bold,
             letterSpacing: 2.0,
             fontSize: 18.0,
             fontFamily: primaryFont,

@@ -61,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "azizChizilgan": MessageLookupByLibrary.simpleMessage(
       "Aziz chizilgan chiziq bo\'ylab qog\'oz bo\'lagini buklaydi. U nima ko\'rdi?",
     ),
+    "beast": MessageLookupByLibrary.simpleMessage("Sen juda zo\'rsan!"),
     "berilganMisolni": MessageLookupByLibrary.simpleMessage(
       "Berilgan misolni yeching. Ko\'k katakchalar o\'rniga bir xil qiymatga ega tangalar to\'g\'ri keladi.",
     ),
@@ -163,6 +164,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hint2": MessageLookupByLibrary.simpleMessage(
       "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi.",
     ),
+    "hint3": MessageLookupByLibrary.simpleMessage(
+      "Har bir qatorga diqqat bilan qarang.\nHar bir rasm biror sonni bildiradi.\nHar bir rasmning qiymatini bosqichma-bosqich topishga harakat qiling!\n\nNamuna:",
+    ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "Bu ilova sizning matematikani chuqur o\'zlashtirishizga yordam beradi. Sizni yo\'l davomida geometrik figuralar qo\'lab quvatlab boradi.",
     ),
@@ -187,7 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Javobni kiriting va rekord o\'rnating.",
     ),
     "jon": MessageLookupByLibrary.simpleMessage("Jon"),
-    "joningiztugadi": MessageLookupByLibrary.simpleMessage("JONINGIZ TUGADI!"),
+    "joningiztugadi": MessageLookupByLibrary.simpleMessage("Joningiz tugadi!"),
     "jonlarZapasi": MessageLookupByLibrary.simpleMessage("Jonlar Zapasi"),
     "kasrlarniKopaytirishBolish": MessageLookupByLibrary.simpleMessage(
       "Kasrlarni ko‘paytirish/bo‘lish",
@@ -210,10 +214,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kvadratQasri": MessageLookupByLibrary.simpleMessage("Profil Statistika"),
     "kvadratQasriBirinchiBosqich": MessageLookupByLibrary.simpleMessage(
-      "KVADRAT QASRI | BIRINCHI BOSQICH",
+      "1 BOSQICH, KVADRAT QASRI",
     ),
     "kvadratQasriBirinchiBosqichDes": MessageLookupByLibrary.simpleMessage(
-      "SONLAR OLAMIGA SAYOHAT",
+      "Sonlar olamiga sayohat",
     ),
     "kvadratQasriKubogi": MessageLookupByLibrary.simpleMessage(
       "Kvadrat Qasri Kubogi",
@@ -255,7 +259,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "matnliMasalalar": MessageLookupByLibrary.simpleMessage("Matnli masalalar"),
     "may": MessageLookupByLibrary.simpleMessage("May"),
     "mehmon": MessageLookupByLibrary.simpleMessage("Mehmon"),
-    "meningProfilim": MessageLookupByLibrary.simpleMessage("MENING PROFILIM"),
     "messageOfMrSquare": MessageLookupByLibrary.simpleMessage(
       "Matematika bo\'ycha bilim darajangizni tanlang!",
     ),
@@ -328,12 +331,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "savatJon": MessageLookupByLibrary.simpleMessage("Savat Jon"),
     "sekund": MessageLookupByLibrary.simpleMessage("sekund"),
     "sentabr": MessageLookupByLibrary.simpleMessage("Sentabr"),
+    "settings": MessageLookupByLibrary.simpleMessage("SOZLASH"),
+    "settingsNew": MessageLookupByLibrary.simpleMessage("Sozlash"),
+    "signOut": MessageLookupByLibrary.simpleMessage("CHIQISH"),
     "sizHaliKirmagansiz": MessageLookupByLibrary.simpleMessage(
       "Siz hali ro\'yxatdan o\'tmagansiz",
     ),
     "sizniErtagaKutamiz": MessageLookupByLibrary.simpleMessage(
       "Sizni ertaga kutamiz!",
     ),
+    "solution": MessageLookupByLibrary.simpleMessage("Javob:"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Noto\'g\'ri email yoki parol",
     ),
@@ -341,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sonli ketma-ketliklar",
     ),
     "sotibOlish": MessageLookupByLibrary.simpleMessage("Sotib Olish"),
+    "squareCastle": MessageLookupByLibrary.simpleMessage("Kvadrat Qasri"),
     "start": MessageLookupByLibrary.simpleMessage("BOSHLASH"),
     "statistika": MessageLookupByLibrary.simpleMessage("STATISTIKA"),
     "student": MessageLookupByLibrary.simpleMessage("Student"),

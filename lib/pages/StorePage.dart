@@ -29,7 +29,6 @@ class _StorePageState extends State<StorePage> {
             fontFamily: primaryFont,
             color: darkGrey,
             fontSize: 20,
-            fontWeight: FontWeight.w600,
           ),
         ),
         actions: [
@@ -73,6 +72,7 @@ class _StorePageState extends State<StorePage> {
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    color: questionColor
                   ),
                 ),
               ),
@@ -105,6 +105,7 @@ class _StorePageState extends State<StorePage> {
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    color: questionColor
                   ),
                 ),
               ),
@@ -239,7 +240,7 @@ class _StorePageState extends State<StorePage> {
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
-                                  color: Colors.black),
+                                  color: questionColor),
                               children: [
                                 TextSpan(text: '\n${S.of(context).miqdori}: '),
                                 TextSpan(text: number, style: TextStyle(color: primaryColor)),
@@ -281,12 +282,6 @@ class _StorePageState extends State<StorePage> {
                             shape: BoxShape.circle,
                             color: Colors.white,
                             border: Border.all(color: grey, width: 2),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 4,
-                              ),
-                            ],
                           ),
                           child: const Icon(Icons.close, size: 35, color: Colors.grey),
                         ),
@@ -367,7 +362,7 @@ class _StorePageState extends State<StorePage> {
                             children: [
                               Text(name,
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 20)),
+                                      fontWeight: FontWeight.bold, fontSize: 20, color: questionColor)),
                               const SizedBox(height: 12),
                               Image.asset(assetPath, width: 120, height: 120),
                               const SizedBox(height: 10),
@@ -377,7 +372,7 @@ class _StorePageState extends State<StorePage> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
-                                      color: Colors.black),
+                                      color: questionColor),
                                   children: [
                                     TextSpan(text: '${S.of(context).narxi}: '),
                                     WidgetSpan(
@@ -478,7 +473,7 @@ class _StorePageState extends State<StorePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(name, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: isDisabled ? Colors.grey : Colors.black)),
+                      Text(name, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: isDisabled ? Colors.grey : questionColor)),
                       const SizedBox(height: 4),
                       Text(itemNumber, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.bold)),
                     ],
@@ -545,7 +540,7 @@ class _StorePageState extends State<StorePage> {
                         children: [
                           Text(name,
                               style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20)),
+                                  fontWeight: FontWeight.bold, fontSize: 20, color: questionColor)),
                           const SizedBox(height: 12),
                           Image.asset(assetPath, width: 120, height: 120),
                           RichText(
@@ -554,7 +549,7 @@ class _StorePageState extends State<StorePage> {
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
-                                  color: Colors.black),
+                                  color: questionColor),
                               children: [
                                 TextSpan(text: '\n${S.of(context).miqdori}: '),
                                 TextSpan(text: number, style: TextStyle(color: primaryIncorrect)),
@@ -609,12 +604,6 @@ class _StorePageState extends State<StorePage> {
                             shape: BoxShape.circle,
                             color: Colors.white,
                             border: Border.all(color: grey, width: 2),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 4,
-                              ),
-                            ],
                           ),
                           child: const Icon(Icons.close, size: 35, color: Colors.grey),
                         ),
@@ -639,7 +628,7 @@ class _StorePageState extends State<StorePage> {
             Expanded(
               child: Text(
                 name,
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: questionColor),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -682,7 +671,7 @@ class _StorePageState extends State<StorePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Section title
-          Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: isDisabled ? Colors.grey : Colors.black)),
+          Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: isDisabled ? Colors.grey : questionColor)),
           const SizedBox(height: 10),
 
           // Banner box with image and list of items

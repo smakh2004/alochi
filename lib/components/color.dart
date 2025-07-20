@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+const questionColor = Color(0xFF454545);
 const primaryColor = Color(0xFF00B9FF);
+const blue = Color(0xFF1CB0F6);
+const lightblue = Color(0xFFC2E6FF);
+const lighterBlue = Color(0xFF65D4F8);
 const buttonBlue = Color(0xFFA2DEFC);
 const greyColor = Color(0xFFE4E4E2);
 const red = Color(0xFFFF6D66);
@@ -28,3 +32,9 @@ const borderBlue = Color(0xFF008DC2);
 const darkerOrange = Color(0xFFC3600C);
 const purpleContainer = Color(0xFFA7A5F4);
 const greenAlmaz = Color(0xFF22C296);
+const yellow = Color(0xFFFFC800);
+const greenNew = Color(0xFF5ECB00);
+const redDark = Color(0xFFFF4842);
+const orangeStrom = Color(0xFFF7A703);
+const alochiInfitity = Color(0xFF82D7FF);
+const noInternet = Color(0xFF151350);

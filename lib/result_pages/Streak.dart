@@ -24,51 +24,62 @@ class _StreakState extends State<Streak> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: Lottie.asset(
-                'assets/animations/MrSquareStreak.json',
-                height: 290,
-                width: 280,
-              ),
-            ),
-            Image.asset(
-              'assets/icons/Lightining.png',
-              height: 70,
-              width: 70,
-            ),
-            Text(
-              S.of(context).davomiyYutuq,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-                color: primaryPurple,
-                fontFamily: primaryFont,
-              ),
-            ),
-            Text(
-              S.of(context).sizniErtagaKutamiz,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: primaryPurple,
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Lottie.asset(
+                        'assets/animations/MrSquareStreak.json',
+                        height: 250,
+                        width: 240,
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/icons/Lightining.png',
+                      height: 50,
+                      width: 50,
+                    ),
+                    Text(
+                      S.of(context).davomiyYutuq,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: primaryPurple,
+                        fontFamily: primaryFont,
+                      ),
+                    ),
+                    Text(
+                      S.of(context).sizniErtagaKutamiz,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: primaryPurple,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 30),
-            AnimatedButton(
-              height: 50,
-              width: 150,
-              color: primaryPurple,
-              onPressed: () {
-                Navigator.pop(context, 'xpGained');
-              },
-              child: Text(
-                S.of(context).uygaQaytish,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30),
+              child: AnimatedButton(
+                height: 50,
+                width: 310,
+                color: primaryPurple,
+                onPressed: () {
+                  Navigator.pop(context, 'xpGained');
+                },
+                child: Text(
+                  S.of(context).uygaQaytish,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

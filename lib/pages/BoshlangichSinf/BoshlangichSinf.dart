@@ -68,7 +68,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: _selectedIndex == 0
-                        ? Colors.blue[50]
+                        ? Colors.blue[42]
                         : Colors.transparent,
                     border: _selectedIndex == 0
                         ? Border.all(color: primaryColor, width: 2)
@@ -90,7 +90,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: _selectedIndex == 1
-                        ? Colors.blue[50]
+                        ? Colors.blue[42]
                         : Colors.transparent,
                     border: _selectedIndex == 1
                         ? Border.all(color: primaryColor, width: 2)
@@ -98,7 +98,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Image.asset(
-                    'assets/icons/ArifmeticStorm.png',
+                    'assets/icons/ArifmeticStorm1.png',
                     width: 42,
                     height: 42,
                   ),
@@ -112,7 +112,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: _selectedIndex == 2
-                        ? Colors.blue[50]
+                        ? Colors.blue[42]
                         : Colors.transparent,
                     border: _selectedIndex == 2
                         ? Border.all(color: primaryColor, width: 2)
@@ -134,7 +134,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: _selectedIndex == 3
-                        ? Colors.blue[50]
+                        ? Colors.blue[42]
                         : Colors.transparent,
                     border: _selectedIndex == 3
                         ? Border.all(color: primaryColor, width: 2)
@@ -157,7 +157,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                   padding: EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     color: _selectedIndex == 4
-                        ? Colors.blue[50]
+                        ? Colors.blue[42]
                         : Colors.transparent,
                     border: _selectedIndex == 4
                         ? Border.all(color: primaryColor, width: 2)

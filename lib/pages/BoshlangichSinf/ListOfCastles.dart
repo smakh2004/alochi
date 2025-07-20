@@ -103,7 +103,7 @@ class _ListOfCastlesState extends State<ListOfCastles> {
             // First castle: Kvadrat Qasri
             _buildCastleCardWithXPBar(
               imagePath: 'assets/images/KvadratQasri.png',
-              title: "${S.of(context).kvadratQasriBirinchiBosqich}\n${S.of(context).kvadratQasriBirinchiBosqichDes}",
+              title: "${S.of(context).kvadratQasriBirinchiBosqichDes}\n${S.of(context).kvadratQasriBirinchiBosqich}",
               subtitle: S.of(context).kvadratBirinchiBosqichDes,
               titleColor: primaryColor,
               subtitleColor: grey,
@@ -254,7 +254,7 @@ class _ListOfCastlesState extends State<ListOfCastles> {
                           title,
                           style: TextStyle(
                             fontSize: 14,
-                            color: disabled ? Colors.grey : titleColor,
+                            color: disabled ? greyColor : titleColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -263,23 +263,71 @@ class _ListOfCastlesState extends State<ListOfCastles> {
                           subtitle,
                           style: TextStyle(
                             fontSize: 14,
-                            color: disabled ? Colors.grey : subtitleColor,
+                            color: disabled ? greyColor : subtitleColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         // XP Progress Bar
                         if (showXPBar) ...[
                           const SizedBox(height: 30),
-                          TweenAnimationBuilder<double>(
-                            tween: Tween<double>(begin: 0, end: progress),
-                            duration: const Duration(milliseconds: 1000),
-                            builder: (context, value, child) {
-                              return LinearProgressIndicator(
-                                borderRadius: BorderRadius.circular(20),
-                                value: value.clamp(0.0, 1.0),
-                                backgroundColor: Colors.grey[300],
-                                color: xpBarColor,
-                                minHeight: 18,
+                          LayoutBuilder(
+                            builder: (context, constraints) {
+                              return Stack(
+                                clipBehavior: Clip.none,
+                                children: [
+                                  // XP Progress Bar
+                                  TweenAnimationBuilder<double>(
+                                    tween: Tween<double>(begin: 0, end: progress),
+                                    duration: const Duration(milliseconds: 1000),
+                                    builder: (context, value, child) {
+                                      return LinearProgressIndicator(
+                                        borderRadius: BorderRadius.circular(20),
+                                        value: value.clamp(0.0, 1.0),
+                                        backgroundColor: greyColor,
+                                        color: xpBarColor,
+                                        minHeight: 18,
+                                      );
+                                    },
+                                  ),
+
+                                  // Highlight line
+                                  Positioned(
+                                    top: 3.5,
+                                    left: 0,
+                                    child: TweenAnimationBuilder<double>(
+                                      tween: Tween<double>(begin: 0.0, end: progress),
+                                      duration: const Duration(milliseconds: 500),
+                                      builder: (context, value, child) {
+                                        final fillWidth = constraints.maxWidth * value;
+                                        final shrinkFactor = 0.5 + (0.9 - 0.5) * value;
+                                        final highlightWidth = fillWidth * shrinkFactor;
+
+                                        return Transform.translate(
+                                          offset: Offset((fillWidth - highlightWidth) / 2, 0),
+                                          child: Container(
+                                            width: highlightWidth,
+                                            height: 4.5,
+                                            decoration: BoxDecoration(
+                                              color: lighterBlue,
+                                              borderRadius: BorderRadius.circular(2),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+
+                                  // Image on top
+                                  Positioned(
+                                    top: -25, // Adjust as needed
+                                    right: -10,
+                                    child: Image.asset(
+                                      'assets/icons/Cup.png',
+                                      width: 70,
+                                      height: 70,
+                                    ),
+                                  ),
+                                ],
                               );
                             },
                           ),

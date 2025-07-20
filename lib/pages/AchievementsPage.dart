@@ -1,3 +1,4 @@
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
@@ -95,7 +96,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
           children: [
             Text(
               S.of(context).yutuqlar,
-              style: TextStyle(color: darkGrey, fontWeight: FontWeight.bold, fontSize: 18),
+              style: TextStyle(color: darkGrey, fontFamily: primaryFont, fontSize: 18),
             ),
             Align(
               alignment: Alignment.centerLeft,

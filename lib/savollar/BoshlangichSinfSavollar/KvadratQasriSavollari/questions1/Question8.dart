@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, sort_child_properties_last
 
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Hint8.dart';
@@ -48,247 +49,296 @@ class _Question8State extends State<Question8> {
       backgroundColor: Colors.white,
       body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  children: [
-                    Text(
-                      S.of(context).kokKatakchalar,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24.0,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  S.of(context).kokKatakchalar,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    color: questionColor
+                  ),
                 ),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            '1',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          Container(
-                            width: 60,
-                            height: 60,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: lightBlue,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: primaryColor, 
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Text(
-                            '+ 2',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            width: 60,
-                            height: 60,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: lightBlue,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: primaryColor, 
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          const Text(
-                            '=34',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 60),
-                      DragTarget<Map<String, dynamic>>(
-                        onWillAccept: (data) => droppedLabel == null,
-                        onAccept: (data) {
-                          setState(() {
-                            droppedColor = data['color'] as Color;
-                            droppedLabel = data['label'] as String;
-                            usedLabels.add(droppedLabel!);
-                          });
-                        },
-                        builder: (context, candidateData, rejectedData) {
-                          return droppedColor == null
-                          ? DottedBorder(
-                              color: candidateData.isNotEmpty
-                                  ? primaryColor
-                                  : grey,
-                              strokeWidth: 2,
-                              dashPattern: [13, 3],
-                              borderType: BorderType.RRect,
-                              radius: const Radius.circular(12),
-                              child: Container(
-                                width: 56,
-                                height: 56,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: lightGrey,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
-                            )
-                          : AnimatedButton(
-                              width: 60,
-                              height: 60,
-                              color: isChecked
-                                  ? (droppedLabel == '2' ? lightGreen : lightRed)
-                                  : droppedColor!,
-                              onPressed: () {
-                                if (!isChecked) {
-                                  setState(() {
-                                    usedLabels.remove(droppedLabel);
-                                    droppedColor = null;
-                                    droppedLabel = null;
-                                  });
-                                }
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: isChecked
-                                        ? (droppedLabel == '2' ? buttonGreen : buttonRed)
-                                        : greyColor,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    droppedLabel!,
-                                    style: const TextStyle(
-                                      fontSize: 25,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                        },
-                      ),
-                      const SizedBox(height: 70),
-                      Wrap(
-                        spacing: 10,
-                        children: draggableButtons.map((item) {
-                          final label = item['label'] as String;
-                          final isUsed = usedLabels.contains(label);
-
-                          if (isUsed) {
-                            return Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: greyColor, width: 2),
-                              ),
-                            );
-                          }
-
-                          return Draggable<Map<String, dynamic>>(
-                            data: item,
-                            child: AnimatedButton(
-                              width: 60,
-                              height: 60,
-                              color: Colors.white,
-                              onPressed: () {
-                                if (droppedLabel == null && !isChecked) {
-                                  setState(() {
-                                    droppedColor = Colors.white;
-                                    droppedLabel = label;
-                                    usedLabels.add(label);
-                                  });
-                                }
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: greyColor,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    label,
-                                    style: const TextStyle(
-                                      fontSize: 25,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            feedback: Material(
-                              color: Colors.transparent,
-                              child: AnimatedButton(
-                                width: 60,
-                                height: 60,
-                                color: Colors.white,
-                                onPressed: () {},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: greyColor,
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      label,
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView (
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                        child: IntrinsicHeight(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Spacer(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      '1',
+                                      style: TextStyle(
+                                        fontFamily: fontQuestion,
+                                        fontSize: 40.0,
+                                        color: questionColor
                                       ),
                                     ),
+                                    const SizedBox(width: 5),
+                                    Container(
+                                      width: 54,
+                                      height: 54,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: lightBlue,
+                                        borderRadius: BorderRadius.circular(12),
+                                        border: Border.all(
+                                          color: primaryColor, 
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      '+',
+                                      style: TextStyle(
+                                        fontFamily: fontQuestion,
+                                        fontSize: 40.0,
+                                        color: questionColor
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      '2',
+                                      style: TextStyle(
+                                        fontFamily: fontQuestion,
+                                        fontSize: 40.0,
+                                        color: questionColor
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Container(
+                                      width: 54,
+                                      height: 54,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: lightBlue,
+                                        borderRadius: BorderRadius.circular(12),
+                                        border: Border.all(
+                                          color: primaryColor, 
+                                          width: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      '=',
+                                      style: TextStyle(
+                                        fontFamily: fontQuestion,
+                                        fontSize: 40.0,
+                                        color: questionColor
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    const Text(
+                                      '34',
+                                      style: TextStyle(
+                                        fontFamily: fontQuestion,
+                                        fontSize: 40.0,
+                                        color: questionColor
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 60),
+                                DragTarget<Map<String, dynamic>>(
+                                  onWillAccept: (data) => droppedLabel == null,
+                                  onAccept: (data) {
+                                    setState(() {
+                                      droppedColor = data['color'] as Color;
+                                      droppedLabel = data['label'] as String;
+                                      usedLabels.add(droppedLabel!);
+                                    });
+                                  },
+                                  builder: (context, candidateData, rejectedData) {
+                                    return droppedColor == null
+                                    ? SizedBox(
+                                                  height: 54,
+                                                  width: 54,
+                                                  child: Stack(
+                                                    alignment: Alignment.center,
+                                                    children: [
+                                                      Container(
+                                                        width: 50,
+                                                        height: 50,
+                                                        alignment: Alignment.center,
+                                                        decoration: BoxDecoration(
+                                                          color: lightGrey,
+                                                          borderRadius: BorderRadius.circular(12),
+                                                        ),
+                                                      ),
+                                                      DottedBorder(
+                                                        color: candidateData.isNotEmpty
+                                                            ? primaryColor
+                                                            : greyColor,
+                                                        strokeWidth: 3,
+                                                        dashPattern: const [10, 4],
+                                                        borderType: BorderType.RRect,
+                                                        radius: const Radius.circular(12),
+                                                        child: const SizedBox(
+                                                          width: 48,
+                                                          height: 48,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                    : AnimatedButton(
+                                        width: 54,
+                                        height: 54,
+                                        color: isChecked
+                                            ? (droppedLabel == '2' ? lightGreen : lightRed)
+                                            : droppedColor!,
+                                        onPressed: () {
+                                          if (!isChecked) {
+                                            setState(() {
+                                              usedLabels.remove(droppedLabel);
+                                              droppedColor = null;
+                                              droppedLabel = null;
+                                            });
+                                          }
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: isChecked
+                                                  ? (droppedLabel == '2' ? buttonGreen : buttonRed)
+                                                  : greyColor,
+                                              width: 2,
+                                            ),
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              droppedLabel!,
+                                              style: const TextStyle(
+                                                fontSize: 25,
+                                                color: questionColor,
+                                                fontFamily: fontQuestion
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                  },
+                                ),
+                                const Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 30, bottom: 10),
+                                  child: Wrap(
+                                    spacing: 10,
+                                    children: draggableButtons.map((item) {
+                                      final label = item['label'] as String;
+                                      final isUsed = usedLabels.contains(label);
+                                                              
+                                      if (isUsed) {
+                                        return Container(
+                                          width: 54,
+                                          height: 54,
+                                          decoration: BoxDecoration(
+                                            color: greyColor,
+                                            borderRadius: BorderRadius.circular(12),
+                                            border: Border.all(color: greyColor, width: 2),
+                                          ),
+                                        );
+                                      }
+                                                              
+                                      return Draggable<Map<String, dynamic>>(
+                                        data: item,
+                                        child: AnimatedButton(
+                                          width: 54,
+                                          height: 54,
+                                          color: Colors.white,
+                                          onPressed: () {
+                                            if (droppedLabel == null && !isChecked) {
+                                              setState(() {
+                                                droppedColor = Colors.white;
+                                                droppedLabel = label;
+                                                usedLabels.add(label);
+                                              });
+                                            }
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: greyColor,
+                                                width: 2,
+                                              ),
+                                              borderRadius: BorderRadius.circular(12),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                label,
+                                                style: const TextStyle(
+                                                  fontSize: 25,
+                                                  color: questionColor,
+                                                  fontFamily: fontQuestion
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        feedback: Material(
+                                          color: Colors.transparent,
+                                          child: AnimatedButton(
+                                            width: 54,
+                                            height: 54,
+                                            color: Colors.white,
+                                            onPressed: () {},
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: greyColor,
+                                                  width: 2,
+                                                ),
+                                                borderRadius: BorderRadius.circular(12),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  label,
+                                                  style: const TextStyle(
+                                                    fontSize: 25,
+                                                    color: questionColor,
+                                                    fontFamily: fontQuestion
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        childWhenDragging: Container(
+                                          width: 54,
+                                          height: 54,
+                                          decoration: BoxDecoration(
+                                            color: greyColor,
+                                            borderRadius: BorderRadius.circular(12),
+                                            border: Border.all(color: greyColor, width: 2),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                            childWhenDragging: Container(
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: greyColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: greyColor, width: 2),
-                              ),
-                            ),
-                          );
-                        }).toList(),
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                ),
+                    );
+                  }
+                )
               ),
             isChecked
                 ? Container(
@@ -411,41 +461,47 @@ class _Question8State extends State<Question8> {
                 child: Opacity(
                   opacity: !isAnswerSelected ? 0.5 : 1,
                   child: Container(
+                    height: 150,
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                     child: Center(
-                      child: AnimatedButton(
-                        color: submitButtonColor,
-                        height: 50,
-                        width: 310,
-                        onPressed: () {
-                          if (!isChecked) {
-                            if (droppedLabel == '2') {
-                              submitButtonColor = primaryCorrect;
-                              isCorrect = true;
-                              widget.onXPUpdate(10);
-                              setState(() {
-                                GameState.arifmetikaDop += 0.5;
-                                GameState.scoreDop += 2;
-                              });
-                            } else {
-                              submitButtonColor = primaryIncorrect;
-                              isCorrect = false;
-                              widget.onXPUpdate(5);
-                              widget.onIncorrect();
-                            }
-                            setState(() {
-                              isChecked = true;
-                            });
-                          }
-                        },
-                        child: Text(
-                          S.of(context).tekshirish,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 57),
+                          AnimatedButton(
+                            color: submitButtonColor,
+                            height: 50,
+                            width: 310,
+                            onPressed: () {
+                              if (!isChecked) {
+                                if (droppedLabel == '2') {
+                                  submitButtonColor = primaryCorrect;
+                                  isCorrect = true;
+                                  widget.onXPUpdate(10);
+                                  setState(() {
+                                    GameState.arifmetikaDop += 0.5;
+                                    GameState.scoreDop += 2;
+                                  });
+                                } else {
+                                  submitButtonColor = primaryIncorrect;
+                                  isCorrect = false;
+                                  widget.onXPUpdate(5);
+                                  widget.onIncorrect();
+                                }
+                                setState(() {
+                                  isChecked = true;
+                                });
+                              }
+                            },
+                            child: Text(
+                              S.of(context).tekshirish,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),

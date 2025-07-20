@@ -2,6 +2,7 @@ import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_button/animated_button.dart';
+import 'package:lottie/lottie.dart';
 
 class PremiumPage extends StatefulWidget {
   const PremiumPage({super.key});
@@ -21,21 +22,38 @@ class _PremiumPageState extends State<PremiumPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // Top Image
-              Image.asset(
-                'assets/images/PremiumAlochiInfinity.png',
+              SizedBox(
+                height: 400, // total area height
                 width: double.infinity,
-              ),
-              const SizedBox(height: 10),
+                child: Stack(
+                  children: [
+                    // BACKGROUND: two colors
+                    Column(
+                      children: [
+                        Container(height: 338, color: alochiInfitity),
+                      ],
+                    ),
 
+                    // FOREGROUND: animation
+                    Center(
+                      child: SizedBox(
+                        height: 400, // animation size
+                        child: Lottie.asset(
+                          'assets/animations/MrSquareAlochiInfinity.json',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               // Replaces your current Padding around the features
               Center(
-                child: Container(
+                child: SizedBox(
                   width: 300, 
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 5),
                       Row(
                         children: [
                           Image.asset('assets/icons/HeartInfinity.png', height: 40, width: 40),
@@ -45,7 +63,7 @@ class _PremiumPageState extends State<PremiumPage> {
                             style: TextStyle(
                               fontSize: 20,
                               color: primaryColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.bold
                             ),
                           ),
                         ],
@@ -61,7 +79,7 @@ class _PremiumPageState extends State<PremiumPage> {
                               style: TextStyle(
                                 fontSize: 20,
                                 color: primaryColor,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.bold
                               ),
                             ),
                           ),

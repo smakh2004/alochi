@@ -23,11 +23,12 @@
 
   "birinchiBosqich": "A'lochi",
   "kvadratQasri": "Profile Statistics",
-  "meningProfilim": "MY PROFILE",
+  "settings": "SETTINGS",
+  "settingsNew": "Settings",
   "statistika": "STATISTICS",
   "progress": "Progress",
   "arifmetika": "Arifmetic",
-  "multiplikativ": "Multiplicative",
+  "multiplikativ": "Multiply",
   "logika": "Logic",
   "glabaliSeriya": "Winning streak",
   "umumiyOchko": "Overall points",
@@ -45,8 +46,8 @@
   "TwoSixYutuqlar": "Achievements of 2026",
   "TwoSevenYutuqlar": "Achievements of 2027",
 
-  "kvadratQasriBirinchiBosqich": "SQUARE CASTLE | FIRST LEVEL",
-  "kvadratQasriBirinchiBosqichDes": "ADVANTURE IN THE WORLD OF NUMBERS",
+  "kvadratQasriBirinchiBosqich": "LEVEL 1, SQUARE CASTLE",
+  "kvadratQasriBirinchiBosqichDes": "World of numbers",
   "uchburchakPiramidasiIkkinchiBosqich": "TRIANGLE PIRAMIDS | SECOND LEVEL",
   "uchburchakPiramidasiIkkinchiBosqichDes": "THE SECRET OF MATH OPERATIONS",
   "doiraQasriUchinchiBosqich": "CIRCLE CASTLE | STAGE THREE",
@@ -93,7 +94,7 @@
   "qaysiBirShakl": "Which shape is divided into equal halves?",
   "kokKatakchalar": "Solve the given problem. Only one number fits in the blue boxes.",
   "otniTogri": "Place the horse in the correct square!",
-  "joningiztugadi": "YOU LOSE!",
+  "joningiztugadi": "You Lose!",
   "tanafuzQilib": "Take a break and come back later!",
   "uygaQaytish": "RETURN HOME",
   "ajoyibDars": "GREAT LESSON!",
@@ -227,6 +228,7 @@
   "weakPassword1": "The password is too weak",
   "errorOccurred": "An error occurred: ",
   "xatolik": "Error:",
+  "signOut": "SIGN OUT",
   
   "userNotFound": "User not found",
   "wrongPassword1": "Incorrect password",
@@ -238,7 +240,11 @@
   "findThePerimeter": "Find the perimeter of a rectangle.",
   "whichNumberIn": "Which number is in the triangle and also in the square and also in the circle?",
   "hint": "Hint",
+  "squareCastle": "Square Castle",
+  "beast": "You are beast!",
+  "solution": "Solution:",
 
   "hint1": "Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).",
-  "hint2": "When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign \"=\" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign \"<\" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign \">\" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols \"<\" and \">\" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one."
+  "hint2": "When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign \"=\" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign \"<\" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign \">\" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols \"<\" and \">\" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.",
+  "hint3": "Look carefully at each line.\nEach picture stands for a number.\nTry to find the value of each picture step by step!\n\nSample:"
 }

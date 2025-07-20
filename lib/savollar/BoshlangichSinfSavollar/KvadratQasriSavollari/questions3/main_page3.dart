@@ -361,62 +361,106 @@ class _MainPage3State extends State<MainPage3> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          // Space at top for status bar
-          const SizedBox(height: 55),
-
-          // Show app bar with XP progress and HP if applicable
-          if (showAppBar())
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              color: Colors.white,
-              child: Row(
-                children: [
-                  // Exit button triggers confirmation dialog
-                  GestureDetector(
-                    onTap: showExitConfirmation,
-                    child: Image.asset('assets/icons/Exit.png', width: 30, height: 30),
-                  ),
-                  const SizedBox(width: 10),
-
-                  // XP progress bar with animated tween
-                  Expanded(
-                    child: TweenAnimationBuilder(
-                      tween: Tween(begin: 0.0, end: currentXP / maxXP),
-                      duration: const Duration(milliseconds: 500),
-                      builder: (context, value, child) => LinearProgressIndicator(
-                        value: value,
-                        borderRadius: BorderRadius.circular(20),
-                        minHeight: 20,
-                        backgroundColor: Colors.grey[300],
-                        color: primaryColor,
+      appBar: showAppBar()
+          ? PreferredSize(
+              preferredSize: const Size.fromHeight(60),
+              child: AppBar(
+                backgroundColor: Colors.white,
+                automaticallyImplyLeading: false,
+                elevation: 0, // remove shadow
+                title: Row(
+                  children: [
+                    // Exit button triggers confirmation dialog
+                    GestureDetector(
+                      onTap: showExitConfirmation,
+                      child: Image.asset(
+                        'assets/icons/Exit.png',
+                        width: 30,
+                        height: 30,
                       ),
                     ),
-                  ),
-                  const SizedBox(width: 10),
+                    const SizedBox(width: 10),
 
-                  // HP icon and count display
-                  Image.asset('assets/icons/Heart.png', width: 30, height: 30),
-                  const SizedBox(width: 5),
-                  Text(
-                    '$hp',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
-                      fontFamily: primaryFont,
-                      color: red,
+                    // XP progress bar with animated tween
+                    Expanded(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Stack(
+                            children: [
+                              // main blue bar
+                              TweenAnimationBuilder<double>(
+                                tween: Tween<double>(
+                                  begin: 0.0,
+                                  end: currentXP / maxXP,
+                                ),
+                                duration: const Duration(milliseconds: 500),
+                                builder: (context, value, child) {
+                                  return LinearProgressIndicator(
+                                    value: value,
+                                    borderRadius: BorderRadius.circular(30),
+                                    minHeight: 17,
+                                    backgroundColor: greyColor,
+                                    color: primaryColor,
+                                  );
+                                },
+                              ),
+
+                              // highlight line
+                              TweenAnimationBuilder<double>(
+                                tween: Tween<double>(
+                                  begin: 0.0,
+                                  end: currentXP / maxXP,
+                                ),
+                                duration: const Duration(milliseconds: 500),
+                                builder: (context, value, child) {
+                                  final fillWidth = constraints.maxWidth * value;
+
+                                  // shrink factor: start at 0.5 when value=0, go to 0.9 when value=1
+                                  final shrinkFactor = 0.5 + (0.9 - 0.5) * value;
+                                  final highlightWidth = fillWidth * shrinkFactor;
+
+                                  return Positioned(
+                                    left: (fillWidth - highlightWidth) / 2,
+                                    top: 3.5,
+                                    child: Container(
+                                      width: highlightWidth,
+                                      height: 4.5,
+                                      decoration: BoxDecoration(
+                                        color: lighterBlue,
+                                        borderRadius: BorderRadius.circular(2),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                ],
-              ),
-            ),
+                    const SizedBox(width: 10),
 
-          // Main question area fills remaining space
-          Expanded(child: getCurrentQuestion()),
-        ],
-      ),
+                    // HP icon and count display
+                    Image.asset(
+                      'assets/icons/Heart.png',
+                      width: 30,
+                      height: 30,
+                    ),
+                    const SizedBox(width: 5),
+                    Text(
+                      '$hp',
+                      style: const TextStyle(
+                        fontSize: 24.0,
+                        fontFamily: primaryFont,
+                        color: red,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          : null,
+      body: getCurrentQuestion(),
     );
   }
 }
