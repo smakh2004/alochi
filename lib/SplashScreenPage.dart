@@ -1,10 +1,13 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'package:alochi_math_app/auth/check_page.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:alochi_math_app/pages/NoInternetPage.dart';
 import 'package:alochi_math_app/pages/Student/Student.dart';
 import 'package:alochi_math_app/pages/YuqoriSinf/YuqoriSinf.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/appear_once/StartPage.dart';
@@ -21,18 +24,53 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
+  bool isConnectionToInternet = false;
+  StreamSubscription<InternetStatus>? _internetConnectionStreamSubscription;
+  bool _navigated = false; // to prevent double navigation
+
   @override
   void initState() {
     super.initState();
-    checkFirstLaunch();
+
+    // Listen to connection changes
+    _internetConnectionStreamSubscription =
+        InternetConnection().onStatusChange.listen((event) {
+      setState(() {
+        isConnectionToInternet = (event == InternetStatus.connected);
+      });
+    });
+
+    // Wait for splash duration
+    Future.delayed(const Duration(seconds: 3), () {
+      _handleNavigation();
+    });
+  }
+
+  @override
+  void dispose() {
+    _internetConnectionStreamSubscription?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _handleNavigation() async {
+    if (!mounted || _navigated) return;
+    _navigated = true;
+
+    if (isConnectionToInternet) {
+      // ✅ Connected: continue normal flow
+      await checkFirstLaunch();
+    } else {
+      // ❌ No internet: show no internet page
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const NoInternetPage()),
+      );
+    }
   }
 
   Future<void> checkFirstLaunch() async {
     final prefs = await SharedPreferences.getInstance();
     final bool isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
-
-    await Future.delayed(const Duration(seconds: 3));
-    if (!mounted) return;
 
     if (isFirstLaunch) {
       await prefs.setBool('isFirstLaunch', false);
@@ -48,9 +86,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           MaterialPageRoute(builder: (context) => const CheckPage()),
         );
       } else {
-        // ✅ LOAD state from Firestore
         await GameState.loadState(user.uid);
-
         final selectedLevel = GameState.selectedLevel;
 
         if (selectedLevel == S.of(context).boshlangich) {
@@ -69,7 +105,6 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             MaterialPageRoute(builder: (context) => Student()),
           );
         } else {
-          // No level selected yet
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const StartPage()),

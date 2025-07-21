@@ -1,6 +1,7 @@
+
+import 'package:alochi_math_app/SplashScreenPage.dart';
 import 'package:alochi_math_app/firebase_options.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
-import 'package:alochi_math_app/pages/ConnectionWrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -62,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: ConnectionWrapper(),
+      home: SplashScreenPage(),
     );
   }
 }

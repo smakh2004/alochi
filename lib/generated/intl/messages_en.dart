@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ajoyibDars": MessageLookupByLibrary.simpleMessage("GREAT LESSON!"),
     "akkaunt": MessageLookupByLibrary.simpleMessage("I HAVE AN ACCOUNT"),
+    "akkauntLow": MessageLookupByLibrary.simpleMessage("Accaunt"),
     "akkauntgaKirish": MessageLookupByLibrary.simpleMessage("USE ACCOUNT"),
     "akkauntizBormi": MessageLookupByLibrary.simpleMessage(
       "Already have an account? ",
@@ -157,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "harXilMaxrajliKasrlar": MessageLookupByLibrary.simpleMessage(
       "Fractions with different denominators",
     ),
+    "helpCenter": MessageLookupByLibrary.simpleMessage("Help center"),
     "hint": MessageLookupByLibrary.simpleMessage("Hint"),
     "hint1": MessageLookupByLibrary.simpleMessage(
       "Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).",
@@ -205,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kophadniAjratish": MessageLookupByLibrary.simpleMessage(
       "Factoring polynomials",
     ),
+    "kurslar": MessageLookupByLibrary.simpleMessage("Courses"),
     "kvadratBirinchiBosqichDes": MessageLookupByLibrary.simpleMessage(
       "Counting, addition-subtraction, recognizing shapes",
     ),
@@ -267,6 +270,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nisbatVaProporsiya": MessageLookupByLibrary.simpleMessage(
       "Ratio and proportion",
     ),
+    "noConnection": MessageLookupByLibrary.simpleMessage(
+      "No internet connection",
+    ),
     "notification1": MessageLookupByLibrary.simpleMessage(
       "Welcome to the Alochi app, get ready to enjoy new challenges!",
     ),
@@ -276,6 +282,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification3": MessageLookupByLibrary.simpleMessage(
       "Let\'s go collect the lightning bolts!",
     ),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "notogriJavob": MessageLookupByLibrary.simpleMessage("Incorrect answer!"),
     "noyabr": MessageLookupByLibrary.simpleMessage("November"),
     "ochko": MessageLookupByLibrary.simpleMessage("POINTS"),
@@ -289,6 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "otniTogri": MessageLookupByLibrary.simpleMessage(
       "Place the horse in the correct square!",
     ),
+    "parameters": MessageLookupByLibrary.simpleMessage("Parameters"),
     "parol": MessageLookupByLibrary.simpleMessage("Password"),
     "parolNotogriMsg": MessageLookupByLibrary.simpleMessage(
       "Passwords do not match",
@@ -299,6 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pitsaniTeng": MessageLookupByLibrary.simpleMessage(
       "The pizza is divided into equal parts. How many slices were taken from the plate?",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "progress": MessageLookupByLibrary.simpleMessage("Progress"),
     "qaysiBirShakl": MessageLookupByLibrary.simpleMessage(
       "Which shape is divided into equal halves?",
@@ -306,6 +315,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "qaysiShakillar": MessageLookupByLibrary.simpleMessage(
       "Which shapes combine to form a square?",
     ),
+    "qaytaUrinish": MessageLookupByLibrary.simpleMessage("Try again"),
     "qaytish": MessageLookupByLibrary.simpleMessage("RETURN"),
     "ratsionalSonlar": MessageLookupByLibrary.simpleMessage("Rational numbers"),
     "rechargingIn": m0,
@@ -319,7 +329,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "sakkizinchiSinf": MessageLookupByLibrary.simpleMessage("8th grade"),
     "sandiqJon": MessageLookupByLibrary.simpleMessage("Chest of Hearts"),
     "savatJon": MessageLookupByLibrary.simpleMessage("Basket Hearts"),
+    "save": MessageLookupByLibrary.simpleMessage("SAVE"),
     "sekund": MessageLookupByLibrary.simpleMessage("second"),
+    "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
     "sentabr": MessageLookupByLibrary.simpleMessage("September"),
     "settings": MessageLookupByLibrary.simpleMessage("SETTINGS"),
     "settingsNew": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -342,6 +354,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "start": MessageLookupByLibrary.simpleMessage("START"),
     "statistika": MessageLookupByLibrary.simpleMessage("STATISTICS"),
     "student": MessageLookupByLibrary.simpleMessage("University"),
+    "support": MessageLookupByLibrary.simpleMessage("Support"),
     "tanafuzQilib": MessageLookupByLibrary.simpleMessage(
       "Take a break and come back later!",
     ),

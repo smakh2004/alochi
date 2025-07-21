@@ -1744,6 +1744,76 @@ class S {
     return Intl.message('SIGN OUT', name: 'signOut', desc: '', args: []);
   }
 
+  /// `No internet connection`
+  String get noConnection {
+    return Intl.message(
+      'No internet connection',
+      name: 'noConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get qaytaUrinish {
+    return Intl.message('Try again', name: 'qaytaUrinish', desc: '', args: []);
+  }
+
+  /// `SAVE`
+  String get save {
+    return Intl.message('SAVE', name: 'save', desc: '', args: []);
+  }
+
+  /// `Accaunt`
+  String get akkauntLow {
+    return Intl.message('Accaunt', name: 'akkauntLow', desc: '', args: []);
+  }
+
+  /// `Parameters`
+  String get parameters {
+    return Intl.message('Parameters', name: 'parameters', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Courses`
+  String get kurslar {
+    return Intl.message('Courses', name: 'kurslar', desc: '', args: []);
+  }
+
+  /// `Support`
+  String get support {
+    return Intl.message('Support', name: 'support', desc: '', args: []);
+  }
+
+  /// `Help center`
+  String get helpCenter {
+    return Intl.message('Help center', name: 'helpCenter', desc: '', args: []);
+  }
+
+  /// `Send feedback`
+  String get sendFeedback {
+    return Intl.message(
+      'Send feedback',
+      name: 'sendFeedback',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `User not found`
   String get userNotFound {
     return Intl.message(

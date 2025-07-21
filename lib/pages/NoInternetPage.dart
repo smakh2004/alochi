@@ -1,12 +1,12 @@
 import 'package:alochi_math_app/components/color.dart';
+import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:animated_button/animated_button.dart';
+import 'package:alochi_math_app/SplashScreenPage.dart';
 
 class NoInternetPage extends StatelessWidget {
-  final VoidCallback onRetry;
-
-  const NoInternetPage({super.key, required this.onRetry});
+  const NoInternetPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,36 +26,41 @@ class NoInternetPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Internet aloqasi yo‘q',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              Text(
+                S.of(context).noConnection,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
               AnimatedButton(
                 height: 50,
                 width: 200,
                 color: Colors.white,
-                onPressed: onRetry,
                 enabled: true,
                 borderRadius: 18,
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SplashScreenPage()),
+                  );
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: greyColor, width: 2),
                     borderRadius: BorderRadius.circular(18),
                   ),
                   alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Qayta urinish',
-                        style: TextStyle(
-                          color: questionColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    S.of(context).qaytaUrinish,
+                    style: TextStyle(
+                      color: questionColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

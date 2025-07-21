@@ -8,7 +8,7 @@ import 'package:animated_button/animated_button.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/link.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -18,6 +18,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,8 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Stack(
           alignment: Alignment.center,
           children: [
-            Text(S.of(context).settingsNew, style: TextStyle(fontFamily: primaryFont, color: darkGrey)),
+            Text(S.of(context).settingsNew,
+                style: TextStyle(fontFamily: primaryFont, color: darkGrey)),
             Align(
               alignment: Alignment.centerRight,
               child: GestureDetector(
@@ -36,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    'SAVE',
+                    S.of(context).save,
                     style: TextStyle(
                       fontSize: 16,
                       color: primaryColor,
@@ -54,13 +56,15 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 20, right: 20, bottom: 30),
+        padding:
+            const EdgeInsets.only(top: 30, left: 20, right: 20, bottom: 30),
         child: Column(
           children: [
+            // Akkaunt
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Akkaunt',
+                S.of(context).akkauntLow,
                 style: TextStyle(
                   fontSize: 20,
                   color: darkGrey,
@@ -68,7 +72,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: greyColor, width: 2),
@@ -76,8 +80,11 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               child: Column(
                 children: [
+
+                  // Parameters
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 20, right: 20, bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         // Navigation
@@ -86,7 +93,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Parameters',
+                            S.of(context).parameters,
                             style: TextStyle(
                               fontSize: 20,
                               color: questionColor,
@@ -105,8 +112,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     preferredSize: const Size.fromHeight(2),
                     child: Container(height: 2, color: greyColor),
                   ),
+
+                  // Profile
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 20, right: 20, bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         // Navigation
@@ -115,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Profile',
+                            S.of(context).profile,
                             style: TextStyle(
                               fontSize: 20,
                               color: questionColor,
@@ -134,8 +144,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     preferredSize: const Size.fromHeight(2),
                     child: Container(height: 2, color: greyColor),
                   ),
+
+                  // Notifications
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 20, right: 20, bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         // Navigation
@@ -144,7 +157,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Notifications',
+                            S.of(context).notifications,
                             style: TextStyle(
                               fontSize: 20,
                               color: questionColor,
@@ -163,8 +176,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     preferredSize: const Size.fromHeight(2),
                     child: Container(height: 2, color: greyColor),
                   ),
+
+                  // Courses
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 20, right: 20, bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         // Navigation
@@ -173,7 +189,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Courses',
+                            S.of(context).kurslar,
                             style: TextStyle(
                               fontSize: 20,
                               color: questionColor,
@@ -191,11 +207,13 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
+            
+            // Support
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Support',
+                S.of(context).support,
                 style: TextStyle(
                   fontSize: 20,
                   color: darkGrey,
@@ -203,7 +221,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: greyColor, width: 2),
@@ -211,8 +229,11 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               child: Column(
                 children: [
+
+                  // Help Center
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 20, right: 20, bottom: 10),
                     child: GestureDetector(
                       onTap: () {
                         // Navigation
@@ -221,7 +242,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Help center',
+                            S.of(context).helpCenter,
                             style: TextStyle(
                               fontSize: 20,
                               color: questionColor,
@@ -236,40 +257,58 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                   ),
+
+                  // Send feedback
                   PreferredSize(
                     preferredSize: const Size.fromHeight(2),
                     child: Container(height: 2, color: greyColor),
                   ),
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      launch('https://forms.gle/t462gyfwawrQqS1v8');
+                  Link(
+                    target: LinkTarget.blank,
+                    uri: Uri.parse('https://forms.gle/8AmcMnkhvYFtapi88'),
+                    builder: (context, followLink) {
+                      return InkWell(
+                        onTap: followLink,
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                          ),
+                          padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                S.of(context).sendFeedback,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: questionColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Icon(
+                                Icons.chevron_right_rounded,
+                                color: darkGrey,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Send feedback',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: questionColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(
-                            Icons.chevron_right_rounded,
-                            color: darkGrey,
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
+
+            // Sign out
             AnimatedButton(
               height: 50,
               width: MediaQuery.of(context).size.width * 0.85,
@@ -278,18 +317,18 @@ class _SettingsPageState extends State<SettingsPage> {
               onPressed: () async {
                 try {
                   await FirebaseAuth.instance.signOut();
-            
+
                   // 🧠 Clear all in-memory game state after logout
                   GameState.reset();
-            
+
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Signed out successfully')),
+                    const SnackBar(content: Text('Signed out successfully')),
                   );
-            
+
                   // Navigate to Welcome/Login page
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckPage()),
+                    MaterialPageRoute(builder: (context) => const CheckPage()),
                   );
                 } catch (e) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -299,7 +338,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                border: Border.all(color: greyColor, width: 2),
+                  border: Border.all(color: greyColor, width: 2),
                   borderRadius: BorderRadius.circular(14),
                 ),
                 alignment: Alignment.center,

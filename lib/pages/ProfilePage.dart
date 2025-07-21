@@ -310,7 +310,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           context,
                           PageRouteBuilder(
                             transitionDuration: const Duration(milliseconds: 600),
-                            pageBuilder: (context, animation, secondaryAnimation) => const SettingsPage(),
+                            pageBuilder: (context, animation, secondaryAnimation) => SettingsPage(),
                             transitionsBuilder: (context, animation, secondaryAnimation, child) {
                               final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
                               return SlideTransition(

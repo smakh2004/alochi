@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "ajoyibDars": MessageLookupByLibrary.simpleMessage("AJOYIB DARS!"),
     "akkaunt": MessageLookupByLibrary.simpleMessage("MENDA AKKAUNT BOR"),
+    "akkauntLow": MessageLookupByLibrary.simpleMessage("Akkaunt"),
     "akkauntgaKirish": MessageLookupByLibrary.simpleMessage("AKKAUNTGA KIRISH"),
     "akkauntizBormi": MessageLookupByLibrary.simpleMessage("Akkauntiz bormi? "),
     "akkauntizYoqmi": MessageLookupByLibrary.simpleMessage(
@@ -157,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "harXilMaxrajliKasrlar": MessageLookupByLibrary.simpleMessage(
       "Har xil maxrajli kasrlar",
     ),
+    "helpCenter": MessageLookupByLibrary.simpleMessage("Yordam markazi"),
     "hint": MessageLookupByLibrary.simpleMessage("Maslahat"),
     "hint1": MessageLookupByLibrary.simpleMessage(
       "Ayirish degani olib tashlash degani.\n\nNamuna:\nAgar sizda 3 ta narsa bo‘lsa va 2 tasini olib tashlasangiz, qolganini sanang:\n•  3 ta barmoq bilan boshlang.\n•  2 ta barmoqni tushiring.\n•  Nechta barmoq qoldi?\n\nO‘ylang: 3… 1 ni olib tashlang (endi 2)… yana 1 ni olib tashlang (endi 1).",
@@ -205,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "kophadniAjratish": MessageLookupByLibrary.simpleMessage(
       "Ko‘phadni ajratish",
     ),
+    "kurslar": MessageLookupByLibrary.simpleMessage("Kurslar"),
     "kvadratBirinchiBosqichDes": MessageLookupByLibrary.simpleMessage(
       "Sanash, qo‘shish-ayirish, shakllarni tanish",
     ),
@@ -271,6 +274,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nisbatVaProporsiya": MessageLookupByLibrary.simpleMessage(
       "Nisbat va proporsiya",
     ),
+    "noConnection": MessageLookupByLibrary.simpleMessage(
+      "Internet aloqasi yo‘q",
+    ),
     "notification1": MessageLookupByLibrary.simpleMessage(
       "Alochi dasturiga xush kelibsiz, yangi choqilarni zavt etishga tayyor turing!",
     ),
@@ -280,6 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification3": MessageLookupByLibrary.simpleMessage(
       "Yashinlarni yig\'ishga olg\'a!",
     ),
+    "notifications": MessageLookupByLibrary.simpleMessage("Xabarlar"),
     "notogriJavob": MessageLookupByLibrary.simpleMessage("Noto\'g\'ri javob!"),
     "noyabr": MessageLookupByLibrary.simpleMessage("Noyabr"),
     "ochko": MessageLookupByLibrary.simpleMessage("OCHKO"),
@@ -293,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "otniTogri": MessageLookupByLibrary.simpleMessage(
       "Otni to\'g\'ri kattakga qo\'ying!",
     ),
+    "parameters": MessageLookupByLibrary.simpleMessage("Parametrlar"),
     "parol": MessageLookupByLibrary.simpleMessage("Parol"),
     "parolNotogriMsg": MessageLookupByLibrary.simpleMessage(
       "Parollar bir xil emas",
@@ -303,6 +311,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pitsaniTeng": MessageLookupByLibrary.simpleMessage(
       "Pitsa teng qismlarga bo\'lingan. Likopchadan nechta bo\'lak olingan?",
     ),
+    "profile": MessageLookupByLibrary.simpleMessage("Profil"),
     "progress": MessageLookupByLibrary.simpleMessage("Progress"),
     "qaysiBirShakl": MessageLookupByLibrary.simpleMessage(
       "Qaysi bir shakl teng yarimga bo\'lingan?",
@@ -310,6 +319,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "qaysiShakillar": MessageLookupByLibrary.simpleMessage(
       "Qaysi shakillar birlashtirilganda, kvadrat xosil bo\'ladi?",
     ),
+    "qaytaUrinish": MessageLookupByLibrary.simpleMessage("Qayta urinish"),
     "qaytish": MessageLookupByLibrary.simpleMessage("QAYTISH"),
     "ratsionalSonlar": MessageLookupByLibrary.simpleMessage("Ratsional sonlar"),
     "rechargingIn": m0,
@@ -329,11 +339,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "sakkizinchiSinf": MessageLookupByLibrary.simpleMessage("8 sinf"),
     "sandiqJon": MessageLookupByLibrary.simpleMessage("Sandiq Jon"),
     "savatJon": MessageLookupByLibrary.simpleMessage("Savat Jon"),
+    "save": MessageLookupByLibrary.simpleMessage("SAQLASH"),
     "sekund": MessageLookupByLibrary.simpleMessage("sekund"),
+    "sendFeedback": MessageLookupByLibrary.simpleMessage("Fikrlarni yuborish"),
     "sentabr": MessageLookupByLibrary.simpleMessage("Sentabr"),
     "settings": MessageLookupByLibrary.simpleMessage("SOZLASH"),
     "settingsNew": MessageLookupByLibrary.simpleMessage("Sozlash"),
-    "signOut": MessageLookupByLibrary.simpleMessage("CHIQISH"),
+    "signOut": MessageLookupByLibrary.simpleMessage("AKKAUNTDAN CHIQISH"),
     "sizHaliKirmagansiz": MessageLookupByLibrary.simpleMessage(
       "Siz hali ro\'yxatdan o\'tmagansiz",
     ),
@@ -352,6 +364,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "start": MessageLookupByLibrary.simpleMessage("BOSHLASH"),
     "statistika": MessageLookupByLibrary.simpleMessage("STATISTIKA"),
     "student": MessageLookupByLibrary.simpleMessage("Student"),
+    "support": MessageLookupByLibrary.simpleMessage("Yordam"),
     "tanafuzQilib": MessageLookupByLibrary.simpleMessage(
       "Tanafus qilib keyin qayting!",
     ),
