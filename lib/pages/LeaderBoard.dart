@@ -5,6 +5,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lottie/lottie.dart';
 
 class LeaderBoard extends StatefulWidget {
   const LeaderBoard({Key? key}) : super(key: key);
@@ -59,9 +60,11 @@ class _LeaderBoardState extends State<LeaderBoard> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
-            child: Image.asset(
-              'assets/images/BannerLeaderboard.png'
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
+            child: Lottie.asset(
+              'assets/animations/BannerLeaderboard.json',
+              width: 330,
+              fit: BoxFit.contain,
             ),
           ),
           // Current user position
@@ -79,19 +82,16 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 }
               }
 
-              return Padding(
-                padding: const EdgeInsets.only(top: 16, bottom: 8),
-                child: Text(
-                  currentUserPosition != null
-                      ? 'You are in $currentUserPosition-place'
-                      : 'You are not in the top 50 yet',
-                  style: const TextStyle(
-                    fontFamily: Font,
-                    fontSize: 20,
-                    color: questionColor,
-                  ),
-                  textAlign: TextAlign.center,
+              return Text(
+                currentUserPosition != null
+                    ? 'You are in $currentUserPosition-place'
+                    : 'You are not in the top 50 yet',
+                style: const TextStyle(
+                  fontFamily: Font,
+                  fontSize: 20,
+                  color: questionColor,
                 ),
+                textAlign: TextAlign.center,
               );
             },
           ),
@@ -250,12 +250,18 @@ class _LeaderBoardState extends State<LeaderBoard> {
                               width: 30,
                             );
                           } else {
-                            leadingWidget = Text(
-                              '${index + 1}',
-                              style: const TextStyle(
-                                color: questionColor,
-                                fontFamily: BoldFont,
-                                fontSize: 18,
+                            leadingWidget = SizedBox(
+                              height: 30,
+                              width: 30,
+                              child: Center(
+                                child: Text(
+                                  '${index + 1}',
+                                  style: const TextStyle(
+                                    color: questionColor,
+                                    fontFamily: BoldFont,
+                                    fontSize: 18,
+                                  ),
+                                ),
                               ),
                             );
                           }

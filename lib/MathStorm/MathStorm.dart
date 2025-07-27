@@ -150,14 +150,14 @@ class _MathStormState extends State<MathStorm> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 300, // total area height
+                            height: 270, // total area height
                             width: double.infinity,
                             child: Stack(
                               children: [
                                 // BACKGROUND: two colors
                                 Column(
                                   children: [
-                                    Container(height: 230, color: redDark),
+                                    Container(height: 215, color: redDark),
                                   ],
                                 ),
 
@@ -174,7 +174,7 @@ class _MathStormState extends State<MathStorm> {
 
                                 // FOREGROUND: bottom text
                                 Positioned(
-                                  bottom: 8,
+                                  bottom: 0,
                                   left: 0,
                                   right: 0,
                                   child: Row(
