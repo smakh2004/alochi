@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:alochi_math_app/MathStorm/MathStormSession.dart';
 import 'package:alochi_math_app/components/color.dart';
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -182,17 +183,16 @@ class _MathStormState extends State<MathStorm> {
                                       Text(
                                         S.of(context).rekord,
                                         style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22,
+                                          fontFamily: Font,
                                           color: questionColor
                                         ),
                                       ),
-                                      const SizedBox(width: 4),
                                       Text(
                                         GameState.matematikShtorm.toString(),
                                         style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22,
+                                          fontFamily: Font,
                                           color: red,
                                         ),
                                       ),
@@ -222,7 +222,7 @@ class _MathStormState extends State<MathStorm> {
                             style: TextStyle(
                               fontSize: 18,
                               color: orange,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           if (attempts == 0 && resetTime != null)
@@ -230,7 +230,7 @@ class _MathStormState extends State<MathStorm> {
                               padding: const EdgeInsets.symmetric(vertical: 2),
                               child: Text(
                                 '${S.of(context).yangiUrinishlar} ${formatDuration(resetTime!.difference(DateTime.now()))} ${S.of(context).danSong}',
-                                style: const TextStyle(fontSize: 16, color: Colors.grey),
+                                style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: Font,),
                               ),
                             ),
                           Padding(
@@ -240,7 +240,7 @@ class _MathStormState extends State<MathStorm> {
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(16),
+                                borderRadius: BorderRadius.circular(18),
                                 border: Border.all(color: greyColor, width: 2),
                               ),
                               child: Row(
@@ -249,12 +249,12 @@ class _MathStormState extends State<MathStorm> {
                                   Image.asset('assets/icons/StormTime.png', height: 32, width: 32),
                                   const SizedBox(width: 5),
                                   Text('3 ${S.of(context).minut}',
-                                      style: TextStyle(fontSize: 18, color: darkOrange, fontWeight: FontWeight.bold)),
+                                      style: TextStyle(fontSize: 18, color: darkOrange, fontFamily: Font,)),
                                   const SizedBox(width: 24),
                                   Image.asset('assets/icons/Heart.png', height: 32, width: 32),
                                   const SizedBox(width: 5),
                                   Text('3 ${S.of(context).dona}',
-                                      style: TextStyle(fontSize: 18, color: red, fontWeight: FontWeight.bold)),
+                                      style: TextStyle(fontSize: 18, color: red, fontFamily: Font,)),
                                 ],
                               ),
                             ),
@@ -270,6 +270,7 @@ class _MathStormState extends State<MathStorm> {
                     width: screenWidth * 0.5,
                     height: 50,
                     color: attempts > 0 ? red : greyColor,
+                    borderRadius: 16,
                     onPressed: () async {
                       if (attempts > 0) {
                         await useAttempt();
@@ -284,8 +285,8 @@ class _MathStormState extends State<MathStorm> {
                       S.of(context).olga,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
+                        fontFamily: Font,
+                        fontSize: 18,
                       ),
                     ),
                   ),

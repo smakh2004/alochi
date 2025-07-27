@@ -1,21 +1,21 @@
 // ignore_for_file: use_build_context_synchronously, unrelated_type_equality_checks
 
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question10.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question3.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question4.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question5.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question6.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question7.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question8.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question9.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question10.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question3.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question4.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question5.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question6.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question7.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question8.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question9.dart';
 import 'package:alochi_math_app/result_pages/LoserPage.dart';
 import 'package:alochi_math_app/result_pages/SuccessPage.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question1.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/Question2.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question1.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/Question2.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:lottie/lottie.dart';
 
@@ -404,7 +404,7 @@ class _MainPage10State extends State<MainPage10> {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0,
-                      fontFamily: primaryFont,
+                      fontFamily: BoldFont,
                       color: red,
                     ),
                   ),

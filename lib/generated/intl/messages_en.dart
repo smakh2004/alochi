@@ -169,6 +169,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hint3": MessageLookupByLibrary.simpleMessage(
       "Look carefully at each line.\nEach picture stands for a number.\nTry to find the value of each picture step by step!\n\nSample:",
     ),
+    "hint4": MessageLookupByLibrary.simpleMessage(
+      "Advice:\nSlow down and observe carefully. Look for patterns, differences, or hidden details. Move your eyes across the whole image instead of focusing on one spot. Sometimes the key is in small details that first seem unimportant.",
+    ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "This app helps you deeply understand mathematics. Geometric figures will support you along the way.",
     ),
@@ -319,7 +322,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "qaytish": MessageLookupByLibrary.simpleMessage("RETURN"),
     "ratsionalSonlar": MessageLookupByLibrary.simpleMessage("Rational numbers"),
     "rechargingIn": m0,
-    "registratsiya": MessageLookupByLibrary.simpleMessage("Register"),
+    "registratsiya": MessageLookupByLibrary.simpleMessage("Registered"),
     "registratsiyaQilish": MessageLookupByLibrary.simpleMessage("Sign up"),
     "registratsiyaQilishQ": MessageLookupByLibrary.simpleMessage("SIGN UP"),
     "rekord": MessageLookupByLibrary.simpleMessage("Record: "),

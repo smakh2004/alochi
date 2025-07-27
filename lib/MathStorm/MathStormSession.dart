@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:alochi_math_app/MathStorm/MathStormResult.dart';
 import 'package:alochi_math_app/MathStorm/math_problem.dart';
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,7 @@ class _MathStormSessionState extends State<MathStormSession> {
                       S.of(context).agarChiqibKetsangiz,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontFamily: Font,
                         fontSize: 20,
                       ),
                     ),
@@ -144,7 +145,8 @@ class _MathStormSessionState extends State<MathStormSession> {
                         S.of(context).darsDavomEtish,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: Font,
+                          
                         ),
                       ),
                     ),
@@ -162,7 +164,7 @@ class _MathStormSessionState extends State<MathStormSession> {
                       S.of(context).chiqish,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: Font,
                       ),
                     ),
                   ),
@@ -209,13 +211,13 @@ class _MathStormSessionState extends State<MathStormSession> {
                     const SizedBox(width: 4),
                     Text(
                       "$min:${sec.toString().padLeft(2, '0')}",
-                      style: const TextStyle(fontSize: 20, color: darkOrange, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 22, color: darkOrange, fontFamily: Font,),
                     ),
                   ],
                 ),
               ),
               Text("${S.of(context).Ochko} $score",
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  style: const TextStyle(fontSize: 24, fontFamily: Font,)),
               Align(
                 alignment: Alignment.centerRight,
                 child: Row(
@@ -248,7 +250,7 @@ class _MathStormSessionState extends State<MathStormSession> {
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
                   S.of(context).javobKiriting,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  style: const TextStyle(fontFamily: Font, fontSize: 25),
                 ),
               ),
               const SizedBox(height: 40),
@@ -257,7 +259,7 @@ class _MathStormSessionState extends State<MathStormSession> {
                 children: [
                   Text(
                     "${currentProblem.question} = ",
-                    style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 32, fontFamily: Font,),
                   ),
                   Container(
                     width: 55,
@@ -286,13 +288,13 @@ class _MathStormSessionState extends State<MathStormSession> {
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold
+                            fontFamily: Font,
                           ),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: lightGrey, 
                             hintText: S.of(context).misolUchun,
-                            hintStyle: const TextStyle(color: greyColor), // Hint color
+                            hintStyle: const TextStyle(color: greyColor, fontFamily: Font,), // Hint color
                             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -353,8 +355,8 @@ class _MathStormSessionState extends State<MathStormSession> {
                           S.of(context).keyingi,
                           style: TextStyle(
                             color: isAnswerValid ? Colors.white : grey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            fontFamily: Font,
                           ),
                         ),
                       ),
@@ -394,8 +396,8 @@ class _MathStormSessionState extends State<MathStormSession> {
             child: Text(
               number,
               style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                fontFamily: Font,
               ),
             ),
           ),
@@ -464,8 +466,8 @@ class _MathStormSessionState extends State<MathStormSession> {
             child: Text(
               '-',
               style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                fontFamily: Font,
                 color: Colors.white,
               ),
             ),

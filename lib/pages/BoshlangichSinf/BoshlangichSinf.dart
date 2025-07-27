@@ -2,7 +2,7 @@
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/MathStorm/MathStorm.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/HomePage.dart';
-import 'package:alochi_math_app/pages/PremiumPage.dart';
+import 'package:alochi_math_app/pages/LeaderBoard.dart';
 import 'package:alochi_math_app/pages/ProfilePage.dart';
 import 'package:alochi_math_app/pages/StorePage.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
     MathStorm(),
     ProfilePage(),
     StorePage(),
-    PremiumPage(),
+    LeaderBoard(),
   ];
 
   void _NavigatedBottomBar(int index) {
@@ -33,9 +33,9 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
       // Recreate selected page to trigger refresh
       if (index == 0) _pages[0] = HomePage();
       if (index == 1) _pages[1] = MathStorm();
-      if (index == 2) _pages[2] = ProfilePage();
-      if (index == 3) _pages[3] = StorePage();
-      if (index == 4) _pages[4] = PremiumPage();
+      if (index == 2) _pages[2] = LeaderBoard();
+      if (index == 3) _pages[3] = ProfilePage();
+      if (index == 4) _pages[4] = StorePage();
     });
   }
 
@@ -105,8 +105,8 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                 ),
                 label: '',
               ),
-
-              /// PROFILE
+              
+              /// LEADERBOARD
               BottomNavigationBarItem(
                 icon: Container(
                   padding: EdgeInsets.all(6),
@@ -120,7 +120,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Image.asset(
-                    'assets/icons/Profile.png',
+                    'assets/icons/Leaderboard.png',
                     width: 42,
                     height: 42,
                   ),
@@ -128,7 +128,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                 label: '',
               ),
 
-              /// STORE
+              /// PROFILE
               BottomNavigationBarItem(
                 icon: Container(
                   padding: EdgeInsets.all(6),
@@ -142,7 +142,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Image.asset(
-                    'assets/icons/Store.png',
+                    'assets/icons/Profile.png',
                     width: 42,
                     height: 42,
                   ),
@@ -150,8 +150,9 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                 label: '',
               ),
 
-              
-              /// PREMIUM
+      
+
+              /// STORE
               BottomNavigationBarItem(
                 icon: Container(
                   padding: EdgeInsets.all(6),
@@ -165,7 +166,7 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Image.asset(
-                    'assets/icons/PremiumIcon.png',
+                    'assets/icons/Store.png',
                     width: 42,
                     height: 42,
                   ),

@@ -119,15 +119,15 @@ class _ProfilePageState extends State<ProfilePage> {
                           Text(
                             S.of(context).birinchiBosqich,
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 20,
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           Text(
                             S.of(context).kvadratQasri,
                             style: TextStyle(
-                              fontFamily: primaryFont,
+                              fontFamily: BoldFont,
                               fontSize: 22,
                               color: Colors.white,
                             ),
@@ -168,8 +168,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Text(
                                               'UZ',
                                               style: TextStyle(
-                                                fontWeight: FontWeight.bold,
                                                 color: grey,
+                                                fontFamily: Font
                                               ),
                                             ),
                                           ),
@@ -179,8 +179,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Text(
                                               'EN',
                                               style: TextStyle(
-                                                fontWeight: FontWeight.bold,
                                                 color: grey,
+                                                fontFamily: Font
                                               ),
                                             ),
                                           ),
@@ -207,7 +207,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               isUzbek ? 'UZ' : 'EN',
                                               style: const TextStyle(
                                                 color: Colors.white,
-                                                fontWeight: FontWeight.bold,
+                                                fontFamily: Font
                                               ),
                                             ),
                                           ),
@@ -220,8 +220,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Text(
                                   S.of(context).langauage,
                                   style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: Colors.white,
+                                    fontSize: 16
                                   ),
                                 ),
                               ],
@@ -244,8 +245,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         : '${GameState.firstName} ${GameState.lastName}'
                     : S.of(context).mehmon,
                 style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  fontFamily: Font,
                   color: questionColor,
                 ),
               ),
@@ -254,7 +255,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ? Text(
                       '${user!.email} | ${S.of(context).registratsiya}: ${_formatDate(user!.metadata.creationTime)}',
                       textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 14, color: darkGrey),
+                      style: const TextStyle(fontSize: 16, color: darkGrey, fontFamily: Font,),
                     )
                   : Column(
                       children: [
@@ -263,13 +264,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           style: const TextStyle(
                               fontSize: 14,
                               color: red,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: Font,),
                         ),
                         const SizedBox(height: 12),
                         AnimatedButton(
                           width: 200,
                           height: 50,
                           color: primaryColor,
+                          borderRadius: 18,
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -282,7 +284,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               S.of(context).akkauntgaKirish,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: Font,
                                 fontSize: 16,
                               ),
                             ),
@@ -304,7 +306,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         width: 200,
                         height: 50,
                         color: Colors.white,
-                        borderRadius: 12,
+                        borderRadius: 18,
                         onPressed: () {
                           Navigator.push(
                           context,
@@ -324,7 +326,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: greyColor, width: 2),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(14),
                           ),
                           alignment: Alignment.center,
                           child: Row(
@@ -335,9 +337,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               Text(
                                 S.of(context).settings,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   color: primaryColor,
-                                  fontWeight: FontWeight.bold,
+                                  fontFamily: Font,
                                 ),
                               ),
                             ],
@@ -348,13 +350,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       AnimatedButton(
                         height: 50,
                         width: 50,
-                        borderRadius: 12,
+                        borderRadius: 18,
                         color: Colors.white,
                         onPressed: () {},
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: greyColor, width: 2),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                           alignment: Alignment.center,
                           child: const Icon(Icons.share, color: primaryColor),
@@ -370,8 +372,8 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 S.of(context).statistika,
                 style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: Font,
                   color: questionColor
                 ),
               ),
@@ -384,7 +386,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(18),
                     border: Border.all(color: greyColor, width: 2),
                   ),
                   child: Column(
@@ -407,7 +409,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 GameState.matematikShtorm.toString(),
                                 style: const TextStyle(
                                   fontSize: 25,
-                                  fontWeight: FontWeight.bold,
+                                  fontFamily: Font,
                                   color: questionColor
                                 ),
                               ),
@@ -420,7 +422,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         S.of(context).matematikShtorm,
                         style: TextStyle(
                           fontSize: 15,
-                          color: darkGrey
+                          color: darkGrey,
+                          fontFamily: Font,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -435,7 +438,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(18),
                   border: Border.all(color: greyColor, width: 2),
                 ),
                 child: Column(
@@ -463,7 +466,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   '$percentage%',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: primaryColor,
                                   ),
                                 ),
@@ -478,7 +481,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).progress,
-                              style: TextStyle(fontSize: 14, color: questionColor),
+                              style: TextStyle(fontSize: 15, color: questionColor, fontFamily: Font,),
                             ),
                           ),
                         ),
@@ -502,7 +505,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   '$percentage2%',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: orange,
                                   ),
                                 ),
@@ -517,7 +520,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).arifmetika,
-                              style: TextStyle(fontSize: 14,color: questionColor),
+                              style: TextStyle(fontSize: 15,color: questionColor,fontFamily: Font,),
                             ),
                           ),
                         ),
@@ -549,7 +552,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   '$percentage4%',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: red,
                                   ),
                                 ),
@@ -564,7 +567,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).multiplikativ,
-                              style: TextStyle(fontSize: 14,color: questionColor),
+                              style: TextStyle(fontSize: 15,color: questionColor,fontFamily: Font,),
                             ),
                           ),
                         ),
@@ -588,7 +591,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   '$percentage3%',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: green,
                                   ),
                                 ),
@@ -603,7 +606,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.symmetric(vertical: 4),
                             child: Text(
                               S.of(context).logika,
-                              style: TextStyle(fontSize: 14, color: questionColor),
+                              style: TextStyle(fontSize: 15, color: questionColor,fontFamily: Font,),
                             ),
                           ),
                         ),
@@ -626,7 +629,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(18),
                           border: Border.all(color: greyColor, width: 2),
                         ),
                         child: Row(
@@ -644,8 +647,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   Text(
                                     GameState.lightnings.toString(),
                                     style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      fontFamily: Font,
                                       color: questionColor
                                     ),
                                   ),
@@ -654,6 +657,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: darkGrey,
+                                      fontFamily: Font,
                                     ),
                                   ),
                                 ],
@@ -671,7 +675,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(18),
                           border: Border.all(color: greyColor, width: 2),
                         ),
                         child: Row(
@@ -689,8 +693,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   Text(
                                     GameState.score.toString(),
                                     style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      fontFamily: Font,
                                       color: questionColor
                                     ),
                                   ),
@@ -699,6 +703,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: darkGrey,
+                                      fontFamily: Font,
                                     ),
                                   ),
                                 ],
@@ -724,7 +729,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       S.of(context).yutuqlar,
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: Font,
                         color: questionColor
                       ),
                     ),
@@ -748,9 +753,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Text(
                         S.of(context).hammasiniKorish,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           color: primaryColor,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: Font,
                         ),
                       ),
                     ),
@@ -764,7 +769,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
                   border: Border.all(color: greyColor, width: 2),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(18),
                   color: Colors.white,
                 ),
                 child: SingleChildScrollView(

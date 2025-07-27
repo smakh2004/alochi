@@ -196,7 +196,7 @@
   "wrongPassword": "Parol noto'g'ri",
   "somethingWentWrong": "Noto'g'ri email yoki parol",
 
-  "registratsiya": "Registratsiya o'tish",
+  "registratsiya": "Registratsiya",
   "matematikaDunyosi": "Matematika dunyosiga olg'a",
   "parolniTasdiqlash": "Parolni tasdiqlash",
   "registratsiyaQilishQ": "Registratsiya Qilish",
@@ -258,5 +258,6 @@
 
   "hint1": "Ayirish degani olib tashlash degani.\n\nNamuna:\nAgar sizda 3 ta narsa bo‘lsa va 2 tasini olib tashlasangiz, qolganini sanang:\n•  3 ta barmoq bilan boshlang.\n•  2 ta barmoqni tushiring.\n•  Nechta barmoq qoldi?\n\nO‘ylang: 3… 1 ni olib tashlang (endi 2)… yana 1 ni olib tashlang (endi 1).",
   "hint2": "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi.",
-  "hint3": "Har bir qatorga diqqat bilan qarang.\nHar bir rasm biror sonni bildiradi.\nHar bir rasmning qiymatini bosqichma-bosqich topishga harakat qiling!\n\nNamuna:"
+  "hint3": "Har bir qatorga diqqat bilan qarang.\nHar bir rasm biror sonni bildiradi.\nHar bir rasmning qiymatini bosqichma-bosqich topishga harakat qiling!\n\nNamuna:",
+  "hint4": "Tavsiya:\nSekinroq qarang va diqqat bilan kuzating. Namunalar, farqlar yoki yashirin detallarni izlang. Ko‘zingizni faqat bitta joyga emas, butun rasm bo‘ylab yurgizing. Ba’zan kalit bir qarashda ahamiyatsiz tuyuladigan kichik detallarda bo‘ladi."
 }

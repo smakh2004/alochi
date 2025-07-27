@@ -2,7 +2,7 @@
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/MathStorm/MathStorm.dart';
 import 'package:alochi_math_app/pages/ProfilePage.dart';
-import 'package:alochi_math_app/pages/PremiumPage.dart';
+import 'package:alochi_math_app/pages/LeaderBoard.dart';
 import 'package:alochi_math_app/pages/StorePage.dart';
 import 'package:alochi_math_app/pages/YuqoriSinf/HomePage1.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _YuqoriSinfState extends State<YuqoriSinf> {
     MathStorm(),
     ProfilePage(),
     StorePage(),
-    PremiumPage(),
+    LeaderBoard(),
   ];
 
   void _NavigatedBottomBar(int index) {
@@ -35,7 +35,7 @@ class _YuqoriSinfState extends State<YuqoriSinf> {
       if (index == 1) _pages[1] = MathStorm();
       if (index == 2) _pages[2] = ProfilePage();
       if (index == 3) _pages[3] = StorePage();
-      if (index == 4) _pages[4] = PremiumPage();
+      if (index == 4) _pages[4] = LeaderBoard();
     });
   }
 

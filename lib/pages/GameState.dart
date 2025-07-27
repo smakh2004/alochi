@@ -4,26 +4,43 @@ class GameState {
 
   // Selected level of user: BOSHLANGICH, YUQORISINF, STUDENT
   static String selectedLevel = '';
+
+  // Full name
   static String firstName = ''; 
   static String lastName = '';
 
+  // Math storm
   static int matematikShtorm = 0;
   static int mathStormAttemptsLeft = 3;
   static int lastScore = 0;
   static int lastTime = 0;
 
-  // progress for Boshlangich
+  // progress for 1 level
   static double currentXP = 0;
   static double maxXP = 100;
-  static double TcurrentXP = 0;
-  static double TmaxXP = 100;
+
+  // progress for 2 level
+  static double currentXP2 = 0;
+  static double maxXP2 = 100;
+
+  // progress for 3 level
+  static double currentXP3 = 0;
+  static double maxXP3 = 100;
+
+  // progress for 4 level
+  static double currentXP4 = 0;
+  static double maxXP4 = 100;
+
+  // score
   static int score = 0;
   static int scoreDop = 0;
 
+  // elements of home page
   static int hearts = 5;
   static int lightnings = 0;
   static int gems = 0;
 
+  // Statistics
   static double arifmetika = 0;
   static double arifmetikaMax = 100;
   static double arifmetikaDop = 0;
@@ -39,7 +56,7 @@ class GameState {
   static DateTime? lastLightningDate;
   static DateTime? lastLightningDate1;
 
-  /// RESET values to defaults (except selectedLevel)
+  /// RESET values to defaults 
   static void reset() {
 
     matematikShtorm = 0;
@@ -51,19 +68,17 @@ class GameState {
     currentXP = 0;
     maxXP = 100;
 
-    TcurrentXP = 0;
-    TmaxXP = 100;
+    currentXP2 = 0;
+    maxXP2 = 100;
 
     hearts = 5;
     lightnings = 0;
     gems = 0;
 
     score = 0;
-    scoreDop = 0;
 
     arifmetika = 0;
     arifmetikaMax = 100;
-    arifmetikaDop = 0;
 
     kopaytirish = 0;
     kopaytirishMax = 100;
@@ -82,30 +97,21 @@ class GameState {
     if (userId.isEmpty) return;
     await FirebaseFirestore.instance.collection('users').doc(userId).set({
       'selectedLevel': selectedLevel,
-      'firstName': firstName, // Save first name
-      'lastName': lastName, // Save last name
+      'firstName': firstName, 
+      'lastName': lastName,
       'matematikShtorm': matematikShtorm,
       'mathStormAttemptsLeft': mathStormAttemptsLeft,
       'lastScore': lastScore,
       'lastTime': lastTime,
       'currentXP': currentXP,
-      'maxXP': maxXP,
-      'TcurrentXP': TcurrentXP,
-      'TmaxXP': TmaxXP,
+      'TcurrentXP': currentXP2,
       'hearts': hearts,
       'lightnings': lightnings,
       'gems': gems,
       'score': score,
-      'scoreDop': scoreDop,
       'arifmetika': arifmetika,
-      'arifmetikaMax': arifmetikaMax,
-      'arifmetikaDop': arifmetikaDop,
       'kopaytirish': kopaytirish,
-      'kopaytirishMax': kopaytirishMax,
-      'kopaytirishDop': kopaytirishDop,
       'logika': logika,
-      'logikaMax': logikaMax,
-      'logikaDop': logikaDop,
       'lastLightningDate': lastLightningDate?.toIso8601String(),
       'lastLightningDate1': lastLightningDate1?.toIso8601String(),
     }, SetOptions(merge: true));
@@ -131,28 +137,19 @@ class GameState {
     lastTime = data['lastTime'] ?? 0;
 
     currentXP = (data['currentXP'] ?? 0).toDouble();
-    maxXP = (data['maxXP'] ?? 100).toDouble();
-    TcurrentXP = (data['TcurrentXP'] ?? 0).toDouble();
-    TmaxXP = (data['TmaxXP'] ?? 100).toDouble();
+    currentXP2 = (data['TcurrentXP'] ?? 0).toDouble();
 
     hearts = data['hearts'] ?? 5;
     lightnings = data['lightnings'] ?? 0;
     gems = data['gems'] ?? 0;
 
     score = data['score'] ?? 0;
-    scoreDop = data['scoreDop'] ?? 0;
 
     arifmetika = (data['arifmetika'] ?? 0).toDouble();
-    arifmetikaMax = (data['arifmetikaMax'] ?? 100).toDouble();
-    arifmetikaDop = (data['arifmetikaDop'] ?? 0).toDouble();
 
     kopaytirish = (data['kopaytirish'] ?? 0).toDouble();
-    kopaytirishMax = (data['kopaytirishMax'] ?? 100).toDouble();
-    kopaytirishDop = (data['kopaytirishDop'] ?? 0).toDouble();
 
     logika = (data['logika'] ?? 0).toDouble();
-    logikaMax = (data['logikaMax'] ?? 100).toDouble();
-    logikaDop = (data['logikaDop'] ?? 0).toDouble();
 
     lastLightningDate = _parseDate(data['lastLightningDate']);
     lastLightningDate1 = _parseDate(data['lastLightningDate1']);

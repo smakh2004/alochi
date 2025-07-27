@@ -66,7 +66,7 @@ class _HomePage1State extends State<HomePage1> {
                   S.of(context).beshinchiSinf,
                   style: TextStyle(
                     fontSize: 26,
-                    fontFamily: primaryFont,
+                    fontFamily: BoldFont,
                     color: primaryColor
                   ),
                 ),
@@ -228,7 +228,7 @@ class _HomePage1State extends State<HomePage1> {
                   S.of(context).oltinchiSinf,
                   style: TextStyle(
                     fontSize: 26,
-                    fontFamily: primaryFont,
+                    fontFamily: BoldFont,
                     color: purpleContainer,
                   ),
                 ),
@@ -356,7 +356,7 @@ class _HomePage1State extends State<HomePage1> {
                   S.of(context).yetinchiSinf,
                   style: TextStyle(
                     fontSize: 26,
-                    fontFamily: primaryFont,
+                    fontFamily: BoldFont,
                     color: orange,
                   ),
                 ),
@@ -440,7 +440,7 @@ class _HomePage1State extends State<HomePage1> {
                   S.of(context).sakkizinchiSinf,
                   style: TextStyle(
                     fontSize: 26,
-                    fontFamily: primaryFont,
+                    fontFamily: BoldFont,
                     color: greenAlmaz,
                   ),
                 ),
@@ -535,7 +535,7 @@ class _HomePage1State extends State<HomePage1> {
                   S.of(context).toqqizinchiSinf,
                   style: TextStyle(
                     fontSize: 26,
-                    fontFamily: primaryFont,
+                    fontFamily: BoldFont,
                     color: primaryYellow,
                   ),
                 ),
@@ -614,7 +614,7 @@ class _HomePage1State extends State<HomePage1> {
             fontWeight: FontWeight.bold,
             letterSpacing: 2.0,
             fontSize: 18.0,
-            fontFamily: primaryFont,
+            fontFamily: BoldFont,
             color: color,
           ),
         ),

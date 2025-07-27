@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
@@ -97,9 +98,9 @@ class _WelcomePageState extends State<WelcomePage> {
               child: Text(
                 _currentPage == 3 ? S.of(context).boshlash : S.of(context).davomEtish,
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: Font
                 ),
               ),
             ),

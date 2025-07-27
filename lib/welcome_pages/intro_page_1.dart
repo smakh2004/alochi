@@ -30,8 +30,8 @@ class _IntroPage1State extends State<IntroPage1> {
                 Text(
                   'A\'LOCHI',
                   style: TextStyle(
-                    fontFamily: primaryFont,
-                    fontSize: 26,
+                    fontFamily: BoldFont,
+                    fontSize: 28,
                     color: primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
@@ -41,8 +41,9 @@ class _IntroPage1State extends State<IntroPage1> {
                   S.of(context).intro,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 16, 
-                    color: Colors.black
+                    fontSize: 18, 
+                    fontFamily: Font,
+                    color: questionColor
                   ),
                 ),
                 const SizedBox(height: 100),

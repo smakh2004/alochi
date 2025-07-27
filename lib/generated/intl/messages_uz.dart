@@ -169,6 +169,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "hint3": MessageLookupByLibrary.simpleMessage(
       "Har bir qatorga diqqat bilan qarang.\nHar bir rasm biror sonni bildiradi.\nHar bir rasmning qiymatini bosqichma-bosqich topishga harakat qiling!\n\nNamuna:",
     ),
+    "hint4": MessageLookupByLibrary.simpleMessage(
+      "Tavsiya:\nSekinroq qarang va diqqat bilan kuzating. Namunalar, farqlar yoki yashirin detallarni izlang. Ko‘zingizni faqat bitta joyga emas, butun rasm bo‘ylab yurgizing. Ba’zan kalit bir qarashda ahamiyatsiz tuyuladigan kichik detallarda bo‘ladi.",
+    ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "Bu ilova sizning matematikani chuqur o\'zlashtirishizga yordam beradi. Sizni yo\'l davomida geometrik figuralar qo\'lab quvatlab boradi.",
     ),
@@ -323,9 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "qaytish": MessageLookupByLibrary.simpleMessage("QAYTISH"),
     "ratsionalSonlar": MessageLookupByLibrary.simpleMessage("Ratsional sonlar"),
     "rechargingIn": m0,
-    "registratsiya": MessageLookupByLibrary.simpleMessage(
-      "Registratsiya o\'tish",
-    ),
+    "registratsiya": MessageLookupByLibrary.simpleMessage("Registratsiya"),
     "registratsiyaQilish": MessageLookupByLibrary.simpleMessage(
       "Registratsiya qilish",
     ),

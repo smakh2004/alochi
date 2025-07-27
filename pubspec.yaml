@@ -33,6 +33,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  dropdown_button2: ^2.3.9
+
   url_launcher: ^6.3.2
   connectivity_plus: ^6.1.4
   internet_connection_checker_plus: ^2.7.2
@@ -88,6 +90,7 @@ flutter:
     - assets/icons/Profile.png
     - assets/icons/Heart.png
     - assets/icons/Lightining.png
+    - assets/icons/Lightining1.png
     - assets/icons/Diamond.png
     - assets/icons/Ring.png
     - assets/icons/Exit.png
@@ -100,6 +103,7 @@ flutter:
     - assets/icons/Cup.png
     - assets/icons/Points.png
     - assets/icons/Time.png
+    - assets/icons/Leaderboard.png
 
     - assets/images/Welcome1.png
     - assets/images/Welcome2.png
@@ -127,6 +131,11 @@ flutter:
     - assets/images/Hint2.png
     - assets/images/Hint3.png
     - assets/images/Hint3(1).png
+    - assets/images/Hint(visualProblems).png
+    - assets/images/Gold.png
+    - assets/images/Silver.png
+    - assets/images/Bronze.png
+    - assets/images/BannerLeaderboard.png
 
     - assets/question_images/Q1.png
     - assets/question_images/Q2(1).png
@@ -223,6 +232,16 @@ flutter:
     - assets/items/SavatHeart.png
     - assets/items/SandiqHeart.png
 
+    - assets/storeImages/Gems1.png
+    - assets/storeImages/Gems11.png
+    - assets/storeImages/Gems2.png
+    - assets/storeImages/Gems3.png
+    - assets/storeImages/AlochiInfinity2.png
+    - assets/storeImages/AlochiBanner.png
+    - assets/storeImages/Box.png
+    - assets/storeImages/Box2.png
+    - assets/storeImages/Freezing.png
+
     - assets/animations/Logo.json
     - assets/animations/MrSquareStartButton.json
     - assets/animations/MrSquareSalom.json
@@ -257,13 +276,12 @@ flutter:
     # list giving the asset and other descriptors for the font. For
     # example:
   fonts:
-    - family: LilitaOneRegular
+    - family: CaustenRound
       fonts:
-        - asset: assets/fonts/LilitaOne-Regular.ttf
-    - family: AlochiFont
+        - asset: assets/fonts/caustenround-black.otf
+    - family: Causten
       fonts:
-        - asset: assets/fonts/AlochiFont.ttf
-          weight: 900
+        - asset: assets/fonts/Causten-Bold.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

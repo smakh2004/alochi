@@ -1464,9 +1464,14 @@ class S {
     );
   }
 
-  /// `Register`
+  /// `Registered`
   String get registratsiya {
-    return Intl.message('Register', name: 'registratsiya', desc: '', args: []);
+    return Intl.message(
+      'Registered',
+      name: 'registratsiya',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Welcome to the world of math`
@@ -1944,6 +1949,16 @@ class S {
     return Intl.message(
       'Look carefully at each line.\nEach picture stands for a number.\nTry to find the value of each picture step by step!\n\nSample:',
       name: 'hint3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advice:\nSlow down and observe carefully. Look for patterns, differences, or hidden details. Move your eyes across the whole image instead of focusing on one spot. Sometimes the key is in small details that first seem unimportant.`
+  String get hint4 {
+    return Intl.message(
+      'Advice:\nSlow down and observe carefully. Look for patterns, differences, or hidden details. Move your eyes across the whole image instead of focusing on one spot. Sometimes the key is in small details that first seem unimportant.',
+      name: 'hint4',
       desc: '',
       args: [],
     );

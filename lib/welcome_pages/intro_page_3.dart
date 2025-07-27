@@ -25,8 +25,8 @@ class IntroPage3 extends StatelessWidget {
                 Text(
                    S.of(context).intro3desc,
                    style: TextStyle(
-                     fontFamily: primaryFont,
-                     fontSize: 26,
+                     fontFamily: BoldFont,
+                     fontSize: 28,
                      color: orange,
                      fontWeight: FontWeight.bold,
                    ),
@@ -36,8 +36,9 @@ class IntroPage3 extends StatelessWidget {
                   S.of(context).intro3, 
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 16, 
-                    color: Colors.black
+                    fontSize: 18, 
+                    color: questionColor,
+                    fontFamily: Font,
                   ),
                 ),
                 const SizedBox(height: 100),

@@ -1,3 +1,4 @@
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -63,8 +64,8 @@ class _LevelChoosingState extends State<LevelChoosing> {
                     child: Text(
                       S.of(context).messageOfMrSquare,
                       style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        fontFamily: Font
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -122,9 +123,9 @@ class _LevelChoosingState extends State<LevelChoosing> {
                             child: Text(
                               level,
                               style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: questionColor,
+                                fontFamily: Font
                               ),
                             ),
                           ),

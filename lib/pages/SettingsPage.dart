@@ -30,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
           alignment: Alignment.center,
           children: [
             Text(S.of(context).settingsNew,
-                style: TextStyle(fontFamily: primaryFont, color: darkGrey)),
+                style: TextStyle(fontFamily: BoldFont, color: darkGrey)),
             Align(
               alignment: Alignment.centerRight,
               child: GestureDetector(
@@ -42,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(
                       fontSize: 16,
                       color: primaryColor,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: Font,
                     ),
                   ),
                 ),
@@ -66,9 +66,9 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Text(
                 S.of(context).akkauntLow,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
                   color: darkGrey,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: Font,
                 ),
               ),
             ),
@@ -95,9 +95,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           Text(
                             S.of(context).parameters,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 22,
                               color: questionColor,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           Icon(
@@ -127,9 +127,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           Text(
                             S.of(context).profile,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 22,
                               color: questionColor,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           Icon(
@@ -159,9 +159,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           Text(
                             S.of(context).notifications,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 22,
                               color: questionColor,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           Icon(
@@ -191,9 +191,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           Text(
                             S.of(context).kurslar,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 22,
                               color: questionColor,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           Icon(
@@ -215,7 +215,7 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Text(
                 S.of(context).support,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
                   color: darkGrey,
                   fontWeight: FontWeight.bold,
                 ),
@@ -244,9 +244,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           Text(
                             S.of(context).helpCenter,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 22,
                               color: questionColor,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                           Icon(
@@ -288,9 +288,9 @@ class _SettingsPageState extends State<SettingsPage> {
                               Text(
                                 S.of(context).sendFeedback,
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 22,
                                   color: questionColor,
-                                  fontWeight: FontWeight.bold,
+                                  fontFamily: Font,
                                 ),
                               ),
                               Icon(
@@ -318,7 +318,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 try {
                   await FirebaseAuth.instance.signOut();
 
-                  // 🧠 Clear all in-memory game state after logout
+                  // Clear all in-memory game state after logout
                   GameState.reset();
 
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -348,9 +348,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     Text(
                       S.of(context).signOut,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         color: primaryColor,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: Font,
                       ),
                     ),
                   ],

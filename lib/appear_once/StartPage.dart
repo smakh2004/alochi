@@ -64,7 +64,7 @@ class _StartPageState extends State<StartPage> {
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.grey,
-                        fontFamily: primaryFont,
+                        fontFamily: BoldFont,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -83,9 +83,9 @@ class _StartPageState extends State<StartPage> {
                       child: const Text(
                         'START',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: Font,
                         ),
                       ),
                     ),
@@ -125,9 +125,9 @@ class _StartPageState extends State<StartPage> {
                           child: Text(
                             S.of(context).akkaunt,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 16,
                               color: primaryColor,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: Font,
                             ),
                           ),
                         ),
@@ -183,7 +183,7 @@ class _StartPageState extends State<StartPage> {
                                 child: Text(
                                   'UZ',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: grey,
                                   ),
                                 ),
@@ -193,7 +193,7 @@ class _StartPageState extends State<StartPage> {
                                 child: Text(
                                   'EN',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                     color: grey,
                                   ),
                                 ),
@@ -219,7 +219,7 @@ class _StartPageState extends State<StartPage> {
                                   isUzbek ? 'UZ' : 'EN',
                                   style: const TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: Font,
                                   ),
                                 ),
                               ),
@@ -230,7 +230,7 @@ class _StartPageState extends State<StartPage> {
                     ),
                   ),
                   SizedBox(height: 5),
-                  Text(S.of(context).langauage, style: TextStyle(fontWeight: FontWeight.bold, color: greyColor),)
+                  Text(S.of(context).langauage, style: TextStyle(fontFamily: Font, color: greyColor),)
                 ],
               ),
             ),

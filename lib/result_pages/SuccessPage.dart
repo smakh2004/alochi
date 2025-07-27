@@ -11,9 +11,9 @@ import 'package:lottie/lottie.dart';
 import 'package:animated_button/animated_button.dart';
 
 class SuccessPage extends StatefulWidget {
-  final Duration duration; // Time taken to complete the task
-  final int xp;            // XP gained
-  final double accuracy;   // Accuracy percentage
+  final Duration duration; 
+  final int xp;            
+  final double accuracy; 
 
   const SuccessPage({
     super.key,
@@ -27,35 +27,40 @@ class SuccessPage extends StatefulWidget {
 }
 
 class _SuccessPageState extends State<SuccessPage> {
-  late int currentXP;
   late int localScoreDop;
+  late int localGems = 10;
 
   @override
   void initState() {
     super.initState();
-    // Initialize XP from widget
-    currentXP = widget.xp;
 
-    // Increment arifmetika
+    // ✅ Always increase XP and stats when SuccessPage is reached
+    GameState.currentXP += widget.xp;
+    if (GameState.currentXP > GameState.maxXP) {
+      GameState.currentXP = GameState.maxXP;
+    }
+
+    GameState.kopaytirish += GameState.kopaytirishDop;
+    GameState.kopaytirishDop = 0;
+
     GameState.arifmetika += GameState.arifmetikaDop;
-
-    // Immediatelly initialize arifmetikaDop for next levels
     GameState.arifmetikaDop = 0;
 
-    // Increment logika
     GameState.logika += GameState.logikaDop;
-
-    // Immediatelly initialize logikaDop for next levels
     GameState.logikaDop = 0;
 
-    // localScoreDop
     localScoreDop = GameState.scoreDop;
-
-    // Score
     GameState.score += GameState.scoreDop;
-
-    // Immediatelly initialize logikaDop for next levels
     GameState.scoreDop = 0;
+
+    GameState.gems += 10;
+
+    // ✅ Save immediately
+    final user = FirebaseAuth.instance.currentUser;
+    final userId = user?.uid;
+    if (userId != null) {
+      GameState.saveState(userId);
+    }
   }
 
   @override
@@ -63,17 +68,16 @@ class _SuccessPageState extends State<SuccessPage> {
     final minutes = widget.duration.inMinutes;
     final seconds = widget.duration.inSeconds % 60;
 
-    // Get today's date
-    final today = DateTime.now();
-
     // Check if lightning reward has already been claimed today
-    bool alreadyClaimed = GameState.lastLightningDate != null &&
+    final today = DateTime.now();
+    final alreadyClaimed = GameState.lastLightningDate != null &&
         GameState.lastLightningDate!.day == today.day &&
         GameState.lastLightningDate!.month == today.month &&
         GameState.lastLightningDate!.year == today.year;
 
-    // Change button label based on reward claim status
-    final buttonLabel = alreadyClaimed ? S.of(context).uygaQaytish : S.of(context).davomEtish;
+    // Button label
+    final buttonLabel =
+        alreadyClaimed ? S.of(context).uygaQaytish : S.of(context).davomEtish;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -87,218 +91,103 @@ class _SuccessPageState extends State<SuccessPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Lottie animation at top
-                      Center(
-                        child: Lottie.asset(
-                          'assets/animations/MrSquareCorrect.json',
-                          height: 250,
-                          width: 240,
-                        ),
+                      Spacer(),
+                      // Animation
+                      Lottie.asset(
+                        'assets/animations/MrSquareCorrect.json',
+                        height: 250,
+                        width: 240,
                       ),
-                      
-                      // Title text
+                      const SizedBox(height: 10),
+
+                      // Title
                       Text(
                         S.of(context).ajoyibDars,
                         style: TextStyle(
                           fontSize: 24,
-                          fontFamily: primaryFont,
+                          fontFamily: BoldFont,
                           color: yellow,
                         ),
                       ),
-                      
                       Text(
                         S.of(context).beast,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
+                          fontFamily: Font,
+                          fontSize: 18,
                           color: grey,
                         ),
                       ),
-                      
                       const SizedBox(height: 20),
-                      
-                      // Stat blocks: XP, Time, Accuracy
+
+                      // Stat blocks
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                      
-                          // Score Stat
-                          Container(
-                            width: 90,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: yellow, width: 2),
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  padding: const EdgeInsets.symmetric(vertical: 6),
-                                  decoration: BoxDecoration(
-                                    color: yellow,
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      S.of(context).ochko,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                        letterSpacing: 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                        'assets/icons/Points.png',
-                                        width: 24,
-                                        height: 24,
-                                      ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      '$localScoreDop',
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: yellow,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 10),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          // Score
+                          _statBlock(
+                            color: yellow,
+                            title: S.of(context).ochko,
+                            value: '$localScoreDop',
+                            icon: Image.asset('assets/icons/Points.png', width: 24, height: 24),
                           ),
                           const SizedBox(width: 15),
-                      
-                          // Time Stat
-                          Container(
-                            width: 90,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: primaryColor, width: 2),
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  padding: const EdgeInsets.symmetric(vertical: 6),
-                                  decoration: BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      S.of(context).vaqt,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                        letterSpacing: 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                        'assets/icons/Time.png',
-                                        width: 24,
-                                        height: 24,
-                                      ),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      '$minutes:${seconds.toString().padLeft(2, '0')}',
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: primaryColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+
+                          // Time
+                          _statBlock(
+                            color: primaryColor,
+                            title: S.of(context).vaqt,
+                            value: '$minutes:${seconds.toString().padLeft(2, '0')}',
+                            icon: Image.asset('assets/icons/Time.png', width: 24, height: 24),
                           ),
-                      
                           const SizedBox(width: 15),
-                      
-                          // Accuracy Stat
-                          Container(
-                            width: 90,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: greenNew, width: 2),
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  padding: const EdgeInsets.symmetric(vertical: 6),
-                                  decoration: BoxDecoration(
-                                    color: greenNew,
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      S.of(context).aniqlik,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                        letterSpacing: 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.track_changes, color: greenNew, size: 24),
-                                    const SizedBox(width: 5),
-                                    Text(
-                                      '${widget.accuracy.toStringAsFixed(0)}%',
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: greenNew,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+
+                          // Accuracy
+                          _statBlock(
+                            color: greenNew,
+                            title: S.of(context).aniqlik,
+                            value: '${widget.accuracy.toStringAsFixed(0)}%',
+                            icon: const Icon(Icons.track_changes, size: 24, color: greenNew),
                           ),
                         ],
                       ),
+                      
+                      SizedBox(height: 50),
+                      // Gems
+                      Column(
+                        children: [
+                          Image.asset('assets/storeImages/Gems1.png', width: 120, height: 60,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '+',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: green,
+                                  fontFamily: Font,
+                                ),
+                              ),
+                              Text(
+                                '$localGems',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: green,
+                                  fontFamily: Font,
+                                ),
+                              ),
+                              Image.asset('assets/icons/Diamond.png', width: 28, height: 28),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 30),
                     ],
                   ),
                 ),
               ),
-        
-              // Action Button: either go home or continue to Streak page
+
+              // Button
               Padding(
                 padding: const EdgeInsets.only(bottom: 30),
                 child: AnimatedButton(
@@ -306,56 +195,35 @@ class _SuccessPageState extends State<SuccessPage> {
                   width: 310,
                   color: primaryColor,
                   onPressed: () async {
-                    if (alreadyClaimed) {
-                      setState(() {
-                        if (GameState.currentXP > GameState.maxXP) {
-                          GameState.currentXP = GameState.maxXP;
-                        }
-                      });
-                
-                      final user = FirebaseAuth.instance.currentUser;
-                      final userId = user?.uid;
-                
-                      if (userId != null) {
-                        await GameState.saveState(userId);
-                      } else {
-                        print("User is not logged in!");
-                      }
-                
-                      Navigator.pop(context, 'xpGained');
-                    } else {
-                      // Go to Streak page to claim lightning
+                    final today = DateTime.now();
+                    final last = GameState.lastLightningDate;
+                    final isSameDay = last != null &&
+                        last.year == today.year &&
+                        last.month == today.month &&
+                        last.day == today.day;
+
+                    final user = FirebaseAuth.instance.currentUser;
+                    final userId = user?.uid;
+                    if (userId != null) {
+                      await GameState.saveState(userId); // Save updated XP and stats
+                    }
+
+                    if (!isSameDay) {
+                      // Navigate to Streak (lightning will be handled there)
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const Streak()),
-                      ).then((resultFromStreak) async {
-                        if (resultFromStreak == 'xpGained') {
-                          // Update game state
-                          setState(() {
-                            if (GameState.currentXP > GameState.maxXP) {
-                              GameState.currentXP = GameState.maxXP;
-                            }
-                            GameState.lightnings += 1;
-                            GameState.lastLightningDate = today;
-                          });
-                
-                          final user = FirebaseAuth.instance.currentUser;
-                          final userId = user?.uid;
-                          if (userId != null) {
-                            await GameState.saveState(userId);
-                          }
-                
-                          // ✅ Now pop SuccessPage itself with xpGained
-                          Navigator.pop(context, 'xpGained');
-                        }
-                      });
+                      );
+                    } else {
+                      // Already claimed today → back to home
+                      Navigator.pop(context);
                     }
                   },
                   child: Text(
                     buttonLabel,
                     style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      fontFamily: Font,
                       color: Colors.white,
                     ),
                   ),
@@ -364,6 +232,65 @@ class _SuccessPageState extends State<SuccessPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _statBlock({
+    required Color color,
+    required String title,
+    required String value,
+    required Widget icon,
+  }) {
+    return Container(
+      width: 90,
+      height: 80,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: color, width: 2),
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            child: Center(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontFamily: Font,
+                  fontSize: 14,
+                  letterSpacing: 1,
+                ),
+              ),
+            ),
+          ),
+          Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              icon,
+              const SizedBox(width: 5),
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: color,
+                  fontFamily: Font,
+                ),
+              ),
+            ],
+          ),
+          Spacer(),
+        ],
       ),
     );
   }

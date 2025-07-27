@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:alochi_math_app/components/color.dart';
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -91,8 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   S.of(context).tizimgaKirish,
                   style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
+                    fontSize: 24,
+                    fontFamily: Font,
                   ),
                 ),
         
@@ -100,7 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   S.of(context).tizimgaKirishDes,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
+                    fontFamily: Font,
                   ),
                 ),
         
@@ -177,9 +179,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(
                     S.of(context).kirish,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 16,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: Font,
                     ),
                   ),
                 ),
@@ -192,7 +194,8 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       S.of(context).akkauntizYoqmi,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontFamily: Font,
+                        fontSize: 16,
                       ),),
                     GestureDetector(
                       onTap: widget.showRegisterPage,
@@ -200,7 +203,8 @@ class _LoginPageState extends State<LoginPage> {
                         S.of(context).registratsiyaQilish, 
                         style: TextStyle(
                           color: primaryColor, 
-                          fontWeight: FontWeight.bold,
+                          fontFamily: Font,
+                          fontSize: 16
                         ),
                       ),
                     )
@@ -212,7 +216,8 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   S.of(context).googleOrqali,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontFamily: Font,
+                    fontSize: 16,
                     color: Colors.grey,
                   ),
                 ),

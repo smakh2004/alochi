@@ -1,4 +1,5 @@
 import 'package:alochi_math_app/components/color.dart';
+import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -94,14 +95,14 @@ class _MathStormResultState extends State<MathStormResult>
                     message,
                     style: const TextStyle(
                       fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: Font,
                     ),
                   ),
                   Text(
                     '${widget.score}',
                     style: TextStyle(
                       fontSize: 100,
-                      fontWeight: FontWeight.w900,
+                      fontFamily: Font,
                       color:
                           widget.isNewRecord ? darkOrange : primaryColor,
                     ),
@@ -127,9 +128,9 @@ class _MathStormResultState extends State<MathStormResult>
                         child: Text(
                           S.of(context).qaytish,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 16,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontFamily: Font,
                           ),
                         ),
                       ),

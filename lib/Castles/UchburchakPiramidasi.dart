@@ -62,7 +62,7 @@ class _UchburchakPiramidasiState extends State<UchburchakPiramidasi> with Single
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    double currentProgress = GameState.TcurrentXP / GameState.TmaxXP;
+    double currentProgress = GameState.currentXP2 / GameState.maxXP2;
 
     // Update previousProgress only after rendering
     WidgetsBinding.instance.addPostFrameCallback((_) {

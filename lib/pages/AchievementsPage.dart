@@ -35,7 +35,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                 Text(
                   medalName,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 22, fontFamily: Font, color: questionColor),
                 ),
                 const SizedBox(height: 1),
                 Image.asset(imagePath, width: 220, height: 220),
@@ -43,7 +43,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                 Text(
                   medalDescription,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: darkGrey),
+                  style: const TextStyle(fontSize: 18, fontFamily: Font, color: darkGrey),
                 ),
                 const SizedBox(height: 20),
                 AnimatedButton(
@@ -64,7 +64,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                       style: TextStyle(
                         fontSize: 16,
                         color: primaryColor,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: Font,
                       ),
                     ),
                   ),
@@ -96,7 +96,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
           children: [
             Text(
               S.of(context).yutuqlar,
-              style: TextStyle(color: darkGrey, fontFamily: primaryFont, fontSize: 18),
+              style: TextStyle(color: darkGrey, fontFamily: BoldFont, fontSize: 18),
             ),
             Align(
               alignment: Alignment.centerLeft,
@@ -124,7 +124,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(S.of(context).TwoFiveYutuqlar, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(S.of(context).TwoFiveYutuqlar, style: TextStyle(fontSize: 18, fontFamily: Font, color: questionColor)),
                 const SizedBox(height: 10),
                 Wrap(
                   spacing: 10,
@@ -164,7 +164,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                 ),
                 const SizedBox(height: 20),
           
-                Text(S.of(context).TwoSixYutuqlar, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(S.of(context).TwoSixYutuqlar, style: TextStyle(fontSize: 18, fontFamily: Font, color: questionColor)),
                 const SizedBox(height: 10),
                 Wrap(
                   spacing: 10,
@@ -179,7 +179,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                 ),
                 const SizedBox(height: 20),
           
-                Text(S.of(context).TwoSevenYutuqlar, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(S.of(context).TwoSevenYutuqlar, style: TextStyle(fontSize: 18, fontFamily: Font, color: questionColor)),
                 const SizedBox(height: 10),
                 Wrap(
                   spacing: 10,

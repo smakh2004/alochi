@@ -79,7 +79,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                       children: [
                         Text(
                           notifications[i]['text']!,
-                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontSize: 18, fontFamily: Font, color: questionColor),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 8),
@@ -104,9 +104,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                               child: Text(
                                 'OK',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 18,
                                   color: primaryColor,
-                                  fontWeight: FontWeight.bold,
+                                  fontFamily: Font,
                                 ),
                               ),
                             ),
@@ -135,7 +135,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
               S.of(context).xabarlar,
               style: TextStyle(
                 color: darkGrey,
-                fontFamily: primaryFont,
+                fontFamily: BoldFont,
                 fontSize: 18,
               ),
             ),
@@ -174,7 +174,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   child: const Center(
                     child: Text(
                       "Xabar yo'q",
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                      style: TextStyle(fontSize: 20, color: grey, fontFamily: Font,),
                     ),
                   ),
                 ),

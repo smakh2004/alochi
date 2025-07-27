@@ -3,20 +3,19 @@ import 'package:alochi_math_app/Castles/UchburchakPiramidasi.dart';
 import 'package:alochi_math_app/UchburchakPiramidasiSavollari/questions1/main_page.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/NotificationsPage.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions1/main_page.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions2/main_page2.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions3/main_page3.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions4/main_page4.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions5/main_page5.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions6/main_page6.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions7/main_page7.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions8/main_page8.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/KvadratQasriSavollari/questions9/main_page9.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/main_page.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions2/main_page2.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions3/main_page3.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/main_page4.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions5/main_page5.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions6/main_page6.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions7/main_page7.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions8/main_page8.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions9/main_page9.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
-import 'package:alochi_math_app/pages/BoshlangichSinf/ListOfCastles.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,6 +43,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _checkHeartRegeneration();
+    _checkLightningTimeout(); // ✅ Check lightning timeout on load
   }
 
   @override
@@ -60,12 +60,35 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  // ✅ RESET LIGHTNING IF NO INCREASE IN 2 DAYS
+  void _checkLightningTimeout() async {
+    final last = GameState.lastLightningDate;
+    if (last != null) {
+      final now = DateTime.now();
+      final diff = now.difference(last);
+      if (diff.inDays >= 2) {
+        setState(() {
+          GameState.lightnings = 0;
+          GameState.lastLightningDate = null;
+          GameState.lastLightningDate1 = null;
+        });
+
+        // Save this change to Firestore
+        final userId = FirebaseAuth.instance.currentUser?.uid;
+        if (userId != null) {
+          await GameState.saveState(userId);
+        }
+      }
+    }
+  }
+
   void _updateStageTitle() {
     double progress1 = GameState.currentXP / GameState.maxXP;
-    double progress2 = GameState.TcurrentXP / GameState.TmaxXP;
+    double progress2 = GameState.currentXP2 / GameState.maxXP2;
+    double progress3 = GameState.currentXP3 / GameState.maxXP3;
+    double progress4 = GameState.currentXP4 / GameState.maxXP4;
 
     if (progress1 < 1.0) {
-      // Stage 1 — Kvadrat Qasri
       setState(() {
         currentStageTitle = S.of(context).kvadratQasriBirinchiBosqich;
         currentStageSubtitle = S.of(context).kvadratQasriBirinchiBosqichDes;
@@ -74,23 +97,27 @@ class _HomePageState extends State<HomePage> {
         currentCastle = S.of(context).squareCastle;
       });
     } else if (progress2 < 1.0) {
-      // Stage 2 — Uchburchak Piramidasi
       setState(() {
-        currentStageTitle = S.of(context).uchburchakPiramidasiIkkinchiBosqich;
+        currentStageTitle = 'LEVEL 2';
         currentStageSubtitle = S.of(context).uchburchakPiramidasiIkkinchiBosqichDes;
         currentStageColor = red;
         currentStageTitleColor = lightRed;
         currentCastle = S.of(context).squareCastle;
       });
-    } else {
-      // Stage 3 (or further)
+    } else if (progress3 < 1.0) {
       setState(() {
-        currentStageTitle = S.of(context).doiraQasriUchinchiBosqich;
+        currentStageTitle = 'LEVEL 3';
         currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
         currentStageColor = Colors.deepOrange;
         currentStageTitleColor = orange;
         currentCastle = S.of(context).squareCastle;
       });
+    } else if (progress4 < 1.0) {
+      currentStageTitle = 'LEVEL 4';
+      currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
+      currentStageColor = Colors.deepOrange;
+      currentStageTitleColor = orange;
+      currentCastle = S.of(context).squareCastle;
     }
   }
 
@@ -111,7 +138,6 @@ class _HomePageState extends State<HomePage> {
 
         prefs.remove('heartDepletedTime');
 
-        // ✅ Save to Firestore
         final userId = FirebaseAuth.instance.currentUser?.uid;
         if (userId != null) {
           await GameState.saveState(userId);
@@ -136,13 +162,11 @@ class _HomePageState extends State<HomePage> {
           GameState.hearts = 5;
         });
 
-        // 🔥 FIX: Remove the timestamp after restoring hearts
         final prefs = await SharedPreferences.getInstance();
         prefs.remove('heartDepletedTime');
       }
     });
   }
-
 
   String _formatTime(int totalSeconds) {
     final minutes = (totalSeconds ~/ 60).toString().padLeft(2, '0');
@@ -165,8 +189,8 @@ class _HomePageState extends State<HomePage> {
         case 8: return MainPage9();
         default: return MainPage1();
       }
-    } else if (GameState.TcurrentXP < GameState.TmaxXP) {
-      int index = (GameState.TcurrentXP / (GameState.TmaxXP / 10)).floor();
+    } else if (GameState.currentXP2 < GameState.maxXP2) {
+      int index = (GameState.currentXP2 / (GameState.maxXP2 / 10)).floor();
       switch (index) {
         case 0: return MainPage10();
         case 1: return MainPage2();
@@ -180,17 +204,27 @@ class _HomePageState extends State<HomePage> {
   Widget _getCurrentCastleWidget() {
     if (GameState.currentXP < GameState.maxXP) {
       return KvadratQasri(
-        key: ValueKey(GameState.currentXP), 
+        key: ValueKey(GameState.currentXP),
         onComplete: () {},
       );
-    } else if (GameState.TcurrentXP < GameState.TmaxXP) {
+    } else if (GameState.currentXP2 < GameState.maxXP2) {
       return UchburchakPiramidasi(
-        key: ValueKey(GameState.TcurrentXP),
+        key: ValueKey(GameState.currentXP2),
         onComplete: () {},
       );
     } else {
       return const Text("Yangi qasrlar tez orada qo'shiladi.");
     }
+  }
+
+  Widget _getCurrentLightining() {
+    return _iconWithValue(
+      GameState.lightnings == 0
+          ? 'assets/icons/Lightining1.png'
+          : 'assets/icons/Lightining.png',
+      '${GameState.lightnings}',
+      GameState.lightnings == 0 ? grey : primaryPurple,
+    );
   }
 
   @override
@@ -207,7 +241,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             _iconWithValue('assets/icons/Heart.png', '${GameState.hearts}', red),
             _iconWithValue('assets/icons/Diamond.png', '${GameState.gems}', green),
-            _iconWithValue('assets/icons/Lightining.png', '${GameState.lightnings}', primaryPurple),
+            _getCurrentLightining(),
             GestureDetector(
               onTap: () => Navigator.push(
                 context,
@@ -224,7 +258,6 @@ class _HomePageState extends State<HomePage> {
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  // 🔔 The bell icon
                   Image.asset(
                     'assets/icons/Ring.png',
                     width: 32,
@@ -239,10 +272,7 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         color: Colors.red,
                         shape: BoxShape.circle,
-                        border: Border.all(
-                          width: 2,
-                          color: Colors.white
-                        )
+                        border: Border.all(width: 2, color: Colors.white),
                       ),
                     ),
                   ),
@@ -266,25 +296,12 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-
-                    // Top Banner with Levels
                     AnimatedButton(
                       borderRadius: 20,
                       height: screenHeight * 0.10,
                       width: screenWidth * 0.90,
                       color: currentStageColor,
-                      onPressed: () => Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          transitionDuration: const Duration(milliseconds: 600),
-                          pageBuilder: (_, __, ___) => const ListOfCastles(),
-                          transitionsBuilder: (_, animation, __, child) => SlideTransition(
-                            position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
-                                .animate(CurvedAnimation(parent: animation, curve: Curves.easeInOut)),
-                            child: child,
-                          ),
-                        ),
-                      ),
+                      onPressed: () {},
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
                         child: Column(
@@ -292,49 +309,32 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(currentStageTitle,
-                                style: TextStyle(fontSize: 14, color: currentStageTitleColor, fontWeight: FontWeight.bold)),
+                                style: TextStyle(fontSize: 15, color: currentStageTitleColor, fontFamily: Font, height: 1.2)),
                             Text(currentStageSubtitle,
-                                style: const TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.bold)),
+                                style: const TextStyle(fontSize: 22, color: Colors.white, fontFamily: Font, height: 1)),
                           ],
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-
-                    // Text above Castles
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           const Expanded(
-                            child: Divider(
-                              color: greyColor,
-                              thickness: 2,     
-                              endIndent: 10,      
-                            ),
+                            child: Divider(color: greyColor, thickness: 2, endIndent: 10),
                           ),
                           Text(
                             currentCastle,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: grey,
-                            ),
+                            style: const TextStyle(fontSize: 21, fontFamily: Font, color: grey),
                           ),
                           const Expanded(
-                            child: Divider(
-                              color: greyColor,
-                              thickness: 2,
-                              indent: 20,
-                            ),
+                            child: Divider(color: greyColor, thickness: 2, indent: 20),
                           ),
                         ],
                       ),
                     ),
-
-                    // Castles
                     _getCurrentCastleWidget(),
-                    
                     if (GameState.hearts == 0)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -343,7 +343,7 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(width: 10),
                           Text(
                             S.of(context).rechargingIn(_formatTime(secondsLeft)),
-                            style: const TextStyle(fontSize: 14, color: red, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 16, color: red, fontFamily: Font),
                           ),
                         ],
                       ),
@@ -351,8 +351,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
-            // Start button
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
               child: AbsorbPointer(
@@ -361,58 +359,19 @@ class _HomePageState extends State<HomePage> {
                   height: 50,
                   width: MediaQuery.of(context).size.width * 0.5,
                   color: GameState.hearts > 0 ? orange : greyColor,
+                  borderRadius: 16,
                   onPressed: () async {
-                    final result = await Navigator.push(
+                    await Navigator.push(
                       context,
                       MaterialPageRoute(builder: (_) => _getCurrentMainPage()),
                     );
-
-                    if (result == 'xpGained') {
-                      setState(() {
-                        if (GameState.currentXP < GameState.maxXP) {
-                          GameState.currentXP += GameState.maxXP / 10;
-                          if (GameState.currentXP > GameState.maxXP) {
-                            GameState.currentXP = GameState.maxXP;
-                          }
-                        } else {
-                          GameState.TcurrentXP += GameState.TmaxXP / 10;
-                          if (GameState.TcurrentXP > GameState.TmaxXP) {
-                            GameState.TcurrentXP = GameState.TmaxXP;
-                          }
-                        }
-                        _updateStageTitle();
-                      });
-
-                      // 🔐 Save XP progress to Firestore
-                      final userId = FirebaseAuth.instance.currentUser?.uid;
-                      if (userId != null) {
-                        await GameState.saveState(userId);
-                      }
-
-                    } else if (result == 'lostHeart') {
-                      if (GameState.hearts > 0) {
-                        setState(() => GameState.hearts -= 1);
-
-                        if (GameState.hearts == 0) {
-                          final prefs = await SharedPreferences.getInstance();
-                          final now = DateTime.now().millisecondsSinceEpoch;
-                          await prefs.setInt('heartDepletedTime', now);
-
-                          secondsLeft = 15 * 60;
-                          _startCountdown();
-                        }
-
-                        // 🔐 Save hearts update to Firestore
-                        final userId = FirebaseAuth.instance.currentUser?.uid;
-                        if (userId != null) {
-                          await GameState.saveState(userId);
-                        }
-                      }
-                    }
+                    setState(() {
+                      _updateStageTitle();
+                    });
                   },
                   child: Text(
                     S.of(context).start,
-                    style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 18, color: Colors.white, fontFamily: Font),
                   ),
                 ),
               ),
@@ -433,7 +392,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(
             letterSpacing: 2.0,
             fontSize: 18.0,
-            fontFamily: primaryFont,
+            fontFamily: BoldFont,
             color: color,
           ),
         ),
