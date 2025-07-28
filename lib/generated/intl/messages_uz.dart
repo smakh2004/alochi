@@ -313,6 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noDataFound": MessageLookupByLibrary.simpleMessage(
       "Hech qanday ma’lumot topilmadi",
     ),
+    "noThanks": MessageLookupByLibrary.simpleMessage("YO\'Q, RAXMAT"),
     "notification1": MessageLookupByLibrary.simpleMessage(
       "Alochi dasturiga xush kelibsiz, yangi choqilarni zavt etishga tayyor turing!",
     ),

@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _checkHeartRegeneration();
-    _checkLightningTimeout(); // ✅ Check lightning timeout on load
+    _checkLightningTimeout(); 
   }
 
   @override
@@ -60,17 +60,24 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // ✅ RESET LIGHTNING IF NO INCREASE IN 2 DAYS
+  // ✅ RESET LIGHTNING IF NO INCREASE IN 1 DAY
   void _checkLightningTimeout() async {
     final last = GameState.lastLightningDate;
     if (last != null) {
       final now = DateTime.now();
       final diff = now.difference(last);
-      if (diff.inDays >= 2) {
+
+      if (diff.inDays >= 1) {
         setState(() {
-          GameState.lightnings = 0;
-          GameState.lastLightningDate = null;
-          GameState.lastLightningDate1 = null;
+          if (GameState.activeFreezes > 0) {
+            // Use 1 freeze and refresh protection date
+            GameState.activeFreezes -= 1;
+            GameState.lastLightningDate = now;
+          } else {
+            // No freeze → reset lightnings
+            GameState.lightnings = 0;
+            GameState.lastLightningDate = null;
+          }
         });
 
         // Save this change to Firestore
@@ -234,6 +241,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Row(

@@ -63,7 +63,7 @@ class _PremiumPageState extends State<PremiumPage> {
                           children: [
                             Row(
                               children: [
-                                Image.asset('assets/icons/HeartInfinity.png', height: 60, width: 60),
+                                Image.asset('assets/icons/HeartInfinity.png', height: 50, width: 50),
                                 const SizedBox(width: 10),
                                 Text(
                                   S.of(context).cheksizJonlar,
@@ -78,7 +78,7 @@ class _PremiumPageState extends State<PremiumPage> {
                             const SizedBox(height: 5),
                             Row(
                               children: [
-                                Image.asset('assets/icons/ArifmeticStorm2.png', height: 60, width: 60),
+                                Image.asset('assets/icons/ArifmeticStorm2.png', height: 50, width: 50),
                                 const SizedBox(width: 10),
                                 Flexible(
                                   child: Text(
@@ -99,13 +99,13 @@ class _PremiumPageState extends State<PremiumPage> {
                     ),
 
                     const SizedBox(height: 20),
-                    // 👉 add more scrollable content here if needed
+                    // add more scrollable content here if needed
                   ],
                 ),
               ),
             ),
 
-            // ✅ Buttons pinned to bottom
+            // Buttons pinned to bottom
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16),
               width: double.infinity,
@@ -158,7 +158,7 @@ class _PremiumPageState extends State<PremiumPage> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      'NO, THANKS',
+                      S.of(context).noThanks,
                       style: const TextStyle(
                         color: primaryColor,
                         fontFamily: Font,

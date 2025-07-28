@@ -17,26 +17,43 @@ class BoshlangichSinf extends StatefulWidget {
 class _BoshlangichSinfState extends State<BoshlangichSinf> {
   int _selectedIndex = 0;
 
-  // Create fresh page list
   List<Widget> _pages = [
     HomePage(),
     MathStorm(),
+    LeaderBoard(),
     ProfilePage(),
     StorePage(),
-    LeaderBoard(),
   ];
 
   void _NavigatedBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
 
-      // Recreate selected page to trigger refresh
+      // Refresh page content manually if needed
       if (index == 0) _pages[0] = HomePage();
       if (index == 1) _pages[1] = MathStorm();
       if (index == 2) _pages[2] = LeaderBoard();
       if (index == 3) _pages[3] = ProfilePage();
       if (index == 4) _pages[4] = StorePage();
     });
+  }
+
+  Widget _buildIcon(int index, String assetPath) {
+    return Container(
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: _selectedIndex == index ? lightBlue : Colors.transparent,
+        border: _selectedIndex == index
+            ? Border.all(color: primaryColor, width: 2)
+            : null,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Image.asset(
+        assetPath,
+        width: 40,
+        height: 40,
+      ),
+    );
   }
 
   @override
@@ -55,122 +72,40 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
             ),
           ),
         ),
-        child: SingleChildScrollView(
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            splashFactory: NoSplash.splashFactory,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            focusColor: Colors.transparent,
+          ),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
             backgroundColor: Colors.white,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             onTap: _NavigatedBottomBar,
             items: [
-              /// HOME
               BottomNavigationBarItem(
-                icon: Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == 0
-                        ? Colors.blue[42]
-                        : Colors.transparent,
-                    border: _selectedIndex == 0
-                        ? Border.all(color: primaryColor, width: 2)
-                        : null,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.asset(
-                    'assets/icons/Home.png',
-                    width: 42,
-                    height: 42,
-                  ),
-                ),
+                icon: _buildIcon(0, 'assets/icons/Home.png'),
                 label: '',
               ),
-
-              /// Math STORM
               BottomNavigationBarItem(
-                icon: Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == 1
-                        ? Colors.blue[42]
-                        : Colors.transparent,
-                    border: _selectedIndex == 1
-                        ? Border.all(color: primaryColor, width: 2)
-                        : null,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.asset(
-                    'assets/icons/ArifmeticStorm1.png',
-                    width: 42,
-                    height: 42,
-                  ),
-                ),
+                icon: _buildIcon(1, 'assets/icons/ArifmeticStorm1.png'),
                 label: '',
               ),
-              
-              /// LEADERBOARD
               BottomNavigationBarItem(
-                icon: Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == 2
-                        ? Colors.blue[42]
-                        : Colors.transparent,
-                    border: _selectedIndex == 2
-                        ? Border.all(color: primaryColor, width: 2)
-                        : null,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.asset(
-                    'assets/icons/Leaderboard.png',
-                    width: 42,
-                    height: 42,
-                  ),
-                ),
+                icon: _buildIcon(2, 'assets/icons/Leaderboard.png'),
                 label: '',
               ),
-
-              /// PROFILE
               BottomNavigationBarItem(
-                icon: Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == 3
-                        ? Colors.blue[42]
-                        : Colors.transparent,
-                    border: _selectedIndex == 3
-                        ? Border.all(color: primaryColor, width: 2)
-                        : null,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.asset(
-                    'assets/icons/Profile.png',
-                    width: 42,
-                    height: 42,
-                  ),
-                ),
+                icon: _buildIcon(3, 'assets/icons/Profile.png'),
                 label: '',
               ),
-
-      
-
-              /// STORE
               BottomNavigationBarItem(
-                icon: Container(
-                  padding: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == 4
-                        ? Colors.blue[42]
-                        : Colors.transparent,
-                    border: _selectedIndex == 4
-                        ? Border.all(color: primaryColor, width: 2)
-                        : null,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Image.asset(
-                    'assets/icons/Store.png',
-                    width: 42,
-                    height: 42,
-                  ),
-                ),
+                icon: _buildIcon(4, 'assets/icons/Store.png'),
                 label: '',
               ),
             ],

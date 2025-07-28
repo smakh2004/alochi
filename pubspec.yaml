@@ -242,6 +242,10 @@ flutter:
     - assets/storeImages/Box.png
     - assets/storeImages/Box2.png
     - assets/storeImages/Freezing.png
+    - assets/storeImages/FreezePop1.png
+    - assets/storeImages/FreezePop2.png
+    - assets/storeImages/FreezePop3.png
+    - assets/storeImages/WhiteGem.png
 
     - assets/animations/Logo.json
     - assets/animations/MrSquareStartButton.json
@@ -267,6 +271,7 @@ flutter:
     - assets/animations/MrSquareAlochiInfinity.json
     - assets/animations/MrSquareNoInternet.json
     - assets/animations/BannerLeaderboard.json
+    - assets/animations/AlochiInfinity2.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/to/resolution-aware-images

@@ -369,6 +369,7 @@ class _MainPage2State extends State<MainPage2> {
           ? PreferredSize(
               preferredSize: const Size.fromHeight(60),
               child: AppBar(
+                surfaceTintColor: Colors.white,
                 backgroundColor: Colors.white,
                 automaticallyImplyLeading: false,
                 elevation: 0, // remove shadow

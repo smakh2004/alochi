@@ -89,6 +89,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Stack(

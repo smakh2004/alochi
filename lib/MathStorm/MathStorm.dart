@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'dart:math';
 import 'package:alochi_math_app/MathStorm/MathStormSession.dart';
@@ -18,6 +20,7 @@ class MathStorm extends StatefulWidget {
 }
 
 class _MathStormState extends State<MathStorm> {
+  bool _isGameStateLoaded = false;
   int attempts = 3;
   double progress = 1.0;
   DateTime? resetTime;
@@ -34,19 +37,23 @@ class _MathStormState extends State<MathStorm> {
   Future<void> _initializeState() async {
     final userId = FirebaseAuth.instance.currentUser?.uid;
     if (userId != null) {
-      await GameState.loadState(userId); // 🔄 Load actual user values
+      await GameState.loadState(userId);
     }
     checkIfResetNeeded();
     startCountdownTimer();
+
+    setState(() {
+      _isGameStateLoaded = true;
+    });
   }
 
   void checkIfResetNeeded() {
     final now = DateTime.now();
-    final last = GameState.lastLightningDate1;
+    final last = GameState.mathStormTimer;
 
     if (last == null || now.difference(last).inHours >= 24) {
       GameState.mathStormAttemptsLeft = 3;
-      GameState.lastLightningDate1 = now;
+      GameState.mathStormTimer = now;
     } else if (GameState.mathStormAttemptsLeft == 0) {
       resetTime = last.add(const Duration(hours: 24));
     }
@@ -84,12 +91,12 @@ class _MathStormState extends State<MathStorm> {
     if (attempts > 0) {
       setState(() {
         GameState.mathStormAttemptsLeft--;
-        GameState.lastLightningDate1 = DateTime.now();
+        GameState.mathStormTimer = DateTime.now();
         attempts = GameState.mathStormAttemptsLeft;
         progress = attempts / 3;
 
         if (attempts == 0) {
-          resetTime = GameState.lastLightningDate1!.add(const Duration(hours: 24));
+          resetTime = GameState.mathStormTimer!.add(const Duration(hours: 24));
         }
       });
 
@@ -266,29 +273,38 @@ class _MathStormState extends State<MathStorm> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
-                  child: AnimatedButton(
-                    width: screenWidth * 0.5,
-                    height: 50,
-                    color: attempts > 0 ? red : greyColor,
-                    borderRadius: 16,
-                    onPressed: () async {
-                      if (attempts > 0) {
-                        await useAttempt();
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const MathStormSession()),
-                        );
-                        setState(() {}); // Refresh UI after returning
-                      }
+                  child: Builder(
+                    builder: (context) {
+                      final bool isEnabled = _isGameStateLoaded && attempts > 0;
+
+                      return AnimatedButton(
+                        width: screenWidth * 0.5,
+                        height: 50,
+                        color: isEnabled ? red : greyColor,
+                        borderRadius: 16,
+                        onPressed: isEnabled
+                            ? () async {
+                                await useAttempt();
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const MathStormSession()),
+                                );
+                                setState(() {});
+                              }
+                            : () {}, // ← prevent error by using empty function
+                        child: IgnorePointer(
+                          ignoring: !isEnabled,
+                          child: Text(
+                            S.of(context).olga,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontFamily: Font,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      );
                     },
-                    child: Text(
-                      S.of(context).olga,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: Font,
-                        fontSize: 18,
-                      ),
-                    ),
                   ),
                 ),
               ],

@@ -307,6 +307,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No internet connection",
     ),
     "noDataFound": MessageLookupByLibrary.simpleMessage("No data found"),
+    "noThanks": MessageLookupByLibrary.simpleMessage("NO, THANKS"),
     "notification1": MessageLookupByLibrary.simpleMessage(
       "Welcome to the Alochi app, get ready to enjoy new challenges!",
     ),

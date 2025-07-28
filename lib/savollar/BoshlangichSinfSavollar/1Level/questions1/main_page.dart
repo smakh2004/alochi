@@ -273,6 +273,7 @@ class _MainPage1State extends State<MainPage1> {
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(60), // height of your custom AppBar
                 child: AppBar(
+                  surfaceTintColor: Colors.white,
                   backgroundColor: Colors.white,
                   automaticallyImplyLeading: false,
                   elevation: 0,

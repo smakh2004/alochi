@@ -2089,6 +2089,11 @@ class S {
     );
   }
 
+  /// `NO, THANKS`
+  String get noThanks {
+    return Intl.message('NO, THANKS', name: 'noThanks', desc: '', args: []);
+  }
+
   /// `Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).`
   String get hint1 {
     return Intl.message(

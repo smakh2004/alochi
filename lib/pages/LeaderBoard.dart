@@ -24,10 +24,16 @@ class _LeaderBoardState extends State<LeaderBoard> {
           .orderBy('matematikShtorm', descending: true)
           .limit(50)
           .snapshots();
-    } else {
+    } else if(selectedIndex == 1) {
       return FirebaseFirestore.instance
           .collection('users')
           .orderBy('score', descending: true)
+          .limit(50)
+          .snapshots();
+    } else {
+      return FirebaseFirestore.instance
+          .collection('users')
+          .orderBy('lightnings', descending: true)
           .limit(50)
           .snapshots();
     }
@@ -40,6 +46,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Center(
           child: Text(
@@ -155,6 +162,24 @@ class _LeaderBoardState extends State<LeaderBoard> {
                         ],
                       ),
                     ),
+                    DropdownMenuItem(
+                      value: 2,
+                      child: Row(
+                        children: [
+                          Image.asset('assets/icons/Lightining.png',
+                              width: 30, height: 30),
+                          const SizedBox(width: 8),
+                          Text(
+                            S.of(context).streak,
+                            style: const TextStyle(
+                              fontFamily: Font,
+                              fontSize: 18,
+                              color: questionColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                   onChanged: (value) {
                     if (value != null) {
@@ -225,8 +250,10 @@ class _LeaderBoardState extends State<LeaderBoard> {
                           final firstName = data['firstName'] ?? '';
                           final lastName = data['lastName'] ?? '';
                           final value = selectedIndex == 0
-                              ? (data['matematikShtorm'] ?? 0)
-                              : (data['score'] ?? 0);
+                          ? (data['matematikShtorm'] ?? 0)
+                          : selectedIndex == 1
+                              ? (data['score'] ?? 0)
+                              : (data['lightnings'] ?? 0);
                           final bool isCurrentUser =
                               doc.id == currentUserId;
 

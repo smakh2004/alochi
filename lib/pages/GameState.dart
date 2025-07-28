@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GameState {
 
+  // Freezers
+  static int activeFreezes = 0;
+
   // Selected level of user: BOSHLANGICH, YUQORISINF, STUDENT
   static String selectedLevel = '';
 
@@ -14,6 +17,7 @@ class GameState {
   static int mathStormAttemptsLeft = 3;
   static int lastScore = 0;
   static int lastTime = 0;
+  static DateTime? mathStormTimer;
 
   // progress for 1 level
   static double currentXP = 0;
@@ -54,7 +58,6 @@ class GameState {
   static double logikaDop = 0;
 
   static DateTime? lastLightningDate;
-  static DateTime? lastLightningDate1;
 
   /// RESET values to defaults 
   static void reset() {
@@ -89,13 +92,14 @@ class GameState {
     logikaDop = 0;
 
     lastLightningDate = null;
-    lastLightningDate1 = null;
+    mathStormTimer = null;
   }
 
   /// Save game state to Firestore
   static Future<void> saveState(String userId) async {
     if (userId.isEmpty) return;
     await FirebaseFirestore.instance.collection('users').doc(userId).set({
+      'activeFreezes': activeFreezes,
       'selectedLevel': selectedLevel,
       'firstName': firstName, 
       'lastName': lastName,
@@ -113,7 +117,7 @@ class GameState {
       'kopaytirish': kopaytirish,
       'logika': logika,
       'lastLightningDate': lastLightningDate?.toIso8601String(),
-      'lastLightningDate1': lastLightningDate1?.toIso8601String(),
+      'mathStormTimer': mathStormTimer?.toIso8601String(),
     }, SetOptions(merge: true));
   }
 
@@ -125,6 +129,8 @@ class GameState {
     if (!doc.exists) return;
 
     final data = doc.data()!;
+
+    activeFreezes = data['activeFreezes'] ?? 0;
 
     selectedLevel = data['selectedLevel'] ?? '';
     firstName = data['firstName'] ?? ''; 
@@ -152,7 +158,7 @@ class GameState {
     logika = (data['logika'] ?? 0).toDouble();
 
     lastLightningDate = _parseDate(data['lastLightningDate']);
-    lastLightningDate1 = _parseDate(data['lastLightningDate1']);
+    mathStormTimer = _parseDate(data['mathStormTimer']);
   }
 
   static DateTime? _parseDate(dynamic value) {

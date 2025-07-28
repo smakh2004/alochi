@@ -28,7 +28,7 @@ class SuccessPage extends StatefulWidget {
 
 class _SuccessPageState extends State<SuccessPage> {
   late int localScoreDop;
-  late int localGems = 10;
+  late int localGems = 30;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _SuccessPageState extends State<SuccessPage> {
     GameState.score += GameState.scoreDop;
     GameState.scoreDop = 0;
 
-    GameState.gems += 10;
+    GameState.gems += 30;
 
     // ✅ Save immediately
     final user = FirebaseAuth.instance.currentUser;
