@@ -41,9 +41,9 @@ class _LeaderBoardState extends State<LeaderBoard> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Center(
+        title: Center(
           child: Text(
-            "Leaderboard",
+            S.of(context).leaderboard,
             style: TextStyle(
               fontFamily: BoldFont,
               fontSize: 20,
@@ -84,8 +84,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
 
               return Text(
                 currentUserPosition != null
-                    ? 'You are in $currentUserPosition-place'
-                    : 'You are not in the top 50 yet',
+                  ? '${S.of(context).youAreIn} $currentUserPosition${S.of(context).place}'
+                  : S.of(context).SizHali,
                 style: const TextStyle(
                   fontFamily: Font,
                   fontSize: 20,
@@ -188,9 +188,9 @@ class _LeaderBoardState extends State<LeaderBoard> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(
+                  return Center(
                     child: Text(
-                      "No data found",
+                      S.of(context).noDataFound,
                       style: TextStyle(
                         fontFamily: Font,
                         fontSize: 18,

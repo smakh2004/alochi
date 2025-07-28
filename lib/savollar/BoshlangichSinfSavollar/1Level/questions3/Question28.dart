@@ -442,7 +442,7 @@ class _Question28State extends State<Question28> {
                                       widget.onXPUpdate(10);
                                       setState(() {
                                         GameState.arifmetikaDop += 0.5;
-                                        GameState.scoreDop += 1;
+                                        GameState.scoreDop += 2;
                                       });
                                     } else {
                                       submitButtonColor = primaryIncorrect;

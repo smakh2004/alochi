@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:lottie/lottie.dart';
 
-class PremiumPage2 extends StatefulWidget {
-  const PremiumPage2({super.key});
+class PremiumPage extends StatefulWidget {
+  const PremiumPage({super.key});
 
   @override
-  State<PremiumPage2> createState() => _PremiumPage2State();
+  State<PremiumPage> createState() => _PremiumPageState();
 }
 
-class _PremiumPage2State extends State<PremiumPage2> {
+class _PremiumPageState extends State<PremiumPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

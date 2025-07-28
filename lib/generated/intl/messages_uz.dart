@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Ochko": MessageLookupByLibrary.simpleMessage("Ochko: "),
+    "SizHali": MessageLookupByLibrary.simpleMessage(
+      "Siz hali top-50 talikka kirmagansiz",
+    ),
     "TwoFiveYutuqlar": MessageLookupByLibrary.simpleMessage(
       "2025 Yildagi Yutuqlar",
     ),
@@ -81,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "boshlash": MessageLookupByLibrary.simpleMessage("BOSHLASH"),
     "butunSonlar": MessageLookupByLibrary.simpleMessage("Butun sonlar"),
     "cheksizJonlar": MessageLookupByLibrary.simpleMessage("Cheksiz jonlar"),
+    "cheksizJonlarDesc": MessageLookupByLibrary.simpleMessage(
+      "A\'lochi Infinity: don\'t worry about your hearts!",
+    ),
     "chiqish": MessageLookupByLibrary.simpleMessage("CHIQISH"),
     "danSong": MessageLookupByLibrary.simpleMessage("dan so‘ng"),
     "darajaTanlanmadiMsg": MessageLookupByLibrary.simpleMessage(
@@ -137,6 +143,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "firstName": MessageLookupByLibrary.simpleMessage("Ism"),
     "foydalanuvchi": MessageLookupByLibrary.simpleMessage("Foydalanuvchi"),
+    "freezing": MessageLookupByLibrary.simpleMessage("Muzlatish"),
+    "freezingDesc": MessageLookupByLibrary.simpleMessage(
+      "Agar biror darsni qoldirib yuborsangiz, yashin seriyangizni muzlatib qo‘ying.",
+    ),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x funksiyasi"),
     "galabaliSeriyaBoshlandi": MessageLookupByLibrary.simpleMessage(
       "G\'alabali seriya boshlandi",
@@ -144,10 +154,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "galabaliSeriyaBoshlandiDes": MessageLookupByLibrary.simpleMessage(
       "Birinchi g\'alabali seriyani qo\'lga kiritkaniz uchun.",
     ),
+    "gems": MessageLookupByLibrary.simpleMessage("Qimmatbaho toshlar"),
     "geometrikMaterial": MessageLookupByLibrary.simpleMessage(
       "Geometrik material",
     ),
     "geometriya": MessageLookupByLibrary.simpleMessage("Geometriya"),
+    "getUnlimited": MessageLookupByLibrary.simpleMessage(
+      "Cheksiz jonlar va Matematik shtormda cheksiz urinishlarga ega bo‘ling.",
+    ),
     "glabaliSeriya": MessageLookupByLibrary.simpleMessage("G\'alabali seriya"),
     "googleOrqali": MessageLookupByLibrary.simpleMessage(
       "-Google orqali kirish-",
@@ -157,6 +171,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "harXilMaxrajliKasrlar": MessageLookupByLibrary.simpleMessage(
       "Har xil maxrajli kasrlar",
+    ),
+    "hearts": MessageLookupByLibrary.simpleMessage("Jonlar"),
+    "heartsDesc": MessageLookupByLibrary.simpleMessage(
+      "Jonlaringizni to‘liq tiklang va qilgan xatolaringiz haqida qayg‘urmang!",
     ),
     "helpCenter": MessageLookupByLibrary.simpleMessage("Yordam markazi"),
     "hint": MessageLookupByLibrary.simpleMessage("Maslahat"),
@@ -241,6 +259,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "kvadratVaqt": MessageLookupByLibrary.simpleMessage("Kvadrat Vaqt"),
     "langauage": MessageLookupByLibrary.simpleMessage("O\'zbekcha"),
     "lastName": MessageLookupByLibrary.simpleMessage("Familiya"),
+    "leaderboard": MessageLookupByLibrary.simpleMessage("Reyting jadvali"),
+    "letsTry": MessageLookupByLibrary.simpleMessage("URINIB KO\'RISH"),
+    "lightBox": MessageLookupByLibrary.simpleMessage("Tongi sandiq"),
+    "lightBoxDesc": MessageLookupByLibrary.simpleMessage(
+      "Sandiqni ochish uchun ertalab soat 6 dan tushlikkacha darsni bajaring.",
+    ),
     "logika": MessageLookupByLibrary.simpleMessage("Logika"),
     "magazin": MessageLookupByLibrary.simpleMessage("Magazin"),
     "magazinNarsalarim": MessageLookupByLibrary.simpleMessage(
@@ -274,11 +298,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "multiplikativ": MessageLookupByLibrary.simpleMessage("Multiplikativ"),
     "narxi": MessageLookupByLibrary.simpleMessage("Narxi"),
     "naturalSonlar": MessageLookupByLibrary.simpleMessage("Natural sonlar"),
+    "nightBox": MessageLookupByLibrary.simpleMessage("Tungi sandiq"),
+    "nightBoxDesc": MessageLookupByLibrary.simpleMessage(
+      "Sandiqni ochish uchun kechki soat 6 dan yarim tungacha darsni bajaring.",
+    ),
     "nisbatVaProporsiya": MessageLookupByLibrary.simpleMessage(
       "Nisbat va proporsiya",
     ),
     "noConnection": MessageLookupByLibrary.simpleMessage(
       "Internet aloqasi yo‘q",
+    ),
+    "noDataFound": MessageLookupByLibrary.simpleMessage(
+      "Hech qanday ma’lumot topilmadi",
     ),
     "notification1": MessageLookupByLibrary.simpleMessage(
       "Alochi dasturiga xush kelibsiz, yangi choqilarni zavt etishga tayyor turing!",
@@ -294,11 +325,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "noyabr": MessageLookupByLibrary.simpleMessage("Noyabr"),
     "ochko": MessageLookupByLibrary.simpleMessage("OCHKO"),
     "oddiyKasrlar": MessageLookupByLibrary.simpleMessage("Oddiy kasrlar"),
+    "offers": MessageLookupByLibrary.simpleMessage("Takliflar"),
     "oktabr": MessageLookupByLibrary.simpleMessage("Oktabr"),
     "olga": MessageLookupByLibrary.simpleMessage("START"),
     "oltinchiSinf": MessageLookupByLibrary.simpleMessage("6 sinf"),
     "onePremium": MessageLookupByLibrary.simpleMessage("1 oy Premium"),
     "onliKasrlar": MessageLookupByLibrary.simpleMessage("O‘nli kasrlar"),
+    "open": MessageLookupByLibrary.simpleMessage("OCHISH"),
     "ortgaQaytish": MessageLookupByLibrary.simpleMessage("Ortga qaytish"),
     "otniTogri": MessageLookupByLibrary.simpleMessage(
       "Otni to\'g\'ri kattakga qo\'ying!",
@@ -314,6 +347,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pitsaniTeng": MessageLookupByLibrary.simpleMessage(
       "Pitsa teng qismlarga bo\'lingan. Likopchadan nechta bo\'lak olingan?",
     ),
+    "place": MessageLookupByLibrary.simpleMessage("-chi o\'rindasiz"),
     "profile": MessageLookupByLibrary.simpleMessage("Profil"),
     "progress": MessageLookupByLibrary.simpleMessage("Progress"),
     "qaysiBirShakl": MessageLookupByLibrary.simpleMessage(
@@ -364,6 +398,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "squareCastle": MessageLookupByLibrary.simpleMessage("Kvadrat Qasri"),
     "start": MessageLookupByLibrary.simpleMessage("BOSHLASH"),
     "statistika": MessageLookupByLibrary.simpleMessage("STATISTIKA"),
+    "streak": MessageLookupByLibrary.simpleMessage("Yashinli yutuq seriyasi"),
     "student": MessageLookupByLibrary.simpleMessage("Student"),
     "support": MessageLookupByLibrary.simpleMessage("Yordam"),
     "tanafuzQilib": MessageLookupByLibrary.simpleMessage(
@@ -427,6 +462,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "uygaQaytish": MessageLookupByLibrary.simpleMessage("UYGA QAYTISH"),
     "vaqt": MessageLookupByLibrary.simpleMessage("VAQT"),
+    "weAreBoosting": MessageLookupByLibrary.simpleMessage(
+      "Biz sizning o\'sishingizni tezlashtiramiz!",
+    ),
     "weakPassword": MessageLookupByLibrary.simpleMessage("Parol juda oddiy"),
     "weakPassword1": MessageLookupByLibrary.simpleMessage("Parol juda oddiy"),
     "whichNumberIn": MessageLookupByLibrary.simpleMessage(
@@ -457,6 +495,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Bu medal hali ochilmagan.",
     ),
     "yoqish": MessageLookupByLibrary.simpleMessage("YOQISH"),
+    "youAreIn": MessageLookupByLibrary.simpleMessage("Siz"),
     "yuqoriSinf": MessageLookupByLibrary.simpleMessage("Yuqori sinf"),
     "yutuqlar": MessageLookupByLibrary.simpleMessage("YUTUQLAR"),
   };

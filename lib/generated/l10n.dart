@@ -1924,6 +1924,156 @@ class S {
     return Intl.message('Solution:', name: 'solution', desc: '', args: []);
   }
 
+  /// `No data found`
+  String get noDataFound {
+    return Intl.message(
+      'No data found',
+      name: 'noDataFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Leaderboard`
+  String get leaderboard {
+    return Intl.message('Leaderboard', name: 'leaderboard', desc: '', args: []);
+  }
+
+  /// `You are in`
+  String get youAreIn {
+    return Intl.message('You are in', name: 'youAreIn', desc: '', args: []);
+  }
+
+  /// `-place`
+  String get place {
+    return Intl.message('-place', name: 'place', desc: '', args: []);
+  }
+
+  /// `You are not in the top 50 yet`
+  String get SizHali {
+    return Intl.message(
+      'You are not in the top 50 yet',
+      name: 'SizHali',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are boosting your progress!`
+  String get weAreBoosting {
+    return Intl.message(
+      'We are boosting your progress!',
+      name: 'weAreBoosting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get unlimited hearts and attempts in MathStorm.`
+  String get getUnlimited {
+    return Intl.message(
+      'Get unlimited hearts and attempts in MathStorm.',
+      name: 'getUnlimited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offers`
+  String get offers {
+    return Intl.message('Offers', name: 'offers', desc: '', args: []);
+  }
+
+  /// `Light Box`
+  String get lightBox {
+    return Intl.message('Light Box', name: 'lightBox', desc: '', args: []);
+  }
+
+  /// `To open the box, complete the lesson from 6 a.m. to noon.`
+  String get lightBoxDesc {
+    return Intl.message(
+      'To open the box, complete the lesson from 6 a.m. to noon.',
+      name: 'lightBoxDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OPEN`
+  String get open {
+    return Intl.message('OPEN', name: 'open', desc: '', args: []);
+  }
+
+  /// `Night Box`
+  String get nightBox {
+    return Intl.message('Night Box', name: 'nightBox', desc: '', args: []);
+  }
+
+  /// `To open the box, complete the lesson from 6 p.m. to midnight.`
+  String get nightBoxDesc {
+    return Intl.message(
+      'To open the box, complete the lesson from 6 p.m. to midnight.',
+      name: 'nightBoxDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lightning streak`
+  String get streak {
+    return Intl.message('Lightning streak', name: 'streak', desc: '', args: []);
+  }
+
+  /// `Freezing`
+  String get freezing {
+    return Intl.message('Freezing', name: 'freezing', desc: '', args: []);
+  }
+
+  /// `Freeze your lightning streak in case you miss a class.`
+  String get freezingDesc {
+    return Intl.message(
+      'Freeze your lightning streak in case you miss a class.',
+      name: 'freezingDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gems`
+  String get gems {
+    return Intl.message('Gems', name: 'gems', desc: '', args: []);
+  }
+
+  /// `A'lochi Infinity: don't worry about your hearts!`
+  String get cheksizJonlarDesc {
+    return Intl.message(
+      'A\'lochi Infinity: don\'t worry about your hearts!',
+      name: 'cheksizJonlarDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LET'S TRY`
+  String get letsTry {
+    return Intl.message('LET\'S TRY', name: 'letsTry', desc: '', args: []);
+  }
+
+  /// `Hearts`
+  String get hearts {
+    return Intl.message('Hearts', name: 'hearts', desc: '', args: []);
+  }
+
+  /// `Restore maximum hearts and don't worry about the mistakes you made!`
+  String get heartsDesc {
+    return Intl.message(
+      'Restore maximum hearts and don\'t worry about the mistakes you made!',
+      name: 'heartsDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).`
   String get hint1 {
     return Intl.message(

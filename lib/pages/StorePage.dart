@@ -1,6 +1,6 @@
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
-import 'package:alochi_math_app/pages/PremiumPage2.dart';
+import 'package:alochi_math_app/pages/PremiumPage.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
@@ -91,7 +91,7 @@ class _StorePageState extends State<StorePage> {
                   
                                 // Text 1
                                 Text(
-                                  'We are boosting your progress!',
+                                  S.of(context).weAreBoosting,
                                   style: TextStyle(
                                     fontFamily: Font,
                                     fontSize: 26,
@@ -106,7 +106,7 @@ class _StorePageState extends State<StorePage> {
                   
                                 // Text 2
                                 Text(
-                                  'Get unlimited hearts and attempts in MathStorm.',
+                                  S.of(context).getUnlimited,
                                   style: TextStyle(
                                     fontFamily: Font,
                                     fontSize: 17,
@@ -146,7 +146,7 @@ class _StorePageState extends State<StorePage> {
                                 context,
                                 PageRouteBuilder(
                                   transitionDuration: const Duration(milliseconds: 600),
-                                  pageBuilder: (context, animation, secondaryAnimation) => PremiumPage2(),
+                                  pageBuilder: (context, animation, secondaryAnimation) => PremiumPage(),
                                   transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                     final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
                                     return SlideTransition(
@@ -182,7 +182,7 @@ class _StorePageState extends State<StorePage> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Offers',
+                    S.of(context).offers,
                     style: TextStyle(
                       fontFamily: Font,
                       fontSize: 26,
@@ -221,7 +221,7 @@ class _StorePageState extends State<StorePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Light Box',
+                                  S.of(context).lightBox,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: Font,
@@ -229,7 +229,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                 ),
                                 Text(
-                                  'To open the box, complete the lesson from 6 a.m. to noon.',
+                                  S.of(context).lightBoxDesc,
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontFamily: Font,
@@ -238,7 +238,7 @@ class _StorePageState extends State<StorePage> {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  'OPEN',
+                                  S.of(context).open,
                                   style: TextStyle(
                                     fontFamily: Font,
                                     fontSize: 20,
@@ -284,7 +284,7 @@ class _StorePageState extends State<StorePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Night Box',
+                                  S.of(context).nightBox,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: Font,
@@ -292,7 +292,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                 ),
                                 Text(
-                                  'To open the box, complete the lesson from 6 p.m. to midnight.',
+                                  S.of(context).nightBoxDesc,
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontFamily: Font,
@@ -301,7 +301,7 @@ class _StorePageState extends State<StorePage> {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  'OPEN',
+                                  S.of(context).open,
                                   style: TextStyle(
                                     fontFamily: Font,
                                     fontSize: 20,
@@ -326,7 +326,7 @@ class _StorePageState extends State<StorePage> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Lightning streak',
+                    S.of(context).streak,
                     style: TextStyle(
                       fontFamily: Font,
                       fontSize: 26,
@@ -368,7 +368,7 @@ class _StorePageState extends State<StorePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Freezing',
+                                  S.of(context).freezing,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: Font,
@@ -376,7 +376,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                 ),
                                 Text(
-                                  'Freeze your lightning streak in case you miss a class.',
+                                  S.of(context).freezingDesc,
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontFamily: Font,
@@ -419,7 +419,7 @@ class _StorePageState extends State<StorePage> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Gems',
+                    S.of(context).gems,
                     style: TextStyle(
                       fontFamily: Font,
                       fontSize: 26,
@@ -557,7 +557,7 @@ class _StorePageState extends State<StorePage> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Hearts',
+                    S.of(context).jonlarZapasi,
                     style: TextStyle(
                       fontFamily: Font,
                       fontSize: 26,
@@ -597,7 +597,7 @@ class _StorePageState extends State<StorePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Unlimited hearts',
+                                  S.of(context).cheksizJonlar,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: Font,
@@ -605,7 +605,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                 ),
                                 Text(
-                                  'A\'lochi Infinity: don\'t worry about your hearts!',
+                                  S.of(context).cheksizJonlarDesc,
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontFamily: Font,
@@ -614,7 +614,7 @@ class _StorePageState extends State<StorePage> {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  'LET\'S TRY',
+                                  S.of(context).letsTry,
                                   style: TextStyle(
                                     fontFamily: Font,
                                     fontSize: 20,
@@ -662,7 +662,7 @@ class _StorePageState extends State<StorePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Hearts',
+                                  S.of(context).hearts,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: Font,
@@ -670,7 +670,7 @@ class _StorePageState extends State<StorePage> {
                                   ),
                                 ),
                                 Text(
-                                  'Restore maximum hearts and don\'t worry about the mistakes you made',
+                                  S.of(context).heartsDesc,
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontFamily: Font,

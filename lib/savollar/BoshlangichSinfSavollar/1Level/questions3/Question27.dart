@@ -444,7 +444,7 @@ class _Question27State extends State<Question27> {
                                       setState(() {
                                         GameState.kopaytirishDop += 1;
                                         GameState.arifmetikaDop += 0.5;
-                                        GameState.scoreDop += 1;
+                                        GameState.scoreDop += 2;
                                       });
                                     } else {
                                       submitButtonColor = primaryIncorrect;

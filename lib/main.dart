@@ -1,3 +1,7 @@
+// ------------------------------------ //
+//   Founder and CEO of A'lochi App     //
+//      MAKHAMMATOV SIROJIDDIN          //
+// ------------------------------------ //
 
 import 'package:alochi_math_app/SplashScreenPage.dart';
 import 'package:alochi_math_app/firebase_options.dart';
@@ -14,7 +18,7 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  // ✅ Prevent duplicate initialization
+  // Prevent duplicate initialization
   try {
     if (Firebase.apps.isEmpty) {
       await Firebase.initializeApp(
@@ -24,7 +28,7 @@ void main() async {
       Firebase.app(); // just use existing app
     }
   } catch (e) {
-    // ✅ Optional: Log error only once
+    // Optional: Log error only once
     debugPrint('Firebase already initialized: $e');
   }
 
