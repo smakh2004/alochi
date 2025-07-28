@@ -147,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "freezingDesc": MessageLookupByLibrary.simpleMessage(
       "Agar biror darsni qoldirib yuborsangiz, yashin seriyangizni muzlatib qo‘ying.",
     ),
+    "fullHearts": MessageLookupByLibrary.simpleMessage("JONLAR TO\'LIQ"),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x funksiyasi"),
     "galabaliSeriyaBoshlandi": MessageLookupByLibrary.simpleMessage(
       "G\'alabali seriya boshlandi",
@@ -159,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Geometrik material",
     ),
     "geometriya": MessageLookupByLibrary.simpleMessage("Geometriya"),
+    "getStartedFor": MessageLookupByLibrary.simpleMessage("BOSHLASH NARXI"),
     "getUnlimited": MessageLookupByLibrary.simpleMessage(
       "Cheksiz jonlar va Matematik shtormda cheksiz urinishlarga ega bo‘ling.",
     ),

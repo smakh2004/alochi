@@ -78,7 +78,7 @@ class _PremiumPageState extends State<PremiumPage> {
                             const SizedBox(height: 5),
                             Row(
                               children: [
-                                Image.asset('assets/icons/StormInfinity.png', height: 60, width: 60),
+                                Image.asset('assets/icons/ArifmeticStorm2.png', height: 60, width: 60),
                                 const SizedBox(width: 10),
                                 Flexible(
                                   child: Text(
@@ -133,7 +133,7 @@ class _PremiumPageState extends State<PremiumPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'GET STARTED FOR',
+                          S.of(context).getStartedFor,
                           style: const TextStyle(
                             fontSize: 16,
                             fontFamily: Font,

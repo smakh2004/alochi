@@ -149,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "freezingDesc": MessageLookupByLibrary.simpleMessage(
       "Freeze your lightning streak in case you miss a class.",
     ),
+    "fullHearts": MessageLookupByLibrary.simpleMessage("FULL HERTS"),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x function"),
     "galabaliSeriyaBoshlandi": MessageLookupByLibrary.simpleMessage(
       "Winning streak: activated!",
@@ -161,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Geometric material",
     ),
     "geometriya": MessageLookupByLibrary.simpleMessage("Geometry"),
+    "getStartedFor": MessageLookupByLibrary.simpleMessage("GET STARTED FOR"),
     "getUnlimited": MessageLookupByLibrary.simpleMessage(
       "Get unlimited hearts and attempts in MathStorm.",
     ),

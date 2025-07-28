@@ -1,6 +1,7 @@
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/pages/PremiumPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
@@ -571,62 +572,79 @@ class _StorePageState extends State<StorePage> {
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      width: 2,
-                      color: greyColor,
-                    )
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/icons/HeartInfinity.png',
-                          height: 75,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  S.of(context).cheksizJonlar,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: Font,
-                                    color: questionColor
-                                  ),
-                                ),
-                                Text(
-                                  S.of(context).cheksizJonlarDesc,
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: Font,
-                                    color: darkGrey
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  S.of(context).letsTry,
-                                  style: TextStyle(
-                                    fontFamily: Font,
-                                    fontSize: 20,
-                                    color: primaryColor
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                              ],
-                            ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 600),
+                        pageBuilder: (context, animation, secondaryAnimation) => const PremiumPage(),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+                          return SlideTransition(
+                            position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
+                            child: child,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        width: 2,
+                        color: greyColor,
+                      )
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/icons/HeartInfinity.png',
+                            height: 75,
                           ),
-                        )
-                      ],
+                          SizedBox(width: 10),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    S.of(context).cheksizJonlar,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: Font,
+                                      color: questionColor
+                                    ),
+                                  ),
+                                  Text(
+                                    S.of(context).cheksizJonlarDesc,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontFamily: Font,
+                                      color: darkGrey
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                    S.of(context).letsTry,
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      fontSize: 20,
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -636,62 +654,98 @@ class _StorePageState extends State<StorePage> {
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      width: 2,
-                      color: greyColor,
-                    )
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/icons/Heart.png',
-                          height: 75,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  S.of(context).hearts,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: Font,
-                                    color: questionColor
+                child: GestureDetector(
+                  onTap: (GameState.hearts != 5 && GameState.gems >= 50)
+                      ? () async {
+                          setState(() {
+                            GameState.gems -= 50;
+                            GameState.hearts = 5;
+                          });
+                          final userId = FirebaseAuth.instance.currentUser!.uid;
+                          await GameState.saveState(userId);
+                        }
+                      : null,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        width: 2,
+                        color: greyColor,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/icons/Heart.png',
+                            height: 75,
+                          ),
+                          const SizedBox(width: 10),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    S.of(context).hearts,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  S.of(context).heartsDesc,
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: Font,
-                                    color: darkGrey
+                                  Text(
+                                    S.of(context).heartsDesc,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontFamily: Font,
+                                      color: darkGrey,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  'FULL HERTS',
-                                  style: TextStyle(
-                                    fontFamily: Font,
-                                    fontSize: 20,
-                                    color: grey
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                              ],
+                                  const SizedBox(height: 10),
+
+                                  /// Show refill price if not full, otherwise show "Full"
+                                  GameState.hearts != 5
+                                      ? Opacity(
+                                          opacity: GameState.gems >= 50 ? 1.0 : 0.4,
+                                          child: Row(
+                                            children: [
+                                              Image.asset(
+                                                'assets/icons/Diamond.png',
+                                                height: 30,
+                                              ),
+                                              const SizedBox(width: 2),
+                                              Text(
+                                                '50',
+                                                style: TextStyle(
+                                                  fontFamily: Font,
+                                                  fontSize: 16,
+                                                  color: green,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      : Text(
+                                          S.of(context).fullHearts,
+                                          style: TextStyle(
+                                            fontFamily: Font,
+                                            fontSize: 20,
+                                            color: grey,
+                                          ),
+                                        ),
+
+                                  const SizedBox(height: 8),
+                                ],
+                              ),
                             ),
                           ),
-                        )
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
