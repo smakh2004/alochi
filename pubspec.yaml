@@ -105,6 +105,10 @@ flutter:
     - assets/icons/Points.png
     - assets/icons/Time.png
     - assets/icons/Leaderboard.png
+    - assets/icons/1.png
+    - assets/icons/2.png
+    - assets/icons/3.png
+    - assets/icons/4.png
 
     - assets/images/Welcome1.png
     - assets/images/Welcome2.png
@@ -137,6 +141,7 @@ flutter:
     - assets/images/Silver.png
     - assets/images/Bronze.png
     - assets/images/BannerLeaderboard.png
+    - assets/images/Knob.png
 
     - assets/question_images/Q1.png
     - assets/question_images/Q2(1).png
@@ -218,6 +223,14 @@ flutter:
     - assets/question3_images/Q27.png
     - assets/question3_images/Q28.png
 
+    - assets/question4_images/Q32.png
+    - assets/question4_images/Q35.png
+    - assets/question4_images/Q36.png
+    - assets/question4_images/Q39.png
+    - assets/question4_images/Q40.png
+
+    - assets/question5_images/Q41.png
+
     - assets/medals/MrSquareMedal.png
     - assets/medals/MrTriangleLightining.png
     - assets/medals/MrCircleTimer.png
@@ -240,6 +253,7 @@ flutter:
     - assets/storeImages/AlochiInfinity2.png
     - assets/storeImages/AlochiBanner.png
     - assets/storeImages/Box.png
+    - assets/storeImages/BigBox.png
     - assets/storeImages/Box2.png
     - assets/storeImages/Freezing.png
     - assets/storeImages/FreezePop1.png
@@ -272,6 +286,19 @@ flutter:
     - assets/animations/MrSquareNoInternet.json
     - assets/animations/BannerLeaderboard.json
     - assets/animations/AlochiInfinity2.json
+    - assets/animations/BoxAnimation1.json
+    - assets/animations/BoxAnimation2.json
+    - assets/animations/BoxAnimationFreeze1.json
+    - assets/animations/BoxAnimationFreeze2.json
+    - assets/animations/Gems.json
+    - assets/animations/BigBoxAnimationGems1.json
+    - assets/animations/BigBoxAnimationGems2.json
+    - assets/animations/BigBoxAnimationFreeze1.json
+    - assets/animations/BigBoxAnimationFreeze2.json
+    - assets/animations/BigBoxAnimationHeart1.json
+    - assets/animations/BigBoxAnimationHeart2.json
+    - assets/animations/BigBoxAnimationStorm1.json
+    - assets/animations/BigBoxAnimationStorm2.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/to/resolution-aware-images

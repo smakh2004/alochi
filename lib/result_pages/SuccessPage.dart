@@ -28,7 +28,7 @@ class SuccessPage extends StatefulWidget {
 
 class _SuccessPageState extends State<SuccessPage> {
   late int localScoreDop;
-  late int localGems = 30;
+  late int localGems = 20;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _SuccessPageState extends State<SuccessPage> {
     GameState.score += GameState.scoreDop;
     GameState.scoreDop = 0;
 
-    GameState.gems += 30;
+    GameState.gems += 20;
 
     // ✅ Save immediately
     final user = FirebaseAuth.instance.currentUser;
@@ -156,7 +156,11 @@ class _SuccessPageState extends State<SuccessPage> {
                       // Gems
                       Column(
                         children: [
-                          Image.asset('assets/storeImages/Gems1.png', width: 120, height: 60,),
+                          Lottie.asset(
+                            'assets/animations/Gems.json',
+                            height: 80,
+                            width: 280,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -210,7 +214,7 @@ class _SuccessPageState extends State<SuccessPage> {
 
                     if (!isSameDay) {
                       // Navigate to Streak (lightning will be handled there)
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => const Streak()),
                       );

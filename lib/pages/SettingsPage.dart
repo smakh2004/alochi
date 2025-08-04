@@ -41,7 +41,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   child: Text(
                     S.of(context).save,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: primaryColor,
                       fontFamily: Font,
                     ),

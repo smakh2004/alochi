@@ -239,9 +239,9 @@ class S {
     return Intl.message('Settings', name: 'settingsNew', desc: '', args: []);
   }
 
-  /// `STATISTICS`
+  /// `Statistics`
   String get statistika {
-    return Intl.message('STATISTICS', name: 'statistika', desc: '', args: []);
+    return Intl.message('Statistics', name: 'statistika', desc: '', args: []);
   }
 
   /// `Progress`
@@ -254,30 +254,35 @@ class S {
     return Intl.message('Arifmetic', name: 'arifmetika', desc: '', args: []);
   }
 
-  /// `Multiply`
+  /// `MULTIPLICATIVE`
   String get multiplikativ {
-    return Intl.message('Multiply', name: 'multiplikativ', desc: '', args: []);
+    return Intl.message(
+      'MULTIPLICATIVE',
+      name: 'multiplikativ',
+      desc: '',
+      args: [],
+    );
   }
 
-  /// `Logic`
+  /// `LOGIC`
   String get logika {
-    return Intl.message('Logic', name: 'logika', desc: '', args: []);
+    return Intl.message('LOGIC', name: 'logika', desc: '', args: []);
   }
 
-  /// `Winning streak`
+  /// `WINNING STREAK`
   String get glabaliSeriya {
     return Intl.message(
-      'Winning streak',
+      'WINNING STREAK',
       name: 'glabaliSeriya',
       desc: '',
       args: [],
     );
   }
 
-  /// `Overall points`
+  /// `TOTAL POINTS`
   String get umumiyOchko {
     return Intl.message(
-      'Overall points',
+      'TOTAL POINTS',
       name: 'umumiyOchko',
       desc: '',
       args: [],
@@ -889,9 +894,9 @@ class S {
     );
   }
 
-  /// `NOTIFICATIONS`
+  /// `Notifications`
   String get xabarlar {
-    return Intl.message('NOTIFICATIONS', name: 'xabarlar', desc: '', args: []);
+    return Intl.message('Notifications', name: 'xabarlar', desc: '', args: []);
   }
 
   /// `Unlimited hearts`
@@ -969,9 +974,9 @@ class S {
     return Intl.message('MATH STORM', name: 'mathStorm', desc: '', args: []);
   }
 
-  /// `Record: `
+  /// `RECORD`
   String get rekord {
-    return Intl.message('Record: ', name: 'rekord', desc: '', args: []);
+    return Intl.message('RECORD', name: 'rekord', desc: '', args: []);
   }
 
   /// `Number of attempts: `
@@ -1984,16 +1989,16 @@ class S {
     return Intl.message('Offers', name: 'offers', desc: '', args: []);
   }
 
-  /// `Light Box`
-  String get lightBox {
-    return Intl.message('Light Box', name: 'lightBox', desc: '', args: []);
+  /// `Box`
+  String get Box {
+    return Intl.message('Box', name: 'Box', desc: '', args: []);
   }
 
-  /// `To open the box, complete the lesson from 6 a.m. to noon.`
-  String get lightBoxDesc {
+  /// `Open the box and find the elements that will help you in the game`
+  String get BoxDesc {
     return Intl.message(
-      'To open the box, complete the lesson from 6 a.m. to noon.',
-      name: 'lightBoxDesc',
+      'Open the box and find the elements that will help you in the game',
+      name: 'BoxDesc',
       desc: '',
       args: [],
     );
@@ -2004,16 +2009,16 @@ class S {
     return Intl.message('OPEN', name: 'open', desc: '', args: []);
   }
 
-  /// `Night Box`
-  String get nightBox {
-    return Intl.message('Night Box', name: 'nightBox', desc: '', args: []);
+  /// `Big Box`
+  String get BigBox {
+    return Intl.message('Big Box', name: 'BigBox', desc: '', args: []);
   }
 
-  /// `To open the box, complete the lesson from 6 p.m. to midnight.`
-  String get nightBoxDesc {
+  /// `Open the big box and get more elements that will help you in the game.`
+  String get BigBoxDesc {
     return Intl.message(
-      'To open the box, complete the lesson from 6 p.m. to midnight.',
-      name: 'nightBoxDesc',
+      'Open the big box and get more elements that will help you in the game.',
+      name: 'BigBoxDesc',
       desc: '',
       args: [],
     );
@@ -2092,6 +2097,236 @@ class S {
   /// `NO, THANKS`
   String get noThanks {
     return Intl.message('NO, THANKS', name: 'noThanks', desc: '', args: []);
+  }
+
+  /// `Refill your gems, to continue!`
+  String get refillYourGems {
+    return Intl.message(
+      'Refill your gems, to continue!',
+      name: 'refillYourGems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `amount`
+  String get amount {
+    return Intl.message('amount', name: 'amount', desc: '', args: []);
+  }
+
+  /// `price`
+  String get price {
+    return Intl.message('price', name: 'price', desc: '', args: []);
+  }
+
+  /// `BUY GEMS`
+  String get buyGems {
+    return Intl.message('BUY GEMS', name: 'buyGems', desc: '', args: []);
+  }
+
+  /// `RETURN`
+  String get returnH {
+    return Intl.message('RETURN', name: 'returnH', desc: '', args: []);
+  }
+
+  /// `Keep your new streak safe!`
+  String get keepYourWinStreakSafe {
+    return Intl.message(
+      'Keep your new streak safe!',
+      name: 'keepYourWinStreakSafe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Each Freezing protects your streak for a day. You have `
+  String get eachFreeze {
+    return Intl.message(
+      'Each Freezing protects your streak for a day. You have ',
+      name: 'eachFreeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `of 2 equipped`
+  String get ofTwoEquiped {
+    return Intl.message(
+      'of 2 equipped',
+      name: 'ofTwoEquiped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `REFILL STREAK FREEZING`
+  String get refilYourFreeze {
+    return Intl.message(
+      'REFILL STREAK FREEZING',
+      name: 'refilYourFreeze',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `USE`
+  String get use {
+    return Intl.message('USE', name: 'use', desc: '', args: []);
+  }
+
+  /// `ACTIVATED:`
+  String get activated {
+    return Intl.message('ACTIVATED:', name: 'activated', desc: '', args: []);
+  }
+
+  /// `REFILL HEARTS`
+  String get refillHearts {
+    return Intl.message(
+      'REFILL HEARTS',
+      name: 'refillHearts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You earned`
+  String get youEarned {
+    return Intl.message('You earned', name: 'youEarned', desc: '', args: []);
+  }
+
+  /// `gems and a FREEZER!`
+  String get gemsAndFreezer {
+    return Intl.message(
+      'gems and a FREEZER!',
+      name: 'gemsAndFreezer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep learning by buying boosts for gems`
+  String get keep {
+    return Intl.message(
+      'Keep learning by buying boosts for gems',
+      name: 'keep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Freezers save your lightinings from running out!`
+  String get freezerSave {
+    return Intl.message(
+      'Freezers save your lightinings from running out!',
+      name: 'freezerSave',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CONTINUE`
+  String get continueE {
+    return Intl.message('CONTINUE', name: 'continueE', desc: '', args: []);
+  }
+
+  /// `gems!`
+  String get taOlmos {
+    return Intl.message('gems!', name: 'taOlmos', desc: '', args: []);
+  }
+
+  /// `gems and an extra MathStorm attempt!`
+  String get gemsAndStorm {
+    return Intl.message(
+      'gems and an extra MathStorm attempt!',
+      name: 'gemsAndStorm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `gems and an extra heart!`
+  String get gemsAndHeart {
+    return Intl.message(
+      'gems and an extra heart!',
+      name: 'gemsAndHeart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You got`
+  String get youGot {
+    return Intl.message('You got', name: 'youGot', desc: '', args: []);
+  }
+
+  /// `Additional storm attempt to challenge yourself!`
+  String get additionalMathStorm {
+    return Intl.message(
+      'Additional storm attempt to challenge yourself!',
+      name: 'additionalMathStorm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You've earned an additional heart to keep going!`
+  String get additionalHeart {
+    return Intl.message(
+      'You\'ve earned an additional heart to keep going!',
+      name: 'additionalHeart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set this time.`
+  String get setThisTime {
+    return Intl.message(
+      'Set this time.',
+      name: 'setThisTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FOLLOWING`
+  String get following {
+    return Intl.message('FOLLOWING', name: 'following', desc: '', args: []);
+  }
+
+  /// `FOLLOWERS`
+  String get followers {
+    return Intl.message('FOLLOWERS', name: 'followers', desc: '', args: []);
+  }
+
+  /// `ADD FRIENDS`
+  String get addFriends {
+    return Intl.message('ADD FRIENDS', name: 'addFriends', desc: '', args: []);
+  }
+
+  /// `1 LEVEL`
+  String get BirinchiBosqich {
+    return Intl.message('1 LEVEL', name: 'BirinchiBosqich', desc: '', args: []);
+  }
+
+  /// `Square Castle`
+  String get KvadratQasri {
+    return Intl.message(
+      'Square Castle',
+      name: 'KvadratQasri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MATH STORM`
+  String get mathStormP {
+    return Intl.message('MATH STORM', name: 'mathStormP', desc: '', args: []);
+  }
+
+  /// `ARIFMETICS`
+  String get arifmetikaP {
+    return Intl.message('ARIFMETICS', name: 'arifmetikaP', desc: '', args: []);
   }
 
   /// `Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).`

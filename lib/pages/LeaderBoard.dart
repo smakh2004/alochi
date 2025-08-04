@@ -53,7 +53,6 @@ class _LeaderBoardState extends State<LeaderBoard> {
             S.of(context).leaderboard,
             style: TextStyle(
               fontFamily: BoldFont,
-              fontSize: 20,
               color: darkGrey,
             ),
           ),

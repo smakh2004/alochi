@@ -1,9 +1,11 @@
+import 'dart:math';
+
 import 'package:alochi_math_app/auth/check_page.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/main.dart';
-import 'package:alochi_math_app/pages/AchievementsPage.dart';
+import 'package:alochi_math_app/pages/Folower.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/pages/SettingsPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,25 +20,33 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStateMixin {
   User? user;
   bool isUzbek = true;
 
   double progress = 0.0;
   int percentage = 0;
-  double progress2 = 0.0;
-  int percentage2 = 0;
-  double progress3 = 0.0;
-  int percentage3 = 0;
-  double progress4 = 0.0;
-  int percentage4 = 0;
   int score = 0;
+
+  bool isRotated = false; // Track rotation state settings icon
+  late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
     _updateProgress();
+    // Rotation for settings icon
+     _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -50,16 +60,6 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       progress = GameState.currentXP / GameState.maxXP;
       percentage = (progress * 100).toInt();
-
-      progress2 = GameState.arifmetika / GameState.arifmetikaMax;
-      percentage2 = (progress2 * 100).toInt();
-
-      progress3 = GameState.logika / GameState.logikaMax;
-      percentage3 = (progress3 * 100).toInt();
-
-      progress4 = GameState.kopaytirish / GameState.kopaytirishMax;
-      percentage4 = (progress4 * 100).toInt();
-
       score = GameState.score + GameState.scoreDop;
     });
   }
@@ -98,141 +98,184 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             children: [
               /// Header Section
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                color: primaryColor,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(width: 12),
-                    Lottie.asset(
-                      'assets/animations/MrSquareProfile.json',
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.cover,
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                            S.of(context).birinchiBosqich,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontFamily: Font,
-                            ),
-                          ),
-                          Text(
-                            S.of(context).kvadratQasri,
-                            style: TextStyle(
-                              fontFamily: BoldFont,
-                              fontSize: 22,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
+              Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    color: primaryColor,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Lottie.asset(
+                          'assets/animations/MrSquareProfile.json',
+                          width: 150,
+                          height: 150,
+                          fit: BoxFit.cover,
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                S.of(context).birinchiBosqich,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontFamily: Font,
+                                ),
+                              ),
+                              Text(
+                                S.of(context).kvadratQasri,
+                                style: TextStyle(
+                                  fontFamily: BoldFont,
+                                  fontSize: 22,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
 
-                          /// Language Switch
-                          GestureDetector(
-                            onTap: () {
-                              final newLocale = isUzbek
-                                  ? const Locale('en')
-                                  : const Locale('uz');
-                              MyApp.setLocale(context, newLocale);
-                              setState(() {
-                                isUzbek = !isUzbek;
-                              });
-                            },
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 50,
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: const [
-                                          Padding(
-                                            padding: EdgeInsets.only(left: 12),
-                                            child: Text(
-                                              'UZ',
-                                              style: TextStyle(
-                                                color: grey,
-                                                fontFamily: Font
+                              /// Language Switch
+                              GestureDetector(
+                                onTap: () {
+                                  final newLocale = isUzbek
+                                      ? const Locale('en')
+                                      : const Locale('uz');
+                                  MyApp.setLocale(context, newLocale);
+                                  setState(() {
+                                    isUzbek = !isUzbek;
+                                  });
+                                },
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 50,
+                                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: const [
+                                              Padding(
+                                                padding: EdgeInsets.only(left: 12),
+                                                child: Text(
+                                                  'UZ',
+                                                  style: TextStyle(
+                                                    color: grey,
+                                                    fontFamily: Font,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                              Padding(
+                                                padding: EdgeInsets.only(right: 12),
+                                                child: Text(
+                                                  'EN',
+                                                  style: TextStyle(
+                                                    color: grey,
+                                                    fontFamily: Font,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 12),
-                                            child: Text(
-                                              'EN',
-                                              style: TextStyle(
-                                                color: grey,
-                                                fontFamily: Font
+                                          AnimatedAlign(
+                                            alignment: isUzbek
+                                                ? Alignment.centerLeft
+                                                : Alignment.centerRight,
+                                            duration: const Duration(milliseconds: 300),
+                                            curve: Curves.easeInOut,
+                                            child: Container(
+                                              width: 36,
+                                              height: 36,
+                                              decoration: BoxDecoration(
+                                                color: isUzbek ? primaryColor : red,
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  isUzbek ? 'UZ' : 'EN',
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: Font,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                      AnimatedAlign(
-                                        alignment: isUzbek
-                                            ? Alignment.centerLeft
-                                            : Alignment.centerRight,
-                                        duration:
-                                            const Duration(milliseconds: 300),
-                                        curve: Curves.easeInOut,
-                                        child: Container(
-                                          width: 36,
-                                          height: 36,
-                                          decoration: BoxDecoration(
-                                            color: isUzbek
-                                                ? primaryColor
-                                                : red,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              isUzbek ? 'UZ' : 'EN',
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: Font
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      S.of(context).langauage,
+                                      style: const TextStyle(
+                                        fontFamily: Font,
+                                        color: Colors.white,
+                                        fontSize: 16,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  S.of(context).langauage,
-                                  style: const TextStyle(
-                                    fontFamily: Font,
-                                    color: Colors.white,
-                                    fontSize: 16
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  /// Settings Icon (top right)
+                  Positioned(
+                    top: 16,
+                    right: 16,
+                    child: GestureDetector(
+                      onTap: () {
+                        if (!isRotated) {
+                          _controller.forward(); // Rotate icon forward
+                        } else {
+                          _controller.reverse(); // Rotate icon back
+                        }
+                        setState(() {
+                          isRotated = !isRotated;
+                        });
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: const Duration(milliseconds: 600),
+                            pageBuilder: (context, animation, secondaryAnimation) => SettingsPage(),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+                              return SlideTransition(
+                                position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
+                                child: child,
+                              );
+                            },
+                          ),
+                        ).then((_) {
+                          // Reset rotation when returning to this page
+                          _controller.reverse();
+                          setState(() {
+                            isRotated = false;
+                          });
+                        });
+                      },
+                      child: RotationTransition(
+                        turns: Tween(begin: 0.0, end: 0.25).animate(_controller),
+                        child: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               const SizedBox(height: 15),
@@ -293,7 +336,93 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
+              
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      transitionDuration: const Duration(milliseconds: 600),
+                      pageBuilder: (context, animation, secondaryAnimation) => FollowPage(),
+                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                        final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+                        return SlideTransition(
+                          position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
+                          child: child,
+                        );
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 65,
+                  width: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.white
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              '2',
+                              style: TextStyle(
+                                fontFamily: Font,
+                                color: questionColor,
+                                fontSize: 30
+                              ),
+                            ),
+                            Text(
+                              S.of(context).following, // FOLLOWING
+                              style: TextStyle(
+                                fontFamily: Font,
+                                color: darkGrey,
+                                fontSize: 14
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          width: 2,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: greyColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Column(
+                          children: [
+                            Text(
+                              '10',
+                              style: TextStyle(
+                                fontFamily: Font,
+                                color: questionColor,
+                                fontSize: 30
+                              ),
+                            ),
+                            Text(
+                              S.of(context).followers, // Followers
+                              style: TextStyle(
+                                fontFamily: Font,
+                                color: darkGrey,
+                                fontSize: 14
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 15),
 
               /// Profile Buttons
               if (user != null)
@@ -303,25 +432,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AnimatedButton(
-                        width: 200,
+                        width: 260,
                         height: 50,
                         color: Colors.white,
                         borderRadius: 18,
                         onPressed: () {
-                          Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            transitionDuration: const Duration(milliseconds: 600),
-                            pageBuilder: (context, animation, secondaryAnimation) => SettingsPage(),
-                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                              final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
-                              return SlideTransition(
-                                position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
+                          // Navigation here
+                          //////////////////
+                          ///////////////////////////////////////////////////////////
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -332,10 +450,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.settings, color: primaryColor),
+                              Icon(Icons.person_add, color: primaryColor),
                               SizedBox(width: 5),
                               Text(
-                                S.of(context).settings,
+                                S.of(context).addFriends, // ADD FRIENDS
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: primaryColor,
@@ -350,13 +468,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       AnimatedButton(
                         height: 50,
                         width: 50,
-                        borderRadius: 18,
+                        borderRadius: 14,
                         color: Colors.white,
                         onPressed: () {},
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: greyColor, width: 2),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(14),
                           ),
                           alignment: Alignment.center,
                           child: const Icon(Icons.share, color: primaryColor),
@@ -368,246 +486,286 @@ class _ProfilePageState extends State<ProfilePage> {
 
               const SizedBox(height: 20),
 
-              /// Statistika Title
-              Text(
-                S.of(context).statistika,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: Font,
-                  color: questionColor
-                ),
-              ),
-
-              /// Matematik shtorm
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: greyColor, width: 2),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/icons/ArifmeticStorm.png',
-                            width: 70,
-                            height: 70,
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(height: 12),
-                              Text(
-                                GameState.matematikShtorm.toString(),
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  fontFamily: Font,
-                                  color: questionColor
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        S.of(context).matematikShtorm,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: darkGrey,
-                          fontFamily: Font,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              /// Progress Bar
+              /// Progress Bar Section
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(color: greyColor, width: 2),
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // 1st Row: Progress & Arifmetika
+                    /// Top Section: Title + Progress
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Progress Circle
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Stack(
+                        /// Left Text Column
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Center(
-                                child: CircularProgressIndicator(
-                                  value: progress,
-                                  strokeWidth: 8,
-                                  backgroundColor: greyColor,
-                                  valueColor: AlwaysStoppedAnimation<Color>(primaryColor),
+                              Text(
+                                S.of(context).statistika, // Statistika
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: questionColor,
+                                  fontSize: 22,
                                 ),
                               ),
-                              Center(
-                                child: Text(
-                                  '$percentage%',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: Font,
-                                    color: primaryColor,
-                                  ),
+                              const SizedBox(height: 16),
+                              Text(
+                                S.of(context).BirinchiBosqich, // 1 LEVEL
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  fontSize: 16,
+                                  color: darkGrey,
+                                  height: 1,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                S.of(context).KvadratQasri, // Square Castle
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  fontSize: 20,
+                                  color: questionColor,
+                                  height: 1,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 2),
-                        // Progress Text
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4),
-                            child: Text(
-                              S.of(context).progress,
-                              style: TextStyle(fontSize: 15, color: questionColor, fontFamily: Font,),
-                            ),
-                          ),
-                        ),
+
+                        /// Progress Arc
                         const SizedBox(width: 12),
-                        // Arifmetika Circle
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Stack(
-                            children: [
-                              Center(
-                                child: CircularProgressIndicator(
-                                  value: progress2,
-                                  strokeWidth: 8,
-                                  backgroundColor: greyColor,
-                                  valueColor: AlwaysStoppedAnimation<Color>(orange),
-                                ),
-                              ),
-                              Center(
-                                child: Text(
-                                  '$percentage2%',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: Font,
-                                    color: orange,
-                                  ),
-                                ),
-                              ),
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: halfCircularProgress(
+                            percentage: percentage.toDouble(),
+                            color: questionColor,
+                            label: 'PROGRESS',
                           ),
                         ),
-                        const SizedBox(width: 2),
-                        // Arifmetika Text
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4),
-                            child: Text(
-                              S.of(context).arifmetika,
-                              style: TextStyle(fontSize: 15,color: questionColor,fontFamily: Font,),
-                            ),
-                          ),
-                        ),
+                        const SizedBox(width: 10),
                       ],
                     ),
 
                     const SizedBox(height: 24),
+                    Divider(color: greyColor, thickness: 2),
+                    const SizedBox(height: 16),
 
-                    // 2nd Row: Ko'paytirish & Logika
+                    /// Top 2 Stats
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // Ko'paytirish Circle
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Stack(
+                        /// Math Storm
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Center(
-                                child: CircularProgressIndicator(
-                                  value: progress4,
-                                  strokeWidth: 8,
-                                  backgroundColor: greyColor,
-                                  valueColor: AlwaysStoppedAnimation<Color>(red),
+                              Text(
+                                S.of(context).mathStormP, // MATH STORM
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: darkGrey,
+                                  fontSize: 14,
+                                  height: 0.2,
                                 ),
                               ),
-                              Center(
-                                child: Text(
-                                  '$percentage4%',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: Font,
-                                    color: red,
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  Image.asset('assets/icons/ArifmeticStorm.png', width: 30, height: 30),
+                                  SizedBox(width: 4),
+                                  Text(
+                                    GameState.matematikShtorm.toString(),
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                      fontSize: 28,
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 2),
-                        // Ko'paytirish Text
+
+                        const SizedBox(width: 24),
+
+                        /// Arifmetika
                         Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4),
-                            child: Text(
-                              S.of(context).multiplikativ,
-                              style: TextStyle(fontSize: 15,color: questionColor,fontFamily: Font,),
-                            ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                S.of(context).arifmetikaP, // ARIFMETIKA
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: darkGrey,
+                                  fontSize: 14,
+                                  height: 0.2,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  Text(
+                                    GameState.arifmetika.toString(),
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                      fontSize: 28,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    /// Middle 2 Stats
+                    Row(
+                      children: [
+                        /// Math Storm
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                S.of(context).multiplikativ, // Multiplikativ
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: darkGrey,
+                                  fontSize: 14,
+                                  height: 0.2,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  Text(
+                                    GameState.kopaytirish.toString(),
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                      fontSize: 28,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(width: 24),
+
+                        /// Arifmetika
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                S.of(context).logika, // Logika
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: darkGrey,
+                                  fontSize: 14,
+                                  height: 0.2,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  Text(
+                                    GameState.logika.toString(),
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                      fontSize: 28,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Divider(color: greyColor, thickness: 2),
+                    const SizedBox(height: 16),
+
+                    /// Final Row: Lightning + Points
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                S.of(context).glabaliSeriya, // G'alabali seriya
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: darkGrey,
+                                  fontSize: 14,
+                                  height: 0.2,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  GameState.lightnings > 0
+                                      ? Image.asset('assets/icons/1.png', width: 30, height: 30)
+                                      : Image.asset('assets/icons/Lightining1.png', width: 30, height: 30),
+                                  Text(
+                                    GameState.lightnings.toString(),
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                      fontSize: 28,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(width: 12),
-                        // Logika Circle
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Stack(
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Center(
-                                child: CircularProgressIndicator(
-                                  value: progress3,
-                                  strokeWidth: 8,
-                                  backgroundColor: greyColor,
-                                  valueColor: AlwaysStoppedAnimation<Color>(green),
+                              Text(
+                                S.of(context).umumiyOchko, // Umumiy ochko
+                                style: TextStyle(
+                                  fontFamily: Font,
+                                  color: darkGrey,
+                                  fontSize: 14,
+                                  height: 0.2,
                                 ),
                               ),
-                              Center(
-                                child: Text(
-                                  '$percentage3%',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: Font,
-                                    color: green,
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  Image.asset('assets/icons/2.png', width: 30, height: 30),
+                                  Text(
+                                    GameState.score.toString(),
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      color: questionColor,
+                                      fontSize: 28,
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ],
-                          ),
-                        ),
-                        const SizedBox(width: 2),
-                        // Logika Text
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 4),
-                            child: Text(
-                              S.of(context).logika,
-                              style: TextStyle(fontSize: 15, color: questionColor,fontFamily: Font,),
-                            ),
                           ),
                         ),
                       ],
@@ -616,201 +774,213 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 30),
 
               /// Victory Streak & Score Cards
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    /// Streak Card
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: greyColor, width: 2),
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/Lightining.png',
-                              width: 44,
-                              height: 44,
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    GameState.lightnings.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: Font,
-                                      color: questionColor
-                                    ),
-                                  ),
-                                  Text(
-                                    S.of(context).glabaliSeriya,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: darkGrey,
-                                      fontFamily: Font,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
 
-                    /// XP Card
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(color: greyColor, width: 2),
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/Points.png',
-                              width: 44,
-                              height: 44,
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    GameState.score.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: Font,
-                                      color: questionColor
-                                    ),
-                                  ),
-                                  Text(
-                                    S.of(context).umumiyOchko,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: darkGrey,
-                                      fontFamily: Font,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // /// Yutuqlar
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 16),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Text(
+              //         S.of(context).yutuqlar,
+              //         style: TextStyle(
+              //           fontSize: 18,
+              //           fontFamily: Font,
+              //           color: questionColor
+              //         ),
+              //       ),
+              //       GestureDetector(
+              //         onTap: () {
+              //           Navigator.push(
+              //             context,
+              //             PageRouteBuilder(
+              //               transitionDuration: const Duration(milliseconds: 600),
+              //               pageBuilder: (context, animation, secondaryAnimation) => const AchievementsPage(),
+              //               transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              //                 final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+              //                 return SlideTransition(
+              //                   position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
+              //                   child: child,
+              //                 );
+              //               },
+              //             ),
+              //           );
+              //         },
+              //         child: Text(
+              //           S.of(context).hammasiniKorish,
+              //           style: TextStyle(
+              //             fontSize: 18,
+              //             color: primaryColor,
+              //             fontFamily: Font,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
 
-              const SizedBox(height: 20),
-
-              /// Yutuqlar
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      S.of(context).yutuqlar,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: Font,
-                        color: questionColor
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            transitionDuration: const Duration(milliseconds: 600),
-                            pageBuilder: (context, animation, secondaryAnimation) => const AchievementsPage(),
-                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                              final curved = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
-                              return SlideTransition(
-                                position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero).animate(curved),
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
-                      },
-                      child: Text(
-                        S.of(context).hammasiniKorish,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: primaryColor,
-                          fontFamily: Font,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              /// Common container with scrollable row of images inside
-              Container(
-                height: 180,
-                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                  border: Border.all(color: greyColor, width: 2),
-                  borderRadius: BorderRadius.circular(18),
-                  color: Colors.white,
-                ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/medals/MrSquareMedal.png',
-                        width: 140,
-                        height: 140,
-                      ),
-                      Container(
-                        width: 2,
-                        height: 180,
-                        color: greyColor, // or any other color
-                      ),
-                      Image.asset(
-                        'assets/medals/MrTriangleLightining.png',
-                        width: 140,
-                        height: 140,
-                      ),
-                      Container(
-                        width: 2,
-                        height: 180,
-                        color: greyColor, // or any other color
-                      ),
-                      Image.asset(
-                        'assets/medals/MrCircleTimer.png',
-                        width: 140,
-                        height: 140,
-                      ),
-                      // Add more individually styled images here
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
+              // /// Common container with scrollable row of images inside
+              // Container(
+              //   height: 180,
+              //   margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: greyColor, width: 2),
+              //     borderRadius: BorderRadius.circular(18),
+              //     color: Colors.white,
+              //   ),
+              //   child: SingleChildScrollView(
+              //     scrollDirection: Axis.horizontal,
+              //     child: Row(
+              //       children: [
+              //         Image.asset(
+              //           'assets/medals/MrSquareMedal.png',
+              //           width: 140,
+              //           height: 140,
+              //         ),
+              //         Container(
+              //           width: 2,
+              //           height: 180,
+              //           color: greyColor, // or any other color
+              //         ),
+              //         Image.asset(
+              //           'assets/medals/MrTriangleLightining.png',
+              //           width: 140,
+              //           height: 140,
+              //         ),
+              //         Container(
+              //           width: 2,
+              //           height: 180,
+              //           color: greyColor, // or any other color
+              //         ),
+              //         Image.asset(
+              //           'assets/medals/MrCircleTimer.png',
+              //           width: 140,
+              //           height: 140,
+              //         ),
+              //         // Add more individually styled images here
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 20),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget halfCircularProgress({
+  required double percentage,
+  required Color color,
+  required String label,
+}) {
+  return SizedBox(
+    width: 100,
+    height: 80, 
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        SizedBox(
+          width: 100,
+          height: 60,
+          child: CustomPaint(
+            painter: _HalfCirclePainter(
+              percentage: percentage,
+              color: primaryColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: Text(
+            '${percentage.toInt()}',
+            style: TextStyle(
+              fontSize: 40,
+              color: questionColor,
+              fontFamily: Font
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+class _HalfCirclePainter extends CustomPainter {
+  final double percentage;
+  final Color color;
+
+  _HalfCirclePainter({required this.percentage, required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final centerX = size.width / 2;
+    final centerY = size.height;
+    final radius = size.width / 2;
+
+    final rect = Rect.fromCircle(center: Offset(centerX, centerY), radius: radius);
+
+    final backgroundPaint = Paint()
+      ..color = greyColor
+      ..strokeWidth = 10
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+
+    final progressPaint = Paint()
+      ..color = color
+      ..strokeWidth = 10
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+
+    final startAngle = 5 * pi / 6; // 150 degrees
+    final sweepAngle = 4 * pi / 3; // 240 degrees
+
+    // Draw background arc
+    canvas.drawArc(rect, startAngle, sweepAngle, false, backgroundPaint);
+
+    // Draw progress arc
+    canvas.drawArc(rect, startAngle, sweepAngle * (percentage / 100), false, progressPaint);
+
+    // Draw 0 and 100 labels
+    final textPainter0 = TextPainter(
+      text: TextSpan(
+        text: '0',
+        style: TextStyle(fontSize: 12, color: darkGrey, fontFamily: Font),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    final textPainter100 = TextPainter(
+      text: TextSpan(
+        text: '100',
+        style: TextStyle(fontSize: 12, color: darkGrey, fontFamily: Font),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    // Positions for 0° and 240° labels
+    final angle0 = startAngle;
+    final angle100 = startAngle + sweepAngle;
+
+    final offset0 = Offset(
+      centerX + radius * cos(angle0) - textPainter0.width / 2,
+      centerY + radius * sin(angle0) - textPainter0.height / 2 + 12, // shift down
+    );
+
+    final offset100 = Offset(
+      centerX + radius * cos(angle100) - textPainter100.width / 2,
+      centerY + radius * sin(angle100) - textPainter100.height / 2 + 12, // shift down
+    );
+
+    textPainter0.paint(canvas, offset0);
+    textPainter100.paint(canvas, offset100);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }

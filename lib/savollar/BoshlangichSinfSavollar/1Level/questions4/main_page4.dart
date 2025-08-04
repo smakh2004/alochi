@@ -4,6 +4,15 @@ import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/result_pages/LoserPage.dart';
 import 'package:alochi_math_app/result_pages/SuccessPage.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question31(clock).dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question32.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question33.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question34.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question35.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question36.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question37.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question38.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question39.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/Question40.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
@@ -170,60 +179,60 @@ class _MainPage4State extends State<MainPage4> {
             onNext: goToNextQuestion,
             onIncorrect: () => handleIncorrectAnswer(0),
           );
-        // case 1:
-        //   return Question32(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(1),
-        //   );
-        // case 2:
-        //   return Question33(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(2),
-        //   );
-        // case 3:
-        //   return Question34(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(3),
-        //   );
-        // case 4:
-        //   return Question35(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(4),
-        //   );
-        // case 5:
-        //   return Question36(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(5),
-        //   );
-        // case 6:
-        //   return Question37(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(6),
-        //   );
-        // case 7:
-        //   return Question38(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(7),
-        //   );
-        // case 8:
-        //   return Question39(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(8),
-        //   );
-        // case 9:
-        //   return Question40(
-        //     onXPUpdate: updateXP,
-        //     onNext: goToNextQuestion,
-        //     onIncorrect: () => handleIncorrectAnswer(9),
-        //   );
+        case 1:
+          return Question32(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(1),
+          );
+        case 2:
+          return Question33(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(2),
+          );
+        case 3:
+          return Question34(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(3),
+          );
+        case 4:
+          return Question35(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(4),
+          );
+        case 5:
+          return Question36(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(5),
+          );
+        case 6:
+          return Question37(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(6),
+          );
+        case 7:
+          return Question38(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(7),
+          );
+        case 8:
+          return Question39(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(8),
+          );
+        case 9:
+          return Question40(
+            onXPUpdate: updateXP,
+            onNext: goToNextQuestion,
+            onIncorrect: () => handleIncorrectAnswer(9),
+          );
         default:
           return const BoshlangichSinf();
       }
@@ -237,24 +246,24 @@ class _MainPage4State extends State<MainPage4> {
       switch (qIndex) {
         case 0:
           return Question31(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 1:
-        //    return Question32(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 2:
-        //   return Question33(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 3:
-        //   return Question34(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 4:
-        //   return Question35(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 5:
-        //   return Question36(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 6:
-        //   return Question37(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 7:
-        //   return Question38(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 8:
-        //   return Question39(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
-        // case 9:
-        //   return Question40(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 1:
+           return Question32(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 2:
+          return Question33(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 3:
+          return Question34(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 4:
+          return Question35(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 5:
+          return Question36(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 6:
+          return Question37(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 7:
+          return Question38(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 8:
+          return Question39(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
+        case 9:
+          return Question40(onXPUpdate: updateXP, onNext: goToNextQuestion, onIncorrect: () {});
         default:
           return const BoshlangichSinf();
       }

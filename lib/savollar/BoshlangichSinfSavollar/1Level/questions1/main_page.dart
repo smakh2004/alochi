@@ -63,13 +63,15 @@ class _MainPage1State extends State<MainPage1> {
         MaterialPageRoute(builder: (context) => const LoserPage()),
       );
 
+      if (!mounted) return;
+
       if (result == 'lostHeart') {
         Navigator.pop(context, 'lostHeart');
       } else {
         setState(() {});
       }
     } else {
-      setState(() {});
+      if (mounted) setState(() {});
     }
   }
 
@@ -222,7 +224,6 @@ class _MainPage1State extends State<MainPage1> {
                       width: 270,
                       color: primaryColor,
                       onPressed: () {
-                        // Close the modal and continue quiz
                         Navigator.pop(context);
                       },
                       child: Text(
@@ -238,14 +239,13 @@ class _MainPage1State extends State<MainPage1> {
                   const SizedBox(height: 15),
                   GestureDetector(
                     onTap: () {
-                      // Close modal and then exit quiz, sending 'quit' result
                       Navigator.pop(context);
                       Navigator.pop(context, 'quit');
                     },
                     child: Text(
                       S.of(context).chiqish,
                       style: const TextStyle(
-                        color: red,          // red text
+                        color: red,     
                         fontFamily: Font,
                         fontSize: 18,       
                       ),

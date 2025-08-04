@@ -32,6 +32,26 @@ class _MathStormState extends State<MathStorm> {
   void initState() {
     super.initState();
     _loadGameStateFuture = _initializeState(); // wait for firestore load
+    startAttemptWatcher();
+  }
+
+  Timer? attemptWatcher;
+
+  void startAttemptWatcher() {
+    attemptWatcher = Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+
+      if (GameState.mathStormAttemptsLeft != attempts) {
+        setState(() {
+          attempts = GameState.mathStormAttemptsLeft;
+          progress = attempts / 3;
+          if (attempts > 0) resetTime = null;
+        });
+      }
+    });
   }
 
   Future<void> _initializeState() async {
@@ -81,7 +101,7 @@ class _MathStormState extends State<MathStorm> {
             await GameState.saveState(userId);
           }
         } else {
-          setState(() {}); // update countdown
+          setState(() {}); 
         }
       }
     });
@@ -117,6 +137,7 @@ class _MathStormState extends State<MathStorm> {
   @override
   void dispose() {
     countdownTimer?.cancel();
+    attemptWatcher?.cancel(); 
     super.dispose();
   }
 
@@ -181,27 +202,38 @@ class _MathStormState extends State<MathStorm> {
 
                                 // FOREGROUND: bottom text
                                 Positioned(
-                                  bottom: 0,
+                                  bottom: -10,
                                   left: 0,
                                   right: 0,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        S.of(context).rekord,
-                                        style: const TextStyle(
-                                          fontSize: 22,
-                                          fontFamily: Font,
-                                          color: questionColor
-                                        ),
-                                      ),
-                                      Text(
-                                        GameState.matematikShtorm.toString(),
-                                        style: const TextStyle(
-                                          fontSize: 22,
-                                          fontFamily: Font,
-                                          color: red,
-                                        ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            S.of(context).rekord,
+                                            style: TextStyle(
+                                              fontFamily: Font,
+                                              color: questionColor,
+                                              fontSize: 16,
+                                              height: 0.1,
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                GameState.matematikShtorm.toString(),
+                                                style: TextStyle(
+                                                  fontFamily: Font,
+                                                  color: red,
+                                                  fontSize: 34,
+                                                  height: 1.3
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -209,6 +241,7 @@ class _MathStormState extends State<MathStorm> {
                               ],
                             ),
                           ),
+                          SizedBox(height: 10),
                           Stack(
                             alignment: Alignment.center,
                             children: [

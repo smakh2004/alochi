@@ -373,8 +373,11 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(builder: (_) => _getCurrentMainPage()),
                     );
+
+                    if (!mounted) return;
+
                     setState(() {
-                      _updateStageTitle();
+                      _updateStageTitle(); 
                     });
                   },
                   child: Text(

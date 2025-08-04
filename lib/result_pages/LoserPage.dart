@@ -110,11 +110,7 @@ class _LoserPageState extends State<LoserPage> {
                   width: 310,
                   color: buttonWrong,
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const BoshlangichSinf()),
-                    );
+                    Navigator.pop(context, 'lostHeart');
                   },
                   child: Text(
                     S.of(context).uygaQaytish,

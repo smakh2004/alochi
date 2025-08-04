@@ -46,15 +46,12 @@ class GameState {
 
   // Statistics
   static double arifmetika = 0;
-  static double arifmetikaMax = 100;
   static double arifmetikaDop = 0;
 
   static double kopaytirish = 0;
-  static double kopaytirishMax = 100;
   static double kopaytirishDop = 0;
 
   static double logika = 0;
-  static double logikaMax = 100;
   static double logikaDop = 0;
 
   static DateTime? lastLightningDate;
@@ -81,14 +78,12 @@ class GameState {
     score = 0;
 
     arifmetika = 0;
-    arifmetikaMax = 100;
+    arifmetikaDop = 0;
 
     kopaytirish = 0;
-    kopaytirishMax = 100;
     kopaytirishDop = 0;
 
     logika = 0;
-    logikaMax = 100;
     logikaDop = 0;
 
     lastLightningDate = null;

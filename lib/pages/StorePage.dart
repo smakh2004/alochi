@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/BoxOpenings/BigBoxOpening.dart';
+import 'package:alochi_math_app/pages/BoxOpenings/BoxOpening.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/pages/PremiumPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,7 +36,6 @@ class _StorePageState extends State<StorePage> {
           style: TextStyle(
             fontFamily: BoldFont,
             color: darkGrey,
-            fontSize: 20,
           ),
         ),
         actions: [
@@ -201,127 +204,509 @@ class _StorePageState extends State<StorePage> {
               ),
 
               SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      width: 2,
-                      color: greyColor,
-                    )
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/storeImages/Box.png',
-                          height: 70,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  S.of(context).lightBox,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: Font,
-                                    color: questionColor
-                                  ),
+              GestureDetector(
+                onTap: () async {
+                  if (GameState.gems >= 30) {
+                    setState(() {
+                      GameState.gems -= 30;
+                    });
+
+                    final userId = FirebaseAuth.instance.currentUser?.uid;
+                    if (userId != null) {
+                      await GameState.saveState(userId);
+                    }
+
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BoxOpening()),
+                    );
+                    
+                    setState(() {
+                    });
+                  } else {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.white,
+                      context: context,
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+                      ),
+                      builder: (BuildContext context) {
+                        return StatefulBuilder(
+                          builder: (context, setState) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                left: 16,
+                                right: 16,
+                                top: 16,
+                                bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Image.asset('assets/icons/Diamond.png', height: 28),
+                                        const SizedBox(width: 4),
+                                        Text(
+                                          GameState.gems.toString(),
+                                          style: TextStyle(
+                                            fontFamily: BoldFont,
+                                            fontSize: 18,
+                                            color: green,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Center(
+                                      child: Text(
+                                        S.of(context).refillYourGems,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontFamily: Font,
+                                          color: questionColor,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    ...List.generate(3, (index) {
+                                      final gemOptions = [
+                                        {'amount': '30 ${S.of(context).gems}', 'price': '\$1.99', 'image': 'assets/storeImages/Gems1.png'},
+                                        {'amount': '80 ${S.of(context).gems}', 'price': '\$3.99', 'image': 'assets/storeImages/Gems2.png'},
+                                        {'amount': '360 ${S.of(context).gems}', 'price': '\$9.99', 'image': 'assets/storeImages/Gems3.png'},
+                                      ];
+                                      return GestureDetector(
+                                        onTap: () => setState(() => selectedOption = index),
+                                        child: Container(
+                                          margin: const EdgeInsets.symmetric(vertical: 6),
+                                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(18),
+                                            border: Border.all(
+                                              color: selectedOption == index ? primaryColor : greyColor,
+                                              width: 2.3,
+                                            ),
+                                            color: Colors.white,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Image.asset(gemOptions[index]['image']!, height: 60, width: 60),
+                                                  const SizedBox(width: 8),
+                                                  Text(
+                                                    gemOptions[index]['amount']!,
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: Font,
+                                                      color: questionColor,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Text(
+                                                gemOptions[index]['price']!,
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: Font,
+                                                  color: darkGrey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                    const SizedBox(height: 24),
+                                    Center(
+                                      child: AnimatedButton(
+                                        height: 46,
+                                        width: 320,
+                                        borderRadius: 12,
+                                        color: primaryColor,
+                                        onPressed: () {
+                                          if (selectedOption == -1) {
+                                            // show alert
+                                          } else {
+                                            // handle purchase
+                                          }
+                                        },
+                                        child: Center(
+                                          child: Text(
+                                            S.of(context).buyGems,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: Font,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 15),
+                                    Center(
+                                      child: GestureDetector(
+                                        onTap: () => Navigator.pop(context),
+                                        child: Text(
+                                          S.of(context).returnH,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: Font,
+                                            color: primaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                  ],
                                 ),
-                                Text(
-                                  S.of(context).lightBoxDesc,
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: Font,
-                                    color: darkGrey
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  S.of(context).open,
-                                  style: TextStyle(
-                                    fontFamily: Font,
-                                    fontSize: 20,
-                                    color: primaryColor
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                              ],
-                            ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        width: 2,
+                        color: greyColor,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/storeImages/Box.png',
+                            height: 70,
+                            width: 90,
                           ),
-                        )
-                      ],
+                          const SizedBox(width: 10),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          S.of(context).Box,
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: Font,
+                                            color: questionColor,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Image.asset(
+                                          'assets/icons/Diamond.png',
+                                          width: 20,
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '30',
+                                          style: TextStyle(
+                                            fontFamily: BoldFont,
+                                            fontSize: 16,
+                                            color: green,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    S.of(context).BoxDesc,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontFamily: Font,
+                                      color: darkGrey,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    S.of(context).open,
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      fontSize: 20,
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
               
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      width: 2,
-                      color: greyColor,
-                    )
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/storeImages/Box2.png',
-                          height: 70,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  S.of(context).nightBox,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: Font,
-                                    color: questionColor
-                                  ),
+              GestureDetector(
+                onTap: () async {
+                  if (GameState.gems >= 80) {
+                    setState(() {
+                      GameState.gems -= 80;
+                    });
+
+                    final userId = FirebaseAuth.instance.currentUser?.uid;
+                    if (userId != null) {
+                      await GameState.saveState(userId);
+                    }
+
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BigBoxOpening()),
+                    );
+                    
+                    setState(() {
+                    });
+                  } else {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.white,
+                      context: context,
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+                      ),
+                      builder: (BuildContext context) {
+                        return StatefulBuilder(
+                          builder: (context, setState) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                left: 16,
+                                right: 16,
+                                top: 16,
+                                bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Image.asset('assets/icons/Diamond.png', height: 28),
+                                        const SizedBox(width: 4),
+                                        Text(
+                                          GameState.gems.toString(),
+                                          style: TextStyle(
+                                            fontFamily: BoldFont,
+                                            fontSize: 18,
+                                            color: green,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Center(
+                                      child: Text(
+                                        S.of(context).refillYourGems,
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontFamily: Font,
+                                          color: questionColor,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    ...List.generate(3, (index) {
+                                      final gemOptions = [
+                                        {'amount': '30 ${S.of(context).gems}', 'price': '\$1.99', 'image': 'assets/storeImages/Gems1.png'},
+                                        {'amount': '80 ${S.of(context).gems}', 'price': '\$3.99', 'image': 'assets/storeImages/Gems2.png'},
+                                        {'amount': '360 ${S.of(context).gems}', 'price': '\$9.99', 'image': 'assets/storeImages/Gems3.png'},
+                                      ];
+                                      return GestureDetector(
+                                        onTap: () => setState(() => selectedOption = index),
+                                        child: Container(
+                                          margin: const EdgeInsets.symmetric(vertical: 6),
+                                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(18),
+                                            border: Border.all(
+                                              color: selectedOption == index ? primaryColor : greyColor,
+                                              width: 2.3,
+                                            ),
+                                            color: Colors.white,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Image.asset(gemOptions[index]['image']!, height: 60, width: 60),
+                                                  const SizedBox(width: 8),
+                                                  Text(
+                                                    gemOptions[index]['amount']!,
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontFamily: Font,
+                                                      color: questionColor,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Text(
+                                                gemOptions[index]['price']!,
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: Font,
+                                                  color: darkGrey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                    const SizedBox(height: 24),
+                                    Center(
+                                      child: AnimatedButton(
+                                        height: 46,
+                                        width: 320,
+                                        borderRadius: 12,
+                                        color: primaryColor,
+                                        onPressed: () {
+                                          if (selectedOption == -1) {
+                                            // show alert
+                                          } else {
+                                            // handle purchase
+                                          }
+                                        },
+                                        child: Center(
+                                          child: Text(
+                                            S.of(context).buyGems,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontFamily: Font,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 15),
+                                    Center(
+                                      child: GestureDetector(
+                                        onTap: () => Navigator.pop(context),
+                                        child: Text(
+                                          S.of(context).returnH,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: Font,
+                                            color: primaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                  ],
                                 ),
-                                Text(
-                                  S.of(context).nightBoxDesc,
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: Font,
-                                    color: darkGrey
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  S.of(context).open,
-                                  style: TextStyle(
-                                    fontFamily: Font,
-                                    fontSize: 20,
-                                    color: primaryColor
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                              ],
-                            ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        width: 2,
+                        color: greyColor,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16, top: 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/storeImages/BigBox.png',
+                            height: 70,
+                            width: 90,
                           ),
-                        )
-                      ],
+                          const SizedBox(width: 10),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          S.of(context).BigBox,
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: Font,
+                                            color: questionColor,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Image.asset(
+                                          'assets/icons/Diamond.png',
+                                          width: 20,
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '80',
+                                          style: TextStyle(
+                                            fontFamily: BoldFont,
+                                            fontSize: 16,
+                                            color: green,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    S.of(context).BigBoxDesc,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontFamily: Font,
+                                      color: darkGrey,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    S.of(context).open,
+                                    style: TextStyle(
+                                      fontFamily: Font,
+                                      fontSize: 20,
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -396,7 +781,7 @@ class _StorePageState extends State<StorePage> {
                                         // Title
                                         Center(
                                           child: Text(
-                                            'Refill your gems, to continue!',
+                                            S.of(context).refillYourGems,
                                             style: TextStyle(
                                               fontSize: 24,
                                               fontFamily: Font,
@@ -432,7 +817,7 @@ class _StorePageState extends State<StorePage> {
                                                     Image.asset('assets/storeImages/Gems1.png', height: 60, width: 60),
                                                     const SizedBox(width: 8),
                                                     Text(
-                                                      '30 Gems',
+                                                      '30 ${S.of(context).gems}',
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                         fontFamily: Font,
@@ -480,7 +865,7 @@ class _StorePageState extends State<StorePage> {
                                                     Image.asset('assets/storeImages/Gems2.png', height: 60, width: 60), 
                                                     const SizedBox(width: 8),
                                                     Text(
-                                                      '80 Gems',
+                                                      '80 ${S.of(context).gems}',
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                         fontFamily: Font,
@@ -528,7 +913,7 @@ class _StorePageState extends State<StorePage> {
                                                     Image.asset('assets/storeImages/Gems3.png', height: 60, width: 60), // Different icon
                                                     const SizedBox(width: 8),
                                                     Text(
-                                                      '360 Gems',
+                                                      '360 ${S.of(context).gems}',
                                                       style: TextStyle(
                                                         fontSize: 16,
                                                         fontFamily: Font,
@@ -568,7 +953,7 @@ class _StorePageState extends State<StorePage> {
                                             },
                                             child: Center(
                                               child: Text(
-                                                'BUY GEMS',
+                                                S.of(context).buyGems,
                                                 style: const TextStyle(
                                                   fontSize: 16,
                                                   fontFamily: Font,
@@ -586,7 +971,7 @@ class _StorePageState extends State<StorePage> {
                                           child: GestureDetector(
                                             onTap: () => Navigator.pop(context),
                                             child: Text(
-                                              'RETURN',
+                                              S.of(context).returnH,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily: Font,
@@ -604,7 +989,7 @@ class _StorePageState extends State<StorePage> {
                             );
                           },
                         );
-                      } else if (GameState.gems >= 200 && GameState.activeFreezes < 2){
+                      } else if (GameState.gems >= 100 && GameState.activeFreezes < 2){
                         showModalBottomSheet(
                           backgroundColor: Colors.white,
                           context: context,
@@ -651,7 +1036,7 @@ class _StorePageState extends State<StorePage> {
                                         // Title text
                                         Center(
                                           child: Text(
-                                            'Keep your new streak safe!',
+                                            S.of(context).keepYourWinStreakSafe,
                                             style: TextStyle(
                                               fontSize: 24,
                                               fontFamily: Font,
@@ -667,14 +1052,14 @@ class _StorePageState extends State<StorePage> {
                                           TextSpan(
                                             children: [
                                               TextSpan(
-                                                text: 'Each Freezing protects your streak for a day. You have ',
+                                                text: S.of(context).eachFreeze,
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                               ),
                                               TextSpan(
-                                                text: '${GameState.activeFreezes} of 2 equipped',
+                                                text: '${GameState.activeFreezes} ${S.of(context).ofTwoEquiped}',
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold,
@@ -704,7 +1089,7 @@ class _StorePageState extends State<StorePage> {
                                         Center(
                                           child: AnimatedButton(
                                             height: 46,
-                                            width: 320,
+                                            width: 310,
                                             borderRadius: 12,
                                             color: primaryColor,
                                             onPressed: () async {
@@ -718,9 +1103,11 @@ class _StorePageState extends State<StorePage> {
                                                 return;
                                               }
 
-                                              // Update values
-                                              GameState.gems -= 100;
-                                              GameState.activeFreezes += 1;
+                                              setState(() {
+                                                // Update values
+                                                GameState.gems -= 100;
+                                                GameState.activeFreezes += 1;
+                                              });
 
                                               // Save state to Firebase
                                               final userId = FirebaseAuth.instance.currentUser?.uid;
@@ -736,7 +1123,7 @@ class _StorePageState extends State<StorePage> {
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'REFILL STREAK FREEZING',
+                                                    S.of(context).refilYourFreeze,
                                                     style: const TextStyle(
                                                       fontSize: 16,
                                                       fontFamily: Font,
@@ -771,7 +1158,7 @@ class _StorePageState extends State<StorePage> {
                                           child: GestureDetector(
                                             onTap: () => Navigator.pop(context),
                                             child: Text(
-                                              'NO THANKS',
+                                              S.of(context).noThanks,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily: Font,
@@ -820,14 +1207,35 @@ class _StorePageState extends State<StorePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    S.of(context).freezing,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: Font,
-                                      color: questionColor,
-                                    ),
+                                  Align(
+                                  alignment: Alignment.topRight,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        S.of(context).freezing,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: Font,
+                                          color: questionColor,
+                                        ),
+                                      ),
+                                      Spacer(),
+                                      Image.asset(
+                                        'assets/icons/Diamond.png',
+                                        width: 20,
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        '100',
+                                        style: TextStyle(
+                                          fontFamily: BoldFont,
+                                          fontSize: 16,
+                                          color: green,
+                                        ),
+                                      )
+                                    ]
                                   ),
+                                ),
                                   Text(
                                     S.of(context).freezingDesc,
                                     style: TextStyle(
@@ -837,32 +1245,42 @@ class _StorePageState extends State<StorePage> {
                                     ),
                                   ),
                                   const SizedBox(height: 10),
-                                  GameState.activeFreezes < 2
+                                  GameState.activeFreezes < 1
                                   ? Row(
-                                      children: [
-                                        Image.asset(
-                                          'assets/icons/Diamond.png',
-                                          height: 30,
-                                        ),
-                                        const SizedBox(width: 2),
+                                      children: [    
                                         Text(
-                                          '100',
+                                          S.of(context).use,
                                           style: TextStyle(
                                             fontFamily: Font,
-                                            fontSize: 16,
-                                            color: green,
+                                            fontSize: 20,
+                                            color: primaryColor
                                           ),
                                         ),
                                       ],
                                     )
-                                  : Text(
-                                      "FULL FREEZERS",
-                                      style: TextStyle(
-                                        fontFamily: Font,
-                                        fontSize: 20,
-                                        color: grey,
-                                      ),
+                                  : Container(
+                                    decoration: BoxDecoration(
+                                      color: lightGreen,
+                                      borderRadius: BorderRadius.circular(4)
                                     ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10, right: 10),
+                                      child: Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: '${S.of(context).activated} ${GameState.activeFreezes}/2',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontFamily: Font,
+                                                  color: greenNew
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                    ),
+                                  ),
                                   SizedBox(height: 10)
                                 ],
                               ),
@@ -1170,7 +1588,7 @@ class _StorePageState extends State<StorePage> {
                                       const SizedBox(height: 8),
                                       Center(
                                         child: Text(
-                                          'Refill your gems, to continue!',
+                                          S.of(context).refillYourGems,
                                           style: TextStyle(
                                             fontSize: 24,
                                             fontFamily: Font,
@@ -1181,9 +1599,9 @@ class _StorePageState extends State<StorePage> {
                                       const SizedBox(height: 10),
                                       ...List.generate(3, (index) {
                                         final gemOptions = [
-                                          {'amount': '30 Gems', 'price': '\$1.99', 'image': 'assets/storeImages/Gems1.png'},
-                                          {'amount': '80 Gems', 'price': '\$3.99', 'image': 'assets/storeImages/Gems2.png'},
-                                          {'amount': '360 Gems', 'price': '\$9.99', 'image': 'assets/storeImages/Gems3.png'},
+                                          {'amount': '30 ${S.of(context).gems}', 'price': '\$1.99', 'image': 'assets/storeImages/Gems1.png'},
+                                          {'amount': '80 ${S.of(context).gems}', 'price': '\$3.99', 'image': 'assets/storeImages/Gems2.png'},
+                                          {'amount': '360 ${S.of(context).gems}', 'price': '\$9.99', 'image': 'assets/storeImages/Gems3.png'},
                                         ];
                                         return GestureDetector(
                                           onTap: () => setState(() => selectedOption = index),
@@ -1244,7 +1662,7 @@ class _StorePageState extends State<StorePage> {
                                           },
                                           child: Center(
                                             child: Text(
-                                              'BUY GEMS',
+                                              S.of(context).buyGems,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily: Font,
@@ -1259,7 +1677,7 @@ class _StorePageState extends State<StorePage> {
                                         child: GestureDetector(
                                           onTap: () => Navigator.pop(context),
                                           child: Text(
-                                            'RETURN',
+                                            S.of(context).returnH,
                                             style: TextStyle(
                                               fontSize: 16,
                                               fontFamily: Font,
@@ -1301,14 +1719,36 @@ class _StorePageState extends State<StorePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    S.of(context).hearts,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: Font,
-                                      color: questionColor,
-                                    ),
+                                  Align(
+                                  alignment: Alignment.topRight,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        S.of(context).hearts,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: Font,
+                                          color: questionColor,
+                                        ),
+                                      ),
+                                      Spacer(),
+                                      Image.asset(
+                                        'assets/icons/Diamond.png',
+                                        width: 20,
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        '50',
+                                        style: TextStyle(
+                                          fontFamily: BoldFont,
+                                          fontSize: 16,
+                                          color: green,
+                                        ),
+                                      )
+                                    ]
                                   ),
+                                ),
+                                  
                                   Text(
                                     S.of(context).heartsDesc,
                                     style: TextStyle(
@@ -1321,14 +1761,12 @@ class _StorePageState extends State<StorePage> {
                                   GameState.hearts != 5
                                       ? Row(
                                           children: [
-                                            Image.asset('assets/icons/Diamond.png', height: 30),
-                                            const SizedBox(width: 2),
                                             Text(
-                                              '50',
+                                              S.of(context).refillHearts,
                                               style: TextStyle(
                                                 fontFamily: Font,
-                                                fontSize: 16,
-                                                color: green,
+                                                fontSize: 20,
+                                                color: primaryColor
                                               ),
                                             ),
                                           ],

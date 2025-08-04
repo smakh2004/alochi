@@ -137,7 +137,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
               style: TextStyle(
                 color: darkGrey,
                 fontFamily: BoldFont,
-                fontSize: 18,
               ),
             ),
             Align(
