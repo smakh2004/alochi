@@ -128,3 +128,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     );
   }
 }
+
+
+// ------------------------------------ //
+//   Founder and CEO of A'lochi App     //
+//      MAKHAMMATOV SIROJIDDIN          //
+// ------------------------------------ //

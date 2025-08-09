@@ -1,17 +1,20 @@
-import 'package:alochi_math_app/Castles/KvadratQasri.dart';
-import 'package:alochi_math_app/Castles/UchburchakPiramidasi.dart';
-import 'package:alochi_math_app/UchburchakPiramidasiSavollari/questions1/main_page.dart';
+import 'package:alochi_math_app/pages/BoshlangichSinf/Castles/KvadratQasri.dart';
+import 'package:alochi_math_app/pages/BoshlangichSinf/Castles/UchburchakPiramidasi.dart';
+import 'package:alochi_math_app/pages/BoshlangichSinf/LevelPage2.dart';
+import 'package:alochi_math_app/pages/BoshlangichSinf/LevelPage3.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions10/main_page.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/BoshlangichSinf/LevelPage.dart';
 import 'package:alochi_math_app/pages/NotificationsPage.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions1/main_page.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions2/main_page2.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions3/main_page3.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions4/main_page4.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions5/main_page5.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions6/main_page6.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions7/main_page7.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions8/main_page8.dart';
-import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/1Level/questions9/main_page9.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions1/main_page.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions2/main_page2.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions3/main_page3.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions4/main_page4.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions5/main_page5.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions6/main_page6.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions7/main_page7.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions8/main_page8.dart';
+import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions9/main_page9.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alochi_math_app/components/color.dart';
@@ -34,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   String currentCastle = '';
   Color currentStageColor = primaryColor;
   Color currentStageTitleColor = lightblue;
+  int currentCastleIndex = 0;
 
   Timer? countdownTimer;
   int secondsLeft = 60;
@@ -42,16 +46,54 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
     _checkHeartRegeneration();
-    _checkLightningTimeout(); 
+    _checkLightningTimeout();
+
+    // Determine initial castle index
+    int initialCastleIndex = 0;
+    if (GameState.currentXP >= GameState.maxXP && GameState.currentXP2 < GameState.maxXP2) {
+      initialCastleIndex = 1;
+    } else if (GameState.currentXP2 >= GameState.maxXP2 && GameState.currentXP3 < GameState.maxXP3) {
+      initialCastleIndex = 2;
+    } else if (GameState.currentXP3 >= GameState.maxXP3 && GameState.currentXP4 < GameState.maxXP4) {
+      initialCastleIndex = 3;
+    }
+
+    // Set the correct title/subtitle immediately
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        if (initialCastleIndex == 0) {
+          currentStageTitle = S.of(context).kvadratQasriBirinchiBosqich;
+          currentStageSubtitle = S.of(context).kvadratQasriBirinchiBosqichDes;
+          currentStageColor = blue;
+          currentStageTitleColor = lightBlue;
+          currentCastle = S.of(context).squareCastle;
+        } else if (initialCastleIndex == 1) {
+          currentStageTitle = S.of(context).uchburchakPiramidasiIkkinchiBosqich;
+          currentStageSubtitle = S.of(context).uchburchakPiramidasiIkkinchiBosqichDes;
+          currentStageColor = red;
+          currentStageTitleColor = lightRed;
+          currentCastle = S.of(context).uchburchakQasri;
+        } else if (initialCastleIndex == 2) {
+          currentStageTitle = S.of(context).doiraQasriUchinchiBosqich;
+          currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
+          currentStageColor = grey;
+          currentStageTitleColor = Colors.white;
+          currentCastle = S.of(context).doiraQasri;
+        } else {
+          currentStageTitle = '';
+          currentStageSubtitle = '';
+          currentCastle = '';
+        }
+      });
+    });
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _updateStageTitle();
     if (!_isStageUpdated) {
-      _updateStageTitle();
       _isStageUpdated = true;
     }
 
@@ -67,7 +109,7 @@ class _HomePageState extends State<HomePage> {
       final now = DateTime.now();
       final diff = now.difference(last);
 
-      if (diff.inDays >= 1) {
+      if (diff.inDays >= 2) {
         setState(() {
           if (GameState.activeFreezes > 0) {
             // Use 1 freeze and refresh protection date
@@ -86,45 +128,6 @@ class _HomePageState extends State<HomePage> {
           await GameState.saveState(userId);
         }
       }
-    }
-  }
-
-  void _updateStageTitle() {
-    double progress1 = GameState.currentXP / GameState.maxXP;
-    double progress2 = GameState.currentXP2 / GameState.maxXP2;
-    double progress3 = GameState.currentXP3 / GameState.maxXP3;
-    double progress4 = GameState.currentXP4 / GameState.maxXP4;
-
-    if (progress1 < 1.0) {
-      setState(() {
-        currentStageTitle = S.of(context).kvadratQasriBirinchiBosqich;
-        currentStageSubtitle = S.of(context).kvadratQasriBirinchiBosqichDes;
-        currentStageColor = blue;
-        currentStageTitleColor = lightBlue;
-        currentCastle = S.of(context).squareCastle;
-      });
-    } else if (progress2 < 1.0) {
-      setState(() {
-        currentStageTitle = 'LEVEL 2';
-        currentStageSubtitle = S.of(context).uchburchakPiramidasiIkkinchiBosqichDes;
-        currentStageColor = red;
-        currentStageTitleColor = lightRed;
-        currentCastle = S.of(context).squareCastle;
-      });
-    } else if (progress3 < 1.0) {
-      setState(() {
-        currentStageTitle = 'LEVEL 3';
-        currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
-        currentStageColor = Colors.deepOrange;
-        currentStageTitleColor = orange;
-        currentCastle = S.of(context).squareCastle;
-      });
-    } else if (progress4 < 1.0) {
-      currentStageTitle = 'LEVEL 4';
-      currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
-      currentStageColor = Colors.deepOrange;
-      currentStageTitleColor = orange;
-      currentCastle = S.of(context).squareCastle;
     }
   }
 
@@ -209,19 +212,168 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _getCurrentCastleWidget() {
-    if (GameState.currentXP < GameState.maxXP) {
-      return KvadratQasri(
-        key: ValueKey(GameState.currentXP),
-        onComplete: () {},
-      );
-    } else if (GameState.currentXP2 < GameState.maxXP2) {
-      return UchburchakPiramidasi(
-        key: ValueKey(GameState.currentXP2),
-        onComplete: () {},
-      );
-    } else {
-      return const Text("Yangi qasrlar tez orada qo'shiladi.");
+    // Determine which castle should be shown
+    int initialCastleIndex = 0;
+    if (GameState.currentXP >= GameState.maxXP && GameState.currentXP2 < GameState.maxXP2) {
+      initialCastleIndex = 1;
+    } else if (GameState.currentXP2 >= GameState.maxXP2 && GameState.currentXP3 < GameState.maxXP3) {
+      initialCastleIndex = 2;
+    } else if (GameState.currentXP3 >= GameState.maxXP3 && GameState.currentXP4 < GameState.maxXP4) {
+      initialCastleIndex = 3;
     }
+
+    // Castle theme colors
+    final castleColors = [
+      primaryColor,     // Kvadrat Qasri
+      red,      // Uchburchak Piramidasi
+      grey,     // Doira Qasri
+      grey,     // Future castle
+    ];
+
+    // ✅ Set title/subtitle immediately for the initial page
+    if (currentStageTitle.isEmpty) {
+      if (initialCastleIndex == 0) {
+        currentStageTitle = S.of(context).kvadratQasriBirinchiBosqich;
+        currentStageSubtitle = S.of(context).kvadratQasriBirinchiBosqichDes;
+        currentStageColor = blue;
+        currentStageTitleColor = lightBlue;
+        currentCastle = S.of(context).squareCastle;
+      } else if (initialCastleIndex == 1) {
+        currentStageTitle = S.of(context).uchburchakPiramidasiIkkinchiBosqich;
+        currentStageSubtitle = S.of(context).uchburchakPiramidasiIkkinchiBosqichDes;
+        currentStageColor = red;
+        currentStageTitleColor = lightRed;
+        currentCastle = S.of(context).uchburchakQasri;
+      } else if (initialCastleIndex == 2) {
+        currentStageTitle = S.of(context).doiraQasriUchinchiBosqich;
+        currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
+        currentStageColor = grey;
+        currentStageTitleColor = Colors.white;
+        currentCastle = S.of(context).doiraQasri;
+      } else {
+        currentStageTitle = '';
+        currentStageSubtitle = '';
+        currentCastle = '';
+      }
+    }
+
+    final PageController controller = PageController(
+      viewportFraction: 0.85,
+      initialPage: initialCastleIndex, // Start from correct castle
+    );
+    double currentPage = initialCastleIndex.toDouble();
+
+    return StatefulBuilder(
+      builder: (context, setStateSB) {
+        controller.addListener(() {
+          setStateSB(() {
+            currentPage = controller.page ?? initialCastleIndex.toDouble();
+          });
+        });
+
+        final castles = [
+          KvadratQasri(
+            key: ValueKey(GameState.currentXP),
+            onComplete: () {},
+          ),
+          UchburchakPiramidasi(
+            key: ValueKey(GameState.currentXP2),
+            onComplete: () {},
+          ),
+          const Center(child: Text("Yangi qasrlar tez orada qo'shiladi.")),
+          const Center(child: Text("Yangi qasrlar tez orada qo'shiladi.")),
+        ];
+
+        final isUnlocked = [
+          true,
+          GameState.currentXP >= GameState.maxXP,
+          GameState.currentXP2 >= GameState.maxXP2,
+          GameState.currentXP3 >= GameState.maxXP3,
+        ];
+
+        double screenHeight = MediaQuery.of(context).size.height;
+
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: screenHeight * 0.43,
+              child: PageView.builder(
+                controller: controller,
+                itemCount: castles.length,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentCastleIndex = index; // ✅ Track selected castle
+                    if (index == 0) {
+                      currentStageTitle = S.of(context).kvadratQasriBirinchiBosqich;
+                      currentStageSubtitle = S.of(context).kvadratQasriBirinchiBosqichDes;
+                      currentStageColor = blue;
+                      currentStageTitleColor = lightBlue;
+                      currentCastle = S.of(context).squareCastle;
+                    } else if (index == 1) {
+                      currentStageTitle = S.of(context).uchburchakPiramidasiIkkinchiBosqich;
+                      currentStageSubtitle = S.of(context).uchburchakPiramidasiIkkinchiBosqichDes;
+                      currentStageColor = red;
+                      currentStageTitleColor = lightRed;
+                      currentCastle = S.of(context).uchburchakQasri;
+                    } else if (index == 2) {
+                      currentStageTitle = S.of(context).doiraQasriUchinchiBosqich;
+                      currentStageSubtitle = S.of(context).doiraQasriUchinchiBosqichDes;
+                      currentStageColor = grey;
+                      currentStageTitleColor = Colors.white;
+                      currentCastle = S.of(context).doiraQasri;
+                    } else {
+                      currentStageTitle = '';
+                      currentStageSubtitle = '';
+                      currentCastle = '';
+                    }
+                  });
+                },
+                itemBuilder: (context, index) {
+                  double scale = (1 - ((currentPage - index).abs() * 0.2)).clamp(0.8, 1.0);
+
+                  return Transform.scale(
+                    scale: scale,
+                    child: Stack(
+                      children: [
+                        castles[index],
+                        if (!isUnlocked[index])
+                          Center(
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.3),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(Icons.lock, size: 60, color: Colors.white),
+                            ),
+                          ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(castles.length, (index) {
+                bool isActive = index == currentPage.round();
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: isActive ? 12 : 8,
+                  height: isActive ? 12 : 8,
+                  decoration: BoxDecoration(
+                    color: isActive ? castleColors[index] : Colors.grey,
+                    shape: BoxShape.circle,
+                  ),
+                );
+              }),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget _getCurrentLightining() {
@@ -309,7 +461,42 @@ class _HomePageState extends State<HomePage> {
                       height: screenHeight * 0.10,
                       width: screenWidth * 0.90,
                       color: currentStageColor,
-                      onPressed: () {},
+                      onPressed: () async {
+                        final result = await Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: const Duration(milliseconds: 600),
+                            pageBuilder: (_, __, ___) {
+                              if (currentCastleIndex == 0) {
+                                return const LevelPage(); // Kvadrat Qasri
+                              } else if (currentCastleIndex == 1) {
+                                return const LevelPage2(); // Uchburchak Piramidasi
+                              } else if (currentCastleIndex == 2) {
+                                return const LevelPage3(); // Doira Qasri
+                              } else {
+                                return const LevelPage(); // Fallback
+                              }
+                            },
+                            transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(0, 1),
+                                end: Offset.zero,
+                              ).animate(CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              )),
+                              child: child,
+                            ),
+                          ),
+                        );
+
+                        if (result == true) {
+                          setState(() {
+                            // Optionally refresh anything
+                          });
+                        }
+                      },
+
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
                         child: Column(
@@ -377,7 +564,6 @@ class _HomePageState extends State<HomePage> {
                     if (!mounted) return;
 
                     setState(() {
-                      _updateStageTitle(); 
                     });
                   },
                   child: Text(

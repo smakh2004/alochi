@@ -1,60 +1,215 @@
-// ignore_for_file: use_super_parameters
-
-import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
-import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:alochi_math_app/components/color.dart';
+import 'package:animated_button/animated_button.dart';
+import 'package:alochi_math_app/generated/l10n.dart';
 
-class IntroPage2 extends StatelessWidget {
-  const IntroPage2({Key? key}) : super(key: key);
+class IntroPage2 extends StatefulWidget {
+  final PageController controller;
+
+  const IntroPage2({super.key, required this.controller});
+
+  @override
+  State<IntroPage2> createState() => _IntroPage2State();
+}
+
+class _IntroPage2State extends State<IntroPage2> with TickerProviderStateMixin {
+  late final AnimationController _animationController;
+  int? _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    // Localized options and messages
+    final options = [
+      S.of(context).goalOption1,
+      S.of(context).goalOption2,
+      S.of(context).goalOption3,
+      S.of(context).goalOption4,
+      S.of(context).goalOption5,
+      S.of(context).goalOption6,
+    ];
+
+    final messages = [
+      S.of(context).goalMsg1,
+      S.of(context).goalMsg2,
+      S.of(context).goalMsg3,
+      S.of(context).goalMsg4,
+      S.of(context).goalMsg5,
+      S.of(context).goalMsg6,
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-        child: SafeArea(
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 40),
-                Text(
-                   S.of(context).intro2desc,
-                   style: TextStyle(
-                     fontFamily: BoldFont,
-                     fontSize: 28, 
-                     color: primaryPurple,
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-                const SizedBox(height: 20),
-                Text(
-                  S.of(context).intro2,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 18, 
-                    color: questionColor,
-                    fontFamily: Font,
-                  ),
-                ),
-                const SizedBox(height: 100),
                 SizedBox(
-                  height: size.height * 0.3,
-                  child: Image.asset(
-                    'assets/images/Welcome2.png',
-                    fit: BoxFit.contain,
+                  height: size.width * 0.35,
+                  child: Lottie.asset('assets/animations/MrSquareHi.json'),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 30),
+                    child: CustomPaint(
+                      painter: SpeechBubblePainter(
+                        color: const Color(0xFFFFFECF),
+                        borderColor: const Color(0xFFF2E44D),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                        child: Text(
+                          _selectedIndex == null
+                              ? S.of(context).whatsYourTopGoal
+                              : messages[_selectedIndex!],
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: Font,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 60), // Reserve space at bottom
               ],
             ),
-          ),
+
+            // Options
+            ...List.generate(options.length, (index) {
+              final isSelected = _selectedIndex == index;
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: isSelected ? lightBlue : Colors.white,
+                      border: Border.all(
+                        color: isSelected ? buttonBlue : greyColor,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Text(
+                      options[index],
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: questionColor,
+                        fontFamily: Font,
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }),
+
+            const Spacer(),
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 32),
+              child: AnimatedButton(
+                height: 50,
+                width: size.width * 0.8,
+                duration: 100,
+                shadowDegree: ShadowDegree.light,
+                borderRadius: 16,
+                color: _selectedIndex != null ? primaryColor : greyColor,
+                onPressed: () {
+                  if (_selectedIndex != null) {
+                    widget.controller.nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                    );
+                  }
+                },
+                child: Text(
+                  S.of(context).davomEtish,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: Font,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
+class SpeechBubblePainter extends CustomPainter {
+  final Color color;
+  final Color borderColor;
+
+  SpeechBubblePainter({required this.color, required this.borderColor});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final borderPaint = Paint()
+      ..color = borderColor
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
+
+    final bubbleRadius = 16.0;
+    final tailWidth = 12.0;
+    final tailHeight = 14.0;
+
+    final path = Path();
+
+    path.moveTo(bubbleRadius + tailWidth, 0);
+    path.lineTo(size.width - bubbleRadius, 0);
+    path.quadraticBezierTo(size.width, 0, size.width, bubbleRadius);
+    path.lineTo(size.width, size.height - bubbleRadius);
+    path.quadraticBezierTo(size.width, size.height, size.width - bubbleRadius, size.height);
+    path.lineTo(bubbleRadius + tailWidth, size.height);
+    path.quadraticBezierTo(tailWidth, size.height, tailWidth, size.height - bubbleRadius);
+
+    final centerY = size.height / 2;
+    path.lineTo(tailWidth, centerY + tailHeight / 2);
+    path.lineTo(0, centerY);
+    path.lineTo(tailWidth, centerY - tailHeight / 2);
+
+    path.lineTo(tailWidth, bubbleRadius);
+    path.quadraticBezierTo(tailWidth, 0, bubbleRadius + tailWidth, 0);
+
+    path.close();
+
+    canvas.drawPath(path, paint);
+    canvas.drawPath(path, borderPaint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -1,18 +1,15 @@
-// ignore_for_file: depend_on_referenced_packages
-
-import 'package:alochi_math_app/components/font.dart';
-import 'package:alochi_math_app/generated/l10n.dart';
-import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
-import 'package:alochi_math_app/pages/GameState.dart';
-import 'package:alochi_math_app/pages/Student/Student.dart';
-import 'package:alochi_math_app/pages/YuqoriSinf/YuqoriSinf.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_10.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_4.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_5.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_6.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_7.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_8.dart';
+import 'package:alochi_math_app/welcome_pages/intro_page_9.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_button/animated_button.dart';
-import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/welcome_pages/intro_page_1.dart';
 import 'package:alochi_math_app/welcome_pages/intro_page_2.dart';
 import 'package:alochi_math_app/welcome_pages/intro_page_3.dart';
-import 'package:alochi_math_app/welcome_pages/level_choosing.dart';
+import 'package:alochi_math_app/components/color.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -31,80 +28,82 @@ class _WelcomePageState extends State<WelcomePage> {
     super.dispose();
   }
 
-  void _handleButtonPress() {
-    if (_currentPage < 3) {
-      _controller.nextPage(
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeIn,
-      );
-    } else if (GameState.selectedLevel != '') {
-      if (GameState.selectedLevel == S.of(context).boshlangich) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const BoshlangichSinf()),
-        );
-      } else if (GameState.selectedLevel == S.of(context).yuqoriSinf) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const YuqoriSinf()),
-        );
-      } else if (GameState.selectedLevel == S.of(context).student) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const Student()),
-        );
-      }
-    }
-  }
-
-  void _onLevelSelected(String level) {
-    setState(() {
-      GameState.selectedLevel = level;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          PageView(
-            controller: _controller,
-            physics: const NeverScrollableScrollPhysics(),
-            onPageChanged: (index) {
-              setState(() => _currentPage = index);
-            },
-            children: [
-              const IntroPage1(),
-              const IntroPage2(),
-              const IntroPage3(),
-              LevelChoosing(onLevelSelected: _onLevelSelected),
-            ],
-          ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            margin: const EdgeInsets.only(bottom: 40),
-            child: AnimatedButton(
-              height: 50,
-              width: 310,
-              color: (_currentPage == 3 && GameState.selectedLevel == '')
-                  ? grey
-                  : primaryColor,
-              onPressed: () {
-                if (_currentPage != 3 || GameState.selectedLevel != '') {
-                  _handleButtonPress();
-                }
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final progress = (_currentPage + 1) / 10;
+                return Stack(
+                  children: [
+                    // main progress bar
+                    TweenAnimationBuilder<double>(
+                      tween: Tween<double>(begin: 0.0, end: progress),
+                      duration: const Duration(milliseconds: 500),
+                      builder: (context, value, child) => LinearProgressIndicator(
+                        value: value,
+                        borderRadius: BorderRadius.circular(30),
+                        minHeight: 16,
+                        backgroundColor: greyColor,
+                        color: primaryColor,
+                      ),
+                    ),
+
+                    // highlight line
+                    TweenAnimationBuilder<double>(
+                      tween: Tween<double>(begin: 0.0, end: progress),
+                      duration: const Duration(milliseconds: 500),
+                      builder: (context, value, child) {
+                        final fillWidth = constraints.maxWidth * value;
+                        // shrink factor
+                        final shrinkFactor = 0.5 + (0.9 - 0.5) * value;
+                        final highlightWidth = fillWidth * shrinkFactor;
+
+                        return Positioned(
+                          left: (fillWidth - highlightWidth) / 2,
+                          top: 3.5,
+                          child: Container(
+                            width: highlightWidth,
+                            height: 4.5,
+                            decoration: BoxDecoration(
+                              color: lighterBlue,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
               },
-              child: Text(
-                _currentPage == 3 ? S.of(context).boshlash : S.of(context).davomEtish,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontFamily: Font
-                ),
-              ),
             ),
           ),
+        ),
+      ),
+      body: PageView(
+        controller: _controller,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (index) {
+          setState(() => _currentPage = index);
+        },
+        children: [
+          IntroPage1(controller: _controller), // <-- Pass here
+          IntroPage2(controller: _controller),
+          IntroPage3(controller: _controller),
+          IntroPage4(controller: _controller),
+          IntroPage5(controller: _controller),
+          IntroPage6(controller: _controller),
+          IntroPage7(controller: _controller),
+          IntroPage8(controller: _controller),
+          IntroPage9(controller: _controller),
+          IntroPage10(controller: _controller),
         ],
       ),
     );

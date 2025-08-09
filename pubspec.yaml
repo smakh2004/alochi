@@ -91,6 +91,8 @@ flutter:
     - assets/icons/Heart.png
     - assets/icons/Lightining.png
     - assets/icons/Lightining1.png
+    - assets/icons/Lightining2.png
+    - assets/icons/Lightining3.png
     - assets/icons/Diamond.png
     - assets/icons/Ring.png
     - assets/icons/Exit.png
@@ -142,6 +144,9 @@ flutter:
     - assets/images/Bronze.png
     - assets/images/BannerLeaderboard.png
     - assets/images/Knob.png
+    - assets/images/FloorSquareCastle.png
+    - assets/images/AppBarSquareCastle.png
+    - assets/images/Gates.png
 
     - assets/question_images/Q1.png
     - assets/question_images/Q2(1).png
@@ -230,6 +235,9 @@ flutter:
     - assets/question4_images/Q40.png
 
     - assets/question5_images/Q41.png
+    - assets/question5_images/Q56.png
+    - assets/question5_images/Q59.png
+    - assets/question5_images/Q68.png
 
     - assets/medals/MrSquareMedal.png
     - assets/medals/MrTriangleLightining.png
@@ -281,6 +289,8 @@ flutter:
     - assets/animations/MathStormAnimation.json
     - assets/animations/MrSquareCastle1.json
     - assets/animations/MrSquareCastle2.json
+    - assets/animations/MrTriangleCastle1.json
+    - assets/animations/MrTriangleCastle2.json
     - assets/animations/Hint.json
     - assets/animations/MrSquareAlochiInfinity.json
     - assets/animations/MrSquareNoInternet.json
@@ -299,6 +309,13 @@ flutter:
     - assets/animations/BigBoxAnimationHeart2.json
     - assets/animations/BigBoxAnimationStorm1.json
     - assets/animations/BigBoxAnimationStorm2.json
+    - assets/animations/Intro1.json
+    - assets/animations/Intro2.json
+    - assets/animations/Intro3.json
+    - assets/animations/Intro4.json
+    - assets/animations/Intro5.json
+    - assets/animations/Intro6.json
+    - assets/animations/Intro7.json
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/to/resolution-aware-images

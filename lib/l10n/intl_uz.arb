@@ -41,6 +41,7 @@
   "logika": "LOGIKA",
   "glabaliSeriya": "G'ALABALI SERIYA",
   "umumiyOchko": "UMUMIY OCHKO",
+  "score": "Umumiy ochko",
   "yutuqlar": "YUTUQLAR",
   "hammasiniKorish": "HAMMASINI KO'RISH",
   "TwoFiveYutuqlar": "2025 Yildagi Yutuqlar",
@@ -57,10 +58,12 @@
 
   "kvadratQasriBirinchiBosqich": "1 BOSQICH, KVADRAT QASRI",
   "kvadratQasriBirinchiBosqichDes": "Sonlar olamiga sayohat",
-  "uchburchakPiramidasiIkkinchiBosqich": "UCHBURCHAK PIRAMIDASI | IKKINCHI BOSQICH",
-  "uchburchakPiramidasiIkkinchiBosqichDes": "MATEMATIK AMALLAR SIRLARI",
-  "doiraQasriUchinchiBosqich": "DOIRA QASRI | UCHINCHI BOSQICH",
-  "doiraQasriUchinchiBosqichDes": "KASIRLAR VA FIGURALAR DUNYOSI",
+  "uchburchakPiramidasiIkkinchiBosqich": "2 BOSQICH, UCHBURCHAK QASRI",
+  "uchburchakPiramidasiIkkinchiBosqichDes": "Matematik amallar sirlari",
+  "uchburchakQasri": "Uchburchak Qasri",
+  "doiraQasriUchinchiBosqich": "3 BOSQICH, DOIRA QASRI",
+  "doiraQasriUchinchiBosqichDes": "Kasrlar va figuralar dunyosi",
+  "doiraQasri": "Doira Qasri",
   "rechargingIn": "TIKLANMOQDA: {time}",
   
   "kvadratBirinchiBosqichDes": "Sanash, qo‘shish-ayirish, shakllarni tanish",
@@ -308,6 +311,8 @@
   "additionalHeart": "Davom ettirish uchun qo‘shimcha Jon qo‘lga kiritdingiz!",
 
   "setThisTime": "Berilgan vaqtni ko'rsating.",
+  "show": "",
+  "cm": "cm ni chizg'ichda ko'rsatinng!",
 
   "following": "OBUNALAR",
   "followers": "OBUNACHILAR",
@@ -316,6 +321,81 @@
   "KvadratQasri": "Kvadrat Qasri",
   "mathStormP": "MATH STORM",
   "arifmetikaP": "ARIFMETIKA",
+
+  "answer": "Javob:",
+  "berilganMisollarniYeching": "Berilgan misollarni yeching va to‘g‘ri qiymatni tanlang!",
+
+  "mon": "Du",
+  "tue": "Se",
+  "wed": "Ch",
+  "thu": "Pa",
+  "fri": "Ju",
+  "sat": "Sh",
+  "sun": "Ya",
+
+  "hiIamMrSquare": "Salom! Men Mister Kvadratman!",
+  "letsBuildALearningPath": "Keling, faqat siz uchun\no‘quv yo‘li tuzamiz.",
+  
+  "whatsYourTopGoal": "Sizning asosiy maqsadingiz nima?",
+  "continueButton": "DAVOM ETISH",
+
+  "goalOption1": "Kasbiy o‘sish",
+  "goalOption2": "Aqliy chaqqonlikni saqlash",
+  "goalOption3": "Maktabda yuqori natijalar",
+  "goalOption4": "Farzandimni o‘qitishga yordam berish",
+  "goalOption5": "O‘quvchilarimni o‘qitishga yordam berish",
+  "goalOption6": "Boshqa narsalar",
+
+  "goalMsg1": "Ajoyib tanlov! Kasbiy ko‘nikmalaringizni bosqichma-bosqich oshiramiz.",
+  "goalMsg2": "Motivatsiya juda yaxshi! Aqlingizni chaqqon va faol tutamiz.",
+  "goalMsg3": "Yuqoriga intilaylik! Har bir fanda sizni yetuk qilamiz.",
+  "goalMsg4": "Zo‘r! Farzandingizning o‘qishini qiziqarli mashqlar bilan qo‘llab-quvvatlaymiz.",
+  "goalMsg5": "Ajoyib! Darslaringizni yanada samarali qilamiz.",
+  "goalMsg6": "Muammo emas! Siz uchun maxsus o‘quv yo‘lini tuzamiz.",
+
+  "focus_question": "Siz nimaga e’tibor qaratmoqchisiz?",
+  "focus_learning_specific_skills": "Muayyan ko‘nikmalarni o‘rganish",
+  "focus_following_curiosity": "Qiziqishimni ergashish",
+  "focus_building_problem_solving": "Muammolarni hal qilish ko‘nikmalarini rivojlantirish",
+  "focus_brushing_basics": "Asoslarni qayta o‘rganish",
+  "focus_something_else": "Boshqa narsalar",
+
+  "msg_learning_specific_skills": "Ajoyib! Siz uchun eng muhim ko‘nikmalarga e’tibor qaratamiz.",
+  "msg_following_curiosity": "Qiziqish eng yaxshi yo‘lboshchi — birga o‘rganamiz!",
+  "msg_building_problem_solving": "Zo‘r! Qiziqarli va miyaning ishlashini yaxshilovchi topshiriqlar kutmoqda.",
+  "msg_brushing_basics": "Ajoyib! Mustahkam poydevor qurishda sizga bosqichma-bosqich yordam beramiz.",
+  "msg_something_else": "Xavotir olmang! Siz uchun shaxsiy o‘quv rejasi tuzamiz.",
+
+  "youWillFit": "Siz bu yerga juda mos kelasiz",
+  "useAlochi": "Ko‘nikmalaringizni kuchaytirish uchun A'lochi'dan foydalaning.",
+
+  "math_level_question": "Matematikani qanchalik yaxshi bilasiz?",
+  "level_elementary": "Boshlang‘ich sinf o‘quvchisi",
+  "level_high_school": "O‘rta maktab o‘quvchisi",
+  "level_university": "Universitet talabasi",
+  "dailyGoal": "Sizning kundalik o‘qish maqsadingiz nima?",
+
+  "learn6xMore": "6 baravar samaraliroq o‘rganing",
+  "interactiveLessonsStart": "A'lochi interaktiv darslari sizning darajangizdan boshlanadi va rivojlanishingizga yordam beradi.",
+  "continue_button": "DAVOM ETISH",
+
+  "morningRoutine": "Ertalabki odat",
+  "quickBreak": "Tezkor tanaffus",
+  "nightlyRitual": "Kechki marosim",
+  "anotherTime": "Boshqa vaqt",
+
+  "morningMessage": "Ertalab matematika? Zo‘r! Kuningizni aql bilan boshlaymiz.",
+  "quickBreakMessage": "Aqlli tanlov! Tezkor tanaffus miyaning dam olishi uchun juda mos.",
+  "nightlyMessage": "Ajoyib! Kunningizni yengil masalalar bilan yakunlang.",
+  "anotherTimeMessage": "Xavotir olmang! Siz tayyor bo‘lganda biz shu yerdamiz.",
+
+  "chooseBestTime": "Matematika o‘rganish uchun eng yaxshi vaqtni tanlang?",
+  "getRewardsForStudy": "O‘qish uchun mukofotlar oling",
+  "alochiKeepsYouOnTrack": "A'lochi sizni darslar, boshqotirmalar va siz uchun mo‘ljallangan kundalik motivatsiya bilan yo‘lda ushlab turadi.",
+
+  "personalizedLearningPath": "Sizning shaxsiylashtirilgan o‘quv yo‘lingiz tayyor.",
+  "createFreeProfile": "Bepul profil yarating",
+  "tryALesson": "Bir darsni sinab ko‘ring",
 
   "hint1": "Ayirish degani olib tashlash degani.\n\nNamuna:\nAgar sizda 3 ta narsa bo‘lsa va 2 tasini olib tashlasangiz, qolganini sanang:\n•  3 ta barmoq bilan boshlang.\n•  2 ta barmoqni tushiring.\n•  Nechta barmoq qoldi?\n\nO‘ylang: 3… 1 ni olib tashlang (endi 2)… yana 1 ni olib tashlang (endi 1).",
   "hint2": "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi.",

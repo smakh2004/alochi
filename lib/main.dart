@@ -1,5 +1,5 @@
 // ------------------------------------ //
-//   Founder and CEO of A'lochi App     //
+//  Creator and Founder of A'lochi App  //
 //      MAKHAMMATOV SIROJIDDIN          //
 // ------------------------------------ //
 
@@ -28,7 +28,7 @@ void main() async {
       Firebase.app(); // just use existing app
     }
   } catch (e) {
-    // Optional: Log error only once
+    //Log error only once
     debugPrint('Firebase already initialized: $e');
   }
 

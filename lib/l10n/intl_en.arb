@@ -32,6 +32,7 @@
   "logika": "LOGIC",
   "glabaliSeriya": "WINNING STREAK",
   "umumiyOchko": "TOTAL POINTS",
+  "score": "Total points",
   "yutuqlar": "ACHIEVEMENTS",
   "hammasiniKorish": "SEE ALL",
   "TwoFiveYutuqlar": "Achievements of 2025",
@@ -48,10 +49,12 @@
 
   "kvadratQasriBirinchiBosqich": "LEVEL 1, SQUARE CASTLE",
   "kvadratQasriBirinchiBosqichDes": "World of numbers",
-  "uchburchakPiramidasiIkkinchiBosqich": "TRIANGLE PIRAMIDS | SECOND LEVEL",
-  "uchburchakPiramidasiIkkinchiBosqichDes": "THE SECRET OF MATH OPERATIONS",
-  "doiraQasriUchinchiBosqich": "CIRCLE CASTLE | STAGE THREE",
-  "doiraQasriUchinchiBosqichDes": "THE WORLD OF FRACTIONS AND SHAPES",
+  "uchburchakPiramidasiIkkinchiBosqich": "LEVEL 2, TRIANGLE CASTLE",
+  "uchburchakPiramidasiIkkinchiBosqichDes": "The secret of math operations",
+  "uchburchakQasri": "Triangle Castle",
+  "doiraQasriUchinchiBosqich": "LEVEL 3, CIRCLE CASTLE",
+  "doiraQasriUchinchiBosqichDes": "World of Fractions and Shapes",
+  "doiraQasri": "Circle Castle",
   "rechargingIn": "RECHARGING IN: {time}",
   "start": "START",
 
@@ -307,6 +310,8 @@
   "additionalHeart": "You've earned an additional heart to keep going!",
 
   "setThisTime": "Set this time.",
+  "show": "Show ",
+  "cm": "cm on the ruler!",
 
   "following": "FOLLOWING",
   "followers": "FOLLOWERS",
@@ -315,6 +320,80 @@
   "KvadratQasri": "Square Castle",
   "mathStormP": "MATH STORM",
   "arifmetikaP": "ARIFMETICS",
+
+  "answer": "Answer:",
+  "berilganMisollarniYeching": "Solve the given problems and choose the correct value!",
+
+  "mon": "Mo",
+  "tue": "Tu",
+  "wed": "We",
+  "thu": "Th",
+  "fri": "Fr",
+  "sat": "Sa",
+  "sun": "Su",
+
+  "hiIamMrSquare": "Hi! I am Mr Square!",
+  "letsBuildALearningPath": "Let’s build a learning path\njust for you.",
+  "whatsYourTopGoal": "What's your top goal?",
+  "continueButton": "CONTINUE",
+
+  "goalOption1": "Professional growth",
+  "goalOption2": "Staying sharp",
+  "goalOption3": "Excelling in school",
+  "goalOption4": "Helping my child learn",
+  "goalOption5": "Helping my students learn",
+  "goalOption6": "Something else",
+
+  "goalMsg1": "Great choice! Let's boost your professional skills step by step.",
+  "goalMsg2": "Love the motivation! We'll keep your mind sharp and active.",
+  "goalMsg3": "Let’s aim high! We’ll help you excel in every subject.",
+  "goalMsg4": "Wonderful! We’ll guide your child’s learning journey with fun challenges.",
+  "goalMsg5": "Fantastic! Let’s make your teaching even more impactful.",
+  "goalMsg6": "No problem! We’ll personalize the experience just for you.",
+
+  "focus_question": "What do you want to focus on?",
+  "focus_learning_specific_skills": "Learning specific skills",
+  "focus_following_curiosity": "Following my curiosity",
+  "focus_building_problem_solving": "Building my problem solving skills",
+  "focus_brushing_basics": "Brushing up on the basics",
+  "focus_something_else": "Something else",
+
+  "msg_learning_specific_skills": "Perfect! We’ll focus on the skills that matter most to you.",
+  "msg_following_curiosity": "Curiosity is the best guide — let’s explore together!",
+  "msg_building_problem_solving": "Awesome! Get ready to tackle fun, brain-boosting challenges.",
+  "msg_brushing_basics": "Great! We'll help you build a strong foundation step by step.",
+  "msg_something_else": "No worries! We’ll personalize your learning experience for whatever you need.",
+
+  "youWillFit": "You'll fit right in",
+  "useAlochi": "Use A'lochi to supercharge your skill sets.",
+
+  "math_level_question": "How good do you know math?",
+  "level_elementary": "Elementary school student",
+  "level_high_school": "High school student",
+  "level_university": "University student",
+  "dailyGoal": "What's your daily learning goal?",
+  
+  "learn6xMore": "Learn 6x more effectively",
+  "interactiveLessonsStart": "A'lochi interactive lessons start at your level and help you advance.",
+  "continue_button": "CONTINUE",
+
+  "morningRoutine": "Morning routine",
+  "quickBreak": "Quick break",
+  "nightlyRitual": "Nightly ritual",
+  "anotherTime": "Another time",
+
+  "morningMessage": "Morning math? Brilliant! Let’s kick off your day with brain power.",
+  "quickBreakMessage": "Smart choice! A quick math break is a great mental refresh.",
+  "nightlyMessage": "Perfect! Wind down your day with relaxing problem-solving.",
+  "anotherTimeMessage": "No worries! We’ll be here whenever you’re ready to learn.",
+
+  "chooseBestTime": "Choose best time to learn math?",
+  "getRewardsForStudy": "Get rewards for study",
+  "alochiKeepsYouOnTrack": "A'lochi keeps you on track - with lessons, puzzles, and daily motivation designed for you.",
+
+  "personalizedLearningPath": "Your personalized learning path is ready.",
+  "createFreeProfile": "Create a free profile",
+  "tryALesson": "Try a lesson",
 
   "hint1": "Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).",
   "hint2": "When we look at two numbers, we often want to know how they relate to each other.\n\nThere are three main symbols we use:\n1. Equal sign \"=\" means “is equal to” or “is the same as.” Use it when both sides have the same value.\n2. Less than sign \"<\" means “is less than.” The number on the left is smaller than the number on the right.\n3. Greater than sign \">\" means “is greater than.” The number on the left is bigger than the number on the right.\n\nMemory Trick\nThink of the symbols \"<\" and \">\" like a hungry mouth:\nThe mouth opens toward the bigger number because it wants to eat the larger one.",

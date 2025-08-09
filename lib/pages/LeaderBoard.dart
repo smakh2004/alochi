@@ -151,7 +151,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                               width: 30, height: 30),
                           const SizedBox(width: 8),
                           Text(
-                            S.of(context).umumiyOchko,
+                            S.of(context).score,
                             style: const TextStyle(
                               fontFamily: Font,
                               fontSize: 18,

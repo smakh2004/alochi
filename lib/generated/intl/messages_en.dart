@@ -77,8 +77,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "algebraikKasrlarVaRatsionalIfodalar": MessageLookupByLibrary.simpleMessage(
       "Algebraic fractions and rational expressions",
     ),
+    "alochiKeepsYouOnTrack": MessageLookupByLibrary.simpleMessage(
+      "A\'lochi keeps you on track - with lessons, puzzles, and daily motivation designed for you.",
+    ),
     "amount": MessageLookupByLibrary.simpleMessage("amount"),
     "aniqlik": MessageLookupByLibrary.simpleMessage("ACCURACY"),
+    "anotherTime": MessageLookupByLibrary.simpleMessage("Another time"),
+    "anotherTimeMessage": MessageLookupByLibrary.simpleMessage(
+      "No worries! We’ll be here whenever you’re ready to learn.",
+    ),
+    "answer": MessageLookupByLibrary.simpleMessage("Answer:"),
     "aprel": MessageLookupByLibrary.simpleMessage("April"),
     "arifmetikStorm": MessageLookupByLibrary.simpleMessage("Arithmetic storm"),
     "arifmetika": MessageLookupByLibrary.simpleMessage("Arifmetic"),
@@ -88,6 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Aziz folds the piece of paper along the drawn line. What does he see?",
     ),
     "beast": MessageLookupByLibrary.simpleMessage("You are beast!"),
+    "berilganMisollarniYeching": MessageLookupByLibrary.simpleMessage(
+      "Solve the given problems and choose the correct value!",
+    ),
     "berilganMisolni": MessageLookupByLibrary.simpleMessage(
       "Solve the given problem. The blue boxes must be filled with coins of equal value.",
     ),
@@ -111,7 +122,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "A\'lochi Infinity: don\'t worry about your hearts!",
     ),
     "chiqish": MessageLookupByLibrary.simpleMessage("EXIT"),
+    "chooseBestTime": MessageLookupByLibrary.simpleMessage(
+      "Choose best time to learn math?",
+    ),
+    "cm": MessageLookupByLibrary.simpleMessage("cm on the ruler!"),
+    "continueButton": MessageLookupByLibrary.simpleMessage("CONTINUE"),
     "continueE": MessageLookupByLibrary.simpleMessage("CONTINUE"),
+    "continue_button": MessageLookupByLibrary.simpleMessage("CONTINUE"),
+    "createFreeProfile": MessageLookupByLibrary.simpleMessage(
+      "Create a free profile",
+    ),
+    "dailyGoal": MessageLookupByLibrary.simpleMessage(
+      "What\'s your daily learning goal?",
+    ),
     "danSong": MessageLookupByLibrary.simpleMessage("are recovering"),
     "darajaTanlanmadiMsg": MessageLookupByLibrary.simpleMessage(
       "Please select a level",
@@ -131,11 +154,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Keep your winning streak!",
     ),
     "dekabr": MessageLookupByLibrary.simpleMessage("December"),
+    "doiraQasri": MessageLookupByLibrary.simpleMessage("Circle Castle"),
     "doiraQasriUchinchiBosqich": MessageLookupByLibrary.simpleMessage(
-      "CIRCLE CASTLE | STAGE THREE",
+      "LEVEL 3, CIRCLE CASTLE",
     ),
     "doiraQasriUchinchiBosqichDes": MessageLookupByLibrary.simpleMessage(
-      "THE WORLD OF FRACTIONS AND SHAPES",
+      "World of Fractions and Shapes",
     ),
     "dona": MessageLookupByLibrary.simpleMessage("hearts"),
     "eachFreeze": MessageLookupByLibrary.simpleMessage(
@@ -169,6 +193,24 @@ class MessageLookup extends MessageLookupByLibrary {
       "Find the perimeter of a rectangle.",
     ),
     "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+    "focus_brushing_basics": MessageLookupByLibrary.simpleMessage(
+      "Brushing up on the basics",
+    ),
+    "focus_building_problem_solving": MessageLookupByLibrary.simpleMessage(
+      "Building my problem solving skills",
+    ),
+    "focus_following_curiosity": MessageLookupByLibrary.simpleMessage(
+      "Following my curiosity",
+    ),
+    "focus_learning_specific_skills": MessageLookupByLibrary.simpleMessage(
+      "Learning specific skills",
+    ),
+    "focus_question": MessageLookupByLibrary.simpleMessage(
+      "What do you want to focus on?",
+    ),
+    "focus_something_else": MessageLookupByLibrary.simpleMessage(
+      "Something else",
+    ),
     "followers": MessageLookupByLibrary.simpleMessage("FOLLOWERS"),
     "following": MessageLookupByLibrary.simpleMessage("FOLLOWING"),
     "foydalanuvchi": MessageLookupByLibrary.simpleMessage("User"),
@@ -179,6 +221,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "freezingDesc": MessageLookupByLibrary.simpleMessage(
       "Freeze your lightning streak in case you miss a class.",
     ),
+    "fri": MessageLookupByLibrary.simpleMessage("Fr"),
     "fullHearts": MessageLookupByLibrary.simpleMessage("FULL HERTS"),
     "funksiyasi": MessageLookupByLibrary.simpleMessage("Y = k/x function"),
     "galabaliSeriyaBoshlandi": MessageLookupByLibrary.simpleMessage(
@@ -201,11 +244,42 @@ class MessageLookup extends MessageLookupByLibrary {
       "Geometric material",
     ),
     "geometriya": MessageLookupByLibrary.simpleMessage("Geometry"),
+    "getRewardsForStudy": MessageLookupByLibrary.simpleMessage(
+      "Get rewards for study",
+    ),
     "getStartedFor": MessageLookupByLibrary.simpleMessage("GET STARTED FOR"),
     "getUnlimited": MessageLookupByLibrary.simpleMessage(
       "Get unlimited hearts and attempts in MathStorm.",
     ),
     "glabaliSeriya": MessageLookupByLibrary.simpleMessage("WINNING STREAK"),
+    "goalMsg1": MessageLookupByLibrary.simpleMessage(
+      "Great choice! Let\'s boost your professional skills step by step.",
+    ),
+    "goalMsg2": MessageLookupByLibrary.simpleMessage(
+      "Love the motivation! We\'ll keep your mind sharp and active.",
+    ),
+    "goalMsg3": MessageLookupByLibrary.simpleMessage(
+      "Let’s aim high! We’ll help you excel in every subject.",
+    ),
+    "goalMsg4": MessageLookupByLibrary.simpleMessage(
+      "Wonderful! We’ll guide your child’s learning journey with fun challenges.",
+    ),
+    "goalMsg5": MessageLookupByLibrary.simpleMessage(
+      "Fantastic! Let’s make your teaching even more impactful.",
+    ),
+    "goalMsg6": MessageLookupByLibrary.simpleMessage(
+      "No problem! We’ll personalize the experience just for you.",
+    ),
+    "goalOption1": MessageLookupByLibrary.simpleMessage("Professional growth"),
+    "goalOption2": MessageLookupByLibrary.simpleMessage("Staying sharp"),
+    "goalOption3": MessageLookupByLibrary.simpleMessage("Excelling in school"),
+    "goalOption4": MessageLookupByLibrary.simpleMessage(
+      "Helping my child learn",
+    ),
+    "goalOption5": MessageLookupByLibrary.simpleMessage(
+      "Helping my students learn",
+    ),
+    "goalOption6": MessageLookupByLibrary.simpleMessage("Something else"),
     "googleOrqali": MessageLookupByLibrary.simpleMessage(
       "-Sign in with Google-",
     ),
@@ -218,6 +292,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Restore maximum hearts and don\'t worry about the mistakes you made!",
     ),
     "helpCenter": MessageLookupByLibrary.simpleMessage("Help center"),
+    "hiIamMrSquare": MessageLookupByLibrary.simpleMessage(
+      "Hi! I am Mr Square!",
+    ),
     "hint": MessageLookupByLibrary.simpleMessage("Hint"),
     "hint1": MessageLookupByLibrary.simpleMessage(
       "Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).",
@@ -230,6 +307,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "hint4": MessageLookupByLibrary.simpleMessage(
       "Advice:\nSlow down and observe carefully. Look for patterns, differences, or hidden details. Move your eyes across the whole image instead of focusing on one spot. Sometimes the key is in small details that first seem unimportant.",
+    ),
+    "interactiveLessonsStart": MessageLookupByLibrary.simpleMessage(
+      "A\'lochi interactive lessons start at your level and help you advance.",
     ),
     "intro": MessageLookupByLibrary.simpleMessage(
       "This app helps you deeply understand mathematics. Geometric figures will support you along the way.",
@@ -307,7 +387,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "langauage": MessageLookupByLibrary.simpleMessage("English"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
     "leaderboard": MessageLookupByLibrary.simpleMessage("Leaderboard"),
+    "learn6xMore": MessageLookupByLibrary.simpleMessage(
+      "Learn 6x more effectively",
+    ),
+    "letsBuildALearningPath": MessageLookupByLibrary.simpleMessage(
+      "Let’s build a learning path\njust for you.",
+    ),
     "letsTry": MessageLookupByLibrary.simpleMessage("LET\'S TRY"),
+    "level_elementary": MessageLookupByLibrary.simpleMessage(
+      "Elementary school student",
+    ),
+    "level_high_school": MessageLookupByLibrary.simpleMessage(
+      "High school student",
+    ),
+    "level_university": MessageLookupByLibrary.simpleMessage(
+      "University student",
+    ),
     "logika": MessageLookupByLibrary.simpleMessage("LOGIC"),
     "magazin": MessageLookupByLibrary.simpleMessage("Store"),
     "magazinNarsalarim": MessageLookupByLibrary.simpleMessage("My Items"),
@@ -326,6 +421,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "mathStorm": MessageLookupByLibrary.simpleMessage("MATH STORM"),
     "mathStormP": MessageLookupByLibrary.simpleMessage("MATH STORM"),
+    "math_level_question": MessageLookupByLibrary.simpleMessage(
+      "How good do you know math?",
+    ),
     "matnliMasalalar": MessageLookupByLibrary.simpleMessage("Sample problems"),
     "may": MessageLookupByLibrary.simpleMessage("May"),
     "mehmon": MessageLookupByLibrary.simpleMessage("Guest"),
@@ -335,9 +433,33 @@ class MessageLookup extends MessageLookupByLibrary {
     "minut": MessageLookupByLibrary.simpleMessage("minutes"),
     "miqdori": MessageLookupByLibrary.simpleMessage("Quantity"),
     "misolUchun": MessageLookupByLibrary.simpleMessage("For example: -4"),
+    "mon": MessageLookupByLibrary.simpleMessage("Mo"),
+    "morningMessage": MessageLookupByLibrary.simpleMessage(
+      "Morning math? Brilliant! Let’s kick off your day with brain power.",
+    ),
+    "morningRoutine": MessageLookupByLibrary.simpleMessage("Morning routine"),
+    "msg_brushing_basics": MessageLookupByLibrary.simpleMessage(
+      "Great! We\'ll help you build a strong foundation step by step.",
+    ),
+    "msg_building_problem_solving": MessageLookupByLibrary.simpleMessage(
+      "Awesome! Get ready to tackle fun, brain-boosting challenges.",
+    ),
+    "msg_following_curiosity": MessageLookupByLibrary.simpleMessage(
+      "Curiosity is the best guide — let’s explore together!",
+    ),
+    "msg_learning_specific_skills": MessageLookupByLibrary.simpleMessage(
+      "Perfect! We’ll focus on the skills that matter most to you.",
+    ),
+    "msg_something_else": MessageLookupByLibrary.simpleMessage(
+      "No worries! We’ll personalize your learning experience for whatever you need.",
+    ),
     "multiplikativ": MessageLookupByLibrary.simpleMessage("MULTIPLICATIVE"),
     "narxi": MessageLookupByLibrary.simpleMessage("Cost"),
     "naturalSonlar": MessageLookupByLibrary.simpleMessage("Natural numbers"),
+    "nightlyMessage": MessageLookupByLibrary.simpleMessage(
+      "Perfect! Wind down your day with relaxing problem-solving.",
+    ),
+    "nightlyRitual": MessageLookupByLibrary.simpleMessage("Nightly ritual"),
     "nisbatVaProporsiya": MessageLookupByLibrary.simpleMessage(
       "Ratio and proportion",
     ),
@@ -380,6 +502,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "parolniTasdiqlash": MessageLookupByLibrary.simpleMessage(
       "Confirm password",
     ),
+    "personalizedLearningPath": MessageLookupByLibrary.simpleMessage(
+      "Your personalized learning path is ready.",
+    ),
     "pitsaniTeng": MessageLookupByLibrary.simpleMessage(
       "The pizza is divided into equal parts. How many slices were taken from the plate?",
     ),
@@ -395,6 +520,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "qaytaUrinish": MessageLookupByLibrary.simpleMessage("Try again"),
     "qaytish": MessageLookupByLibrary.simpleMessage("RETURN"),
+    "quickBreak": MessageLookupByLibrary.simpleMessage("Quick break"),
+    "quickBreakMessage": MessageLookupByLibrary.simpleMessage(
+      "Smart choice! A quick math break is a great mental refresh.",
+    ),
     "ratsionalSonlar": MessageLookupByLibrary.simpleMessage("Rational numbers"),
     "rechargingIn": m0,
     "refilYourFreeze": MessageLookupByLibrary.simpleMessage(
@@ -414,14 +543,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "sakkizinchiSinf": MessageLookupByLibrary.simpleMessage("8th grade"),
     "sandiqJon": MessageLookupByLibrary.simpleMessage("Chest of Hearts"),
+    "sat": MessageLookupByLibrary.simpleMessage("Sa"),
     "savatJon": MessageLookupByLibrary.simpleMessage("Basket Hearts"),
     "save": MessageLookupByLibrary.simpleMessage("SAVE"),
+    "score": MessageLookupByLibrary.simpleMessage("Total points"),
     "sekund": MessageLookupByLibrary.simpleMessage("second"),
     "sendFeedback": MessageLookupByLibrary.simpleMessage("Send feedback"),
     "sentabr": MessageLookupByLibrary.simpleMessage("September"),
     "setThisTime": MessageLookupByLibrary.simpleMessage("Set this time."),
     "settings": MessageLookupByLibrary.simpleMessage("SETTINGS"),
     "settingsNew": MessageLookupByLibrary.simpleMessage("Settings"),
+    "show": MessageLookupByLibrary.simpleMessage("Show "),
     "signOut": MessageLookupByLibrary.simpleMessage("SIGN OUT"),
     "sizHaliKirmagansiz": MessageLookupByLibrary.simpleMessage(
       "You are not signed in yet",
@@ -442,6 +574,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "statistika": MessageLookupByLibrary.simpleMessage("Statistics"),
     "streak": MessageLookupByLibrary.simpleMessage("Lightning streak"),
     "student": MessageLookupByLibrary.simpleMessage("University"),
+    "sun": MessageLookupByLibrary.simpleMessage("Su"),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
     "taOlmos": MessageLookupByLibrary.simpleMessage("gems!"),
     "tanafuzQilib": MessageLookupByLibrary.simpleMessage(
@@ -462,6 +595,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Awarded for solving the problems in record time.",
     ),
     "threePremium": MessageLookupByLibrary.simpleMessage("3 months Premium"),
+    "thu": MessageLookupByLibrary.simpleMessage("Th"),
     "tizimgaKirish": MessageLookupByLibrary.simpleMessage("Login"),
     "tizimgaKirishDes": MessageLookupByLibrary.simpleMessage(
       "We’re very happy to have you back!",
@@ -478,19 +612,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "trigonometriyaAsoslari": MessageLookupByLibrary.simpleMessage(
       "Basics of trigonometry",
     ),
+    "tryALesson": MessageLookupByLibrary.simpleMessage("Try a lesson"),
+    "tue": MessageLookupByLibrary.simpleMessage("Tu"),
     "twelvePremium": MessageLookupByLibrary.simpleMessage("1 year Premium"),
     "uchburchakBust": MessageLookupByLibrary.simpleMessage("Triangle Boost"),
     "uchburchakIkkinchiBosqichDes": MessageLookupByLibrary.simpleMessage(
       "Multiplication/division, place value, measurements",
     ),
     "uchburchakPiramidasiIkkinchiBosqich": MessageLookupByLibrary.simpleMessage(
-      "TRIANGLE PIRAMIDS | SECOND LEVEL",
+      "LEVEL 2, TRIANGLE CASTLE",
     ),
     "uchburchakPiramidasiIkkinchiBosqichDes":
-        MessageLookupByLibrary.simpleMessage("THE SECRET OF MATH OPERATIONS"),
+        MessageLookupByLibrary.simpleMessage("The secret of math operations"),
     "uchburchakPiramidasiXazinalari": MessageLookupByLibrary.simpleMessage(
       "Treasures of the Triangle Pyramid",
     ),
+    "uchburchakQasri": MessageLookupByLibrary.simpleMessage("Triangle Castle"),
     "uchburchakSandiq": MessageLookupByLibrary.simpleMessage("Triangle Chest"),
     "uchburchakVaqt": MessageLookupByLibrary.simpleMessage("Triangle Time"),
     "umumiyOchko": MessageLookupByLibrary.simpleMessage("TOTAL POINTS"),
@@ -501,6 +638,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Number of attempts: ",
     ),
     "use": MessageLookupByLibrary.simpleMessage("USE"),
+    "useAlochi": MessageLookupByLibrary.simpleMessage(
+      "Use A\'lochi to supercharge your skill sets.",
+    ),
     "userNotFound": MessageLookupByLibrary.simpleMessage("User not found"),
     "uygaQaytish": MessageLookupByLibrary.simpleMessage("RETURN HOME"),
     "vaqt": MessageLookupByLibrary.simpleMessage("TIME"),
@@ -512,6 +652,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "weakPassword1": MessageLookupByLibrary.simpleMessage(
       "The password is too weak",
+    ),
+    "wed": MessageLookupByLibrary.simpleMessage("We"),
+    "whatsYourTopGoal": MessageLookupByLibrary.simpleMessage(
+      "What\'s your top goal?",
     ),
     "whichNumberIn": MessageLookupByLibrary.simpleMessage(
       "Which number is in the triangle and also in the square and also in the circle?",
@@ -540,6 +684,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "youAreIn": MessageLookupByLibrary.simpleMessage("You are in"),
     "youEarned": MessageLookupByLibrary.simpleMessage("You earned"),
     "youGot": MessageLookupByLibrary.simpleMessage("You got"),
+    "youWillFit": MessageLookupByLibrary.simpleMessage("You\'ll fit right in"),
     "yuqoriSinf": MessageLookupByLibrary.simpleMessage("High school"),
     "yutuqlar": MessageLookupByLibrary.simpleMessage("ACHIEVEMENTS"),
   };

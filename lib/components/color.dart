@@ -38,3 +38,7 @@ const redDark = Color(0xFFFF4842);
 const orangeStrom = Color(0xFFF7A703);
 const alochiInfitity = Color(0xFF82D7FF);
 const noInternet = Color(0xFF151350);
+const primaryRedd = Color(0xFFFECA18);
+const squareCastleFloor = Color(0xFF4C3C33);
+const squareCastleFloor2 = Color(0xFF745C50);
+const lightPurple = Color(0xFFFCD4FF);

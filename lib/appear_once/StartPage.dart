@@ -72,6 +72,7 @@ class _StartPageState extends State<StartPage> {
                       height: 50,
                       width: 250,
                       color: primaryColor,
+                      borderRadius: 16,
                       onPressed: () {
                         GameState.reset();
                         Navigator.push(
@@ -94,6 +95,7 @@ class _StartPageState extends State<StartPage> {
                       height: 50,
                       width: 250,
                       color: Colors.white,
+                      borderRadius: 16,
                       onPressed: () async {
                         final user = FirebaseAuth.instance.currentUser;
 
@@ -119,7 +121,7 @@ class _StartPageState extends State<StartPage> {
                             color: greyColor,
                             width: 2,
                           ),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: Center(
                           child: Text(

@@ -289,6 +289,11 @@ class S {
     );
   }
 
+  /// `Total points`
+  String get score {
+    return Intl.message('Total points', name: 'score', desc: '', args: []);
+  }
+
   /// `ACHIEVEMENTS`
   String get yutuqlar {
     return Intl.message('ACHIEVEMENTS', name: 'yutuqlar', desc: '', args: []);
@@ -419,41 +424,61 @@ class S {
     );
   }
 
-  /// `TRIANGLE PIRAMIDS | SECOND LEVEL`
+  /// `LEVEL 2, TRIANGLE CASTLE`
   String get uchburchakPiramidasiIkkinchiBosqich {
     return Intl.message(
-      'TRIANGLE PIRAMIDS | SECOND LEVEL',
+      'LEVEL 2, TRIANGLE CASTLE',
       name: 'uchburchakPiramidasiIkkinchiBosqich',
       desc: '',
       args: [],
     );
   }
 
-  /// `THE SECRET OF MATH OPERATIONS`
+  /// `The secret of math operations`
   String get uchburchakPiramidasiIkkinchiBosqichDes {
     return Intl.message(
-      'THE SECRET OF MATH OPERATIONS',
+      'The secret of math operations',
       name: 'uchburchakPiramidasiIkkinchiBosqichDes',
       desc: '',
       args: [],
     );
   }
 
-  /// `CIRCLE CASTLE | STAGE THREE`
+  /// `Triangle Castle`
+  String get uchburchakQasri {
+    return Intl.message(
+      'Triangle Castle',
+      name: 'uchburchakQasri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LEVEL 3, CIRCLE CASTLE`
   String get doiraQasriUchinchiBosqich {
     return Intl.message(
-      'CIRCLE CASTLE | STAGE THREE',
+      'LEVEL 3, CIRCLE CASTLE',
       name: 'doiraQasriUchinchiBosqich',
       desc: '',
       args: [],
     );
   }
 
-  /// `THE WORLD OF FRACTIONS AND SHAPES`
+  /// `World of Fractions and Shapes`
   String get doiraQasriUchinchiBosqichDes {
     return Intl.message(
-      'THE WORLD OF FRACTIONS AND SHAPES',
+      'World of Fractions and Shapes',
       name: 'doiraQasriUchinchiBosqichDes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Circle Castle`
+  String get doiraQasri {
+    return Intl.message(
+      'Circle Castle',
+      name: 'doiraQasri',
       desc: '',
       args: [],
     );
@@ -2289,6 +2314,16 @@ class S {
     );
   }
 
+  /// `Show `
+  String get show {
+    return Intl.message('Show ', name: 'show', desc: '', args: []);
+  }
+
+  /// `cm on the ruler!`
+  String get cm {
+    return Intl.message('cm on the ruler!', name: 'cm', desc: '', args: []);
+  }
+
   /// `FOLLOWING`
   String get following {
     return Intl.message('FOLLOWING', name: 'following', desc: '', args: []);
@@ -2327,6 +2362,551 @@ class S {
   /// `ARIFMETICS`
   String get arifmetikaP {
     return Intl.message('ARIFMETICS', name: 'arifmetikaP', desc: '', args: []);
+  }
+
+  /// `Answer:`
+  String get answer {
+    return Intl.message('Answer:', name: 'answer', desc: '', args: []);
+  }
+
+  /// `Solve the given problems and choose the correct value!`
+  String get berilganMisollarniYeching {
+    return Intl.message(
+      'Solve the given problems and choose the correct value!',
+      name: 'berilganMisollarniYeching',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mo`
+  String get mon {
+    return Intl.message('Mo', name: 'mon', desc: '', args: []);
+  }
+
+  /// `Tu`
+  String get tue {
+    return Intl.message('Tu', name: 'tue', desc: '', args: []);
+  }
+
+  /// `We`
+  String get wed {
+    return Intl.message('We', name: 'wed', desc: '', args: []);
+  }
+
+  /// `Th`
+  String get thu {
+    return Intl.message('Th', name: 'thu', desc: '', args: []);
+  }
+
+  /// `Fr`
+  String get fri {
+    return Intl.message('Fr', name: 'fri', desc: '', args: []);
+  }
+
+  /// `Sa`
+  String get sat {
+    return Intl.message('Sa', name: 'sat', desc: '', args: []);
+  }
+
+  /// `Su`
+  String get sun {
+    return Intl.message('Su', name: 'sun', desc: '', args: []);
+  }
+
+  /// `Hi! I am Mr Square!`
+  String get hiIamMrSquare {
+    return Intl.message(
+      'Hi! I am Mr Square!',
+      name: 'hiIamMrSquare',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s build a learning path\njust for you.`
+  String get letsBuildALearningPath {
+    return Intl.message(
+      'Let’s build a learning path\njust for you.',
+      name: 'letsBuildALearningPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What's your top goal?`
+  String get whatsYourTopGoal {
+    return Intl.message(
+      'What\'s your top goal?',
+      name: 'whatsYourTopGoal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CONTINUE`
+  String get continueButton {
+    return Intl.message('CONTINUE', name: 'continueButton', desc: '', args: []);
+  }
+
+  /// `Professional growth`
+  String get goalOption1 {
+    return Intl.message(
+      'Professional growth',
+      name: 'goalOption1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Staying sharp`
+  String get goalOption2 {
+    return Intl.message(
+      'Staying sharp',
+      name: 'goalOption2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Excelling in school`
+  String get goalOption3 {
+    return Intl.message(
+      'Excelling in school',
+      name: 'goalOption3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Helping my child learn`
+  String get goalOption4 {
+    return Intl.message(
+      'Helping my child learn',
+      name: 'goalOption4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Helping my students learn`
+  String get goalOption5 {
+    return Intl.message(
+      'Helping my students learn',
+      name: 'goalOption5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something else`
+  String get goalOption6 {
+    return Intl.message(
+      'Something else',
+      name: 'goalOption6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Great choice! Let's boost your professional skills step by step.`
+  String get goalMsg1 {
+    return Intl.message(
+      'Great choice! Let\'s boost your professional skills step by step.',
+      name: 'goalMsg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Love the motivation! We'll keep your mind sharp and active.`
+  String get goalMsg2 {
+    return Intl.message(
+      'Love the motivation! We\'ll keep your mind sharp and active.',
+      name: 'goalMsg2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s aim high! We’ll help you excel in every subject.`
+  String get goalMsg3 {
+    return Intl.message(
+      'Let’s aim high! We’ll help you excel in every subject.',
+      name: 'goalMsg3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wonderful! We’ll guide your child’s learning journey with fun challenges.`
+  String get goalMsg4 {
+    return Intl.message(
+      'Wonderful! We’ll guide your child’s learning journey with fun challenges.',
+      name: 'goalMsg4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fantastic! Let’s make your teaching even more impactful.`
+  String get goalMsg5 {
+    return Intl.message(
+      'Fantastic! Let’s make your teaching even more impactful.',
+      name: 'goalMsg5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No problem! We’ll personalize the experience just for you.`
+  String get goalMsg6 {
+    return Intl.message(
+      'No problem! We’ll personalize the experience just for you.',
+      name: 'goalMsg6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What do you want to focus on?`
+  String get focus_question {
+    return Intl.message(
+      'What do you want to focus on?',
+      name: 'focus_question',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learning specific skills`
+  String get focus_learning_specific_skills {
+    return Intl.message(
+      'Learning specific skills',
+      name: 'focus_learning_specific_skills',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Following my curiosity`
+  String get focus_following_curiosity {
+    return Intl.message(
+      'Following my curiosity',
+      name: 'focus_following_curiosity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Building my problem solving skills`
+  String get focus_building_problem_solving {
+    return Intl.message(
+      'Building my problem solving skills',
+      name: 'focus_building_problem_solving',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brushing up on the basics`
+  String get focus_brushing_basics {
+    return Intl.message(
+      'Brushing up on the basics',
+      name: 'focus_brushing_basics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something else`
+  String get focus_something_else {
+    return Intl.message(
+      'Something else',
+      name: 'focus_something_else',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Perfect! We’ll focus on the skills that matter most to you.`
+  String get msg_learning_specific_skills {
+    return Intl.message(
+      'Perfect! We’ll focus on the skills that matter most to you.',
+      name: 'msg_learning_specific_skills',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Curiosity is the best guide — let’s explore together!`
+  String get msg_following_curiosity {
+    return Intl.message(
+      'Curiosity is the best guide — let’s explore together!',
+      name: 'msg_following_curiosity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Awesome! Get ready to tackle fun, brain-boosting challenges.`
+  String get msg_building_problem_solving {
+    return Intl.message(
+      'Awesome! Get ready to tackle fun, brain-boosting challenges.',
+      name: 'msg_building_problem_solving',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Great! We'll help you build a strong foundation step by step.`
+  String get msg_brushing_basics {
+    return Intl.message(
+      'Great! We\'ll help you build a strong foundation step by step.',
+      name: 'msg_brushing_basics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No worries! We’ll personalize your learning experience for whatever you need.`
+  String get msg_something_else {
+    return Intl.message(
+      'No worries! We’ll personalize your learning experience for whatever you need.',
+      name: 'msg_something_else',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You'll fit right in`
+  String get youWillFit {
+    return Intl.message(
+      'You\'ll fit right in',
+      name: 'youWillFit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use A'lochi to supercharge your skill sets.`
+  String get useAlochi {
+    return Intl.message(
+      'Use A\'lochi to supercharge your skill sets.',
+      name: 'useAlochi',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How good do you know math?`
+  String get math_level_question {
+    return Intl.message(
+      'How good do you know math?',
+      name: 'math_level_question',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Elementary school student`
+  String get level_elementary {
+    return Intl.message(
+      'Elementary school student',
+      name: 'level_elementary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `High school student`
+  String get level_high_school {
+    return Intl.message(
+      'High school student',
+      name: 'level_high_school',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `University student`
+  String get level_university {
+    return Intl.message(
+      'University student',
+      name: 'level_university',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What's your daily learning goal?`
+  String get dailyGoal {
+    return Intl.message(
+      'What\'s your daily learning goal?',
+      name: 'dailyGoal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learn 6x more effectively`
+  String get learn6xMore {
+    return Intl.message(
+      'Learn 6x more effectively',
+      name: 'learn6xMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A'lochi interactive lessons start at your level and help you advance.`
+  String get interactiveLessonsStart {
+    return Intl.message(
+      'A\'lochi interactive lessons start at your level and help you advance.',
+      name: 'interactiveLessonsStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CONTINUE`
+  String get continue_button {
+    return Intl.message(
+      'CONTINUE',
+      name: 'continue_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Morning routine`
+  String get morningRoutine {
+    return Intl.message(
+      'Morning routine',
+      name: 'morningRoutine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick break`
+  String get quickBreak {
+    return Intl.message('Quick break', name: 'quickBreak', desc: '', args: []);
+  }
+
+  /// `Nightly ritual`
+  String get nightlyRitual {
+    return Intl.message(
+      'Nightly ritual',
+      name: 'nightlyRitual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Another time`
+  String get anotherTime {
+    return Intl.message(
+      'Another time',
+      name: 'anotherTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Morning math? Brilliant! Let’s kick off your day with brain power.`
+  String get morningMessage {
+    return Intl.message(
+      'Morning math? Brilliant! Let’s kick off your day with brain power.',
+      name: 'morningMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Smart choice! A quick math break is a great mental refresh.`
+  String get quickBreakMessage {
+    return Intl.message(
+      'Smart choice! A quick math break is a great mental refresh.',
+      name: 'quickBreakMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Perfect! Wind down your day with relaxing problem-solving.`
+  String get nightlyMessage {
+    return Intl.message(
+      'Perfect! Wind down your day with relaxing problem-solving.',
+      name: 'nightlyMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No worries! We’ll be here whenever you’re ready to learn.`
+  String get anotherTimeMessage {
+    return Intl.message(
+      'No worries! We’ll be here whenever you’re ready to learn.',
+      name: 'anotherTimeMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose best time to learn math?`
+  String get chooseBestTime {
+    return Intl.message(
+      'Choose best time to learn math?',
+      name: 'chooseBestTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get rewards for study`
+  String get getRewardsForStudy {
+    return Intl.message(
+      'Get rewards for study',
+      name: 'getRewardsForStudy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A'lochi keeps you on track - with lessons, puzzles, and daily motivation designed for you.`
+  String get alochiKeepsYouOnTrack {
+    return Intl.message(
+      'A\'lochi keeps you on track - with lessons, puzzles, and daily motivation designed for you.',
+      name: 'alochiKeepsYouOnTrack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your personalized learning path is ready.`
+  String get personalizedLearningPath {
+    return Intl.message(
+      'Your personalized learning path is ready.',
+      name: 'personalizedLearningPath',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create a free profile`
+  String get createFreeProfile {
+    return Intl.message(
+      'Create a free profile',
+      name: 'createFreeProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try a lesson`
+  String get tryALesson {
+    return Intl.message('Try a lesson', name: 'tryALesson', desc: '', args: []);
   }
 
   /// `Subtraction means taking away.\n\nSample:\nIf you have 3 things and you take away 2, count what’s left:\n•  Start with 3 fingers.\n•  Put down 2 fingers.\n•  How many fingers are still up?\n\nThink: 3… take away 1 (now 2)… take away 1 more (now 1).`
