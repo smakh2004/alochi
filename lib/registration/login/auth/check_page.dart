@@ -1,4 +1,4 @@
-import 'package:alochi_math_app/auth/auth_page.dart';
+import 'package:alochi_math_app/registration/login/auth/auth_page.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/BoshlangichSinf.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:alochi_math_app/pages/Student/Student.dart';
@@ -15,9 +15,9 @@ class CheckPage extends StatefulWidget {
 
 class _CheckPageState extends State<CheckPage> {
   Future<Widget> _getNextPage(User user) async {
-    await GameState.loadState(user.uid); // ✅ Load from Firestore
+    await GameState.loadState(user.uid); // Load from Firestore
 
-    // ✅ Then return the correct page
+    // Then return the correct page
     if ((GameState.selectedLevel == 'Boshlang\'ich sinf') || (GameState.selectedLevel == 'Elementary school')) {
       return const BoshlangichSinf();
     } else if ((GameState.selectedLevel == 'Yuqori sinf') || (GameState.selectedLevel == 'High school')) {
@@ -40,7 +40,7 @@ class _CheckPageState extends State<CheckPage> {
           }
 
           if (snapshot.hasData && snapshot.data != null) {
-            // ✅ User is logged in, load Firestore state before navigating
+            // User is logged in, load Firestore state before navigating
             return FutureBuilder<Widget>(
               future: _getNextPage(snapshot.data!),
               builder: (context, futureSnapshot) {
@@ -56,7 +56,7 @@ class _CheckPageState extends State<CheckPage> {
               },
             );
           } else {
-            // ❌ Not logged in — go to auth page
+            // Not logged in — go to auth page
             return const AuthPage();
           }
         },

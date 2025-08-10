@@ -6,11 +6,14 @@ import 'package:alochi_math_app/MathStorm/MathStormSession.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/Connectivity.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
+import 'package:alochi_math_app/pages/NoInternetPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_button/animated_button.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class MathStorm extends StatefulWidget {
   const MathStorm({super.key});
@@ -316,15 +319,28 @@ class _MathStormState extends State<MathStorm> {
                         color: isEnabled ? red : greyColor,
                         borderRadius: 16,
                         onPressed: isEnabled
-                            ? () async {
-                                await useAttempt();
-                                await Navigator.push(
+                          ? () async {
+                              final hasConnection = context.read<ConnectivityService>().hasConnection;
+                              if (!hasConnection) {
+                                // Navigate to NoInternetPage if no internet
+                                Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const MathStormSession()),
+                                  MaterialPageRoute(builder: (_) => const NoInternetPage()),
                                 );
-                                setState(() {});
+                                return;
                               }
-                            : () {}, // ← prevent error by using empty function
+
+                              await useAttempt();
+
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const MathStormSession()),
+                              );
+
+                              if (!mounted) return;
+                              setState(() {});
+                            }
+                          : () {},
                         child: IgnorePointer(
                           ignoring: !isEnabled,
                           child: Text(

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:alochi_math_app/auth/check_page.dart';
+import 'package:alochi_math_app/registration/login/auth/check_page.dart';
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';

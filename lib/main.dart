@@ -6,15 +6,19 @@
 import 'package:alochi_math_app/SplashScreenPage.dart';
 import 'package:alochi_math_app/firebase_options.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
+import 'package:alochi_math_app/pages/Connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+// Add Provider import
+import 'package:provider/provider.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-    await SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
 
@@ -32,7 +36,13 @@ void main() async {
     debugPrint('Firebase already initialized: $e');
   }
 
-  runApp(MyApp());
+  runApp(
+    // Wrap the app with ChangeNotifierProvider to provide connectivity status globally
+    ChangeNotifierProvider(
+      create: (_) => ConnectivityService(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -41,6 +51,8 @@ class MyApp extends StatefulWidget {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(newLocale);
   }
+
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -67,7 +79,7 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: SplashScreenPage(),
+      home: const SplashScreenPage(),
     );
   }
 }

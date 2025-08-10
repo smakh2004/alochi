@@ -40,6 +40,13 @@ class _IntroPage5State extends State<IntroPage5> with TickerProviderStateMixin {
       S.of(context).level_university,
     ];
 
+    // Unique icons for each option
+    final optionIcons = [
+      Icons.school,         // Elementary
+      Icons.apartment,      // High school
+      Icons.account_balance // University
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -77,6 +84,7 @@ class _IntroPage5State extends State<IntroPage5> with TickerProviderStateMixin {
               ],
             ),
 
+            // Options with icons
             ...List.generate(options.length, (index) {
               final isSelected = _selectedIndex == index;
               return Padding(
@@ -98,14 +106,25 @@ class _IntroPage5State extends State<IntroPage5> with TickerProviderStateMixin {
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(
-                      options[index],
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: questionColor,
-                        fontFamily: Font,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          optionIcons[index],
+                          color: isSelected ? buttonBlue : greyColor,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            options[index],
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: questionColor,
+                              fontFamily: Font,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

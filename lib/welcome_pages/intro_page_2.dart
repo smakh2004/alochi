@@ -37,7 +37,6 @@ class _IntroPage2State extends State<IntroPage2> with TickerProviderStateMixin {
     // Localized options and messages
     final options = [
       S.of(context).goalOption1,
-      S.of(context).goalOption2,
       S.of(context).goalOption3,
       S.of(context).goalOption4,
       S.of(context).goalOption5,
@@ -46,11 +45,19 @@ class _IntroPage2State extends State<IntroPage2> with TickerProviderStateMixin {
 
     final messages = [
       S.of(context).goalMsg1,
-      S.of(context).goalMsg2,
       S.of(context).goalMsg3,
       S.of(context).goalMsg4,
       S.of(context).goalMsg5,
       S.of(context).goalMsg6,
+    ];
+
+    // Unique icons for each option
+    final optionIcons = [
+      Icons.school,       // For goalOption1
+      Icons.star,         // For goalOption3
+      Icons.sports_esports, // For goalOption4
+      Icons.book,         // For goalOption5
+      Icons.lightbulb,    // For goalOption6
     ];
 
     return Scaffold(
@@ -92,7 +99,7 @@ class _IntroPage2State extends State<IntroPage2> with TickerProviderStateMixin {
               ],
             ),
 
-            // Options
+            // Options with unique icon
             ...List.generate(options.length, (index) {
               final isSelected = _selectedIndex == index;
               return Padding(
@@ -114,14 +121,25 @@ class _IntroPage2State extends State<IntroPage2> with TickerProviderStateMixin {
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(
-                      options[index],
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: questionColor,
-                        fontFamily: Font,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          optionIcons[index],
+                          color: isSelected ? buttonBlue : greyColor,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            options[index],
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: questionColor,
+                              fontFamily: Font,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

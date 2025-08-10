@@ -24,6 +24,15 @@ class _IntroPage6State extends State<IntroPage6> with TickerProviderStateMixin {
     "15 min",
     "20 min"
   ];
+
+  // Unique icons for each goal
+  final List<IconData> _optionIcons = [
+    Icons.timer,          // 5 min
+    Icons.av_timer,       // 10 min
+    Icons.schedule,       // 15 min
+    Icons.timelapse,    // 20 min
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -82,7 +91,7 @@ class _IntroPage6State extends State<IntroPage6> with TickerProviderStateMixin {
               ],
             ),
 
-            // Options
+            // Options with icons
             ...List.generate(_options.length, (index) {
               final isSelected = _selectedIndex == index;
               return Padding(
@@ -104,14 +113,25 @@ class _IntroPage6State extends State<IntroPage6> with TickerProviderStateMixin {
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(
-                      _options[index],
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: questionColor,
-                        fontFamily: Font,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          _optionIcons[index],
+                          color: isSelected ? buttonBlue : greyColor,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            _options[index],
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: questionColor,
+                              fontFamily: Font,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

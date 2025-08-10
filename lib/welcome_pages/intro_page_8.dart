@@ -18,6 +18,13 @@ class _IntroPage8State extends State<IntroPage8> with TickerProviderStateMixin {
   late final AnimationController _animationController;
   int? _selectedIndex;
 
+  final List<IconData> optionIcons = [
+    Icons.wb_sunny,         // morningRoutine
+    Icons.fastfood,         // quickBreak
+    Icons.nightlight_round, // nightlyRitual
+    Icons.access_time,      // anotherTime
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -89,7 +96,7 @@ class _IntroPage8State extends State<IntroPage8> with TickerProviderStateMixin {
               ],
             ),
 
-            // Options
+            // Options with icons
             ...List.generate(options.length, (index) {
               final isSelected = _selectedIndex == index;
               return Padding(
@@ -111,14 +118,25 @@ class _IntroPage8State extends State<IntroPage8> with TickerProviderStateMixin {
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(
-                      options[index],
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: questionColor,
-                        fontFamily: Font,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          optionIcons[index],
+                          color: isSelected ? buttonBlue : greyColor,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            options[index],
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: questionColor,
+                              fontFamily: Font,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

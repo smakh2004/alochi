@@ -2,10 +2,13 @@
 import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/MathStorm/MathStorm.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/HomePage.dart';
+import 'package:alochi_math_app/pages/Connectivity.dart';
 import 'package:alochi_math_app/pages/LeaderBoard.dart';
+import 'package:alochi_math_app/pages/NoInternetPage.dart';
 import 'package:alochi_math_app/pages/ProfilePage.dart';
 import 'package:alochi_math_app/pages/StorePage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BoshlangichSinf extends StatefulWidget {
   const BoshlangichSinf({super.key});
@@ -58,6 +61,9 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
 
   @override
   Widget build(BuildContext context) {
+    // Access hasConnection from Provider here
+    final hasConnection = context.watch<ConnectivityService>().hasConnection;
+
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
@@ -86,7 +92,17 @@ class _BoshlangichSinfState extends State<BoshlangichSinf> {
             backgroundColor: Colors.white,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            onTap: _NavigatedBottomBar,
+            onTap: (index) {
+              if (!hasConnection) {
+                // Navigate to NoInternetPage if no internet connection
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const NoInternetPage()),
+                );
+                return;
+              }
+              _NavigatedBottomBar(index);
+            },
             items: [
               BottomNavigationBarItem(
                 icon: _buildIcon(0, 'assets/icons/Home.png'),

@@ -355,8 +355,8 @@
 
   "focus_question": "Siz nimaga e’tibor qaratmoqchisiz?",
   "focus_learning_specific_skills": "Muayyan ko‘nikmalarni o‘rganish",
-  "focus_following_curiosity": "Qiziqishimni ergashish",
-  "focus_building_problem_solving": "Muammolarni hal qilish ko‘nikmalarini rivojlantirish",
+  "focus_following_curiosity": "Qiziqishimni oshirish",
+  "focus_building_problem_solving": "Muammolarni hal qilish va ko‘nikmalarini rivojlantirish",
   "focus_brushing_basics": "Asoslarni qayta o‘rganish",
   "focus_something_else": "Boshqa narsalar",
 
@@ -373,15 +373,15 @@
   "level_elementary": "Boshlang‘ich sinf o‘quvchisi",
   "level_high_school": "O‘rta maktab o‘quvchisi",
   "level_university": "Universitet talabasi",
-  "dailyGoal": "Sizning kundalik o‘qish maqsadingiz nima?",
+  "dailyGoal": "Siz shug'ullanish uchun qancha vaqt ajratmoqchisiz?",
 
   "learn6xMore": "6 baravar samaraliroq o‘rganing",
   "interactiveLessonsStart": "A'lochi interaktiv darslari sizning darajangizdan boshlanadi va rivojlanishingizga yordam beradi.",
   "continue_button": "DAVOM ETISH",
 
-  "morningRoutine": "Ertalabki odat",
-  "quickBreak": "Tezkor tanaffus",
-  "nightlyRitual": "Kechki marosim",
+  "morningRoutine": "Har tong",
+  "quickBreak": "Tanaffus payti",
+  "nightlyRitual": "Kechki payt",
   "anotherTime": "Boshqa vaqt",
 
   "morningMessage": "Ertalab matematika? Zo‘r! Kuningizni aql bilan boshlaymiz.",
@@ -395,7 +395,7 @@
 
   "personalizedLearningPath": "Sizning shaxsiylashtirilgan o‘quv yo‘lingiz tayyor.",
   "createFreeProfile": "Bepul profil yarating",
-  "tryALesson": "Bir darsni sinab ko‘ring",
+  "tryALesson": "Bitta darsni sinab ko‘ring",
 
   "hint1": "Ayirish degani olib tashlash degani.\n\nNamuna:\nAgar sizda 3 ta narsa bo‘lsa va 2 tasini olib tashlasangiz, qolganini sanang:\n•  3 ta barmoq bilan boshlang.\n•  2 ta barmoqni tushiring.\n•  Nechta barmoq qoldi?\n\nO‘ylang: 3… 1 ni olib tashlang (endi 2)… yana 1 ni olib tashlang (endi 1).",
   "hint2": "Ikki sonni ko‘rganimizda, ko‘pincha ular bir-biriga qanday munosabatda ekanini bilmoqchi bo‘lamiz.\n\nBiz uchta asosiy belgidan foydalanamiz:\n1. Tenglik belgisi \"=\" — “teng” yoki “bir xil” degani. Ikkala tomonning qiymati bir xil bo‘lsa, ishlatiladi.\n2. Kichik belgisi \"<\" — “kichikroq” degani. Chap tomondagi son o‘ng tomondagidan kichik bo‘ladi.\n3. Katta belgisi \">\" — “katta” degani. Chap tomondagi son o‘ng tomondagidan katta bo‘ladi.\n\nEslab qolish uchun maslahat:\n\"<\" va \">\" belgilarini och qolgan og‘iz deb tasavvur qiling:\nOg‘iz katta tomonga qaragan bo‘ladi, chunki u kattaroq sonni yeb qo‘ymoqchi bo‘ladi.",

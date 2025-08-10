@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:alochi_math_app/auth/check_page.dart';
+import 'package:alochi_math_app/registration/login/auth/check_page.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/GameState.dart';

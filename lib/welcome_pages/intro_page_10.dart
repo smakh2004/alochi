@@ -1,4 +1,4 @@
-import 'package:alochi_math_app/auth/check_page.dart';
+import 'package:alochi_math_app/registration/login/auth/check_page.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';

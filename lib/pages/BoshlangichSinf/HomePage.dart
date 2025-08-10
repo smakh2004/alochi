@@ -2,6 +2,8 @@ import 'package:alochi_math_app/pages/BoshlangichSinf/Castles/KvadratQasri.dart'
 import 'package:alochi_math_app/pages/BoshlangichSinf/Castles/UchburchakPiramidasi.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/LevelPage2.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/LevelPage3.dart';
+import 'package:alochi_math_app/pages/Connectivity.dart';
+import 'package:alochi_math_app/pages/NoInternetPage.dart';
 import 'package:alochi_math_app/savollar/BoshlangichSinfSavollar/savolllarXP/1Level/questions10/main_page.dart';
 import 'package:alochi_math_app/generated/l10n.dart';
 import 'package:alochi_math_app/pages/BoshlangichSinf/LevelPage.dart';
@@ -21,6 +23,7 @@ import 'package:alochi_math_app/components/color.dart';
 import 'package:alochi_math_app/components/font.dart';
 import 'package:alochi_math_app/pages/GameState.dart';
 import 'package:animated_button/animated_button.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
@@ -462,33 +465,45 @@ class _HomePageState extends State<HomePage> {
                       width: screenWidth * 0.90,
                       color: currentStageColor,
                       onPressed: () async {
-                        final result = await Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            transitionDuration: const Duration(milliseconds: 600),
-                            pageBuilder: (_, __, ___) {
-                              if (currentCastleIndex == 0) {
-                                return const LevelPage(); // Kvadrat Qasri
-                              } else if (currentCastleIndex == 1) {
-                                return const LevelPage2(); // Uchburchak Piramidasi
-                              } else if (currentCastleIndex == 2) {
-                                return const LevelPage3(); // Doira Qasri
-                              } else {
-                                return const LevelPage(); // Fallback
-                              }
-                            },
-                            transitionsBuilder: (_, animation, __, child) => SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(0, 1),
-                                end: Offset.zero,
-                              ).animate(CurvedAnimation(
-                                parent: animation,
-                                curve: Curves.easeInOut,
-                              )),
-                              child: child,
+                        final hasConnection = context.read<ConnectivityService>().hasConnection;
+                        bool? result;
+
+                        if (!hasConnection) {
+                          // Navigate to NoInternetPage if no connection
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const NoInternetPage()),
+                          );
+                          return; // stop further navigation
+                        } else {
+                          result = await Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration: const Duration(milliseconds: 600),
+                              pageBuilder: (_, __, ___) {
+                                if (currentCastleIndex == 0) {
+                                  return const LevelPage(); // Kvadrat Qasri
+                                } else if (currentCastleIndex == 1) {
+                                  return const LevelPage2(); // Uchburchak Piramidasi
+                                } else if (currentCastleIndex == 2) {
+                                  return const LevelPage3(); // Doira Qasri
+                                } else {
+                                  return const LevelPage(); // Fallback
+                                }
+                              },
+                              transitionsBuilder: (_, animation, __, child) => SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(0, 1),
+                                  end: Offset.zero,
+                                ).animate(CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.easeInOut,
+                                )),
+                                child: child,
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        }
 
                         if (result == true) {
                           setState(() {
@@ -556,6 +571,18 @@ class _HomePageState extends State<HomePage> {
                   color: GameState.hearts > 0 ? orange : greyColor,
                   borderRadius: 16,
                   onPressed: () async {
+                    final hasConnection = context.read<ConnectivityService>().hasConnection;
+
+                    if (!hasConnection) {
+                      // Navigate to NoInternetPage if no connection
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const NoInternetPage()),
+                      );
+                      return; // stop further navigation
+                    }
+
+                    // Navigate to your main page if connected
                     await Navigator.push(
                       context,
                       MaterialPageRoute(builder: (_) => _getCurrentMainPage()),
@@ -564,6 +591,7 @@ class _HomePageState extends State<HomePage> {
                     if (!mounted) return;
 
                     setState(() {
+                      // any state updates here after returning
                     });
                   },
                   child: Text(

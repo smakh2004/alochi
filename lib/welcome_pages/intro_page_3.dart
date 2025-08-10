@@ -50,6 +50,15 @@ class _IntroPage3State extends State<IntroPage3> with TickerProviderStateMixin {
       S.of(context).msg_something_else,
     ];
 
+    // Unique icons for each option
+    final optionIcons = [
+      Icons.build,           // Specific skills
+      Icons.explore,         // Following curiosity
+      Icons.extension,       // Problem-solving
+      Icons.menu_book,       // Brushing basics
+      Icons.more_horiz,      // Something else
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -89,6 +98,7 @@ class _IntroPage3State extends State<IntroPage3> with TickerProviderStateMixin {
               ],
             ),
 
+            // Options with unique icons
             ...List.generate(options.length, (index) {
               final isSelected = _selectedIndex == index;
               return Padding(
@@ -110,14 +120,25 @@ class _IntroPage3State extends State<IntroPage3> with TickerProviderStateMixin {
                       ),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(
-                      options[index],
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: questionColor,
-                        fontFamily: Font,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          optionIcons[index],
+                          color: isSelected ? buttonBlue : greyColor,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            options[index],
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: questionColor,
+                              fontFamily: Font,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -160,7 +181,6 @@ class _IntroPage3State extends State<IntroPage3> with TickerProviderStateMixin {
     );
   }
 }
-
 
 class SpeechBubblePainter extends CustomPainter {
   final Color color;
